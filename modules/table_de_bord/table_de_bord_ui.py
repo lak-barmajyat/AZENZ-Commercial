@@ -1,5 +1,5 @@
-from ui.tools.effects import set_drop_shadow
-from ui.tools.canvas import create_uniform_icon, get_colored_icon
+from ui_utils.effects import set_drop_shadow
+from ui_utils.canvas import create_uniform_icon, get_colored_icon
 
 from PyQt5.uic import loadUi
 from PyQt5.QtGui import QIcon

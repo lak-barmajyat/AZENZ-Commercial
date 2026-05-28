@@ -1,13 +1,13 @@
 from PyQt5.QtWidgets import QApplication
-import resources_rc
+from resources import resources_rc
 import sys
 
-from ui.screens.login.login_ui import LoginUI
-from ui.screens.dashboard.dashboard_ui import DashboardMenuUI, DashboardWidget
+from modules.login.login_view import LoginUI
+from modules.table_de_bord.table_de_bord_ui import DashboardMenuUI, DashboardWidget
 
 
 def get_qss():
-    with open("ui/styles/style.qss", 'r') as f:
+    with open("theme/style/base.qss", 'r') as f:
         return f.read()
 
 def main():

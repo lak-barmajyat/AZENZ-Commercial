@@ -1,5 +1,5 @@
-from ui.tools.effects import set_drop_shadow
-from ui.tools.canvas import create_uniform_icon
+from ui_utils.effects import set_drop_shadow
+from ui_utils.canvas import create_uniform_icon
 
 from PyQt5.uic import loadUi
 from PyQt5.QtGui import QIcon
@@ -14,7 +14,7 @@ from PyQt5.QtWidgets import (
 class LoginUI(QMainWindow):
     def __init__(self):
         super().__init__()
-        loadUi("ui/screens/login/login.ui", self)
+        loadUi("modules/login/login.ui", self)
 
         self.is_password_hidden = True
         self._drag_origin = None
@@ -84,28 +84,25 @@ class LoginUI(QMainWindow):
         self.LoginErrorLabel.hide()
 
     # ------------------------ Window Drag ----------------------- #
-    # Frameless + translucent windows lose the native title bar, so we
-    # implement manual dragging on any non-interactive area.
     def mousePressEvent(self, event):
-        if event.button() == Qt.LeftButton and not self.isMaximized():
-            self._drag_origin = event.globalPos() - self.pos()
+        if event.button() == Qt.LeftButton:
+            self._drag_pos = event.globalPos() - self.frameGeometry().topLeft()
             event.accept()
-            return
-        super().mousePressEvent(event)
 
     def mouseMoveEvent(self, event):
-        if self._drag_origin is not None and event.buttons() & Qt.LeftButton:
-            self.move(event.globalPos() - self._drag_origin)
+        if event.buttons() & Qt.LeftButton and self._drag_pos is not None:
+            self.move(event.globalPos() - self._drag_pos)
             event.accept()
-            return
-        super().mouseMoveEvent(event)
 
     def mouseReleaseEvent(self, event):
-        if event.button() == Qt.LeftButton and self._drag_origin is not None:
-            self._drag_origin = None
-            event.accept()
+        self._drag_pos = None
+        event.accept()
+
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key_Escape:
+            self.close()
             return
-        super().mouseReleaseEvent(event)
+        super().keyPressEvent(event)
 
 
 if __name__ == "__main__":

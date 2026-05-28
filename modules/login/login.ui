@@ -570,7 +570,7 @@
         <string notr="true">color: rgb(154, 153, 150);</string>
        </property>
        <property name="text">
-        <string>LAK ERP • Secure Business Management</string>
+        <string>AZENZ • LAK Software commercial system</string>
        </property>
       </widget>
      </item>
@@ -583,7 +583,7 @@
   <tabstop>CancelButton</tabstop>
  </tabstops>
  <resources>
-  <include location="../../../resources.qrc"/>
+  <include location="../../resources/resources.qrc"/>
  </resources>
  <connections/>
 </ui>

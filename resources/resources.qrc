@@ -1,0 +1,28 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>icons/ajouter_client.svg</file>
+    <file>icons/articles.svg</file>
+    <file>icons/clients.svg</file>
+    <file>icons/dashboard.svg</file>
+    <file>icons/documents.svg</file>
+    <file>icons/down_arrow.svg</file>
+    <file>icons/eye-closed.svg</file>
+    <file>icons/eye-open.svg</file>
+    <file>icons/fiche_client.svg</file>
+    <file>icons/help.svg</file>
+    <file>icons/list.svg</file>
+    <file>icons/lock.svg</file>
+    <file>icons/logout.svg</file>
+    <file>icons/paiements.svg</file>
+    <file>icons/rechercher.svg</file>
+    <file>icons/settings.svg</file>
+    <file>icons/stockage.svg</file>
+    <file>icons/user.svg</file>
+    <file>icons/ventes.svg</file>
+    <file>icons/warning.svg</file>
+  </qresource>
+  <qresource prefix="images">
+    <file>images/Corporate background.png</file>
+    <file>images/program_logo.png</file>
+  </qresource>
+</RCC>
