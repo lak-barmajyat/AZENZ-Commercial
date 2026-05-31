@@ -14,7 +14,7 @@ from modules.login.controller import LoginController
 from modules.login.model import LoginModel
 
 
-class LoginUI(QMainWindow):
+class LoginView(QMainWindow):
     def __init__(self):
         super().__init__()
         loadUi("modules/login/login.ui", self)
@@ -39,7 +39,7 @@ class LoginUI(QMainWindow):
     def setup_window(self):
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
-        self.setWindowTitle("LAK ERP - Login")
+        self.setWindowTitle("AZENZ - Login")
         self.setWindowIcon(QIcon(":/icons/resources/icons/app_icon.svg"))
 
     def setup_widgets(self):
@@ -116,6 +116,6 @@ if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
 
     app = QApplication(sys.argv)
-    login_window = LoginUI()
+    login_window = LoginView()
     login_window.show()
     sys.exit(app.exec_())

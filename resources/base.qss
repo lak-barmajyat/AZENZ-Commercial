@@ -1,7 +1,3 @@
-#Background {
-    background-color: #F8F9FB;
-}
-
 /* QLineEdit has Icon */
 QLineEdit[class="icon-lineedit"] {
     background-color: #ffffff;
@@ -41,9 +37,8 @@ QLineEdit {
     border: 2px solid #e0e0e0;
     border-radius: 6px;
     padding: 6px 12px;
-    font-size: 13px;
-    font-weight: 500;
-    font-family: "Inter";
+    font-size: 14px;
+    font-family: "Inyer", Arial, sans-serif;
     color: #333333;
     
     selection-background-color: #0051df; 
@@ -127,7 +122,6 @@ QPushButton[class="outlined"]:focus {
 QToolButton[class="card-button"] {
     color: #000;
     padding: 15px;
-    padding-top: 20px;
     background-color: #f8f9fa;
     border: 1px solid #eaebf0;
     border-radius: 12px;
@@ -136,7 +130,6 @@ QToolButton[class="card-button"] {
 QToolButton[class="card-button"]:hover {
     background-color: #f3f4f6;
     border: 1px solid #d1d5db;
-    border: 1px solid hsl(218, 100%, 55%);
 }
 
 QToolButton[class="card-button"]:pressed {
@@ -199,7 +192,7 @@ QLabel#LoginErrorLabel {
     padding: 10px;
     padding-left: 15px;
 	color: #721c24;	
-	image: url(:/icons/icons/warning.svg);
+	image: url(:/icons/resources/icons/warning.svg);
 	image-position: left;
 }    
 
@@ -211,8 +204,6 @@ QComboBox {
     border-radius: 6px;
     padding: 6px 12px;
     font-family: "Inter";
-    font-size: 13px;
-    font-weight: 500;
     color: #333333;
     min-width: 60px;
 }
@@ -238,10 +229,6 @@ QComboBox QAbstractItemView {
     border-radius: 0px;
     box-shadow: none;
     padding: 4px;
-    font-family: "Inter";
-    font-size: 13px;
-    font-weight: 500;
-    color: #333333;
     
     selection-background-color: #0051df;
     selection-color: #ffffff;
@@ -261,7 +248,7 @@ QComboBox QAbstractItemView::item:hover {
 
 /* 4. The Arrow Icon itself */
 QComboBox::down-arrow {
-    image: url(:/icons/icons/down_arrow.svg);
+    image: url(:/icons/resources/icons/down_arrow.svg);
 }
 
 
@@ -285,34 +272,16 @@ QFrame[class="card"] {
     border-radius: 12px;
 }
 
-/* Bar Frames */
-QFrame#SidebarFrame, QFrame#FootSidebarFrame {
-	border-right: 1px solid #d0d0d0;
-    background-color: #f7f7f7;
-}
-
-QFrame#FootSidebarFrame {
-    border-top: 1px solid #d0d0d0;
-}
-
-QFrame#TopBarFrame {
-    border-bottom: 1px solid #d0d0d0;
-}
-
 
 /* QLabel */
 QLabel {
-    color: #333333;
+    color: #000;
     border: none;
     background-color: transparent;
-    font-family: "Inter", "Tajawal";
-    font-size: 13px;
-    font-weight: 500;
-
 }
 
 /* SeparatorLine */
-QLabel[class="separator"] {
+QLabel [class="separator"] {
     background-color: rgba(195, 197, 216, 0.5);
     border: none;
     height: 1px;
@@ -373,123 +342,4 @@ QTableCornerButton::section {
     border: none;
     border-bottom: 1px solid #eaebf0;
     border-right: 1px solid #eaebf0;
-}
-
-
-
-
-/* ====================================================
-   PRIMARY BUTTON (Like "Nouveau") 
-   Solid blue background, white text.
-==================================================== */
-QToolButton[class="primary"] {
-    background-color: #2563eb; /* Vibrant primary blue */
-    color: #ffffff;            /* Pure white text */
-    border: none;
-    border-radius: 6px;
-    padding: 8px 16px;
-    font-size: 13px;
-    font-weight: 600;          /* Slightly bolder font to stand out */
-}
-
-QToolButton[class="primary"]:hover {
-    background-color: #1d4ed8; /* Slightly darker blue on hover for feedback */
-}
-
-QToolButton[class="primary"]:pressed {
-    background-color: #1e40af; /* Deep blue when actively clicked */
-}
-
-/* Optional but recommended: A disabled state */
-QToolButton[class="primary"]:disabled {
-    background-color: #93c5fd; /* Faded, washed-out blue */
-    color: #f8fafc;            /* Slightly dimmed white text */
-}
-/* ====================================================
-   1. SECONDARY BUTTON (Like "Modifier") 
-   Subtle gray background, dark text.
-==================================================== */
-QToolButton[class="secondary"] {
-    background-color: transparent; /* Soft gray background */
-    color: #374151;            /* Dark slate gray text */
-    border: none;
-    border-radius: 6px;
-    padding: 6px 14px;
-    font-size: 13px;
-    font-weight: 500;
-}
-
-QToolButton[class="secondary"]:hover {
-    background-color: #e5e7eb; /* Slightly darker gray on hover */
-    color: #111827;            /* Almost black text on hover */
-}
-
-QToolButton[class="secondary"]:pressed {
-    background-color: #d1d5db; /* Noticeable press state */
-}
-
-/* ====================================================
-   2. SECONDARY DANGER BUTTON (Like "Supprimer")
-   Transparent by default, turns red on hover.
-==================================================== */
-QToolButton[class="secondary-danger"] {
-    background-color: transparent; /* Ghost button by default */
-    color: #4b5563;                /* Muted gray text */
-    border: none;
-    border-radius: 6px;
-    padding: 6px 14px;
-    font-size: 13px;
-    font-weight: 500;
-}
-
-QToolButton[class="secondary-danger"]:hover {
-    background-color: #fef2f2;     /* Faint warning red background */
-    color: #dc2626;                /* Strong red text */
-}
-
-QToolButton[class="secondary-danger"]:pressed {
-    background-color: #fee2e2;     /* Slightly deeper red background */
-    color: #b91c1c;                /* Darker red text */
-}
-
-
-/* ====================================================
-   1. The Main DateEdit Input Box
-==================================================== */
-QDateEdit {
-    background-color: #ffffff;
-    border: 2px solid #e0e0e0;       /* Matches your QComboBox */
-    border-radius: 6px;
-    padding: 6px 12px;
-    font-size: 14px;
-    color: #333333;
-    min-width: 110px;
-}
-
-QDateEdit:hover {
-    border: 2px solid #b3b3b3;       /* Slightly darker on hover */
-}
-
-QDateEdit:focus {
-    border: 2px solid #2563eb;       /* Primary blue border when typing */
-    background-color: #fbfcff;       /* Very faint blue tint */
-}
-
-/* ====================================================
-   2. The Drop-down Button (Right Side)
-==================================================== */
-QDateEdit::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 32px;
-    border-left: none;               /* Seamless look */
-    border-top-right-radius: 6px;
-    border-bottom-right-radius: 6px;
-}
-
-/* 3. The Icon Inside the Drop-down */
-QDateEdit::down-arrow {
-    image: url(":/icons/icons/Gcalendar.svg"); /* Pro-tip: Use a calendar icon instead of an arrow */
-    width: 16px;
-    height: 16px;
 }

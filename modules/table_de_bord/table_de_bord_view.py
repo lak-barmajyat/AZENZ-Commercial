@@ -4,57 +4,62 @@ from ui_utils.canvas import create_uniform_icon, get_colored_icon
 from PyQt5.uic import loadUi
 from PyQt5.QtGui import QIcon
 from PyQt5 import QtGui
+from PyQt5.QtCore import QSize
 
 from PyQt5.QtWidgets import (
     QAction, QFrame, QMainWindow, QWidget,
-    QLineEdit, QToolButton)
+    QLineEdit, QToolButton, QHeaderView)
+
+from modules.ventes.ventes_view import VentesView
 
 
 class DashboardWidget(QWidget):
     def __init__(self):
         super().__init__()
-        loadUi("ui/screens/dashboard/dashboard_widget.ui", self)
+        loadUi("modules/table_de_bord/dashboard_widget.ui", self)
         self.setup()
 
     def setup(self):
-        self.setup_widgets()
+        self.setup_effects()
 
-    def setup_widgets(self):
-        cards = [self.CardClients, self.CardDocuments, self.CardPaiements, self.CardArticles]
-        for card in cards:
-            card.setProperty("class", "card")
-            for child in card.findChildren(QToolButton):
-                child.setProperty("class", "card-button")
+    def setup_icons(self):
+        # Change icon size in toolbuttons
+        card_frames = [self.CardArticles, self.CardClients, self.CardDocuments, self.CardPaiements]
+        for frame in card_frames:
+            buttons = frame.findChild(QToolButton)
+            if buttons:
+                for button in buttons:
+                    button.setIconSize(QSize(40, 40))
 
 
-class DashboardMenuUI(QMainWindow):
+    def setup_effects(self):
+        card_frames = [self.CardArticles, self.CardClients, self.CardDocuments, self.CardPaiements]
+        for frame in card_frames:
+            set_drop_shadow(frame, 15, 0, 1, 35)
+
+class DashboardMenuView(QMainWindow):
     def __init__(self):
         super().__init__()
-        loadUi("ui/screens/dashboard/dashboard_menu.ui", self)
+        loadUi("modules/table_de_bord/dashboard_menu.ui", self)
         self.setup()
 
     def setup(self):
         self.setup_widgets()
-        # self.setup_icons()
         self.setup_sidebar_buttons()
         self.mark_button(self.DashboardButton)
         self.setup_widgets_stock()
+        self.setup_window()
+
+    def setup_window(self):
+        self.setWindowTitle("AZENZ - Dashboard")
+        self.setWindowIcon(QIcon(":/icons/resources/icons/app_icon.svg"))
+        self.showMaximized()
 
     def setup_widgets(self):
-        sidebar_buttons = self.SidebarFrame.findChildren(QToolButton)
-        sidebar_buttons += self.FootSidebarFrame.findChildren(QToolButton)
-        for widget in sidebar_buttons:
-            widget.setProperty("class", "sidebar-button")
-        self.RechercherEntry.setProperty("class", "icon-lineedit")
-        self.HelpButton.setProperty("class", "icon-button")
-
         # For Rechercher Field
         rechercher_icon = QAction(self)
-        rechercher_icon.setIcon(create_uniform_icon(":/icons/resources/icons/rechercher.svg"))
+        rechercher_icon.setIcon(create_uniform_icon(":/icons/icons/rechercher.svg"))
         self.RechercherEntry.addAction(rechercher_icon, QLineEdit.LeadingPosition)
-
-    def setup_icons(self):
-        self.DashboardButton.setIcon(create_uniform_icon(":/icons/resources/icons/dashboard.svg", 20))
 
     def setup_sidebar_buttons(self):
         sidebar_buttons = self.SidebarFrame.findChildren(QToolButton)
@@ -64,8 +69,10 @@ class DashboardMenuUI(QMainWindow):
 
     def setup_widgets_stock(self):
         dashboard_widget = DashboardWidget()
+        ventes_widget = VentesView()
+        self.WidgetStock.layout().addWidget(ventes_widget)
         self.WidgetStock.layout().addWidget(dashboard_widget)
-        self.WidgetStock.setCurrentWidget(dashboard_widget)
+        self.WidgetStock.setCurrentWidget(ventes_widget)
 
     # ------------------------ Helper Functions ----------------------- #
     def mark_button(self, button):
@@ -87,6 +94,6 @@ if __name__ == "__main__":
     from PyQt5.QtWidgets import QApplication
 
     app = QApplication(sys.argv)
-    dashboard_menu_window = DashboardMenuUI()
+    dashboard_menu_window = DashboardMenuView()
     dashboard_menu_window.show()
     sys.exit(app.exec_())
