@@ -2,7 +2,7 @@ from modules.login.model import LoginModel
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QCursor
-from modules.table_de_bord.table_de_bord_ui import DashboardWidget
+from modules.table_de_bord.table_de_bord_view import DashboardMenuView
 # from modules.login.login_view import LoginUI
 
 class LoginController:
@@ -36,7 +36,7 @@ class LoginController:
             self.view.LoginErrorLabel.show()
         else:
             self.view.LoginErrorLabel.hide()
-            QApplication.DashboardWidget = DashboardWidget()
+            QApplication.DashboardWidget = DashboardMenuView()
             QApplication.DashboardWidget.show()
             self.view.close()
     
