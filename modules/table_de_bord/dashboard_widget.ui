@@ -395,7 +395,7 @@
                   </layout>
                  </item>
                  <item>
-                  <widget class="QToolButton" name="toolButton_4">
+                  <widget class="QToolButton" name="NouveauDocButton">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                      <horstretch>0</horstretch>
@@ -445,7 +445,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QToolButton" name="toolButton_5">
+                  <widget class="QToolButton" name="ListeVentesButton">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                      <horstretch>0</horstretch>
@@ -669,7 +669,7 @@
                   </layout>
                  </item>
                  <item>
-                  <widget class="QToolButton" name="toolButton_8">
+                  <widget class="QToolButton" name="AjouterPaimentButton">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                      <horstretch>0</horstretch>
@@ -893,7 +893,7 @@
                   </layout>
                  </item>
                  <item>
-                  <widget class="QToolButton" name="toolButton_9">
+                  <widget class="QToolButton" name="AjouterProduitButton">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                      <horstretch>0</horstretch>
@@ -948,7 +948,7 @@
                     <enum>QLayout::SetDefaultConstraint</enum>
                    </property>
                    <item>
-                    <widget class="QToolButton" name="toolButton_6">
+                    <widget class="QToolButton" name="ListeProduitsButton">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                        <horstretch>0</horstretch>
@@ -990,7 +990,7 @@ Produits</string>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QToolButton" name="toolButton_7">
+                    <widget class="QToolButton" name="AjouterStockButton">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                        <horstretch>0</horstretch>
@@ -1258,7 +1258,7 @@ Stock</string>
                     <enum>QLayout::SetDefaultConstraint</enum>
                    </property>
                    <item>
-                    <widget class="QToolButton" name="toolButton">
+                    <widget class="QToolButton" name="AjouterClientButton">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                        <horstretch>0</horstretch>
@@ -1299,7 +1299,7 @@ Stock</string>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QToolButton" name="toolButton_2">
+                    <widget class="QToolButton" name="ListeClientsButton">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                        <horstretch>0</horstretch>
@@ -1372,7 +1372,7 @@ Stock</string>
                   </layout>
                  </item>
                  <item>
-                  <widget class="QToolButton" name="toolButton_3">
+                  <widget class="QToolButton" name="FicheClientButton">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                      <horstretch>0</horstretch>

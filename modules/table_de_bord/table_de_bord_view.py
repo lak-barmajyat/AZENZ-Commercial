@@ -120,6 +120,7 @@ class DashboardMenuView(QMainWindow):
 
         add_page(self.DashboardButton, dashboard_widget)
         add_page(self.VentesButton, ventes_widget)
+        add_page(self.ListeVentesButton, ventes_widget)
         add_page(self.ClientsButton)
         add_page(self.FournisseursButton)
         add_page(self.ArticlesButton)
