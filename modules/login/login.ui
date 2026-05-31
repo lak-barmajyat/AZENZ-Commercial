@@ -131,7 +131,7 @@
          <property name="styleSheet">
           <string notr="true">QLabel {
 	padding-top: 15px;
-	image: url(:/images/resources/images/program_logo.png);
+	image: url(:/images/images/program_logo.png);
 }</string>
          </property>
          <property name="text">

@@ -4,7 +4,7 @@ from ui_utils.canvas import create_uniform_icon, get_colored_icon
 from PyQt5.uic import loadUi
 from PyQt5.QtGui import QIcon
 from PyQt5 import QtGui
-from PyQt5.QtCore import QSize
+from PyQt5.QtCore import QSize, QPropertyAnimation, QEasingCurve
 
 from PyQt5.QtWidgets import (
     QAction, QFrame, QMainWindow, QWidget,
@@ -41,7 +41,31 @@ class DashboardMenuView(QMainWindow):
     def __init__(self):
         super().__init__()
         loadUi("modules/table_de_bord/dashboard_menu.ui", self)
+
+        self.sidebar_open = True
+        self.sidebar_expanded_width = 250
+        self.sidebar_collapsed_width = 70
+
+        self.toggleSidebarButton.clicked.connect(self.toggle_sidebar)
+
         self.setup()
+
+    def toggle_sidebar(self):
+        current_width = self.sidebarFrame.width()
+
+        if self.sidebar_open:
+            target_width = self.sidebar_collapsed_width
+        else:
+            target_width = self.sidebar_expanded_width
+
+        self.animation = QPropertyAnimation(self.sidebarFrame, b"maximumWidth")
+        self.animation.setDuration(250)
+        self.animation.setStartValue(current_width)
+        self.animation.setEndValue(target_width)
+        self.animation.setEasingCurve(QEasingCurve.InOutCubic)
+        self.animation.start()
+
+        self.sidebar_open = not self.sidebar_open
 
     def setup(self):
         self.setup_widgets()

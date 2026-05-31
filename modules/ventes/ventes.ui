@@ -984,7 +984,7 @@ QDateEdit::down-arrow {
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>150</height>
+          <height>132</height>
          </size>
         </property>
         <property name="frameShape">
@@ -1128,93 +1128,101 @@ QDateEdit::down-arrow {
             <number>6</number>
            </property>
            <item>
-            <layout class="QGridLayout" name="gridLayout_3">
-             <property name="topMargin">
-              <number>0</number>
+            <widget class="QLabel" name="label_16">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
              </property>
-             <property name="rightMargin">
-              <number>0</number>
+             <property name="maximumSize">
+              <size>
+               <width>15</width>
+               <height>42</height>
+              </size>
              </property>
-             <property name="horizontalSpacing">
-              <number>8</number>
+             <property name="text">
+              <string>DE</string>
              </property>
-             <property name="verticalSpacing">
-              <number>6</number>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDateEdit" name="dateEdit">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
              </property>
-             <item row="1" column="0">
-              <widget class="QDateEdit" name="dateEdit">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>138</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>175</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="displayFormat">
-                <string>MM/dd/yyyy</string>
-               </property>
-               <property name="calendarPopup">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="0">
-              <widget class="QLabel" name="label_16">
-               <property name="text">
-                <string>DE</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="1">
-              <widget class="QDateEdit" name="dateEdit_2">
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>138</width>
-                 <height>0</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>175</width>
-                 <height>16777215</height>
-                </size>
-               </property>
-               <property name="currentSection">
-                <enum>QDateTimeEdit::MonthSection</enum>
-               </property>
-               <property name="displayFormat">
-                <string>MM/dd/yyyy</string>
-               </property>
-               <property name="calendarPopup">
-                <bool>true</bool>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="1">
-              <widget class="QLabel" name="label_17">
-               <property name="text">
-                <string>A</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
+             <property name="minimumSize">
+              <size>
+               <width>138</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>175</width>
+               <height>42</height>
+              </size>
+             </property>
+             <property name="displayFormat">
+              <string>MM/dd/yyyy</string>
+             </property>
+             <property name="calendarPopup">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_17">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>15</width>
+               <height>42</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>A</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDateEdit" name="dateEdit_2">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>138</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>175</width>
+               <height>42</height>
+              </size>
+             </property>
+             <property name="currentSection">
+              <enum>QDateTimeEdit::MonthSection</enum>
+             </property>
+             <property name="displayFormat">
+              <string>MM/dd/yyyy</string>
+             </property>
+             <property name="calendarPopup">
+              <bool>true</bool>
+             </property>
+            </widget>
            </item>
            <item>
             <spacer name="horizontalSpacer_2">
