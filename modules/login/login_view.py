@@ -10,6 +10,9 @@ from PyQt5.QtWidgets import (
     QAction, QMainWindow,
     QLineEdit)
 
+from modules.login.controller import LoginController
+from modules.login.model import LoginModel
+
 
 class LoginView(QMainWindow):
     def __init__(self):
@@ -19,8 +22,11 @@ class LoginView(QMainWindow):
         self.is_password_hidden = True
         self._drag_origin = None
 
-        self.DatabaseCombobox.addItems(["Production", "Testing"])
         self.setup()
+
+        model = LoginModel()
+        self.controller = LoginController(model, self)
+        self.show()
 
     def setup(self):
         self.setup_window()

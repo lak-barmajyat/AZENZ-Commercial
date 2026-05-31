@@ -2,8 +2,9 @@ from PyQt5.QtWidgets import QApplication
 from resources import resources_rc
 import sys
 
-from modules.login.login_view import LoginView
-from modules.table_de_bord.table_de_bord_view import DashboardMenuView, DashboardWidget
+from modules.login.login_view import LoginUI
+from modules.table_de_bord.table_de_bord_ui import DashboardMenuUI, DashboardWidget
+from services.logger.logger import setup_logger
 
 
 def get_qss():
@@ -11,12 +12,14 @@ def get_qss():
         return f.read()
 
 def main():
-
+    logger = setup_logger()
+    logger.info("Application started")
     qss = get_qss()
     app = QApplication(sys.argv)
-    login_window = DashboardMenuView()
+    login_window = LoginUI()
+    
     app.setStyleSheet(qss)
-    login_window.show()
+    
     sys.exit(app.exec_())
 
 
