@@ -44,34 +44,17 @@ class DashboardMenuView(QMainWindow):
 
         self.sidebar_open = True
         self.sidebar_expanded_width = 250
-        self.sidebar_collapsed_width = 70
+        self.sidebar_collapsed_width = 65
 
         self.toggleSidebarButton.clicked.connect(self.toggle_sidebar)
 
         self.setup()
 
-    def toggle_sidebar(self):
-        current_width = self.sidebarFrame.width()
-
-        if self.sidebar_open:
-            target_width = self.sidebar_collapsed_width
-        else:
-            target_width = self.sidebar_expanded_width
-
-        self.animation = QPropertyAnimation(self.sidebarFrame, b"maximumWidth")
-        self.animation.setDuration(250)
-        self.animation.setStartValue(current_width)
-        self.animation.setEndValue(target_width)
-        self.animation.setEasingCurve(QEasingCurve.InOutCubic)
-        self.animation.start()
-
-        self.sidebar_open = not self.sidebar_open
-
     def setup(self):
         self.setup_widgets()
         self.setup_sidebar_buttons()
         self.mark_button(self.DashboardButton)
-        self.setup_widgets_stock()
+        # self.setup_widgets_stock()
         self.setup_window()
 
     def setup_window(self):
@@ -87,7 +70,6 @@ class DashboardMenuView(QMainWindow):
 
     def setup_sidebar_buttons(self):
         sidebar_buttons = self.SidebarFrame.findChildren(QToolButton)
-        sidebar_buttons += self.FootSidebarFrame.findChildren(QToolButton)
         for w in sidebar_buttons:
             w.clicked.connect(lambda _checked=False, w=w: self.mark_button(w))
 
@@ -102,7 +84,6 @@ class DashboardMenuView(QMainWindow):
     def mark_button(self, button):
         # Unmark all buttons first
         sidebar_buttons = self.SidebarFrame.findChildren(QToolButton)
-        sidebar_buttons += self.FootSidebarFrame.findChildren(QToolButton)
         for widget in sidebar_buttons:
             widget.setChecked(False)
             gray_icon = get_colored_icon(widget.icon(), "#434655", widget.iconSize())
@@ -112,6 +93,24 @@ class DashboardMenuView(QMainWindow):
         button.setChecked(True)
         blue_icon = get_colored_icon(button.icon(), "#0051DF", button.iconSize())
         button.setIcon(blue_icon)
+
+    def toggle_sidebar(self):
+        current_width = self.SidebarFrame.width()
+
+        if self.sidebar_open:
+            target_width = self.sidebar_collapsed_width
+        else:
+            target_width = self.sidebar_expanded_width
+
+        self.animation = QPropertyAnimation(self.SidebarFrame, b"maximumWidth")
+        self.animation.setDuration(250)
+        self.animation.setStartValue(current_width)
+        self.animation.setEndValue(target_width)
+        self.animation.setEasingCurve(QEasingCurve.InOutCubic)
+        self.animation.start()
+
+        self.sidebar_open = not self.sidebar_open
+
 
 if __name__ == "__main__":
     import sys
