@@ -54,7 +54,7 @@ class DashboardMenuView(QMainWindow):
         self.setup_widgets()
         self.setup_sidebar_buttons()
         self.mark_button(self.DashboardButton)
-        # self.setup_widgets_stock()
+        self.setup_widgets_stock()
         self.setup_window()
 
     def setup_window(self):
