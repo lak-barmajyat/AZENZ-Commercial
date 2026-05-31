@@ -16,7 +16,7 @@ def main():
     logger.info("Application started")
     qss = get_qss()
     app = QApplication(sys.argv)
-    login_window = LoginUI()
+    app.login_window = LoginUI()
     
     app.setStyleSheet(qss)
     

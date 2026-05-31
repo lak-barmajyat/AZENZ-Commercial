@@ -2,6 +2,7 @@ from modules.login.model import LoginModel
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QCursor
+from modules.table_de_bord.table_de_bord_ui import DashboardWidget
 # from modules.login.login_view import LoginUI
 
 class LoginController:
@@ -33,6 +34,11 @@ class LoginController:
         if not self.model.authenticate_user(username, password):
             self.view.LoginErrorLabel.setText("     Nom d'utilisateur ou mot de passe incorrect")
             self.view.LoginErrorLabel.show()
+        else:
+            self.view.LoginErrorLabel.hide()
+            QApplication.DashboardWidget = DashboardWidget()
+            QApplication.DashboardWidget.show()
+            self.view.close()
     
     def connect_signals(self):
         self.view.DatabaseCombobox.currentIndexChanged.connect(
