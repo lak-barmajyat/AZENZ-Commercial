@@ -1,0 +1,180 @@
+/* ===================================================================== *
+ * ERPDataTable - clean ERP desktop table styling                        *
+ * Palette:                                                              *
+ *   Primary       #0051DF                                              *
+ *   Background     #FFFFFF                                              *
+ *   Surface low    #F3F4F6                                             *
+ *   Header         #F8F9FB                                             *
+ *   Border         #C3C5D8                                             *
+ *   Text           #191C1E                                             *
+ *   Muted text     #434655                                             *
+ *   Error          #BA1A1A                                             *
+ *   Error container#FFDAD6                                             *
+ * ===================================================================== */
+
+QTableView#ERPTableView {
+    background-color: #FFFFFF;
+    alternate-background-color: #FBFCFE;
+    border: 1px solid #C3C5D8;
+    border-radius: 8px;
+    gridline-color: transparent;
+    outline: none;
+    color: #191C1E;
+    font-family: "Inter", "Tajawal", Arial, sans-serif;
+    font-size: 13px;
+    selection-background-color: #EFF4FF;
+    selection-color: #0051DF;
+}
+
+/* When the footer bar is visible, square the table's bottom corners so the
+   table body and the footer read as a single card. */
+QTableView#ERPTableView[footer="true"] {
+    border-bottom: none;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+QTableView#ERPTableView::item {
+    padding: 4px 12px;
+    border: none;
+    border-bottom: 1px solid #F3F4F6;
+}
+
+QTableView#ERPTableView::item:hover {
+    background-color: #F8F9FB;
+}
+
+QTableView#ERPTableView::item:selected {
+    background-color: #EFF4FF;
+    color: #0051DF;
+}
+
+/* Horizontal header: light gray, uppercase, muted text */
+QTableView#ERPTableView QHeaderView {
+    background-color: #F8F9FB;
+    border: none;
+}
+
+QTableView#ERPTableView QHeaderView::section:horizontal {
+    background-color: #F8F9FB;
+    color: #434655;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: none;
+    border-bottom: 1px solid #C3C5D8;
+    padding: 8px 12px;
+}
+
+QTableView#ERPTableView QHeaderView::section:horizontal:hover {
+    background-color: #EDEEF0;
+    color: #0051DF;
+}
+
+QTableView#ERPTableView QHeaderView::down-arrow,
+QTableView#ERPTableView QHeaderView::up-arrow {
+    width: 10px;
+    height: 10px;
+    subcontrol-position: center right;
+    right: 6px;
+}
+
+QTableCornerButton::section {
+    background-color: #F8F9FB;
+    border: none;
+    border-bottom: 1px solid #C3C5D8;
+}
+
+/* Empty-state overlay label */
+QLabel#ERPTableEmptyLabel {
+    color: #434655;
+    background-color: transparent;
+    font-family: "Inter", "Tajawal", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* ---------------------------------------------------------------------- *
+ * Footer / status bar (row count, selection count, refresh button)       *
+ * ---------------------------------------------------------------------- */
+QFrame#ERPTableFooter {
+    background-color: #F8F9FB;
+    border: 1px solid #C3C5D8;
+    border-top: 1px solid #C3C5D8;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+QLabel#ERPTableFooterLabel {
+    color: #434655;
+    background-color: transparent;
+    border: none;
+    font-family: "Inter", "Tajawal", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+QPushButton#ERPTableRefreshButton {
+    background-color: #FFFFFF;
+    color: #0051DF;
+    border: 1px solid #C3C5D8;
+    border-radius: 6px;
+    padding: 5px 14px;
+    font-family: "Inter", "Tajawal", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+QPushButton#ERPTableRefreshButton:hover {
+    background-color: #EFF4FF;
+    border-color: #0051DF;
+}
+
+QPushButton#ERPTableRefreshButton:pressed {
+    background-color: #DBE6FF;
+}
+
+/* Scrollbars: slim, neutral */
+QTableView#ERPTableView QScrollBar:vertical {
+    background: #F3F4F6;
+    width: 10px;
+    margin: 0px;
+    border-radius: 5px;
+}
+
+QTableView#ERPTableView QScrollBar::handle:vertical {
+    background: #C3C5D8;
+    min-height: 30px;
+    border-radius: 5px;
+}
+
+QTableView#ERPTableView QScrollBar::handle:vertical:hover {
+    background: #737687;
+}
+
+QTableView#ERPTableView QScrollBar::add-line:vertical,
+QTableView#ERPTableView QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+QTableView#ERPTableView QScrollBar:horizontal {
+    background: #F3F4F6;
+    height: 10px;
+    margin: 0px;
+    border-radius: 5px;
+}
+
+QTableView#ERPTableView QScrollBar::handle:horizontal {
+    background: #C3C5D8;
+    min-width: 30px;
+    border-radius: 5px;
+}
+
+QTableView#ERPTableView QScrollBar::handle:horizontal:hover {
+    background: #737687;
+}
+
+QTableView#ERPTableView QScrollBar::add-line:horizontal,
+QTableView#ERPTableView QScrollBar::sub-line:horizontal {
+    width: 0px;
+}

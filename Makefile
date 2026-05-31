@@ -2,10 +2,10 @@ install:
 	uv sync
 
 run:
-	uv run python3 main.py
+	@uv run python3 main.py
 
 rcc:
-	pyrcc5 resources.qrc -o resources_rc.py
+	pyrcc5 resources/resources.qrc -o resources/resources_rc.py
 
 clean:
 	rm -rf __pycache__ */*__pycache__ .pytest_cache

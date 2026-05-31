@@ -1,5 +1,20 @@
 <RCC>
   <qresource prefix="icons">
+    <file>icons/Gcalendar.svg</file>
+    <file>icons/Wfiltrer.svg</file>
+    <file>icons/Rsupprimer.svg</file>
+    <file>icons/Gtransformer.svg</file>
+    <file>icons/Gduplicate.svg</file>
+    <file>icons/Gexcel.svg</file>
+    <file>icons/Gimprimer.svg</file>
+    <file>icons/Gsupprimer.svg</file>
+    <file>icons/Wnouveau.svg</file>
+    <file>icons/Gmodifier.svg</file>
+    <file>icons/list_produits.svg</file>
+    <file>icons/ajouter_stock.svg</file>
+    <file>icons/ajouter.svg</file>
+    <file>icons/liste-ventes.svg</file>
+    <file>icons/nouveau-document.svg</file>
     <file>icons/ajouter_client.svg</file>
     <file>icons/articles.svg</file>
     <file>icons/clients.svg</file>

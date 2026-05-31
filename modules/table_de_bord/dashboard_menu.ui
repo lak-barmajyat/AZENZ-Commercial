@@ -13,6 +13,12 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <property name="class" stdset="0">
+   <string>sidebar-button</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <property name="spacing">
@@ -70,6 +76,9 @@
            <width>256</width>
            <height>16777215</height>
           </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
          </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
@@ -150,8 +159,8 @@
              <string> Dashboard</string>
             </property>
             <property name="icon">
-             <iconset resource="../../../resources.qrc">
-              <normaloff>:/icons/resources/icons/dashboard.svg</normaloff>:/icons/resources/icons/dashboard.svg</iconset>
+             <iconset resource="../../resources/resources.qrc">
+              <normaloff>:/icons/icons/dashboard.svg</normaloff>:/icons/icons/dashboard.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -164,6 +173,9 @@
             </property>
             <property name="toolButtonStyle">
              <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
+            <property name="class" stdset="0">
+             <string>sidebar-button</string>
             </property>
            </widget>
           </item>
@@ -185,8 +197,8 @@
              <string> Clients</string>
             </property>
             <property name="icon">
-             <iconset resource="../../../resources.qrc">
-              <normaloff>:/icons/resources/icons/clients.svg</normaloff>:/icons/resources/icons/clients.svg</iconset>
+             <iconset resource="../../resources/resources.qrc">
+              <normaloff>:/icons/icons/clients.svg</normaloff>:/icons/icons/clients.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -200,7 +212,74 @@
             <property name="toolButtonStyle">
              <enum>Qt::ToolButtonTextBesideIcon</enum>
             </property>
+            <property name="class" stdset="0">
+             <string>sidebar-button</string>
+            </property>
            </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <spacer name="horizontalSpacer_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>10</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="SeparatorLine">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>1</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="class" stdset="0">
+               <string>separator</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_4">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>10</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
           </item>
           <item>
            <widget class="QToolButton" name="ArticlesButton">
@@ -220,8 +299,8 @@
              <string> Articles</string>
             </property>
             <property name="icon">
-             <iconset resource="../../../resources.qrc">
-              <normaloff>:/icons/resources/icons/articles.svg</normaloff>:/icons/resources/icons/articles.svg</iconset>
+             <iconset resource="../../resources/resources.qrc">
+              <normaloff>:/icons/icons/articles.svg</normaloff>:/icons/icons/articles.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -237,6 +316,9 @@
             </property>
             <property name="toolButtonStyle">
              <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
+            <property name="class" stdset="0">
+             <string>sidebar-button</string>
             </property>
            </widget>
           </item>
@@ -258,8 +340,8 @@
              <string> Documents</string>
             </property>
             <property name="icon">
-             <iconset resource="../../../resources.qrc">
-              <normaloff>:/icons/resources/icons/documents.svg</normaloff>:/icons/resources/icons/documents.svg</iconset>
+             <iconset resource="../../resources/resources.qrc">
+              <normaloff>:/icons/icons/documents.svg</normaloff>:/icons/icons/documents.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -272,6 +354,9 @@
             </property>
             <property name="toolButtonStyle">
              <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
+            <property name="class" stdset="0">
+             <string>sidebar-button</string>
             </property>
            </widget>
           </item>
@@ -293,8 +378,8 @@
              <string> Ventes</string>
             </property>
             <property name="icon">
-             <iconset resource="../../../resources.qrc">
-              <normaloff>:/icons/resources/icons/ventes.svg</normaloff>:/icons/resources/icons/ventes.svg</iconset>
+             <iconset resource="../../resources/resources.qrc">
+              <normaloff>:/icons/icons/ventes.svg</normaloff>:/icons/icons/ventes.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -307,6 +392,9 @@
             </property>
             <property name="toolButtonStyle">
              <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
+            <property name="class" stdset="0">
+             <string>sidebar-button</string>
             </property>
            </widget>
           </item>
@@ -328,8 +416,8 @@
              <string> Paiements</string>
             </property>
             <property name="icon">
-             <iconset resource="../../../resources.qrc">
-              <normaloff>:/icons/resources/icons/paiements.svg</normaloff>:/icons/resources/icons/paiements.svg</iconset>
+             <iconset resource="../../resources/resources.qrc">
+              <normaloff>:/icons/icons/paiements.svg</normaloff>:/icons/icons/paiements.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -342,6 +430,9 @@
             </property>
             <property name="toolButtonStyle">
              <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
+            <property name="class" stdset="0">
+             <string>sidebar-button</string>
             </property>
            </widget>
           </item>
@@ -363,8 +454,8 @@
              <string> Stockage</string>
             </property>
             <property name="icon">
-             <iconset resource="../../../resources.qrc">
-              <normaloff>:/icons/resources/icons/stockage.svg</normaloff>:/icons/resources/icons/stockage.svg</iconset>
+             <iconset resource="../../resources/resources.qrc">
+              <normaloff>:/icons/icons/stockage.svg</normaloff>:/icons/icons/stockage.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -377,6 +468,9 @@
             </property>
             <property name="toolButtonStyle">
              <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
+            <property name="class" stdset="0">
+             <string>sidebar-button</string>
             </property>
            </widget>
           </item>
@@ -441,8 +535,8 @@
              <string> Settings</string>
             </property>
             <property name="icon">
-             <iconset resource="../../../resources.qrc">
-              <normaloff>:/icons/resources/icons/settings.svg</normaloff>:/icons/resources/icons/settings.svg</iconset>
+             <iconset resource="../../resources/resources.qrc">
+              <normaloff>:/icons/icons/settings.svg</normaloff>:/icons/icons/settings.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -455,6 +549,9 @@
             </property>
             <property name="toolButtonStyle">
              <enum>Qt::ToolButtonTextBesideIcon</enum>
+            </property>
+            <property name="class" stdset="0">
+             <string>sidebar-button</string>
             </property>
            </widget>
           </item>
@@ -476,8 +573,8 @@
              <string> Log out</string>
             </property>
             <property name="icon">
-             <iconset resource="../../../resources.qrc">
-              <normaloff>:/icons/resources/icons/logout.svg</normaloff>:/icons/resources/icons/logout.svg</iconset>
+             <iconset resource="../../resources/resources.qrc">
+              <normaloff>:/icons/icons/logout.svg</normaloff>:/icons/icons/logout.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -491,6 +588,9 @@
             <property name="toolButtonStyle">
              <enum>Qt::ToolButtonTextBesideIcon</enum>
             </property>
+            <property name="class" stdset="0">
+             <string>sidebar-button</string>
+            </property>
            </widget>
           </item>
          </layout>
@@ -502,7 +602,7 @@
     <item>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QFrame" name="frame_2">
+       <widget class="QFrame" name="TopBarFrame">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -518,6 +618,12 @@
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
           <widget class="QLineEdit" name="RechercherEntry">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>30</height>
+            </size>
+           </property>
            <property name="placeholderText">
             <string>Rechercher...</string>
            </property>
@@ -554,14 +660,17 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="../../../resources.qrc">
-             <normaloff>:/icons/resources/icons/help.svg</normaloff>:/icons/resources/icons/help.svg</iconset>
+            <iconset resource="../../resources/resources.qrc">
+             <normaloff>:/icons/icons/help.svg</normaloff>:/icons/icons/help.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
              <width>30</width>
              <height>30</height>
             </size>
+           </property>
+           <property name="class" stdset="0">
+            <string>icon-button</string>
            </property>
           </widget>
          </item>
@@ -588,13 +697,13 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>24</height>
+     <height>30</height>
     </rect>
    </property>
   </widget>
  </widget>
  <resources>
-  <include location="../../../resources.qrc"/>
+  <include location="../../resources/resources.qrc"/>
  </resources>
  <connections/>
 </ui>
