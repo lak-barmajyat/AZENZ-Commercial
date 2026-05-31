@@ -3,7 +3,7 @@ from resources import resources_rc
 import sys
 
 from modules.login.login_view import LoginUI
-from modules.table_de_bord.table_de_bord_ui import DashboardMenuUI, DashboardWidget
+from modules.table_de_bord.table_de_bord_view import DashboardMenuUI, DashboardWidget
 from services.logger.logger import setup_logger
 
 
