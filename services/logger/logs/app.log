@@ -1,0 +1,739 @@
+2026-05-30 08:10:38 | INFO | app | main:18 | Application started
+2026-05-30 08:12:49 | INFO | app | main:18 | Application started
+2026-05-30 08:15:41 | INFO | app | main:18 | Application started
+2026-05-30 08:16:43 | INFO | app | main:18 | Application started
+2026-05-30 08:21:24 | INFO | app | main:18 | Application started
+2026-05-30 08:21:25 | ERROR | app | model:71 | Database connection failed for SOC001: argument 3 must be str or None, not bytearray
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\modules\login\model.py", line 52, in check_database_connection
+    connection = mysql.connector.connect(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+TypeError: argument 3 must be str or None, not bytearray
+2026-05-30 08:21:58 | INFO | app | main:18 | Application started
+2026-05-30 08:21:59 | ERROR | app | model:71 | Database connection failed for SOC001: argument 3 must be str or None, not bytearray
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\modules\login\model.py", line 52, in check_database_connection
+    connection = mysql.connector.connect(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+TypeError: argument 3 must be str or None, not bytearray
+2026-05-30 08:23:52 | INFO | app | main:18 | Application started
+2026-05-30 08:23:52 | ERROR | app | model:71 | Database connection failed for SOC001: argument 3 must be str or None, not bytearray
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\modules\login\model.py", line 52, in check_database_connection
+    connection = mysql.connector.connect(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+TypeError: argument 3 must be str or None, not bytearray
+2026-05-30 08:28:56 | INFO | app | main:18 | Application started
+2026-05-30 08:28:57 | ERROR | app | model:71 | Database connection failed for SOC001: argument 3 must be str or None, not bytearray
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\modules\login\model.py", line 52, in check_database_connection
+    connection = mysql.connector.connect(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+TypeError: argument 3 must be str or None, not bytearray
+2026-05-30 08:50:53 | INFO | app | main:18 | Application started
+2026-05-30 08:50:53 | ERROR | app | model:73 | Database connection failed for SOC001: argument 3 must be str or None, not bytearray
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\modules\login\model.py", line 55, in check_database_connection
+    connection = mysql.connector.connect(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+TypeError: argument 3 must be str or None, not bytearray
+2026-05-30 08:53:23 | INFO | app | main:18 | Application started
+2026-05-30 08:53:23 | ERROR | app | model:92 | Database connection failed for SOC001: 1049 (42000): Unknown database 'laksoft'
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Unknown database 'laksoft'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\modules\login\model.py", line 70, in check_database_connection
+    test_conn = mysql.connector.connect(
+                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 328, in _open_connection
+    raise get_mysql_exception(
+mysql.connector.errors.ProgrammingError: 1049 (42000): Unknown database 'laksoft'
+2026-05-30 12:47:58 | INFO | app | main:18 | Application started
+2026-05-30 12:47:59 | ERROR | app | model:73 | Database connection failed for SOC001: argument 3 must be str or None, not bytearray
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\modules\login\model.py", line 55, in check_database_connection
+    connection = mysql.connector.connect(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+TypeError: argument 3 must be str or None, not bytearray
+2026-05-30 12:58:55 | INFO | app | main:18 | Application started
+2026-05-30 13:02:11 | INFO | app | main:18 | Application started
+2026-05-30 13:02:12 | ERROR | app | model:73 | Database connection failed for SOC001: argument 3 must be str or None, not bytearray
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\modules\login\model.py", line 55, in check_database_connection
+    connection = mysql.connector.connect(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+TypeError: argument 3 must be str or None, not bytearray
+2026-05-30 13:02:53 | INFO | app | main:18 | Application started
+2026-05-30 13:02:54 | ERROR | app | model:73 | Database connection failed for SOC001: argument 3 must be str or None, not bytearray
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\modules\login\model.py", line 55, in check_database_connection
+    connection = mysql.connector.connect(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+TypeError: argument 3 must be str or None, not bytearray
+2026-05-30 13:04:15 | INFO | app | main:18 | Application started
+2026-05-30 13:04:16 | ERROR | app | model:73 | Database connection failed for SOC001: argument 3 must be str or None, not bytearray
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\modules\login\model.py", line 55, in check_database_connection
+    connection = mysql.connector.connect(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+TypeError: argument 3 must be str or None, not bytearray
+2026-05-30 13:05:45 | INFO | app | main:18 | Application started
+2026-05-30 13:05:45 | ERROR | app | model:73 | Database connection failed for SOC001: argument 3 must be str or None, not bytearray
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\modules\login\model.py", line 55, in check_database_connection
+    connection = mysql.connector.connect(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+TypeError: argument 3 must be str or None, not bytearray
+2026-05-30 13:06:37 | INFO | app | main:18 | Application started
+2026-05-30 13:06:37 | ERROR | app | model:73 | Database connection failed for SOC001: 1049 (42000): Unknown database 'laksoft'
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Unknown database 'laksoft'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\modules\login\model.py", line 55, in check_database_connection
+    connection = mysql.connector.connect(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 328, in _open_connection
+    raise get_mysql_exception(
+mysql.connector.errors.ProgrammingError: 1049 (42000): Unknown database 'laksoft'
+2026-05-30 13:08:18 | INFO | app | main:18 | Application started
+2026-05-30 13:08:18 | ERROR | app | model:75 | Database connection failed for SOC001: 1049 (42000): Unknown database 'laksoft'
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Unknown database 'laksoft'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\modules\login\model.py", line 57, in check_database_connection
+    connection = mysql.connector.connect(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 328, in _open_connection
+    raise get_mysql_exception(
+mysql.connector.errors.ProgrammingError: 1049 (42000): Unknown database 'laksoft'
+2026-05-30 13:08:18 | ERROR | app | model:18 | Failed to connect to database for code_societe: SOC001
+2026-05-30 13:10:06 | INFO | app | main:18 | Application started
+2026-05-30 13:10:07 | ERROR | app | model:75 | Database connection failed for SOC001: 1049 (42000): Unknown database 'laksoft'
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Unknown database 'laksoft'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\modules\login\model.py", line 57, in check_database_connection
+    connection = mysql.connector.connect(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 328, in _open_connection
+    raise get_mysql_exception(
+mysql.connector.errors.ProgrammingError: 1049 (42000): Unknown database 'laksoft'
+2026-05-30 13:10:07 | ERROR | app | model:18 | Failed to connect to database for code_societe: SOC001
+2026-05-30 13:14:12 | INFO | app | main:18 | Application started
+2026-05-30 13:15:38 | INFO | app | main:18 | Application started
+2026-05-30 13:17:29 | INFO | app | main:18 | Application started
+2026-05-30 13:17:57 | INFO | app | main:18 | Application started
+2026-05-30 13:18:24 | INFO | app | main:18 | Application started
+2026-05-30 13:22:04 | INFO | app | main:18 | Application started
+2026-05-30 13:22:48 | INFO | app | main:18 | Application started
+2026-05-30 13:23:06 | INFO | app | main:18 | Application started
+2026-05-30 13:23:44 | INFO | app | main:18 | Application started
+2026-05-30 13:24:29 | INFO | app | main:18 | Application started
+2026-05-30 13:25:07 | INFO | app | main:18 | Application started
+2026-05-30 13:35:44 | INFO | app | main:18 | Application started
+2026-05-31 05:42:27 | INFO | app | main:16 | Application started
+2026-05-31 05:44:38 | INFO | app | main:16 | Application started
+2026-05-31 05:46:03 | INFO | app | main:16 | Application started
+2026-05-31 05:46:06 | ERROR | app | model:75 | Database connection failed for SOC001: 2005 (HY000): Unknown MySQL server host 'localhosth' (11001)
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Unknown MySQL server host 'localhosth' (11001)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\modules\login\model.py", line 57, in check_database_connection
+    connection = mysql.connector.connect(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 328, in _open_connection
+    raise get_mysql_exception(
+mysql.connector.errors.DatabaseError: 2005 (HY000): Unknown MySQL server host 'localhosth' (11001)
+2026-05-31 05:46:06 | ERROR | app | model:18 | Failed to connect to database for code_societe: SOC001
+2026-05-31 05:52:59 | INFO | app | main:16 | Application started
+2026-05-31 05:53:01 | ERROR | app | model:78 | Database connection failed for SOC001: 2005 (HY000): Unknown MySQL server host 'localhosth' (11001)
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Unknown MySQL server host 'localhosth' (11001)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\modules\login\model.py", line 60, in check_database_connection
+    connection = mysql.connector.connect(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 328, in _open_connection
+    raise get_mysql_exception(
+mysql.connector.errors.DatabaseError: 2005 (HY000): Unknown MySQL server host 'localhosth' (11001)
+2026-05-31 05:53:01 | ERROR | app | model:21 | Failed to connect to database for code_societe: SOC001
+2026-05-31 05:56:14 | INFO | app | main:16 | Application started
+2026-05-31 05:56:17 | ERROR | app | model:78 | Database connection failed for SOC001: 2005 (HY000): Unknown MySQL server host 'localhosth' (11001)
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Unknown MySQL server host 'localhosth' (11001)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\modules\login\model.py", line 60, in check_database_connection
+    connection = mysql.connector.connect(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 328, in _open_connection
+    raise get_mysql_exception(
+mysql.connector.errors.DatabaseError: 2005 (HY000): Unknown MySQL server host 'localhosth' (11001)
+2026-05-31 05:56:17 | ERROR | app | model:21 | Failed to connect to database for code_societe: SOC001
+2026-05-31 05:56:30 | INFO | app | main:16 | Application started
+2026-05-31 05:56:33 | ERROR | app | model:78 | Database connection failed for SOC001: 2005 (HY000): Unknown MySQL server host 'localhosth' (11001)
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Unknown MySQL server host 'localhosth' (11001)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\modules\login\model.py", line 60, in check_database_connection
+    connection = mysql.connector.connect(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 328, in _open_connection
+    raise get_mysql_exception(
+mysql.connector.errors.DatabaseError: 2005 (HY000): Unknown MySQL server host 'localhosth' (11001)
+2026-05-31 05:56:33 | ERROR | app | model:21 | Failed to connect to database for code_societe: SOC001
+2026-05-31 05:58:13 | INFO | app | main:16 | Application started
+2026-05-31 05:58:16 | ERROR | app | model:77 | Database connection failed for SOC001: 2005 (HY000): Unknown MySQL server host 'localhosth' (11001)
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Unknown MySQL server host 'localhosth' (11001)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\modules\login\model.py", line 59, in check_database_connection
+    connection = mysql.connector.connect(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 328, in _open_connection
+    raise get_mysql_exception(
+mysql.connector.errors.DatabaseError: 2005 (HY000): Unknown MySQL server host 'localhosth' (11001)
+2026-05-31 05:58:16 | ERROR | app | model:21 | Failed to connect to database for code_societe: SOC001
+2026-05-31 06:00:45 | INFO | app | main:16 | Application started
+2026-05-31 06:00:46 | ERROR | app | model:56 | No database configuration found for code_societe: 
+2026-05-31 06:01:01 | INFO | app | main:16 | Application started
+2026-05-31 06:01:03 | ERROR | app | model:77 | Database connection failed for SOC001: 2005 (HY000): Unknown MySQL server host 'localhosth' (11001)
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Unknown MySQL server host 'localhosth' (11001)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\modules\login\model.py", line 59, in check_database_connection
+    connection = mysql.connector.connect(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 328, in _open_connection
+    raise get_mysql_exception(
+mysql.connector.errors.DatabaseError: 2005 (HY000): Unknown MySQL server host 'localhosth' (11001)
+2026-05-31 06:01:03 | ERROR | app | model:21 | Failed to connect to database for code_societe: SOC001
+2026-05-31 06:01:06 | ERROR | app | model:77 | Database connection failed for SOC001: 2005 (HY000): Unknown MySQL server host 'localhosth' (11001)
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Unknown MySQL server host 'localhosth' (11001)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\modules\login\model.py", line 59, in check_database_connection
+    connection = mysql.connector.connect(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 328, in _open_connection
+    raise get_mysql_exception(
+mysql.connector.errors.DatabaseError: 2005 (HY000): Unknown MySQL server host 'localhosth' (11001)
+2026-05-31 06:05:30 | INFO | app | main:16 | Application started
+2026-05-31 06:05:33 | ERROR | app | model:77 | Database connection failed for SOC001: 2005 (HY000): Unknown MySQL server host 'localhosth' (11001)
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Unknown MySQL server host 'localhosth' (11001)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\modules\login\model.py", line 59, in check_database_connection
+    connection = mysql.connector.connect(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 328, in _open_connection
+    raise get_mysql_exception(
+mysql.connector.errors.DatabaseError: 2005 (HY000): Unknown MySQL server host 'localhosth' (11001)
+2026-05-31 06:05:33 | ERROR | app | model:21 | Failed to connect to database for code_societe: SOC001
+2026-05-31 06:05:35 | ERROR | app | model:77 | Database connection failed for SOC001: 2005 (HY000): Unknown MySQL server host 'localhosth' (11001)
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Unknown MySQL server host 'localhosth' (11001)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\modules\login\model.py", line 59, in check_database_connection
+    connection = mysql.connector.connect(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 328, in _open_connection
+    raise get_mysql_exception(
+mysql.connector.errors.DatabaseError: 2005 (HY000): Unknown MySQL server host 'localhosth' (11001)
+2026-05-31 06:06:07 | INFO | app | main:16 | Application started
+2026-05-31 06:06:10 | ERROR | app | model:77 | Database connection failed for SOC001: 2005 (HY000): Unknown MySQL server host 'localhosth' (11001)
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Unknown MySQL server host 'localhosth' (11001)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\modules\login\model.py", line 59, in check_database_connection
+    connection = mysql.connector.connect(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 328, in _open_connection
+    raise get_mysql_exception(
+mysql.connector.errors.DatabaseError: 2005 (HY000): Unknown MySQL server host 'localhosth' (11001)
+2026-05-31 06:06:10 | ERROR | app | model:21 | Failed to connect to database for code_societe: SOC001
+2026-05-31 06:06:12 | ERROR | app | model:77 | Database connection failed for SOC001: 2005 (HY000): Unknown MySQL server host 'localhosth' (11001)
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Unknown MySQL server host 'localhosth' (11001)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\modules\login\model.py", line 59, in check_database_connection
+    connection = mysql.connector.connect(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 328, in _open_connection
+    raise get_mysql_exception(
+mysql.connector.errors.DatabaseError: 2005 (HY000): Unknown MySQL server host 'localhosth' (11001)
+2026-05-31 06:08:19 | INFO | app | main:16 | Application started
+2026-05-31 06:08:22 | ERROR | app | model:77 | Database connection failed for SOC001
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Unknown MySQL server host 'localhosth' (11001)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\modules\login\model.py", line 59, in check_database_connection
+    connection = mysql.connector.connect(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 328, in _open_connection
+    raise get_mysql_exception(
+mysql.connector.errors.DatabaseError: 2005 (HY000): Unknown MySQL server host 'localhosth' (11001)
+2026-05-31 06:08:22 | ERROR | app | model:21 | Failed to connect to database for code_societe: SOC001
+2026-05-31 06:08:24 | ERROR | app | model:77 | Database connection failed for SOC001
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Unknown MySQL server host 'localhosth' (11001)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\modules\login\model.py", line 59, in check_database_connection
+    connection = mysql.connector.connect(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 328, in _open_connection
+    raise get_mysql_exception(
+mysql.connector.errors.DatabaseError: 2005 (HY000): Unknown MySQL server host 'localhosth' (11001)
+2026-05-31 06:08:50 | INFO | app | main:16 | Application started
+2026-05-31 06:08:52 | ERROR | app | model:77 | Database connection failed for SOC001
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Unknown MySQL server host 'localhosth' (11001)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\modules\login\model.py", line 59, in check_database_connection
+    connection = mysql.connector.connect(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 328, in _open_connection
+    raise get_mysql_exception(
+mysql.connector.errors.DatabaseError: 2005 (HY000): Unknown MySQL server host 'localhosth' (11001)
+2026-05-31 06:08:52 | ERROR | app | model:21 | Failed to connect to database for code_societe
+2026-05-31 06:08:55 | ERROR | app | model:77 | Database connection failed for SOC001
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 323, in _open_connection
+    self._cmysql.connect(**cnx_kwargs)
+_mysql_connector.MySQLInterfaceError: Unknown MySQL server host 'localhosth' (11001)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\mlaktaou\Desktop\AZENZ\modules\login\model.py", line 59, in check_database_connection
+    connection = mysql.connector.connect(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 140, in __init__
+    self.connect(**kwargs)
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\abstracts.py", line 1363, in connect
+    self._open_connection()
+  File "C:\Users\mlaktaou\Desktop\AZENZ\.venv\Lib\site-packages\mysql\connector\connection_cext.py", line 328, in _open_connection
+    raise get_mysql_exception(
+mysql.connector.errors.DatabaseError: 2005 (HY000): Unknown MySQL server host 'localhosth' (11001)
+2026-05-31 06:15:34 | INFO | app | main:16 | Application started
+2026-05-31 06:15:37 | ERROR | app | model:77 | Database connection failed for SOC001
+2026-05-31 06:15:37 | ERROR | app | model:21 | Failed to connect to database for code_societe: SOC001
+2026-05-31 06:15:39 | ERROR | app | model:77 | Database connection failed for SOC001
+2026-05-31 06:18:51 | INFO | app | main:16 | Application started
+2026-05-31 06:18:54 | ERROR | app | model:77 | Database connection failed for SOC001
+2026-05-31 06:18:54 | ERROR | app | model:21 | Failed to connect to database for code_societe: SOC001
+2026-05-31 06:18:56 | ERROR | app | model:77 | Database connection failed for SOC001
+2026-05-31 06:19:37 | INFO | app | main:16 | Application started
+2026-05-31 06:19:39 | ERROR | app | model:77 | Database connection failed for SOC001
+2026-05-31 06:19:39 | ERROR | app | model:21 | Failed to connect to database for code_societe: SOC001
+2026-05-31 06:19:42 | ERROR | app | model:77 | Database connection failed for SOC001
+2026-05-31 06:27:33 | INFO | app | main:16 | Application started
+2026-05-31 06:27:36 | ERROR | app | model:77 | Database connection failed for SOC001
+2026-05-31 06:27:36 | ERROR | app | model:21 | Failed to connect to database for code_societe: SOC001
+2026-05-31 06:27:38 | ERROR | app | model:77 | Database connection failed for SOC001
+2026-05-31 06:27:48 | ERROR | app | model:77 | Database connection failed for SOC001
+2026-05-31 06:28:12 | ERROR | app | model:77 | Database connection failed for SOC001
+2026-05-31 06:31:49 | INFO | app | main:16 | Application started
+2026-05-31 06:31:52 | ERROR | app | model:77 | Database connection failed for SOC001
+2026-05-31 06:31:52 | ERROR | app | model:21 | Failed to connect to database for code_societe: SOC001
+2026-05-31 06:31:54 | ERROR | app | model:77 | Database connection failed for SOC001
+2026-05-31 06:33:41 | INFO | app | main:16 | Application started
+2026-05-31 06:33:44 | ERROR | app | model:77 | Database connection failed for SOC001
+2026-05-31 06:33:44 | ERROR | app | model:21 | Failed to connect to database for code_societe: SOC001
+2026-05-31 06:33:46 | ERROR | app | model:77 | Database connection failed for SOC001
+2026-05-31 06:34:57 | INFO | app | main:16 | Application started
+2026-05-31 06:35:00 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 06:35:00 | ERROR | app | model:21 | Failed to connect to database for code_societe: SOC001
+2026-05-31 06:35:02 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 06:36:54 | INFO | app | main:16 | Application started
+2026-05-31 06:36:57 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 06:36:57 | ERROR | app | model:21 | Failed to connect to database for code_societe: SOC001
+2026-05-31 06:36:59 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 06:37:53 | INFO | app | main:16 | Application started
+2026-05-31 06:37:56 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 06:37:56 | ERROR | app | model:21 | Failed to connect to database for code_societe: SOC001
+2026-05-31 06:37:59 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 06:41:53 | INFO | app | main:16 | Application started
+2026-05-31 06:41:56 | ERROR | app | model:81 | Database connection failed for SOC001
+2026-05-31 06:41:56 | ERROR | app | model:22 | Failed to connect to database for code_societe: SOC001
+2026-05-31 06:41:58 | ERROR | app | model:81 | Database connection failed for SOC001
+2026-05-31 06:43:40 | INFO | app | main:16 | Application started
+2026-05-31 06:43:43 | ERROR | app | model:81 | Database connection failed for SOC001
+2026-05-31 06:43:43 | ERROR | app | model:22 | Failed to connect to database for code_societe: SOC001
+2026-05-31 06:43:45 | ERROR | app | model:81 | Database connection failed for SOC001
+2026-05-31 06:44:26 | INFO | app | main:16 | Application started
+2026-05-31 06:44:29 | ERROR | app | model:81 | Database connection failed for SOC001
+2026-05-31 06:44:29 | ERROR | app | model:22 | Failed to connect to database for code_societe: SOC001
+2026-05-31 06:44:31 | ERROR | app | model:81 | Database connection failed for SOC001
+2026-05-31 06:44:42 | INFO | app | main:16 | Application started
+2026-05-31 06:44:45 | ERROR | app | model:81 | Database connection failed for SOC001
+2026-05-31 06:44:45 | ERROR | app | model:22 | Failed to connect to database for code_societe: SOC001
+2026-05-31 06:44:47 | ERROR | app | model:81 | Database connection failed for SOC001
+2026-05-31 06:45:19 | INFO | app | main:16 | Application started
+2026-05-31 06:45:22 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 06:45:22 | ERROR | app | model:21 | Failed to connect to database for code_societe: SOC001
+2026-05-31 06:45:24 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 06:46:38 | INFO | app | main:16 | Application started
+2026-05-31 06:46:41 | ERROR | app | model:85 | Database connection failed for SOC001
+2026-05-31 06:46:41 | ERROR | app | model:21 | Failed to connect to database for code_societe: SOC001
+2026-05-31 06:46:43 | ERROR | app | model:85 | Database connection failed for SOC001
+2026-05-31 06:50:37 | INFO | app | main:16 | Application started
+2026-05-31 06:50:40 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 06:50:40 | ERROR | app | model:21 | Failed to connect to database for code_societe: SOC001
+2026-05-31 06:50:42 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 06:50:49 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 06:50:57 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 06:51:08 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 06:51:29 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 06:52:46 | INFO | app | main:16 | Application started
+2026-05-31 06:52:48 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 06:52:48 | ERROR | app | model:21 | Failed to connect to database for code_societe: SOC001
+2026-05-31 06:52:51 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 06:53:14 | INFO | app | main:16 | Application started
+2026-05-31 06:53:17 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 06:53:17 | ERROR | app | model:21 | Failed to connect to database for code_societe: SOC001
+2026-05-31 06:53:19 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 06:53:27 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 06:57:03 | INFO | app | main:16 | Application started
+2026-05-31 06:57:05 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 06:57:05 | ERROR | app | model:21 | Failed to connect to database for code_societe: SOC001
+2026-05-31 06:57:08 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 06:57:47 | INFO | app | main:16 | Application started
+2026-05-31 06:57:49 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 06:57:49 | ERROR | app | model:21 | Failed to connect to database for code_societe: SOC001
+2026-05-31 06:57:52 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 06:58:40 | INFO | app | main:16 | Application started
+2026-05-31 06:58:42 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 06:58:42 | ERROR | app | model:21 | Failed to connect to database for code_societe: SOC001
+2026-05-31 06:58:45 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 06:59:16 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 07:02:48 | INFO | app | main:16 | Application started
+2026-05-31 07:02:50 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 07:02:50 | ERROR | app | model:21 | Failed to connect to database for code_societe: SOC001
+2026-05-31 07:02:53 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 07:03:02 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 07:03:20 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 07:03:28 | INFO | app | main:16 | Application started
+2026-05-31 07:03:31 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 07:03:31 | ERROR | app | model:21 | Failed to connect to database for code_societe: SOC001
+2026-05-31 07:03:33 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 07:03:45 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 07:03:52 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 07:04:52 | INFO | app | main:16 | Application started
+2026-05-31 07:04:55 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 07:04:55 | ERROR | app | model:21 | Failed to connect to database for code_societe: SOC001
+2026-05-31 07:04:57 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 07:05:17 | INFO | app | main:16 | Application started
+2026-05-31 07:05:20 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 07:05:20 | ERROR | app | model:21 | Failed to connect to database for code_societe: SOC001
+2026-05-31 07:05:22 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 07:05:28 | ERROR | app | model:78 | Database connection failed for SOC001
+2026-05-31 07:05:33 | ERROR | app | model:78 | Database connection failed for SOC001
