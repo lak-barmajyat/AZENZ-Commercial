@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QApplication
 from resources import resources_rc
 import sys
 
-from modules.login.login_view import LoginUI
+from modules.login.login_view import LoginView
 from modules.table_de_bord.table_de_bord_view import DashboardMenuUI, DashboardWidget
 from services.logger.logger import setup_logger
 
@@ -16,7 +16,7 @@ def main():
     logger.info("Application started")
     qss = get_qss()
     app = QApplication(sys.argv)
-    login_window = LoginUI()
+    login_window = DashboardMenuUI()
     
     app.setStyleSheet(qss)
     
