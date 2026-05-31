@@ -493,3 +493,42 @@ QDateEdit::down-arrow {
     width: 16px;
     height: 16px;
 }
+
+
+/* ====================================================
+   1. THE GROUP TOGGLE BUTTON (e.g., Tiers, Catalogue)
+==================================================== */
+QToolButton[class="sidebar-gbutton"] {
+    background-color: #f3f4f6;       /* Soft light-gray background */
+    color: #4b5563;                  /* Muted slate text color */
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;                /* Semi-bold for category titles */
+    padding: 8px 14px;
+    text-align: left;                /* Keeps icon and text left-aligned */
+}
+
+QToolButton[class="sidebar-gbutton"]:hover {
+    background-color: #e5e7eb;       /* Darker gray feedback on hover */
+    color: #111827;                  /* High contrast text on hover */
+}
+
+/* Custom dynamic state for when the group menu is open */
+QToolButton[class="sidebar-gbutton"][expanded="true"] {
+    background-color: #eff4ff;       /* Soft tint of your primary blue */
+    color: #0051df;                  /* Text turns primary blue when open */
+}
+
+/* ====================================================
+   2. THE GROUP CONTAINER FRAME (Houses sub-buttons)
+==================================================== */
+QFrame[class="gframe"] {
+    background-color: transparent;   /* Blends seamlessly into sidebar background */
+    border: none;
+    
+    /* Elegant indentation layout rule */
+    padding-left: 0px;              /* Indents child elements like modern web apps */
+    margin-top: 2px;
+    margin-bottom: 4px;
+}

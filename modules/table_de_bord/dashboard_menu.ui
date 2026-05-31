@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>836</height>
+    <width>764</width>
+    <height>893</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -37,7 +37,7 @@
      <number>0</number>
     </property>
     <item>
-     <widget class="QFrame" name="verticalFrame_3">
+     <widget class="QFrame" name="SidebarFrame_">
       <property name="maximumSize">
        <size>
         <width>250</width>
@@ -65,6 +65,12 @@
        </property>
        <item>
         <widget class="QFrame" name="SidebarFrame">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="minimumSize">
           <size>
            <width>0</width>
@@ -117,11 +123,11 @@
              </size>
             </property>
             <property name="text">
-             <string> Dashboard</string>
+             <string>                    </string>
             </property>
             <property name="icon">
              <iconset resource="../../resources/resources.qrc">
-              <normaloff>:/icons/icons/dashboard.svg</normaloff>:/icons/icons/dashboard.svg</iconset>
+              <normaloff>:/icons/icons/three-lines.svg</normaloff>:/icons/icons/three-lines.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -136,7 +142,7 @@
              <enum>Qt::ToolButtonTextBesideIcon</enum>
             </property>
             <property name="class" stdset="0">
-             <string>sidebar-button</string>
+             <string>sidebar-gbutton</string>
             </property>
            </widget>
           </item>
@@ -202,7 +208,7 @@
             </property>
             <property name="iconSize">
              <size>
-              <width>30</width>
+              <width>40</width>
               <height>30</height>
              </size>
             </property>
@@ -217,8 +223,30 @@
             </property>
            </widget>
           </item>
+          <item alignment="Qt::AlignHCenter">
+           <widget class="QLabel" name="SeparatorLine_6">
+            <property name="minimumSize">
+             <size>
+              <width>215</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>215</width>
+              <height>1</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="class" stdset="0">
+             <string>separator</string>
+            </property>
+           </widget>
+          </item>
           <item>
-           <widget class="QToolButton" name="ClientsButton">
+           <widget class="QToolButton" name="TiersGButton">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -232,7 +260,7 @@
              </size>
             </property>
             <property name="text">
-             <string> Clients</string>
+             <string> Tiers</string>
             </property>
             <property name="icon">
              <iconset resource="../../resources/resources.qrc">
@@ -240,7 +268,7 @@
             </property>
             <property name="iconSize">
              <size>
-              <width>30</width>
+              <width>40</width>
               <height>30</height>
              </size>
             </property>
@@ -251,76 +279,149 @@
              <enum>Qt::ToolButtonTextBesideIcon</enum>
             </property>
             <property name="class" stdset="0">
-             <string>sidebar-button</string>
+             <string>sidebar-gbutton</string>
             </property>
            </widget>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_3">
-            <property name="spacing">
-             <number>0</number>
+           <widget class="QFrame" name="TiersGFrame">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
             </property>
-            <property name="leftMargin">
-             <number>0</number>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
             </property>
-            <property name="rightMargin">
-             <number>0</number>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
             </property>
-            <property name="bottomMargin">
-             <number>0</number>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
             </property>
-            <item>
-             <spacer name="horizontalSpacer_3">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::Fixed</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>10</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <widget class="QLabel" name="SeparatorLine">
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
-                <height>1</height>
-               </size>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="class" stdset="0">
-               <string>separator</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_4">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::Fixed</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>10</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
+            <property name="class" stdset="0">
+             <string>gframe</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_5">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QToolButton" name="ClientsButton">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>239</width>
+                 <height>42</height>
+                </size>
+               </property>
+               <property name="text">
+                <string> Clients</string>
+               </property>
+               <property name="icon">
+                <iconset resource="../../resources/resources.qrc">
+                 <normaloff>:/icons/icons/Gclient.svg</normaloff>:/icons/icons/Gclient.svg</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>40</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="toolButtonStyle">
+                <enum>Qt::ToolButtonTextBesideIcon</enum>
+               </property>
+               <property name="class" stdset="0">
+                <string>sidebar-button</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QToolButton" name="FournisseursButton">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>239</width>
+                 <height>42</height>
+                </size>
+               </property>
+               <property name="text">
+                <string> Fournisseurs</string>
+               </property>
+               <property name="icon">
+                <iconset resource="../../resources/resources.qrc">
+                 <normaloff>:/icons/icons/Gfournisseurs.svg</normaloff>:/icons/icons/Gfournisseurs.svg</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>40</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="toolButtonStyle">
+                <enum>Qt::ToolButtonTextBesideIcon</enum>
+               </property>
+               <property name="class" stdset="0">
+                <string>sidebar-button</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item alignment="Qt::AlignHCenter">
+           <widget class="QLabel" name="SeparatorLine_5">
+            <property name="minimumSize">
+             <size>
+              <width>215</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>215</width>
+              <height>1</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="class" stdset="0">
+             <string>separator</string>
+            </property>
+           </widget>
           </item>
           <item>
-           <widget class="QToolButton" name="ArticlesButton">
+           <widget class="QToolButton" name="CatalogueGButton">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -334,15 +435,15 @@
              </size>
             </property>
             <property name="text">
-             <string> Articles</string>
+             <string> Catalogue</string>
             </property>
             <property name="icon">
              <iconset resource="../../resources/resources.qrc">
-              <normaloff>:/icons/icons/articles.svg</normaloff>:/icons/icons/articles.svg</iconset>
+              <normaloff>:/icons/icons/catalogue.svg</normaloff>:/icons/icons/catalogue.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
-              <width>30</width>
+              <width>40</width>
               <height>30</height>
              </size>
             </property>
@@ -356,12 +457,155 @@
              <enum>Qt::ToolButtonTextBesideIcon</enum>
             </property>
             <property name="class" stdset="0">
-             <string>sidebar-button</string>
+             <string>sidebar-gbutton</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QToolButton" name="DocumentsButton">
+           <widget class="QFrame" name="CatalogueGFrame">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <property name="class" stdset="0">
+             <string>gframe</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_6">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QToolButton" name="ArticlesButton">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>239</width>
+                 <height>42</height>
+                </size>
+               </property>
+               <property name="text">
+                <string> Articles</string>
+               </property>
+               <property name="icon">
+                <iconset resource="../../resources/resources.qrc">
+                 <normaloff>:/icons/icons/Garticles.svg</normaloff>:/icons/icons/Garticles.svg</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>40</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="checked">
+                <bool>false</bool>
+               </property>
+               <property name="toolButtonStyle">
+                <enum>Qt::ToolButtonTextBesideIcon</enum>
+               </property>
+               <property name="class" stdset="0">
+                <string>sidebar-button</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QToolButton" name="FamillesButton">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>239</width>
+                 <height>42</height>
+                </size>
+               </property>
+               <property name="text">
+                <string> Familles</string>
+               </property>
+               <property name="icon">
+                <iconset resource="../../resources/resources.qrc">
+                 <normaloff>:/icons/icons/list_produits.svg</normaloff>:/icons/icons/list_produits.svg</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>40</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="checked">
+                <bool>false</bool>
+               </property>
+               <property name="toolButtonStyle">
+                <enum>Qt::ToolButtonTextBesideIcon</enum>
+               </property>
+               <property name="class" stdset="0">
+                <string>sidebar-button</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+           <widget class="QLabel" name="SeparatorLine_4">
+            <property name="minimumSize">
+             <size>
+              <width>215</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>215</width>
+              <height>1</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="class" stdset="0">
+             <string>separator</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="DocumentsGButton">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -383,7 +627,7 @@
             </property>
             <property name="iconSize">
              <size>
-              <width>30</width>
+              <width>40</width>
               <height>30</height>
              </size>
             </property>
@@ -394,47 +638,226 @@
              <enum>Qt::ToolButtonTextBesideIcon</enum>
             </property>
             <property name="class" stdset="0">
-             <string>sidebar-button</string>
+             <string>sidebar-gbutton</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QToolButton" name="VentesButton">
+           <widget class="QFrame" name="DocumentsGFrame">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
-            <property name="maximumSize">
+            <property name="minimumSize">
              <size>
-              <width>239</width>
-              <height>42</height>
+              <width>0</width>
+              <height>0</height>
              </size>
             </property>
-            <property name="text">
-             <string> Ventes</string>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
             </property>
-            <property name="icon">
-             <iconset resource="../../resources/resources.qrc">
-              <normaloff>:/icons/icons/ventes.svg</normaloff>:/icons/icons/ventes.svg</iconset>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>30</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="checkable">
-             <bool>true</bool>
-            </property>
-            <property name="toolButtonStyle">
-             <enum>Qt::ToolButtonTextBesideIcon</enum>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
             </property>
             <property name="class" stdset="0">
-             <string>sidebar-button</string>
+             <string>gframe</string>
             </property>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QToolButton" name="VentesButton">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>239</width>
+                 <height>42</height>
+                </size>
+               </property>
+               <property name="text">
+                <string> Ventes</string>
+               </property>
+               <property name="icon">
+                <iconset resource="../../resources/resources.qrc">
+                 <normaloff>:/icons/icons/ventes.svg</normaloff>:/icons/icons/ventes.svg</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>40</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="toolButtonStyle">
+                <enum>Qt::ToolButtonTextBesideIcon</enum>
+               </property>
+               <property name="class" stdset="0">
+                <string>sidebar-button</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QToolButton" name="AchatsButton">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>239</width>
+                 <height>42</height>
+                </size>
+               </property>
+               <property name="text">
+                <string> Achats</string>
+               </property>
+               <property name="icon">
+                <iconset resource="../../resources/resources.qrc">
+                 <normaloff>:/icons/icons/Gachats.svg</normaloff>:/icons/icons/Gachats.svg</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>50</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="toolButtonStyle">
+                <enum>Qt::ToolButtonTextBesideIcon</enum>
+               </property>
+               <property name="class" stdset="0">
+                <string>sidebar-button</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QToolButton" name="StockageButton">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>239</width>
+                 <height>42</height>
+                </size>
+               </property>
+               <property name="text">
+                <string> Stockage</string>
+               </property>
+               <property name="icon">
+                <iconset resource="../../resources/resources.qrc">
+                 <normaloff>:/icons/icons/stockage.svg</normaloff>:/icons/icons/stockage.svg</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>40</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="toolButtonStyle">
+                <enum>Qt::ToolButtonTextBesideIcon</enum>
+               </property>
+               <property name="class" stdset="0">
+                <string>sidebar-button</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_5">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <spacer name="horizontalSpacer_5">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>10</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item alignment="Qt::AlignVCenter">
+             <widget class="QLabel" name="SeparatorLine_3">
+              <property name="maximumSize">
+               <size>
+                <width>215</width>
+                <height>1</height>
+               </size>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="class" stdset="0">
+               <string>separator</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_6">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>10</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
           </item>
           <item>
            <widget class="QToolButton" name="PaiementsButton">
@@ -459,45 +882,7 @@
             </property>
             <property name="iconSize">
              <size>
-              <width>30</width>
-              <height>30</height>
-             </size>
-            </property>
-            <property name="checkable">
-             <bool>true</bool>
-            </property>
-            <property name="toolButtonStyle">
-             <enum>Qt::ToolButtonTextBesideIcon</enum>
-            </property>
-            <property name="class" stdset="0">
-             <string>sidebar-button</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QToolButton" name="StockageButton">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>239</width>
-              <height>42</height>
-             </size>
-            </property>
-            <property name="text">
-             <string> Stockage</string>
-            </property>
-            <property name="icon">
-             <iconset resource="../../resources/resources.qrc">
-              <normaloff>:/icons/icons/stockage.svg</normaloff>:/icons/icons/stockage.svg</iconset>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>30</width>
+              <width>40</width>
               <height>30</height>
              </size>
             </property>
@@ -580,7 +965,7 @@
             </property>
             <property name="iconSize">
              <size>
-              <width>30</width>
+              <width>40</width>
               <height>30</height>
              </size>
             </property>
@@ -618,7 +1003,7 @@
             </property>
             <property name="iconSize">
              <size>
-              <width>30</width>
+              <width>40</width>
               <height>30</height>
              </size>
             </property>
@@ -640,118 +1025,116 @@
      </widget>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <item>
-       <widget class="QFrame" name="TopBarFrame">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>44</height>
-         </size>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_2">
-         <item>
-          <widget class="QLineEdit" name="RechercherEntry">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>30</height>
-            </size>
-           </property>
-           <property name="placeholderText">
-            <string>Rechercher...</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QToolButton" name="HelpButton">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>42</width>
-             <height>42</height>
-            </size>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset resource="../../resources/resources.qrc">
-             <normaloff>:/icons/icons/help.svg</normaloff>:/icons/icons/help.svg</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>30</width>
-             <height>30</height>
-            </size>
-           </property>
-           <property name="class" stdset="0">
-            <string>icon-button</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item>
-       <widget class="QStackedWidget" name="WidgetStock">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>16777215</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <widget class="QFrame" name="ContentFrame">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QFrame" name="TopBarFrame">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>44</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QLineEdit" name="RechercherEntry">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="placeholderText">
+             <string>Rechercher...</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QToolButton" name="HelpButton">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>42</width>
+              <height>42</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../../resources/resources.qrc">
+              <normaloff>:/icons/icons/help.svg</normaloff>:/icons/icons/help.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>30</width>
+              <height>30</height>
+             </size>
+            </property>
+            <property name="class" stdset="0">
+             <string>icon-button</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QStackedWidget" name="WidgetStock">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </item>
    </layout>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>30</height>
-    </rect>
-   </property>
   </widget>
  </widget>
  <resources>

@@ -1,5 +1,10 @@
 <RCC>
   <qresource prefix="icons">
+    <file>icons/three-lines.svg</file>
+    <file>icons/Gclient.svg</file>
+    <file>icons/Garticles.svg</file>
+    <file>icons/Gfournisseurs.svg</file>
+    <file>icons/Gachats.svg</file>
     <file>icons/Gcalendar.svg</file>
     <file>icons/Wfiltrer.svg</file>
     <file>icons/Rsupprimer.svg</file>
@@ -16,8 +21,8 @@
     <file>icons/liste-ventes.svg</file>
     <file>icons/nouveau-document.svg</file>
     <file>icons/ajouter_client.svg</file>
-    <file>icons/articles.svg</file>
     <file>icons/clients.svg</file>
+    <file>icons/catalogue.svg</file>
     <file>icons/dashboard.svg</file>
     <file>icons/documents.svg</file>
     <file>icons/down_arrow.svg</file>

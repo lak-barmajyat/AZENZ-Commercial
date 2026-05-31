@@ -26,7 +26,7 @@ class LoginView(QMainWindow):
 
         model = LoginModel()
         self.controller = LoginController(model, self)
-        self.show()
+        self.showMaximized()
 
     def setup(self):
         self.setup_window()

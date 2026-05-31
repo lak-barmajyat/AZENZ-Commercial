@@ -795,7 +795,7 @@
                      </property>
                      <property name="styleSheet">
                       <string notr="true">#IconArticles {
-	image: url(:/icons/icons/articles.svg);
+	image: url(:/icons/icons/catalogue.svg);
 	border: none;
 }</string>
                      </property>
