@@ -92,19 +92,19 @@ class LoginModel:
             LIMIT 1
         """
         cursor.execute(query)
-        pwd_hash = cursor.fetchone()[0]
+        pwd_hash = cursor.fetchone()
 
         if pwd_hash is None:
             return False
 
         query = f"""
             SELECT id FROM P_utilisateurs
-            WHERE nom_utilisateur = '{username}'
+            WHERE LOWER(nom_utilisateur) = LOWER('{username}')
         """
         cursor.execute(query)
         user_id = cursor.fetchone()
 
-        pwd_hash = pwd_hash.encode()
+        pwd_hash = pwd_hash[0].encode()
 
         return bcrypt.checkpw(password.encode(), pwd_hash)
 

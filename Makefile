@@ -2,7 +2,7 @@ install:
 	uv sync
 
 run:
-	@uv run python3 main.py
+	@uv run python main.py
 
 rcc:
 	pyrcc5 resources/resources.qrc -o resources/resources_rc.py
