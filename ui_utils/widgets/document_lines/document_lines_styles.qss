@@ -1,0 +1,209 @@
+/* ===================================================================== *
+ * DocumentLinesWidget - editable ERP document lines table               *
+ * Palette mirrors ERPDataTable / base.qss                               *
+ * ===================================================================== */
+
+QWidget#DocumentLinesWidget {
+    background-color: transparent;
+}
+
+QTableView#DocumentLinesTableView {
+    background-color: #FFFFFF;
+    border: 1px solid #C3C5D8;
+    border-radius: 8px;
+    gridline-color: transparent;
+    outline: none;
+    color: #191C1E;
+    font-family: "Inter", "Tajawal", Arial, sans-serif;
+    font-size: 13px;
+    selection-background-color: #EFF4FF;
+    selection-color: #0051DF;
+}
+
+QTableView#DocumentLinesTableView[toolbar="true"] {
+    border-bottom: none;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+QTableView#DocumentLinesTableView::item {
+    padding: 6px 10px;
+    border: none;
+    border-bottom: 1px solid #F3F4F6;
+}
+
+QTableView#DocumentLinesTableView::item:hover {
+    background-color: #F8F9FB;
+}
+
+QTableView#DocumentLinesTableView::item:selected {
+    background-color: #EFF4FF;
+    color: #0051DF;
+}
+
+/* Placeholder row styling via dynamic property */
+QTableView#DocumentLinesTableView::item[rowType="placeholder"] {
+    background-color: #FBFCFE;
+    color: #9CA3AF;
+}
+
+QTableView#DocumentLinesTableView::item[rowType="text"] {
+    background-color: #FFFFFF;
+}
+
+QTableView#DocumentLinesTableView QHeaderView {
+    background-color: #F3F4F6;
+    border: none;
+}
+
+QTableView#DocumentLinesTableView QHeaderView::section:horizontal {
+    background-color: #F3F4F6;
+    color: #434655;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: none;
+    border-bottom: 1px solid #C3C5D8;
+    padding: 10px 10px;
+}
+
+QTableView#DocumentLinesTableView QHeaderView::section:horizontal:hover {
+    background-color: #EDEEF0;
+    color: #0051DF;
+}
+
+QFrame#DocumentLinesToolbar {
+    background-color: #FFFFFF;
+    border: 1px solid #C3C5D8;
+    border-top: none;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+QPushButton#DocumentLinesToolbarButton {
+    background-color: #FFFFFF;
+    color: #434655;
+    border: 1px solid #C3C5D8;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-family: "Inter", "Tajawal", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+QPushButton#DocumentLinesToolbarButton:hover {
+    background-color: #EFF4FF;
+    color: #0051DF;
+    border-color: #0051DF;
+}
+
+QPushButton#DocumentLinesToolbarButton:pressed {
+    background-color: #DBE6FF;
+}
+
+QPushButton#DocumentLinesToolbarButton:disabled {
+    color: #C3C5D8;
+    border-color: #E5E7EB;
+    background-color: #F8F9FB;
+}
+
+QFrame#DocumentLinesToolbarSeparator {
+    background-color: #E5E7EB;
+    max-width: 1px;
+    min-width: 1px;
+}
+
+QTableView#DocumentLinesTableView QLineEdit,
+QTableView#DocumentLinesTableView QDoubleSpinBox,
+QTableView#DocumentLinesTableView QComboBox {
+    background-color: #FFFFFF;
+    color: #191C1E;
+    border: 1px solid #0051DF;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-family: "Inter", "Tajawal", Arial, sans-serif;
+    font-size: 13px;
+    selection-background-color: #0051DF;
+    selection-color: #FFFFFF;
+}
+
+QTableView#DocumentLinesTableView QDoubleSpinBox {
+    padding-right: 4px;
+}
+
+/* Combo / search popups opened from cell editors */
+QTableView#DocumentLinesTableView QComboBox QAbstractItemView {
+    background-color: #FFFFFF;
+    color: #191C1E;
+    selection-background-color: #EFF4FF;
+    selection-color: #0051DF;
+    outline: none;
+}
+
+/* Article search completer popup */
+QListView#DocumentLinesSearchPopup {
+    background-color: #FFFFFF;
+    color: #191C1E;
+    border: 1px solid #C3C5D8;
+    border-radius: 6px;
+    padding: 4px;
+    font-family: "Inter", "Tajawal", Arial, sans-serif;
+    font-size: 13px;
+    outline: none;
+}
+
+QListView#DocumentLinesSearchPopup::item {
+    padding: 6px 10px;
+    border-radius: 4px;
+    color: #191C1E;
+}
+
+QListView#DocumentLinesSearchPopup::item:selected,
+QListView#DocumentLinesSearchPopup::item:hover {
+    background-color: #EFF4FF;
+    color: #0051DF;
+}
+
+QTableView#DocumentLinesTableView QScrollBar:vertical {
+    background: #F3F4F6;
+    width: 10px;
+    margin: 0px;
+    border-radius: 5px;
+}
+
+QTableView#DocumentLinesTableView QScrollBar::handle:vertical {
+    background: #C3C5D8;
+    min-height: 30px;
+    border-radius: 5px;
+}
+
+QTableView#DocumentLinesTableView QScrollBar::handle:vertical:hover {
+    background: #737687;
+}
+
+QTableView#DocumentLinesTableView QScrollBar::add-line:vertical,
+QTableView#DocumentLinesTableView QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+QTableView#DocumentLinesTableView QScrollBar:horizontal {
+    background: #F3F4F6;
+    height: 10px;
+    margin: 0px;
+    border-radius: 5px;
+}
+
+QTableView#DocumentLinesTableView QScrollBar::handle:horizontal {
+    background: #C3C5D8;
+    min-width: 30px;
+    border-radius: 5px;
+}
+
+QTableView#DocumentLinesTableView QScrollBar::handle:horizontal:hover {
+    background: #737687;
+}
+
+QTableView#DocumentLinesTableView QScrollBar::add-line:horizontal,
+QTableView#DocumentLinesTableView QScrollBar::sub-line:horizontal {
+    width: 0px;
+}

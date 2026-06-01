@@ -11,6 +11,8 @@ from PyQt5.QtWidgets import (
     QLineEdit, QToolButton, QHeaderView, QVBoxLayout, QLabel)
 
 from modules.ventes.ventes_view import VentesView
+from modules.ventes.nouveau_document_view import NouveauDocumentView
+from modules.achats.achats_view import AchatsView
 
 from modules.table_de_bord.model import DashboardModel
 from modules.table_de_bord.controller import DashboardController
@@ -123,15 +125,25 @@ class DashboardMenuView(QMainWindow):
 
         dashboard_widget = DashboardWidget()
         ventes_widget = VentesView()
+        achats_widget = AchatsView()
+        nouveau_document_widget = NouveauDocumentView()
 
+        # Add pages and connect buttons
         add_page(self.DashboardButton, dashboard_widget)
+
+        # Ventes
         add_page(self.VentesButton, ventes_widget)
         add_page(dashboard_widget.ListeVentesButton, ventes_widget)
+        add_page(dashboard_widget.NouveauDocButton, nouveau_document_widget)
+        add_page(ventes_widget.NouveauDocButton, nouveau_document_widget)
+
         add_page(self.ClientsButton)
         add_page(self.FournisseursButton)
         add_page(self.ArticlesButton)
         add_page(self.FamillesButton)
-        add_page(self.AchatsButton)
+
+        # Achats
+        add_page(self.AchatsButton, achats_widget)
         add_page(self.StockageButton)
         add_page(self.PaiementsButton)
         add_page(self.SettingsButton)

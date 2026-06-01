@@ -551,7 +551,7 @@ QDateEdit::down-arrow {
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
-          <widget class="QToolButton" name="toolButton_4">
+          <widget class="QToolButton" name="NouveauDocButton">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
              <horstretch>0</horstretch>
