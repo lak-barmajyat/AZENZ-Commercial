@@ -532,3 +532,12 @@ QFrame[class="gframe"] {
     margin-top: 2px;
     margin-bottom: 4px;
 }
+
+QFrame[class="header"] {
+    background-color: #f8fafc;       /* Very light slate/blue-gray tint */
+    border-top-left-radius: 8px;     /* Round only the top corners */
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom: 1px solid #e2e8f0; /* Subtle bottom separator line */
+}
