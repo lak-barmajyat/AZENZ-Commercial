@@ -727,7 +727,13 @@ QFrame[class=&quot;header&quot;] {
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>4</number>
+      <number>3</number>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>16</width>
+       <height>16</height>
+      </size>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
@@ -1083,6 +1089,11 @@ QFrame[class=&quot;header&quot;] {
       <attribute name="title">
        <string>Lines</string>
       </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_6">
+       <item>
+        <widget class="DocumentLinesWidget" name="DocumentLines" native="true"/>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="tab_3">
       <attribute name="title">
@@ -1091,7 +1102,7 @@ QFrame[class=&quot;header&quot;] {
      </widget>
      <widget class="QWidget" name="tab_4">
       <attribute name="title">
-       <string>Delivery / Stock</string>
+       <string>Delivery</string>
       </attribute>
      </widget>
      <widget class="QWidget" name="tab_5">
@@ -1103,6 +1114,14 @@ QFrame[class=&quot;header&quot;] {
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>DocumentLinesWidget</class>
+   <extends>QWidget</extends>
+   <header>ui_utils.widgets.document_lines.document_lines_widget</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="../../resources/resources.qrc"/>
  </resources>

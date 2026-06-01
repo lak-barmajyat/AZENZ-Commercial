@@ -541,3 +541,52 @@ QFrame[class="header"] {
     border-bottom-right-radius: 0px;
     border-bottom: 1px solid #e2e8f0; /* Subtle bottom separator line */
 }
+
+
+/* ====================================================
+   1. THE TAB PANE (The container holding the content)
+==================================================== */
+QTabWidget::pane {
+    border: none;                     /* Removes the harsh default box */
+    border-top: 1px solid #e2e8f0;    /* Creates the continuous horizontal line under the tabs */
+    background: transparent;          /* Lets your main background color show through */
+}
+
+/* ====================================================
+   2. THE TABS (Default/Inactive State)
+==================================================== */
+QTabBar::tab {
+    background: transparent;
+    color: #64748b;                   /* Muted slate-gray text */
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 20px;               /* Breathing room around the text */
+    border-bottom: 2px solid transparent; /* Invisible border to reserve space */
+    
+    /* CRUCIAL TRICK: Pulls the tab down 1px so its bottom border 
+       perfectly overlaps the pane's top border line */
+    margin-bottom: -1px;              
+}
+
+/* ====================================================
+   3. THE HOVER STATE (When mouse is over an inactive tab)
+==================================================== */
+QTabBar::tab:hover:!selected {
+    color: #1e293b;                   /* Darkens the text */
+    border-bottom: 2px solid #cbd5e1; /* Shows a subtle gray underline preview */
+}
+
+/* ====================================================
+   4. THE SELECTED STATE (The active tab)
+==================================================== */
+QTabBar::tab:selected {
+    color: #2563eb;                   /* Your vibrant primary blue */
+    border-bottom: 2px solid #2563eb; /* The thick blue active underline */
+}
+
+/* Optional: Remove the dotted focus outline when clicked */
+QTabBar:focus {
+    outline: none;
+}
+
+
