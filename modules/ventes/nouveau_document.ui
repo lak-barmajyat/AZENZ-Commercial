@@ -1,0 +1,1104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>921</width>
+    <height>575</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#Background {
+    background-color: #F8F9FB;
+}
+
+/* QLineEdit has Icon */
+QLineEdit[class=&quot;icon-lineedit&quot;] {
+    background-color: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 6px;
+    color: #333333;
+    
+    selection-background-color: #0051df; 
+    selection-color: #ffffff;
+}
+
+QLineEdit[class=&quot;icon-lineedit&quot;]:hover {
+    border: 2px solid #b3b3b3;
+}
+
+QLineEdit[class=&quot;icon-lineedit&quot;]:focus {
+    border: 2px solid #0051df;
+    background-color: #fbfcff;
+}
+
+QLineEdit[class=&quot;icon-lineedit&quot;]:disabled {
+    background-color: #f5f5f5;
+    color: #a0a0a0;
+    border: 2px solid #e8e8e8;
+}
+
+QLineEdit[class=&quot;icon-lineedit&quot;][readOnly=&quot;true&quot;] {
+    background-color: #fafafa;
+    color: #666666;
+    border: 2px dashed #cccccc;
+}
+
+/* QLineEdit */
+QLineEdit {
+    background-color: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: &quot;Inter&quot;;
+    color: #333333;
+    
+    selection-background-color: #0051df; 
+    selection-color: #ffffff;
+}
+
+QLineEdit:hover {
+    border: 2px solid #b3b3b3;
+}
+
+QLineEdit:focus {
+    border: 2px solid #0051df;
+    background-color: #fbfcff;
+}
+
+QLineEdit:disabled {
+    background-color: #f5f5f5;
+    color: #a0a0a0;
+    border: 2px solid #e8e8e8;
+}
+
+QLineEdit[readOnly=&quot;true&quot;] {
+    background-color: #fafafa;
+    color: #666666;
+    border: 2px dashed #cccccc;
+}
+
+
+
+/* Primary QPushButton Style */
+QPushButton[class=&quot;primary&quot;] {
+    background-color: #0051df;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: &quot;Inter&quot;, &quot;Tajawal&quot;;
+}
+
+QPushButton[class=&quot;primary&quot;]:hover {
+    background-color: rgba(0, 81, 223, 230); 
+}
+
+QPushButton[class=&quot;primary&quot;]:pressed {
+    background-color: rgba(0, 81, 223, 204);
+}
+
+QPushButton[class=&quot;primary&quot;]:focus {
+    border: 2px solid #00174d;
+}
+
+
+/* Outlined QPushButton Style */
+QPushButton[class=&quot;outlined&quot;] {
+    background-color: #ffffff;
+    color: #434655;
+    border: 1px solid #c3c5d8;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: &quot;Inter&quot;, &quot;Tajawal&quot;;
+}    
+
+QPushButton[class=&quot;outlined&quot;]:hover {
+    background-color: #f3f4f6;
+}    
+
+QPushButton[class=&quot;outlined&quot;]:pressed {
+    background-color: #edeef0;
+}    
+
+QPushButton[class=&quot;outlined&quot;]:focus {
+    border: 2px solid rgba(0, 81, 223, 51);
+}    
+
+
+/* CardToolButton */
+QToolButton[class=&quot;card-button&quot;] {
+    color: #000;
+    padding: 15px;
+    padding-top: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #eaebf0;
+    border-radius: 12px;
+}
+
+QToolButton[class=&quot;card-button&quot;]:hover {
+    background-color: #f3f4f6;
+    border: 1px solid #d1d5db;
+    border: 1px solid hsl(218, 100%, 55%);
+}
+
+QToolButton[class=&quot;card-button&quot;]:pressed {
+    background-color: #e5e7eb;
+}
+
+/* SidebarToolButton */
+QToolButton[class=&quot;sidebar-button&quot;] {
+    background-color: transparent;
+    color: #4b5563;
+    border: none;
+    border-left: 4px solid transparent; 
+    padding: 12px 16px;
+    spacing: 18px;
+    
+    text-align: left;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: &quot;Inter&quot;;
+}    
+
+QToolButton[class=&quot;sidebar-button&quot;]:checked {
+    background-color: #d0e1fb;
+    color: #0051df;
+    border-left: 4px solid #0051df; 
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}    
+
+QToolButton[class=&quot;sidebar-button&quot;]:unchecked:hover {
+    background-color: #f3f4f6;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}    
+
+
+QToolButton[class=&quot;icon-button&quot;] {
+    background-color: transparent;
+    border: none;
+    border-radius: 21px;
+    padding: 8px;
+}    
+
+QToolButton[class=&quot;icon-button&quot;]:hover {
+    background-color: #f3f4f6;
+}    
+
+QToolButton[class=&quot;icon-button&quot;]:pressed {
+    background-color: #e5e7eb;
+}    
+
+
+/* LoginErrorLabel */
+QLabel#LoginErrorLabel {
+    background-color: #f8d7da;
+    border: 1px solid #c9302c;
+    border-radius: 10px;
+    padding: 10px;
+    padding-left: 15px;
+	color: #721c24;	
+	image: url(:/icons/icons/warning.svg);
+	image-position: left;
+}    
+
+
+/* ComboBox Box */
+QComboBox {
+    background-color: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-family: &quot;Inter&quot;;
+    font-size: 13px;
+    font-weight: 500;
+    color: #333333;
+    min-width: 60px;
+}
+
+QComboBox:hover {
+    border: 2px solid #b3b3b3;
+}
+
+QComboBox:focus {
+    border: 2px solid #0051df;
+    background-color: #fbfcff;
+}
+
+QComboBox::drop-down {
+    /* subcontrol-origin: padding; */
+    /* subcontrol-position: top right; */
+    border: 6px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #ffffff;
+    border: 1px solid #eaebf0;
+    border-radius: 0px;
+    box-shadow: none;
+    padding: 4px;
+    font-family: &quot;Inter&quot;;
+    font-size: 13px;
+    font-weight: 500;
+    color: #333333;
+    
+    selection-background-color: #0051df;
+    selection-color: #ffffff;
+}
+
+QComboBox QAbstractItemView::item {
+    padding: 8px 12px;
+    border-radius: 4px;
+    color: #4b5563;
+    min-height: 24px;
+}
+
+QComboBox QAbstractItemView::item:hover {
+    background-color: #f3f4f6;
+    color: #0051df;
+}
+
+/* 4. The Arrow Icon itself */
+QComboBox::down-arrow {
+    image: url(:/icons/icons/down_arrow.svg);
+}
+
+
+/* LoginFrame */
+QFrame#LoginFrame {
+    background-color: #ffffff;
+    border: 1px solid #babcca; 
+    border-radius: 12px; 
+}    
+
+
+/* Frame */
+QFrame {
+    background-color: #ffffff;
+    border: none;
+}    
+
+QFrame[class=&quot;card&quot;] {
+    background-color: #ffffff;
+    border: 1px solid #eaebf0; /* Soft gray border */
+    border-radius: 12px;
+}
+
+/* Bar Frames */
+QFrame#SidebarFrame, QFrame#FootSidebarFrame {
+	border-right: 1px solid #d0d0d0;
+    background-color: #f7f7f7;
+}
+
+QFrame#FootSidebarFrame {
+    border-top: 1px solid #d0d0d0;
+}
+
+QFrame#TopBarFrame {
+    border-bottom: 1px solid #d0d0d0;
+}
+
+
+/* QLabel */
+QLabel {
+    color: #333333;
+    border: none;
+    background-color: transparent;
+    font-family: &quot;Inter&quot;, &quot;Tajawal&quot;;
+    font-size: 13px;
+    font-weight: 500;
+
+}
+
+/* SeparatorLine */
+QLabel[class=&quot;separator&quot;] {
+    background-color: rgba(195, 197, 216, 0.5);
+    border: none;
+    height: 1px;
+}
+
+
+/* 1. The Main Table Container */
+QTableWidget {
+    background-color: #ffffff;
+    border: 1px solid #eaebf0;
+    border-radius: 8px;
+    color: #333333;
+    font-size: 13px;
+    gridline-color: transparent; /* We will use item borders instead of harsh gridlines */
+    outline: none;               /* Removes the dotted focus ring around selected cells */
+}
+
+/* 2. The Horizontal Header (Column Names) */
+QHeaderView::section:horizontal {
+    background-color: #f8f9fa;   /* Light gray header background */
+    color: #4b5563;              /* Muted text color */
+    font-weight: 600;
+    border: none;
+    border-bottom: 1px solid #eaebf0; /* Separates header from data */
+    padding: 8px 12px;
+    alignment: left;
+}
+
+/* 3. The Vertical Header (Row Numbers) - Usually hidden, but styled just in case */
+QHeaderView::section:vertical {
+    background-color: #f8f9fa;
+    color: #4b5563;
+    border: none;
+    border-right: 1px solid #eaebf0;
+    padding: 4px;
+}
+
+/* 4. Table Items (The actual data cells) */
+QTableWidget::item {
+    padding: 4px 12px;
+    border-bottom: 1px solid #f3f4f6; /* Creates soft, horizontal row dividers */
+}
+
+/* 5. Hover State for Rows */
+QTableWidget::item:hover {
+    background-color: #f8f9fa;
+}
+
+/* 6. Selected State */
+QTableWidget::item:selected {
+    background-color: #eff4ff;   /* Very pale blue background */
+    color: #0051df;              /* Your primary blue for text */
+}
+
+/* 7. The Top-Left Corner Button */
+QTableCornerButton::section {
+    background-color: #f8f9fa;
+    border: none;
+    border-bottom: 1px solid #eaebf0;
+    border-right: 1px solid #eaebf0;
+}
+
+
+
+
+/* ====================================================
+   PRIMARY BUTTON (Like &quot;Nouveau&quot;) 
+   Solid blue background, white text.
+==================================================== */
+QToolButton[class=&quot;primary&quot;] {
+    background-color: #2563eb; /* Vibrant primary blue */
+    color: #ffffff;            /* Pure white text */
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;          /* Slightly bolder font to stand out */
+}
+
+QToolButton[class=&quot;primary&quot;]:hover {
+    background-color: #1d4ed8; /* Slightly darker blue on hover for feedback */
+}
+
+QToolButton[class=&quot;primary&quot;]:pressed {
+    background-color: #1e40af; /* Deep blue when actively clicked */
+}
+
+/* Optional but recommended: A disabled state */
+QToolButton[class=&quot;primary&quot;]:disabled {
+    background-color: #93c5fd; /* Faded, washed-out blue */
+    color: #f8fafc;            /* Slightly dimmed white text */
+}
+/* ====================================================
+   1. SECONDARY BUTTON (Like &quot;Modifier&quot;) 
+   Subtle gray background, dark text.
+==================================================== */
+QToolButton[class=&quot;secondary&quot;] {
+    background-color: transparent; /* Soft gray background */
+    color: #374151;            /* Dark slate gray text */
+    border: none;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+QToolButton[class=&quot;secondary&quot;]:hover {
+    background-color: #e5e7eb; /* Slightly darker gray on hover */
+    color: #111827;            /* Almost black text on hover */
+}
+
+QToolButton[class=&quot;secondary&quot;]:pressed {
+    background-color: #d1d5db; /* Noticeable press state */
+}
+
+/* ====================================================
+   2. SECONDARY DANGER BUTTON (Like &quot;Supprimer&quot;)
+   Transparent by default, turns red on hover.
+==================================================== */
+QToolButton[class=&quot;secondary-danger&quot;] {
+    background-color: transparent; /* Ghost button by default */
+    color: #4b5563;                /* Muted gray text */
+    border: none;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+QToolButton[class=&quot;secondary-danger&quot;]:hover {
+    background-color: #fef2f2;     /* Faint warning red background */
+    color: #dc2626;                /* Strong red text */
+}
+
+QToolButton[class=&quot;secondary-danger&quot;]:pressed {
+    background-color: #fee2e2;     /* Slightly deeper red background */
+    color: #b91c1c;                /* Darker red text */
+}
+
+
+/* ====================================================
+   1. The Main DateEdit Input Box
+==================================================== */
+QDateEdit {
+    background-color: #ffffff;
+    border: 2px solid #e0e0e0;       /* Matches your QComboBox */
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #333333;
+    min-width: 110px;
+}
+
+QDateEdit:hover {
+    border: 2px solid #b3b3b3;       /* Slightly darker on hover */
+}
+
+QDateEdit:focus {
+    border: 2px solid #2563eb;       /* Primary blue border when typing */
+    background-color: #fbfcff;       /* Very faint blue tint */
+}
+
+/* ====================================================
+   2. The Drop-down Button (Right Side)
+==================================================== */
+QDateEdit::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 32px;
+    border-left: none;               /* Seamless look */
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+/* 3. The Icon Inside the Drop-down */
+QDateEdit::down-arrow {
+    image: url(&quot;:/icons/icons/Gcalendar.svg&quot;); /* Pro-tip: Use a calendar icon instead of an arrow */
+    width: 16px;
+    height: 16px;
+}
+
+
+/* ====================================================
+   1. THE GROUP TOGGLE BUTTON (e.g., Tiers, Catalogue)
+==================================================== */
+QToolButton[class=&quot;sidebar-gbutton&quot;] {
+    background-color: #f3f4f6;       /* Soft light-gray background */
+    color: #4b5563;                  /* Muted slate text color */
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;                /* Semi-bold for category titles */
+    padding: 8px 14px;
+    text-align: left;                /* Keeps icon and text left-aligned */
+}
+
+QToolButton[class=&quot;sidebar-gbutton&quot;]:hover {
+    background-color: #e5e7eb;       /* Darker gray feedback on hover */
+    color: #111827;                  /* High contrast text on hover */
+}
+
+/* Custom dynamic state for when the group menu is open */
+QToolButton[class=&quot;sidebar-gbutton&quot;][expanded=&quot;true&quot;] {
+    background-color: #eff4ff;       /* Soft tint of your primary blue */
+    color: #0051df;                  /* Text turns primary blue when open */
+}
+
+/* ====================================================
+   2. THE GROUP CONTAINER FRAME (Houses sub-buttons)
+==================================================== */
+QFrame[class=&quot;gframe&quot;] {
+    background-color: transparent;   /* Blends seamlessly into sidebar background */
+    border: none;
+    
+    /* Elegant indentation layout rule */
+    padding-left: 0px;              /* Indents child elements like modern web apps */
+    margin-top: 2px;
+    margin-bottom: 4px;
+}
+
+QFrame[class=&quot;header&quot;] {
+    background-color: #f8fafc;       /* Very light slate/blue-gray tint */
+    border-top-left-radius: 8px;     /* Round only the top corners */
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom: 1px solid #e2e8f0; /* Subtle bottom separator line */
+}
+</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QFrame" name="frame_5">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <property name="class" stdset="0">
+      <string>card</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QToolButton" name="toolButton_5">
+        <property name="text">
+         <string>...</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="toolButton_4">
+        <property name="text">
+         <string>...</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="toolButton_3">
+        <property name="text">
+         <string>...</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="toolButton_2">
+        <property name="text">
+         <string>Valider</string>
+        </property>
+        <property name="class" stdset="0">
+         <string>secondary</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="toolButton">
+        <property name="text">
+         <string>Save</string>
+        </property>
+        <property name="class" stdset="0">
+         <string>primary</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QFrame" name="frame_6">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <property name="class" stdset="0">
+      <string>card</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <property name="leftMargin">
+       <number>20</number>
+      </property>
+      <property name="topMargin">
+       <number>15</number>
+      </property>
+      <property name="rightMargin">
+       <number>5</number>
+      </property>
+      <property name="bottomMargin">
+       <number>15</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="label_6">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>50</width>
+          <height>55</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#label_6 {
+	padding: 10px;
+	image: url(:/icons/icons/nouveau-document.svg);
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="label_10">
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_9">
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>General</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QFrame" name="frame">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="class" stdset="0">
+          <string>card</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>20</number>
+          </property>
+          <item>
+           <widget class="QFrame" name="frame_2">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <property name="class" stdset="0">
+             <string>header</string>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout">
+             <property name="spacing">
+              <number>7</number>
+             </property>
+             <property name="leftMargin">
+              <number>15</number>
+             </property>
+             <property name="topMargin">
+              <number>8</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="icon_label">
+               <property name="maximumSize">
+                <size>
+                 <width>20</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">#icon_label {
+	image: url(:/icons/icons/warning.svg);
+}</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="scaledContents">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_2">
+               <property name="text">
+                <string>Informations de document</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <layout class="QGridLayout" name="gridLayout">
+            <property name="leftMargin">
+             <number>6</number>
+            </property>
+            <property name="topMargin">
+             <number>6</number>
+            </property>
+            <property name="rightMargin">
+             <number>6</number>
+            </property>
+            <property name="bottomMargin">
+             <number>6</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="QLabel" name="label">
+              <property name="text">
+               <string>Type de document</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QLabel" name="label_5">
+              <property name="text">
+               <string>Numéro de référence</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="label_3">
+              <property name="text">
+               <string>Date du document</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="label_4">
+              <property name="text">
+               <string>Numéro de document</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QComboBox" name="comboBox">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0">
+             <widget class="QDateEdit" name="dateEdit">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="displayFormat">
+               <string>MM/dd/yyyy</string>
+              </property>
+              <property name="calendarPopup">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="1">
+             <widget class="QLineEdit" name="lineEdit"/>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLineEdit" name="lineEdit_2"/>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_3">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <property name="class" stdset="0">
+          <string>card</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_5">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>20</number>
+          </property>
+          <item>
+           <widget class="QFrame" name="frame_4">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <property name="class" stdset="0">
+             <string>header</string>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <property name="spacing">
+              <number>7</number>
+             </property>
+             <property name="leftMargin">
+              <number>15</number>
+             </property>
+             <property name="topMargin">
+              <number>8</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="icon_label_2">
+               <property name="maximumSize">
+                <size>
+                 <width>20</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">#icon_label {
+	image: url(:/icons/icons/warning.svg);
+}</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="scaledContents">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_7">
+               <property name="text">
+                <string>Organizational Data</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <layout class="QGridLayout" name="gridLayout_2">
+            <property name="leftMargin">
+             <number>6</number>
+            </property>
+            <property name="topMargin">
+             <number>6</number>
+            </property>
+            <property name="rightMargin">
+             <number>6</number>
+            </property>
+            <property name="bottomMargin">
+             <number>6</number>
+            </property>
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_8">
+              <property name="text">
+               <string>Code Client</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="label_13">
+              <property name="text">
+               <string>Client</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QComboBox" name="comboBox_5">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QComboBox" name="comboBox_3">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="2">
+             <widget class="QLineEdit" name="lineEdit_4"/>
+            </item>
+            <item row="0" column="2">
+             <widget class="QLabel" name="label_11">
+              <property name="text">
+               <string>ICE</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_2">
+      <attribute name="title">
+       <string>Lines</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tab_3">
+      <attribute name="title">
+       <string>Payments</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tab_4">
+      <attribute name="title">
+       <string>Delivery / Stock</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tab_5">
+      <attribute name="title">
+       <string>Notes</string>
+      </attribute>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../../resources/resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
