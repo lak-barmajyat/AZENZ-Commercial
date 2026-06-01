@@ -12,6 +12,9 @@ from PyQt5.QtWidgets import (
 
 from modules.ventes.ventes_view import VentesView
 
+from modules.table_de_bord.model import DashboardModel
+from modules.table_de_bord.controller import DashboardController
+
 
 class DashboardWidget(QWidget):
     def __init__(self):
@@ -58,6 +61,9 @@ class DashboardMenuView(QMainWindow):
             self.CatalogueGButton: self.CatalogueGFrame,
             self.toggleSidebarButton: True
         }
+        
+        self.model = DashboardModel()
+        self.controller = DashboardController(self, self.model)
 
         self.setup()
 
@@ -120,7 +126,7 @@ class DashboardMenuView(QMainWindow):
 
         add_page(self.DashboardButton, dashboard_widget)
         add_page(self.VentesButton, ventes_widget)
-        add_page(self.ListeVentesButton, ventes_widget)
+        add_page(dashboard_widget.ListeVentesButton, ventes_widget)
         add_page(self.ClientsButton)
         add_page(self.FournisseursButton)
         add_page(self.ArticlesButton)

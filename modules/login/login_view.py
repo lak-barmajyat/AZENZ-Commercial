@@ -24,8 +24,8 @@ class LoginView(QMainWindow):
 
         self.setup()
 
-        model = LoginModel()
-        self.controller = LoginController(model, self)
+        self.model = LoginModel()
+        self.controller = LoginController(self.model, self)
         self.showMaximized()
 
     def setup(self):
@@ -40,7 +40,7 @@ class LoginView(QMainWindow):
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
         self.setWindowTitle("AZENZ - Login")
-        self.setWindowIcon(QIcon(":/icons/resources/icons/app_icon.svg"))
+        self.setWindowIcon(QIcon(":/icons/icons/app_icon.svg"))
 
     def setup_widgets(self):
         # set widget properties for styling
@@ -61,16 +61,16 @@ class LoginView(QMainWindow):
     def setup_icons(self):
         # For Username Field
         username_icon = QAction(self)
-        username_icon.setIcon(create_uniform_icon(":/icons/resources/icons/user.svg"))
+        username_icon.setIcon(create_uniform_icon(":/icons/icons/user.svg"))
         self.UsernameEntry.addAction(username_icon, QLineEdit.LeadingPosition)
 
         # For Password Field
         password_icon = QAction(self)
-        password_icon.setIcon(create_uniform_icon(":/icons/resources/icons/lock.svg"))
+        password_icon.setIcon(create_uniform_icon(":/icons/icons/lock.svg"))
         self.PasswordEntry.addAction(password_icon, QLineEdit.LeadingPosition)
 
         self.toggle_password_action = QAction(self)
-        self.toggle_password_action.setIcon(QIcon(f":/icons/resources/icons/eye-closed.svg"))
+        self.toggle_password_action.setIcon(QIcon(f":/icons/icons/eye-closed.svg"))
         self.PasswordEntry.addAction(self.toggle_password_action, QLineEdit.TrailingPosition)
 
     def setup_connections(self):
@@ -81,10 +81,10 @@ class LoginView(QMainWindow):
         self.is_password_hidden = not self.is_password_hidden
         if self.is_password_hidden:
             self.PasswordEntry.setEchoMode(QLineEdit.Password)
-            self.toggle_password_action.setIcon(QIcon(f":/icons/resources/icons/eye-closed.svg"))
+            self.toggle_password_action.setIcon(QIcon(f":/icons/icons/eye-closed.svg"))
         else:
             self.PasswordEntry.setEchoMode(QLineEdit.Normal)
-            self.toggle_password_action.setIcon(QIcon(f":/icons/resources/icons/eye-open.svg"))
+            self.toggle_password_action.setIcon(QIcon(f":/icons/icons/eye-open.svg"))
 
     def hide_error(self):
         self.LoginErrorLabel.hide()

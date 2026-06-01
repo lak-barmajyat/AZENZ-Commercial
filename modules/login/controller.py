@@ -36,9 +36,9 @@ class LoginController:
             self.view.LoginErrorLabel.show()
         else:
             self.view.LoginErrorLabel.hide()
-            QApplication.DashboardWidget = DashboardMenuView()
-            QApplication.DashboardWidget.show()
-            self.view.close()
+            QApplication.DashboardMenuView = DashboardMenuView()
+            QApplication.DashboardMenuView.show()
+            self.view.hide()
     
     def connect_signals(self):
         self.view.DatabaseCombobox.currentIndexChanged.connect(

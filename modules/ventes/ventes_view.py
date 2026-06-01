@@ -26,18 +26,18 @@ class VentesView(QWidget):
 
         # inside VentesView.setup():
         columns = [
-            ERPTableColumn("id", "ID", width=100, visible=False),
-            ERPTableColumn("utilisateur_id", "ID", width=100, visible=False),
-            ERPTableColumn("vendeur_id", "ID", width=100, visible=False),
-            ERPTableColumn("type", "TYPE", width=100),
-            ERPTableColumn("numero_document", "N° DOCUMENT", width=150, is_link=True),
-            ERPTableColumn("icon", "ICON", width=100),
-            ERPTableColumn("date", "DATE", width=110, is_date=True),
-            ERPTableColumn("client", "CLIENT", width=260, stretch=True),
-            ERPTableColumn("total_ht", "TOTAL HT", width=130, align=Qt.AlignRight, is_money=True),
-            ERPTableColumn("total_ttc", "TOTAL TTC", width=130, align=Qt.AlignRight, is_money=True),
-            ERPTableColumn("solde", "SOLDE", width=130, align=Qt.AlignRight, is_money=True),
-            ERPTableColumn("statut", "STATUT", width=130, align=Qt.AlignCenter, is_status=True),
+            ERPTableColumn("id", "ID", width=100, min_width=700 , visible=False),
+            ERPTableColumn("utilisateur_id", "ID", width=100, min_width=320 , visible=False),
+            ERPTableColumn("vendeur_id", "ID", width=100, min_width=320 , visible=False),
+            ERPTableColumn("type", "TYPE", width=100, min_width=320 ),
+            ERPTableColumn("numero_document", "N° DOCUMENT", width =150, min_width=120, is_link=True),
+            ERPTableColumn("icon", "ICON", width=100, min_width=320 ),
+            ERPTableColumn("date", "DATE", width=110, min_width=320 , is_date=True),
+            ERPTableColumn("client", "CLIENT", width=460, min_width=320, stretch=True),
+            ERPTableColumn("total_ht", "TOTAL HT", width =130, min_width=320, align=Qt.AlignRight, is_money=True),
+            ERPTableColumn("total_ttc", "TOTAL TTC", width=130, min_width=320 , align=Qt.AlignRight, is_money=True),
+            ERPTableColumn("solde", "SOLDE", width=130, min_width=320 , align=Qt.AlignRight, is_money=True),
+            ERPTableColumn("statut", "STATUT", width=130, min_width=320 , align=Qt.AlignCenter, is_status=True),
         ]
         self.VentesTable.set_columns(columns)
         # self.VentesTable.set_rows(rows_from_your_service)
