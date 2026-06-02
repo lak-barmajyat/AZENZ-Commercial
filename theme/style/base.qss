@@ -281,7 +281,7 @@ QFrame {
 
 QFrame[class="card"] {
     background-color: #ffffff;
-    border: 1px solid #eaebf0; /* Soft gray border */
+    border: 2px solid #e2e3e8; /* Soft gray border */
     border-radius: 12px;
 }
 
@@ -560,7 +560,7 @@ QTabBar::tab {
     color: #64748b;                   /* Muted slate-gray text */
     font-size: 13px;
     font-weight: 500;
-    padding: 10px 20px;               /* Breathing room around the text */
+    padding: 10px 25px;               /* Breathing room around the text */
     border-bottom: 2px solid transparent; /* Invisible border to reserve space */
     
     /* CRUCIAL TRICK: Pulls the tab down 1px so its bottom border 

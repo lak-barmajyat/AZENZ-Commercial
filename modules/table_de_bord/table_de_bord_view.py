@@ -46,7 +46,7 @@ class DashboardMenuView(QMainWindow):
 
         self.sidebar_open = True
         self.sidebar_expanded_width = 250
-        self.sidebar_collapsed_width = 65
+        self.sidebar_collapsed_width = 60
 
         self.group_states = {
             self.TiersGFrame: True,
