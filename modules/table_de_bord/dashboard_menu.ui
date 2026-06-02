@@ -123,7 +123,7 @@
              </size>
             </property>
             <property name="text">
-             <string>                    </string>
+             <string/>
             </property>
             <property name="icon">
              <iconset resource="../../resources/resources.qrc">
@@ -224,16 +224,22 @@
            </widget>
           </item>
           <item alignment="Qt::AlignHCenter">
-           <widget class="QLabel" name="SeparatorLine_6">
+           <widget class="QLabel" name="SeparatorLine_4">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="minimumSize">
              <size>
-              <width>215</width>
+              <width>225</width>
               <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>215</width>
+              <width>225</width>
               <height>1</height>
              </size>
             </property>
@@ -398,28 +404,6 @@
             </layout>
            </widget>
           </item>
-          <item alignment="Qt::AlignHCenter">
-           <widget class="QLabel" name="SeparatorLine_5">
-            <property name="minimumSize">
-             <size>
-              <width>215</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>215</width>
-              <height>1</height>
-             </size>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="class" stdset="0">
-             <string>separator</string>
-            </property>
-           </widget>
-          </item>
           <item>
            <widget class="QToolButton" name="CatalogueGButton">
             <property name="sizePolicy">
@@ -580,28 +564,6 @@
               </widget>
              </item>
             </layout>
-           </widget>
-          </item>
-          <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-           <widget class="QLabel" name="SeparatorLine_4">
-            <property name="minimumSize">
-             <size>
-              <width>215</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>215</width>
-              <height>1</height>
-             </size>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="class" stdset="0">
-             <string>separator</string>
-            </property>
            </widget>
           </item>
           <item>
