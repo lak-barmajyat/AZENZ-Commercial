@@ -78,7 +78,7 @@ def default_columns() -> list[DocumentLineColumn]:
                            align=Qt.AlignCenter, editable=False),
         DocumentLineColumn("reference", "REFERENCE", width=110, min_width=80),
         DocumentLineColumn("description", "DESCRIPTION", width=220,
-                           min_width=120, stretch=True),
+                           min_width=120),
         DocumentLineColumn("quantity", "QTY", width=72, min_width=56,
                            editor_type=ColumnEditorType.NUMERIC,
                            align=Qt.AlignRight | Qt.AlignVCenter, decimals=4,

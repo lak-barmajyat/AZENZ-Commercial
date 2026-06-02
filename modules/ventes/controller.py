@@ -1,4 +1,4 @@
-
+from services.sql.db_connection import with_cursor
 
 class VentesController:
     def __init__(self, view, model):
@@ -45,3 +45,40 @@ class VentesController:
 
     def setup(self):
         self.load_ventes()
+
+class NouveauDocumentController:
+    def __init__(self, view, model):
+        self.view = view
+        self.model = model
+
+        self.setup()
+
+    def setup(self):
+        self.fill_entries()
+        self.connect_signals()
+
+    def fill_entries(self):
+        # fill type document combobox 
+        items = self.model.fill_type_combo()
+        for id, nom_type_document in items:
+            self.view.TypeDocumentCombo.addItem(nom_type_document, id)
+
+        # fill numero document
+        self.view.
+
+    def connect_signals(self):
+        self.view.TypeDocumentCombo.currentIndexChanged.connect(self.on_selection_change)
+
+    def on_selection_change(self):
+        # Retrieve the data
+        current_text = self.view.TypeDocumentCombo.currentText()
+        custom_id = self.view.TypeDocumentCombo.currentData()
+        positional_index = self.view.TypeDocumentCombo.currentIndex()
+        
+        # Display the results
+        print(
+            f"Selected: {current_text}\n"
+            f"PyQt Positional Index: {positional_index}\n"
+            f"Your Custom Data Index: {custom_id}"
+        )
+    

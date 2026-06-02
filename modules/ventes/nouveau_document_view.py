@@ -15,16 +15,21 @@ from ui_utils.widgets.document_lines import (
     default_columns,
 )
 
+from modules.ventes.controller import NouveauDocumentController
+from modules.ventes.model import NouveauDocumentModel
 
 class NouveauDocumentView(QWidget):
     def __init__(self):
         super().__init__()
         loadUi("modules/ventes/nouveau_document.ui", self)
 
+        self.model = NouveauDocumentModel()
+        self.controller = NouveauDocumentController(self, self.model)
+
     def setup_table(self):
         # self.DocumentLines is created automatically from the .ui name=
         self.DocumentLines.set_columns(default_columns())
-        self.DocumentLines.set_currency_symbol("€")
+        self.DocumentLines.set_currency_symbol("dh")
         self.DocumentLines.set_default_vat_percent(20.0)
         self.DocumentLines.set_units(["Unit", "Kg", "L", "h"])
         # Connect signals to your controller

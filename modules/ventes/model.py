@@ -37,3 +37,13 @@ class VentesModel:
         result = cursor.fetchall()
         return result
 
+class NouveauDocumentModel:
+    def __init__(self):
+        pass
+
+    @with_cursor()
+    def fill_type_combo(self, cursor):
+        query = """SELECT id, nom_type_document FROM P_types_documents WHERE domaine = 'VENTE'"""
+        cursor.execute(query)
+        result = cursor.fetchall()
+        return result

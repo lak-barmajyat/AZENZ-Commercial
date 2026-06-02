@@ -727,7 +727,7 @@ QFrame[class=&quot;header&quot;] {
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>3</number>
+      <number>0</number>
      </property>
      <property name="iconSize">
       <size>
@@ -877,7 +877,7 @@ QFrame[class=&quot;header&quot;] {
              </widget>
             </item>
             <item row="1" column="0">
-             <widget class="QComboBox" name="comboBox">
+             <widget class="QComboBox" name="TypeDocumentCombo">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -906,7 +906,7 @@ QFrame[class=&quot;header&quot;] {
              <widget class="QLineEdit" name="lineEdit"/>
             </item>
             <item row="1" column="1">
-             <widget class="QLineEdit" name="lineEdit_2"/>
+             <widget class="QLineEdit" name="NumeroDocumentEntry"/>
             </item>
            </layout>
           </item>
@@ -1021,27 +1021,10 @@ QFrame[class=&quot;header&quot;] {
             <property name="bottomMargin">
              <number>6</number>
             </property>
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_8">
-              <property name="text">
-               <string>Code Client</string>
-              </property>
-             </widget>
-            </item>
             <item row="0" column="1">
              <widget class="QLabel" name="label_13">
               <property name="text">
                <string>Client</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QComboBox" name="comboBox_5">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
               </property>
              </widget>
             </item>
@@ -1055,8 +1038,22 @@ QFrame[class=&quot;header&quot;] {
               </property>
              </widget>
             </item>
-            <item row="1" column="2">
-             <widget class="QLineEdit" name="lineEdit_4"/>
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_8">
+              <property name="text">
+               <string>Code Client</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QComboBox" name="comboBox_5">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
             </item>
             <item row="0" column="2">
              <widget class="QLabel" name="label_11">
@@ -1064,6 +1061,9 @@ QFrame[class=&quot;header&quot;] {
                <string>ICE</string>
               </property>
              </widget>
+            </item>
+            <item row="1" column="2">
+             <widget class="QLineEdit" name="lineEdit_4"/>
             </item>
            </layout>
           </item>
