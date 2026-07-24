@@ -61,19 +61,19 @@ class NouveauDocumentController:
         # fill type document combobox 
         items = self.model.fill_type_combo()
         for id, nom_type_document in items:
-            self.view.TypeDocumentCombo.addItem(nom_type_document, id)
+            self.view.TypeDocComboBox.addItem(nom_type_document, id)
 
         # fill numero document
-        self.view.
+        self.view.NumeroDocEntry.setText(get_next_docu)
 
     def connect_signals(self):
-        self.view.TypeDocumentCombo.currentIndexChanged.connect(self.on_selection_change)
+        self.view.TypeDocComboBox.currentIndexChanged.connect(self.on_selection_change)
 
     def on_selection_change(self):
         # Retrieve the data
-        current_text = self.view.TypeDocumentCombo.currentText()
-        custom_id = self.view.TypeDocumentCombo.currentData()
-        positional_index = self.view.TypeDocumentCombo.currentIndex()
+        current_text = self.view.TypeDocComboBox.currentText()
+        custom_id = self.view.TypeDocComboBox.currentData()
+        positional_index = self.view.TypeDocComboBox.currentIndex()
         
         # Display the results
         print(

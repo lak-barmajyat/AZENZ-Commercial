@@ -1,4 +1,3 @@
-
 from datetime import datetime
 from PyQt5.QtCore import QSettings
 from datetime import datetime
@@ -72,8 +71,7 @@ def validate_code_pattern(pattern: str) -> tuple[bool, str]:
         return False, str(e)
 
 
-
-def get_next_document_code(prefix: str, counter: int) -> str:
+def get_next_document_code(document_type_id, cursor) -> str:
     settings = QSettings("YourCompany", "YourApp")
 
     pattern = settings.value(
@@ -81,54 +79,42 @@ def get_next_document_code(prefix: str, counter: int) -> str:
         "{prefix}{number:03}"  # default: FA001
     )
 
+    cursor.execute(
+        """
+        SELECT prefixe, dernier_numero
+        FROM P_numerotation_documents
+        WHERE type_document_id = %s
+        FOR UPDATE
+        """,
+        (document_type_id,)
+    )
+
+    row = cursor.fetchone()
+
+    if not row:
+        raise ValueError(f"No numerotation found for document_type_id={document_type_id}")
+
+    prefixe = row["prefixe"] if isinstance(row, dict) else row[0]
+    dernier_numero = row["dernier_numero"] if isinstance(row, dict) else row[1]
+
+    next_number = dernier_numero + 1
+
+    cursor.execute(
+        """
+        UPDATE P_numerotation_documents
+        SET dernier_numero = %s
+        WHERE type_document_id = %s
+        """,
+        (next_number, document_type_id)
+    )
+
     today = datetime.now()
 
     return pattern.format(
-        prefix=prefix,
-        number=counter,
+        prefix=prefixe,
+        number=next_number,
         YYYY=today.strftime("%Y"),
         YY=today.strftime("%y"),
         MM=today.strftime("%m"),
         DD=today.strftime("%d"),
     )
-
-@with_cursor
-def reset_document_counter(code_type: str = None, year: int = None, cursor=None):
-    """
-    Reset counter for:
-    - specific type (FA, DV...)
-    - or all types if code_type=None
-    - optional specific year (default: current year)
-    """
-
-    target_year = year or datetime.now().year
-
-    if code_type:
-        # جلب id_type_document
-        type_obj = cursor.execute(
-            select(RefTypeDocument).where(
-                RefTypeDocument.code_type == code_type
-            )
-        ).scalar_one_or_none()
-
-        if not type_obj:
-            raise ValueError(f"Type document '{code_type}' not found")
-
-        stmt = (
-            update(Counter)
-            .where(
-                Counter.categorie == "DOCUMENT",
-                Counter.code == code_type,
-                Counter.annee == target_year,
-            )
-            .values(valeur_courante=0)
-        )
-    else:
-        # Reset all types
-        stmt = (
-            update(Counter)
-            .where(Counter.annee == target_year)
-            .values(valeur_courante=0)
-        )
-
-    cursor.execute(stmt)
