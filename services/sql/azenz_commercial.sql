@@ -21,7 +21,9 @@ SET time_zone = "+00:00";
 --
 -- Database: `azenz_commercial`
 --
-
+-- DROP DATABASE IF EXISTS `azenz_commercial`;
+CREATE DATABASE `azenz_commercial` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `azenz_commercial`;
 -- --------------------------------------------------------
 
 --
@@ -609,7 +611,7 @@ CREATE TABLE `p_numerotation_documents` (
   `type_document_id` bigint(20) UNSIGNED NOT NULL,
   `prefixe` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
   `annee` int(10) UNSIGNED NOT NULL,
-  `dernier_numero` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
+  `dernier_numero` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
   `longueur_numero` int(10) UNSIGNED NOT NULL DEFAULT '4',
   `actif` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
