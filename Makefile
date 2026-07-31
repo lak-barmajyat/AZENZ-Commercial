@@ -11,4 +11,4 @@ clean:
 	rm -rf __pycache__ */*__pycache__ .pytest_cache
 
 setdatabase:
-	python ./program/services/sql/create_db.py
+	python ./services/sql/create_db.py
