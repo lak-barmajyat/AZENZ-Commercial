@@ -42,8 +42,15 @@ class NouveauDocumentModel:
         pass
 
     @with_cursor()
-    def fill_type_combo(self, cursor):
+    def get_types_documents(self, cursor=None):
         query = """SELECT id, nom_type_document FROM p_types_documents WHERE domaine = 'VENTE'"""
         cursor.execute(query)
+        result = cursor.fetchall()
+        return result
+
+    @with_cursor()
+    def get_etats_documents(self, type_document_id, cursor=None):
+        query = """SELECT id, nom_statut FROM p_statuts_documents WHERE type_document_id = %s"""
+        cursor.execute(query, (type_document_id,))
         result = cursor.fetchall()
         return result

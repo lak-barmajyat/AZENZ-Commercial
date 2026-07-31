@@ -1,4 +1,5 @@
 from services.sql.db_connection import with_cursor
+from services.ndoc_generator import generate_document_number
 
 
 class VentesController:
@@ -64,26 +65,32 @@ class NouveauDocumentController:
 
     def fill_entries(self):
         # fill type document combobox
-        items = self.model.fill_type_combo()
+        items = self.model.get_types_documents()
         for id, nom_type_document in items:
             self.view.TypeDocComboBox.addItem(nom_type_document, id)
 
         # fill numero document
-        # self.view.NumeroDocEntry.setText(get_next_docu)
+        selected_id = self.view.TypeDocComboBox.currentData()
+        self.view.NumeroDocEntry.setText(generate_document_number(selected_id))
+
+        # fill Etat document combobox
+        items = self.model.get_etats_documents(selected_id)
+        for id, nom_statut in items:
+            self.view.EtatDocComboBox.addItem(nom_statut, id)
 
     def connect_signals(self):
         self.view.TypeDocComboBox.currentIndexChanged.connect(self.on_selection_change)
 
-    def on_selection_change(self):
-        # Retrieve the data
-        current_text = self.view.TypeDocComboBox.currentText()
-        custom_id = self.view.TypeDocComboBox.currentData()
-        positional_index = self.view.TypeDocComboBox.currentIndex()
 
-        # Display the results
-        print(
-            f"Selected: {current_text}\n"
-            f"PyQt Positional Index: {positional_index}\n"
-            f"Your Custom Data Index: {custom_id}"
-        )
+    def on_selection_change(self):
+        # update Numero document based on selected type document
+        selected_id = self.view.TypeDocComboBox.currentData()
+        self.view.NumeroDocEntry.setText(generate_document_number(selected_id))
+
+        # update Etat document combobox based on selected type document
+        self.view.EtatDocComboBox.clear()
+        items = self.model.get_etats_documents(selected_id)
+        for id, nom_statut in items:
+            self.view.EtatDocComboBox.addItem(nom_statut, id)
+        
 

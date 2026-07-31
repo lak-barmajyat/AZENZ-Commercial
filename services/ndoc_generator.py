@@ -3,34 +3,38 @@ from PyQt5.QtCore import QSettings
 from datetime import datetime
 from sqlalchemy import select, update
 from services.sql.db_connection import with_cursor
-import string
+import string, re
 
 @with_cursor()
-def generate_document_number(id_type: str, cursor=None) -> str:
-    query = f"""
-        SELECT dernier_numero
+def generate_document_number(id_type: int, cursor) -> str:
+    query = """
+        SELECT dernier_numero, longueur_numero
         FROM p_numerotation_documents
-        WHERE type_document_id = {id_type}
+        WHERE type_document_id = %s
     """
-    cursor.execute(query)
-    result = cursor.fetchone()
-    result = result[0].reverse()
+    cursor.execute(query, (id_type,))
+    row = cursor.fetchone()
 
-    new_number = ""
+    if row is None:
+        raise ValueError(f"No numbering configuration found for document type {id_type}")
 
-    for c in result:
-        if c.isdigit():
-            new_number.append(c)
-            result.remove(c)
-        else:
-            break
-    new_number.reverse()
-    new_number = int("".join(new_number)) + 1
-    
-    return f"{''.join(result)}{new_number:04d}"
+    dernier_numero, longueur_numero = row
 
-ALLOWED_FIELDS = {"prefix", "YYYY", "YY", "MM", "DD", "number"}
+    if not dernier_numero:
+        return f"{1:0{longueur_numero}d}"
 
+    # Separate the prefix from the numeric suffix.
+    match = re.match(r"^(.*?)(\d+)$", dernier_numero)
+
+    if match:
+        prefix, numeric_part = match.groups()
+        next_number = int(numeric_part) + 1
+    else:
+        # The previous value contains no ending number.
+        prefix = dernier_numero
+        next_number = 1
+
+    return f"{prefix}{next_number:0{longueur_numero}d}"
 
 def validate_code_pattern(pattern: str) -> tuple[bool, str]:
     if not pattern or not pattern.strip():
