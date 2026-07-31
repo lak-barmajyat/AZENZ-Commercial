@@ -21,7 +21,9 @@ SET time_zone = "+00:00";
 --
 -- Database: `azenz_commercial`
 --
-
+-- DROP DATABASE IF EXISTS `azenz_commercial`;
+CREATE DATABASE `azenz_commercial` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `azenz_commercial`;
 -- --------------------------------------------------------
 
 --
