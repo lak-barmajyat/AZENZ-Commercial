@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1118</width>
+    <width>1472</width>
     <height>665</height>
    </rect>
   </property>
@@ -633,7 +633,7 @@ QDateEdit::down-arrow {
             <font>
              <family>Inter 18pt Medium</family>
              <pointsize>-1</pointsize>
-             <weight>63</weight>
+             <weight>62</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -676,7 +676,7 @@ QDateEdit::down-arrow {
             <font>
              <family>Inter 18pt Medium</family>
              <pointsize>-1</pointsize>
-             <weight>63</weight>
+             <weight>62</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -744,7 +744,7 @@ QDateEdit::down-arrow {
             <font>
              <family>Inter 18pt Medium</family>
              <pointsize>-1</pointsize>
-             <weight>63</weight>
+             <weight>62</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -787,7 +787,7 @@ QDateEdit::down-arrow {
             <font>
              <family>Inter 18pt Medium</family>
              <pointsize>-1</pointsize>
-             <weight>63</weight>
+             <weight>62</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -852,7 +852,7 @@ QDateEdit::down-arrow {
             <font>
              <family>Inter 18pt Medium</family>
              <pointsize>-1</pointsize>
-             <weight>63</weight>
+             <weight>62</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -895,12 +895,55 @@ QDateEdit::down-arrow {
             <font>
              <family>Inter 18pt Medium</family>
              <pointsize>-1</pointsize>
-             <weight>63</weight>
+             <weight>62</weight>
              <bold>true</bold>
             </font>
            </property>
            <property name="text">
             <string> Transformer</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../resources/resources.qrc">
+             <normaloff>:/icons/icons/Gtransformer.svg</normaloff>:/icons/icons/Gtransformer.svg</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>16</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
+           </property>
+           <property name="class" stdset="0">
+            <string>secondary</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="ReplaceButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>130</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Inter 18pt Medium</family>
+             <pointsize>-1</pointsize>
+             <weight>62</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Replace</string>
            </property>
            <property name="icon">
             <iconset resource="../../resources/resources.qrc">
@@ -938,7 +981,7 @@ QDateEdit::down-arrow {
             <font>
              <family>Inter 18pt Medium</family>
              <pointsize>-1</pointsize>
-             <weight>63</weight>
+             <weight>62</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -1016,6 +1059,12 @@ QDateEdit::down-arrow {
            </property>
            <item row="1" column="1">
             <widget class="QLineEdit" name="ClientEntry">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>33</height>
+              </size>
+             </property>
              <property name="maximumSize">
               <size>
                <width>16777215</width>
@@ -1034,6 +1083,12 @@ QDateEdit::down-arrow {
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>88</width>
+               <height>33</height>
+              </size>
              </property>
              <property name="maximumSize">
               <size>
@@ -1079,6 +1134,12 @@ QDateEdit::down-arrow {
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
+             <property name="minimumSize">
+              <size>
+               <width>88</width>
+               <height>33</height>
+              </size>
+             </property>
              <property name="maximumSize">
               <size>
                <width>175</width>
@@ -1089,6 +1150,12 @@ QDateEdit::down-arrow {
            </item>
            <item row="1" column="2">
             <widget class="QLineEdit" name="N_DocEntry">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>33</height>
+              </size>
+             </property>
              <property name="maximumSize">
               <size>
                <width>175</width>
@@ -1109,6 +1176,12 @@ QDateEdit::down-arrow {
            </item>
            <item row="1" column="0">
             <widget class="QLineEdit" name="CodeClientEntry">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>33</height>
+              </size>
+             </property>
              <property name="maximumSize">
               <size>
                <width>175</width>
@@ -1163,7 +1236,7 @@ QDateEdit::down-arrow {
              <property name="maximumSize">
               <size>
                <width>175</width>
-               <height>42</height>
+               <height>33</height>
               </size>
              </property>
              <property name="displayFormat">
@@ -1210,7 +1283,7 @@ QDateEdit::down-arrow {
              <property name="maximumSize">
               <size>
                <width>175</width>
-               <height>42</height>
+               <height>33</height>
               </size>
              </property>
              <property name="currentSection">
@@ -1305,6 +1378,38 @@ padding: 10px 30px;
          <string>card</string>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QToolButton" name="RetourButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Retour</string>
+           </property>
+           <property name="class" stdset="0">
+            <string>secondary</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="summarySpacerLeft">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Expanding</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
          <item>
           <widget class="QFrame" name="FrameHT">
            <property name="sizePolicy">
@@ -1508,22 +1613,6 @@ QLabel#ValueSolde {
             </item>
            </layout>
           </widget>
-         </item>
-         <item>
-          <spacer name="summarySpacerLeft">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Expanding</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
          </item>
         </layout>
        </widget>
