@@ -54,3 +54,41 @@ class NouveauDocumentModel:
         cursor.execute(query, (type_document_id,))
         result = cursor.fetchall()
         return result
+    
+    @with_cursor()
+    def get_affaires(self, cursor=None):
+        query = """SELECT id, nom_projet FROM d_projets"""
+        cursor.execute(query)
+        result = cursor.fetchall()
+        return result
+    
+    @with_cursor()
+    def get_new_client_code(self, client, cursor=None):
+        query = """
+            SELECT code_tiers
+            FROM d_tiers
+            WHERE nom_commercial LIKE %s
+            LIMIT 1
+        """
+        cursor.execute(query, (f"%{client}%",))
+        result = cursor.fetchone()
+        if result:
+            code_tier = result[0]
+            return str(code_tier)
+        return ""
+    
+    @with_cursor()
+    def get_clients(self, cursor=None):
+        query = """SELECT id, nom_commercial FROM d_tiers"""
+        cursor.execute(query)
+        items = [nom_commercial for id, nom_commercial in cursor.fetchall()]
+        return items
+
+    @with_cursor()
+    def get_client_by_code(self, code_tier, cursor=None):
+        query = """SELECT nom_commercial FROM d_tiers WHERE code_tiers LIKE %s LIMIT 1"""
+        cursor.execute(query, (f"%{code_tier}%",))
+        result = cursor.fetchone()
+        if result:
+            return result[0]
+        return ""
