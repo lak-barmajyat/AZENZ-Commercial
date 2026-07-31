@@ -87,7 +87,7 @@ class LoginModel:
             return False
 
         query = f"""
-            SELECT mot_de_passe_hash FROM P_utilisateurs
+            SELECT mot_de_passe_hash FROM p_utilisateurs
             WHERE nom_utilisateur = '{username}'
             LIMIT 1
         """
@@ -98,7 +98,7 @@ class LoginModel:
             return False
 
         query = f"""
-            SELECT id FROM P_utilisateurs
+            SELECT id FROM p_utilisateurs
             WHERE LOWER(nom_utilisateur) = LOWER('{username}')
         """
         cursor.execute(query)
