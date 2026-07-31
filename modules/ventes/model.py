@@ -43,7 +43,7 @@ class NouveauDocumentModel:
 
     @with_cursor()
     def fill_type_combo(self, cursor):
-        query = """SELECT id, nom_type_document FROM P_types_documents WHERE domaine = 'VENTE'"""
+        query = """SELECT id, nom_type_document FROM p_types_documents WHERE domaine = 'VENTE'"""
         cursor.execute(query)
         result = cursor.fetchall()
         return result
