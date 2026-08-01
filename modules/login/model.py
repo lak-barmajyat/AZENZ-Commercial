@@ -32,7 +32,6 @@ class LoginModel:
                     charset=os.getenv("DB_CHARSET"),
                     collation=os.getenv("DB_COLLATION"),
                 )
-        print(1, os.getenv("DB_HOST"), os.getenv("DB_PORT"), os.getenv("DB_USER"), os.getenv("DB_PASSWORD"), os.getenv("DB_NAME"))
         cursor = connection.cursor()
         ENCRYPTION_KEY = os.getenv("ENCRYPTION_KEY")
         query = f"""
@@ -73,7 +72,6 @@ class LoginModel:
             os.environ["DB_PASSWORD"] = db_password_encrypted
             os.environ["DB_CHARSET"] = db_charset
             os.environ["DB_COLLATION"] = db_collation
-            print(2, os.getenv("DB_HOST"), os.getenv("DB_PORT"), os.getenv("DB_USER"), os.getenv("DB_PASSWORD"), os.getenv("DB_NAME"))
         except Exception:
             logger.error(f"Database connection failed for {code_societe}")
             return False
@@ -108,4 +106,3 @@ class LoginModel:
 
         return bcrypt.checkpw(password.encode(), pwd_hash)
 
- 
