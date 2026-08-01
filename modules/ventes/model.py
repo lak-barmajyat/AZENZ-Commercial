@@ -92,3 +92,11 @@ class NouveauDocumentModel:
         if result:
             return result[0]
         return ""
+    
+    @with_cursor()
+    def get_document_lines(self, cursor=None):
+        query = """SELECT id,
+                nom_ligne FROM d_lignes_documents"""
+        cursor.execute(query)
+        result = cursor.fetchall()
+        return result

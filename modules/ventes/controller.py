@@ -145,3 +145,7 @@ class NouveauDocumentController:
         completer.popup().setFocusPolicy(Qt.NoFocus)
 
         self.view.ClientcomboBox.setCompleter(completer)
+    
+    def setup_document_lines_widget(self):
+        lines = self.model.get_document_lines()
+        self.view.DocumentLinesWidget.set_lines(lines)

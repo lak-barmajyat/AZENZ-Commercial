@@ -960,7 +960,6 @@ QTabBar:focus {
      </property>
      <property name="currentIndex">
       <number>0</number>
-      <number>0</number>
      </property>
      <property name="iconSize">
       <size>
@@ -989,7 +988,7 @@ QTabBar:focus {
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_6">
        <item>
-        <widget class="DocumentLinesWidget" name="DocumentLines" native="true">
+        <widget class="DocumentLinesWidget" name="DocumentLinesWidget" native="true">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
