@@ -17,8 +17,7 @@ def main():
     logger.info("Application started")
     qss = get_qss()
     app = QApplication(sys.argv)
-    app.login_view = DashboardMenuView()
-    # app.LoginView = LoginView()
+    app.LoginView = LoginView()
     app.setStyleSheet(qss)
 
     # os.environ["DB_HOST"] = "localhost"

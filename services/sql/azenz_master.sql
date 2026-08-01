@@ -61,7 +61,7 @@ CREATE TABLE `societes_connexions` (
 --
 
 INSERT INTO `societes_connexions` (`id`, `code_societe`, `nom_societe`, `description`, `db_host`, `db_port`, `db_name`, `db_user`, `db_password_encrypted`, `db_charset`, `db_collation`, `ssl_active`, `ssl_ca_path`, `connection_timeout`, `logo_url`, `actif`, `est_defaut`, `ordre_affichage`, `date_creation`, `date_modification`, `supprime`, `date_suppression`) VALUES
-(1, 'SOC001', 'Lak Software', NULL, 'localhosth', 3306, 'azenz_commercial', 'root', 0x5c86a761143cc92c93ee82160645399a, 'utf8mb4', 'utf8mb4_general_ci', 0, NULL, 10, NULL, 1, 0, 0, '2026-05-29 10:29:34', '2026-05-31 04:45:55', 0, NULL);
+(1, 'SOC001', 'Lak Software', NULL, 'localhost', 3306, 'azenz_commercial', 'root', 0x5c86a761143cc92c93ee82160645399a, 'utf8mb4', 'utf8mb4_general_ci', 0, NULL, 10, NULL, 1, 0, 0, '2026-05-29 10:29:34', '2026-05-31 04:45:55', 0, NULL);
 
 --
 -- Indexes for dumped tables
