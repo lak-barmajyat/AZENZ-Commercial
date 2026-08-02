@@ -88,9 +88,15 @@ class DocumentLine:
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> DocumentLine:
         """Build a line from a dictionary (e.g. database row or API payload)."""
-        raw_type = data.get("line_type", LineType.PRODUCT.value)
+        raw_type = data.get("line_type", data.get("type_ligne", LineType.PRODUCT.value))
         if isinstance(raw_type, LineType):
             line_type = raw_type
+        elif isinstance(raw_type, int):
+            line_type = {
+                1: LineType.TEXT,
+                2: LineType.SERVICE,
+                3: LineType.SEPARATOR,
+            }.get(raw_type, LineType.PRODUCT)
         else:
             line_type = LineType(str(raw_type))
 
@@ -125,23 +131,23 @@ class DocumentLine:
 
         return cls(
             line_type=line_type,
-            line_id=str(data.get("line_id") or uuid4()),
+            line_id=str(data.get("line_id") or data.get("id") or uuid4()),
             article_id=data.get("article_id"),
-            reference=str(data.get("reference") or ""),
+            reference=str(data.get("reference") or data.get("reference_article") or ""),
             designation=str(data.get("designation") or ""),
-            description=str(data.get("description") or ""),
-            quantity=float(data.get("quantity") or 0),
-            unit=str(data.get("unit") or "Unit"),
+            description=str(data.get("description") or data.get("notes") or ""),
+            quantity=float(data.get("quantity") or data.get("quantite") or 0),
+            unit=str(data.get("unit") or data.get("nom_unite") or "Unit"),
             unit_id=data.get("unit_id"),
-            price_ht=float(data.get("price_ht") or 0),
-            discount_percent=float(data.get("discount_percent") or 0),
-            vat_percent=float(data.get("vat_percent") or 0),
+            price_ht=float(data.get("price_ht") or data.get("prix_unitaire_ht") or 0),
+            discount_percent=float(data.get("discount_percent") or data.get("remise_percentage") or 0),
+            vat_percent=float(data.get("vat_percent") or data.get("tva_percentage") or 0),
             vat_id=data.get("vat_id"),
-            amount_ht=float(data.get("amount_ht") or 0),
-            discount_amount=float(data.get("discount_amount") or 0),
-            total_ht=float(data.get("total_ht") or 0),
-            tax_amount=float(data.get("tax_amount") or 0),
-            total_ttc=float(data.get("total_ttc") or 0),
+            amount_ht=float(data.get("amount_ht") or data.get("montant_ht") or 0),
+            discount_amount=float(data.get("discount_amount") or data.get("montant_remise") or 0),
+            total_ht=float(data.get("total_ht") or data.get("montant_net_ht") or 0),
+            tax_amount=float(data.get("tax_amount") or data.get("montant_tva") or 0),
+            total_ttc=float(data.get("total_ttc") or data.get("montant_ttc") or 0),
             metadata=dict(metadata) if isinstance(metadata, dict) else {},
         )
 

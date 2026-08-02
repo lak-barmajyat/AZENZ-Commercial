@@ -4,7 +4,7 @@ from ui_utils.canvas import create_uniform_icon, get_colored_icon
 from PyQt5.uic import loadUi
 from PyQt5.QtGui import QIcon
 from PyQt5 import QtGui
-from PyQt5.QtCore import QSize
+from PyQt5.QtCore import QSize, Qt
 
 from PyQt5.QtWidgets import (
     QAction, QFrame, QMainWindow, QWidget,
@@ -17,6 +17,11 @@ from ui_utils.widgets.document_lines import (
 
 from modules.ventes.controller import NouveauDocumentController
 from modules.ventes.model import NouveauDocumentModel
+from ui_utils.widgets.document_lines.document_lines_widget import (
+    DocumentLineColumn,
+    ColumnEditorType,
+    LineType,
+)
 
 class NouveauDocumentView(QWidget):
     def __init__(self):
@@ -26,70 +31,118 @@ class NouveauDocumentView(QWidget):
         self.model = NouveauDocumentModel()
         self.controller = NouveauDocumentController(self, self.model)
 
+        self.setup()
+
+    def setup(self):
+        self.setup_table()
+
     def setup_table(self):
         # self.DocumentLines is created automatically from the .ui name=
 
-        # code article
-        # designation
-        # quantite
-        # unit
-        # prix ht
-        # total ttc
-        # prix ttc
-        # taux tva
-        # affaire
-        # marge
-        # depot
-        # remise
-        # 
+        # Reference                 -> code_article <-> article_id
+        # designation               -> designation <-> article_id
+        # quantité                  -> quantite
+        # unité de vente            -> nom_unite <-> unite_id
+        # valeur remise             -> unitaire_remise
+        # percentage remise         -> remise_percentage
+        # marge unitaire ht         -> unitaire_marge
+        # code TVA                  -> code_tva
+        # percentage TVA            -> tva_percentage
+        # Taux TVA                  -> unitaire_tva
+        # Prix ht                   -> prix_unitaire_ht
+        # Prix ttc                  -> prix_unitaire_ttc
+        # Prix net ht               -> prix_unitaire_net_ht
+        # Total TVA                 -> montant_tva
+        # Total ht                  -> montant_ht
+        # Total ttc                 -> montant_ttc
+        # Total net ht              -> montant_net_ht
+        # Remise total              -> montant_remise
+        # Marge total               -> montant_marge
+        # Affaire                   -> nom_projet <-> id_projet
+        # Dépot                     -> nom_depot <-> id_depot
+
+        # now create columns for the DocumentLinesWidget according comment above, the titles must be in French
         columns = [
-            DocumentLineColumn(COL_INDEX, "#", width=36, min_width=32,
+            DocumentLineColumn("_index", "#", width=36, min_width=32,
                             editor_type=ColumnEditorType.READONLY,
                             align=Qt.AlignCenter, editable=False),
-            DocumentLineColumn(COL_TYPE, "TYPE", width=44, min_width=40,
+            DocumentLineColumn("_type", "TYPE", width=44, min_width=40,
                             editor_type=ColumnEditorType.READONLY,
                             align=Qt.AlignCenter, editable=False),
-            DocumentLineColumn("reference", "REFERENCE", width=110, min_width=80),
-            DocumentLineColumn("description", "DESCRIPTION", width=220,
+            DocumentLineColumn("reference_article", "REFERENCE", width=110, min_width=80),
+            DocumentLineColumn("designation", "DESIGNATION", width=220,
                             min_width=120),
-            DocumentLineColumn("quantity", "QTY", width=72, min_width=56,
+            DocumentLineColumn("quantite", "QTY", width=72, min_width=56,
                             editor_type=ColumnEditorType.NUMERIC,
                             align=Qt.AlignRight | Qt.AlignVCenter, decimals=4,
                             editable_for=[LineType.PRODUCT, LineType.SERVICE]),
-            DocumentLineColumn("unit", "UNIT", width=72, min_width=56,
+            DocumentLineColumn("nom_unite", "UNITE", width=72, min_width=56,
                             editor_type=ColumnEditorType.COMBO,
                             align=Qt.AlignCenter,
                             editable_for=[LineType.PRODUCT, LineType.SERVICE]),
-            DocumentLineColumn("price_ht", "PRICE HT", width=96, min_width=72,
+            DocumentLineColumn("unitaire_remise", "REMISE", width=72, min_width=56,
+                            editor_type=ColumnEditorType.NUMERIC,
+                            align=Qt.AlignRight | Qt.AlignVCenter, decimals=2,
+                            editable_for=[LineType.PRODUCT, LineType.SERVICE]),
+            DocumentLineColumn("remise_percentage", "REMISE %", width=72, min_width=56,
+                            editor_type=ColumnEditorType.NUMERIC,
+                            align=Qt.AlignRight | Qt.AlignVCenter, decimals=2,
+                            editable_for=[LineType.PRODUCT, LineType.SERVICE]),
+            DocumentLineColumn("unitaire_marge", "MARGE HT", width=96, min_width=72,
+                            editor_type=ColumnEditorType.COMPUTED,
+                            align=Qt.AlignRight | Qt.AlignVCenter, editable=False),
+            DocumentLineColumn("code_tva", "CODE TVA", width=72, min_width=56,
+                            editor_type=ColumnEditorType.READONLY,
+                            align=Qt.AlignCenter, editable=False),
+            DocumentLineColumn("tva_percentage", "TVA %", width=72, min_width=56,
+                            editor_type=ColumnEditorType.NUMERIC,
+                            align=Qt.AlignRight | Qt.AlignVCenter, decimals=2,
+                            editable_for=[LineType.PRODUCT, LineType.SERVICE]),
+            DocumentLineColumn("unitaire_tva", "TAUX TVA", width=72, min_width=56,
+                            editor_type=ColumnEditorType.NUMERIC,
+                            align=Qt.AlignRight | Qt.AlignVCenter, decimals=2,
+                            editable_for=[LineType.PRODUCT, LineType.SERVICE]),
+            DocumentLineColumn("prix_unitaire_ht", "PRIX HT", width=96, min_width=72,
                             editor_type=ColumnEditorType.NUMERIC,
                             align=Qt.AlignRight | Qt.AlignVCenter,
                             editable_for=[LineType.PRODUCT, LineType.SERVICE]),
-            DocumentLineColumn("discount_percent", "DISC %", width=72, min_width=56,
+            DocumentLineColumn("prix_unitaire_ttc", "PRIX TTC", width=96, min_width=72,
                             editor_type=ColumnEditorType.NUMERIC,
-                            align=Qt.AlignRight | Qt.AlignVCenter, decimals=2,
+                            align=Qt.AlignRight | Qt.AlignVCenter,
                             editable_for=[LineType.PRODUCT, LineType.SERVICE]),
-            DocumentLineColumn("vat_percent", "VAT %", width=72, min_width=56,
+            DocumentLineColumn("prix_unitaire_net_ht", "PRIX NET HT", width=96, min_width=72,
                             editor_type=ColumnEditorType.NUMERIC,
-                            align=Qt.AlignRight | Qt.AlignVCenter, decimals=2,
+                            align=Qt.AlignRight | Qt.AlignVCenter,
                             editable_for=[LineType.PRODUCT, LineType.SERVICE]),
-            DocumentLineColumn("total_ht", "TOTAL HT", width=100, min_width=72,
+            DocumentLineColumn("montant_tva", "TOTAL TVA", width=96, min_width=72,
                             editor_type=ColumnEditorType.COMPUTED,
                             align=Qt.AlignRight | Qt.AlignVCenter, editable=False),
-            DocumentLineColumn(COL_ACTIONS, "ACTIONS", width=52, min_width=48,
+            DocumentLineColumn("montant_ht", "TOTAL HT", width=100, min_width=72,
+                            editor_type=ColumnEditorType.COMPUTED,
+                            align=Qt.AlignRight | Qt.AlignVCenter, editable=False),
+            DocumentLineColumn("montant_ttc", "TOTAL TTC", width=100, min_width=72,
+                            editor_type=ColumnEditorType.COMPUTED,
+                            align=Qt.AlignRight | Qt.AlignVCenter, editable=False),
+            DocumentLineColumn("montant_net_ht", "TOTAL NET HT", width=100, min_width=72,
+                            editor_type=ColumnEditorType.COMPUTED,
+                            align=Qt.AlignRight | Qt.AlignVCenter, editable=False),
+            DocumentLineColumn("montant_remise", "REMISE TOTAL", width=100, min_width=72,
+                            editor_type=ColumnEditorType.COMPUTED,
+                            align=Qt.AlignRight | Qt.AlignVCenter, editable=False),
+            DocumentLineColumn("montant_marge", "MARGE TOTAL", width=100, min_width=72,
+                            editor_type=ColumnEditorType.COMPUTED,
+                            align=Qt.AlignRight | Qt.AlignVCenter, editable=False),
+            DocumentLineColumn("nom_projet", "AFFAIRE", width=120, min_width=80,
+                            editor_type=ColumnEditorType.COMBO,
+                            align=Qt.AlignCenter,
+                            editable_for=[LineType.PRODUCT, LineType.SERVICE]),
+            DocumentLineColumn("nom_depot", "DEPOT", width=120, min_width=80,
+                            editor_type=ColumnEditorType.COMBO,
+                            align=Qt.AlignCenter,
+                            editable_for=[LineType.PRODUCT, LineType.SERVICE]),
+            DocumentLineColumn("_actions", "ACTIONS", width=52, min_width=48,
                             editor_type=ColumnEditorType.READONLY,
                             align=Qt.AlignCenter, editable=False),
         ]
-        self.DocumentLines.set_columns(columns)
-        self.DocumentLines.set_currency_symbol("dh")
-        self.DocumentLines.set_default_vat_percent(20.0)
-        self.DocumentLines.set_units(["Unit", "Kg", "L", "h"])
-        # Connect signals to your controller
-        self.DocumentLines.articleSearchRequested.connect(self.on_article_search)
-        self.DocumentLines.totalsChanged.connect(self.on_totals_changed)
 
-    def on_article_search(self, search_text):
-        self.DocumentLines.set_article_search_results([])
-
-    def on_totals_changed(self):
-        # Implement your totals changed logic here
-        pass
+        self.DocumentLinesWidget.set_columns(columns)

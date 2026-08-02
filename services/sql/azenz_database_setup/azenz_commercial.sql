@@ -19,11 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `azenz_commercial`
---
--- DROP DATABASE IF EXISTS `azenz_commercial`;
-CREATE DATABASE `azenz_commercial` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `azenz_commercial`;
+-- Reusable commercial schema. The installer selects the target database.
 -- --------------------------------------------------------
 
 --
@@ -155,22 +151,25 @@ CREATE TABLE `d_document_lignes` (
   `quantite` decimal(18,4) NOT NULL DEFAULT '0.0000',
   `unite_id` bigint(20) UNSIGNED DEFAULT NULL,
   `tva_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `code_tva` varchar(20) COLLATE utf8mb4_general_ci NOT NULL,
   `tva_percentage` decimal(5,2) NOT NULL DEFAULT '0.00',
   `remise_percentage` decimal(5,2) NOT NULL DEFAULT '0.00',
-  `unitaire_remise` decimal(18,6) NOT NULL DEFAULT '0.000000',
   `prix_unitaire_ht` decimal(18,6) NOT NULL DEFAULT '0.000000',
-  `prix_unitaire_net_ht` decimal(18,6) GENERATED ALWAYS AS ((`prix_unitaire_ht` - ((`prix_unitaire_ht` * `remise_percentage` / 100)))) STORED,
   `prix_unitaire_ttc` decimal(18,6) GENERATED ALWAYS AS ((`prix_unitaire_ht` * (1 + (`tva_percentage` / 100)))) STORED,
+  `prix_unitaire_net_ht` decimal(18,6) GENERATED ALWAYS AS ((`prix_unitaire_ht` - ((`prix_unitaire_ht` * `remise_percentage` / 100)))) STORED,
   `prix_unitaire_net_ttc` decimal(18,6) GENERATED ALWAYS AS ((`prix_unitaire_ttc` - ((`prix_unitaire_ttc` * `remise_percentage` / 100)))) STORED,
-  `unitaire_marge` decimal(18,6) GENERATED ALWAYS AS ((`prix_unitaire_net_ht` - `prix_revient_unitaire`)) STORED,
   `prix_revient_unitaire` decimal(18,6) NOT NULL DEFAULT '0.000000',
   `derniere_prix_achat` decimal(18,6) NOT NULL DEFAULT '0.000000',
+  `unitaire_remise` decimal(18,6) NOT NULL DEFAULT '0.000000',
+  `unitaire_marge` decimal(18,6) GENERATED ALWAYS AS ((`prix_unitaire_net_ht` - `prix_revient_unitaire`)) STORED,
+  `unitaire_tva` decimal(5,2) GENERATED ALWAYS AS (`prix_unitaire_ht` * `tva_percentage` / 100) STORED,
   `montant_ht` decimal(18,6) GENERATED ALWAYS AS ((`quantite` * `prix_unitaire_ht`)) STORED,
-  `montant_net_ht` decimal(18,6) GENERATED ALWAYS AS ((`quantite` * `prix_unitaire_net_ht`)) STORED,
   `montant_ttc` decimal(18,6) GENERATED ALWAYS AS ((`quantite` * `prix_unitaire_ttc`)) STORED,
+  `montant_net_ht` decimal(18,6) GENERATED ALWAYS AS ((`quantite` * `prix_unitaire_net_ht`)) STORED,
   `montant_net_ttc` decimal(18,6) GENERATED ALWAYS AS ((`quantite` * `prix_unitaire_net_ttc`)) STORED,
   `montant_remise` decimal(18,6) GENERATED ALWAYS AS ((`quantite` * `unitaire_remise`)) STORED,
-  `total_marge` decimal(18,6) GENERATED ALWAYS AS ((`quantite` * `unitaire_marge`)) STORED,
+  `montant_marge` decimal(18,6) GENERATED ALWAYS AS ((`quantite` * `unitaire_marge`)) STORED,
+  `montant_tva` decimal(18,6) GENERATED ALWAYS AS ((`quantite` * `unitaire_tva`)) STORED,
   `depot_id` bigint(20) UNSIGNED DEFAULT NULL,
   `impact_stock` tinyint(1) NOT NULL DEFAULT '1',
   `valorise_stock` tinyint(1) NOT NULL DEFAULT '1',
@@ -787,11 +786,261 @@ CREATE TABLE `p_utilisateurs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `p_utilisateurs`
---
 
-INSERT INTO `p_utilisateurs` (`id`, `nom_utilisateur`, `description`, `code_utilisateur`, `email`, `telephone`, `mot_de_passe_hash`, `est_administrateur`, `date_mot_de_passe`, `date_derniere_connexion`, `statut_mot_de_passe`, `actif`, `tentatives_connexion`, `date_blocage`, `image_url`, `cree_par`, `date_creation`, `modifie_par`, `date_modification`, `supprime`, `supprime_par`, `date_suppression`) VALUES
-(1, 'karim', NULL, '', '', NULL, '$2a$12$UKOe61U7etZNxJb76yjLeeodZsdorf.QW738JIJ3hTqtcLyfKmTC2', 0, NULL, NULL, 'ACTIF', 1, 0, NULL, NULL, NULL, '2026-05-30 12:20:45', NULL, '2026-05-30 12:21:54', 0, NULL, NULL);
+
+-- ------------------------------------------------------------------------
+-- Required configuration data
+-- Password for all application users: 12345678 (bcrypt)
+-- ------------------------------------------------------------------------
+
+
+INSERT INTO `p_devises` (`id`, `code_devise`, `nom_devise`, `symbole`, `devise_principale`, `actif`, `cree_par`, `date_creation`, `supprime`) VALUES
+  (1, 'MAD', 'Dirham Marocain', 'DH', 1, 1, NULL, '2026-05-31 10:30:00', 0),
+  (2, 'EUR', 'Euro', '€', 0, 1, NULL, '2026-05-31 10:30:00', 0),
+  (3, 'USD', 'Dollar Américain', '$', 0, 1, NULL, '2026-05-31 10:30:00', 0);
+
+INSERT INTO `p_tvas` (`id`, `code_tva`, `nom_tva`, `taux`, `actif`, `cree_par`, `date_creation`, `supprime`) VALUES
+  (1, 'TVA0', 'Exonéré TVA', 0, 1, NULL, '2026-05-31 10:30:00', 0),
+  (2, 'TVA7', 'TVA réduite 7%', 7, 1, NULL, '2026-05-31 10:30:00', 0),
+  (3, 'TVA10', 'TVA intermédiaire 10%', 10, 1, NULL, '2026-05-31 10:30:00', 0),
+  (4, 'TVA20', 'TVA normale 20%', 20, 1, NULL, '2026-05-31 10:30:00', 0);
+
+INSERT INTO `p_unites` (`id`, `code_unite`, `nom_unite`, `symbole`, `type_unite`, `actif`, `cree_par`, `date_creation`, `supprime`) VALUES
+  (1, 'PCS', 'Pièce', 'pcs', 'QUANTITE', 1, NULL, '2026-08-01 10:00:00', 0),
+  (2, 'KG', 'Kilogramme', 'kg', 'POIDS', 1, NULL, '2026-08-01 10:00:00', 0),
+  (3, 'L', 'Litre', 'L', 'VOLUME', 1, NULL, '2026-08-01 10:00:00', 0),
+  (4, 'H', 'Heure', 'h', 'TEMPS', 1, NULL, '2026-08-01 10:00:00', 0),
+  (5, 'M', 'Mètre', 'm', 'LONGUEUR', 1, NULL, '2026-08-01 10:00:00', 0),
+  (6, 'M2', 'Mètre carré', 'm²', 'SURFACE', 1, NULL, '2026-08-01 10:00:00', 0),
+  (7, 'BOX', 'Boîte', 'boîte', 'QUANTITE', 1, NULL, '2026-08-01 10:00:00', 0),
+  (8, 'PACK', 'Paquet', 'paq', 'QUANTITE', 1, NULL, '2026-08-01 10:00:00', 0),
+  (9, 'DAY', 'Journée', 'j', 'TEMPS', 1, NULL, '2026-08-01 10:00:00', 0),
+  (10, 'ML', 'Millilitre', 'ml', 'VOLUME', 1, NULL, '2026-08-01 10:00:00', 0);
+
+INSERT INTO `p_types_documents` (`id`, `code_type_document`, `nom_type_document`, `domaine`, `sens_stock`, `impacte_stock`, `impacte_reglement`, `actif`) VALUES
+  (1, 'DEV', 'Devis client', 'VENTE', 'AUCUN', 0, 0, 1),
+  (2, 'BCV', 'Bon de commande client', 'VENTE', 'AUCUN', 0, 0, 1),
+  (3, 'BLV', 'Bon de livraison vente', 'VENTE', 'SORTIE', 1, 0, 1),
+  (4, 'FACV', 'Facture vente', 'VENTE', 'AUCUN', 0, 1, 1),
+  (5, 'BCA', 'Bon de commande achat', 'ACHAT', 'AUCUN', 0, 0, 1),
+  (6, 'BRA', 'Bon de réception achat', 'ACHAT', 'ENTREE', 1, 0, 1),
+  (7, 'FACA', 'Facture achat', 'ACHAT', 'AUCUN', 0, 1, 1),
+  (8, 'INV', 'Inventaire stock', 'STOCK', 'AUCUN', 1, 0, 1);
+
+INSERT INTO `p_utilisateurs` (`id`, `nom_utilisateur`, `description`, `code_utilisateur`, `email`, `telephone`, `mot_de_passe_hash`, `est_administrateur`, `date_mot_de_passe`, `statut_mot_de_passe`, `actif`, `tentatives_connexion`, `cree_par`, `date_creation`, `supprime`) VALUES
+  (1, 'admin', 'Administrateur système', 'ADMIN', 'admin@azenz.local', '0600000001', '$2b$12$pxa41rcBz9jrnsM3zIC8C.NU1/YVoMk1mJ6z3NJAOq1UtFDd.XndC', 1, '2026-08-01 10:00:00', 'ACTIF', 1, 0, NULL, '2026-08-01 10:00:00', 0);
+
+INSERT INTO `p_depots` (`id`, `code_depot`, `nom_depot`, `description`, `adresse`, `actif`, `cree_par`, `date_creation`, `supprime`) VALUES
+  (1, 'DEP-PRINCIPAL', 'Dépôt principal', 'Dépôt par défaut', 'Zone industrielle, Casablanca', 1, 1, '2026-08-01 10:00:00', 0);
+
+INSERT INTO `p_modes_reglement` (`id`, `code_mode_reglement`, `nom_mode_reglement`, `type_mode`, `description`, `requiert_banque`, `requiert_numero_piece`, `requiert_date_echeance`, `actif`, `cree_par`, `date_creation`, `supprime`) VALUES
+  (1, 'ESP', 'Espèces', 'ESPECE', 'Paiement en espèces', 0, 0, 0, 1, 1, '2026-08-01 10:00:00', 0),
+  (2, 'CHQ', 'Chèque', 'CHEQUE', 'Paiement par chèque', 1, 1, 1, 1, 1, '2026-08-01 10:00:00', 0),
+  (3, 'VIR', 'Virement bancaire', 'VIREMENT', 'Paiement par virement', 1, 1, 0, 1, 1, '2026-08-01 10:00:00', 0),
+  (4, 'CB', 'Carte bancaire', 'CARTE', 'Paiement par carte', 0, 1, 0, 1, 1, '2026-08-01 10:00:00', 0),
+  (5, 'EFF', 'Effet de commerce', 'EFFET', 'Paiement par effet', 1, 1, 1, 1, 1, '2026-08-01 10:00:00', 0),
+  (6, 'AVO', 'Avoir', 'AVOIR', 'Compensation par avoir', 0, 1, 0, 1, 1, '2026-08-01 10:00:00', 0),
+  (7, 'AUT', 'Autre moyen', 'AUTRE', 'Autre moyen de paiement', 0, 0, 0, 1, 1, '2026-08-01 10:00:00', 0);
+
+INSERT INTO `p_caisses` (`id`, `code_caisse`, `nom_caisse`, `type_caisse`, `banque_nom`, `numero_compte`, `iban`, `rib`, `description`, `actif`, `cree_par`, `date_creation`, `supprime`) VALUES
+  (1, 'CAISSE-PRINCIPALE', 'Caisse principale', 'CAISSE', NULL, NULL, NULL, NULL, 'Caisse par défaut', 1, 1, '2026-08-01 10:00:00', 0);
+
+INSERT INTO `p_roles` (`id`, `name`, `display_name`, `description`, `active`, `date_creation`) VALUES
+  (1, 'admin', 'Administrateur', 'Accès complet', 1, '2026-05-31 10:30:00'),
+  (2, 'manager', 'Manager', 'Gestion commerciale', 1, '2026-05-31 10:30:00'),
+  (3, 'vendeur', 'Vendeur', 'Vente et consultation stock', 1, '2026-05-31 10:30:00'),
+  (4, 'magasinier', 'Magasinier', 'Stock et mouvements', 1, '2026-05-31 10:30:00'),
+  (5, 'comptable', 'Comptable', 'Règlements et reporting', 1, '2026-05-31 10:30:00');
+
+INSERT INTO `p_permissions` (`id`, `code`, `module`, `action`, `description`) VALUES
+  (1, 'clients.view', 'clients', 'view', 'view clients'),
+  (2, 'clients.create', 'clients', 'create', 'create clients'),
+  (3, 'clients.edit', 'clients', 'edit', 'edit clients'),
+  (4, 'clients.delete', 'clients', 'delete', 'delete clients'),
+  (5, 'fournisseurs.view', 'fournisseurs', 'view', 'view fournisseurs'),
+  (6, 'fournisseurs.create', 'fournisseurs', 'create', 'create fournisseurs'),
+  (7, 'fournisseurs.edit', 'fournisseurs', 'edit', 'edit fournisseurs'),
+  (8, 'fournisseurs.delete', 'fournisseurs', 'delete', 'delete fournisseurs'),
+  (9, 'articles.view', 'articles', 'view', 'view articles'),
+  (10, 'articles.create', 'articles', 'create', 'create articles'),
+  (11, 'articles.edit', 'articles', 'edit', 'edit articles'),
+  (12, 'articles.delete', 'articles', 'delete', 'delete articles'),
+  (13, 'ventes.view', 'ventes', 'view', 'view ventes'),
+  (14, 'ventes.create', 'ventes', 'create', 'create ventes'),
+  (15, 'ventes.edit', 'ventes', 'edit', 'edit ventes'),
+  (16, 'ventes.delete', 'ventes', 'delete', 'delete ventes'),
+  (17, 'achats.view', 'achats', 'view', 'view achats'),
+  (18, 'achats.create', 'achats', 'create', 'create achats'),
+  (19, 'achats.edit', 'achats', 'edit', 'edit achats'),
+  (20, 'achats.delete', 'achats', 'delete', 'delete achats'),
+  (21, 'stock.view', 'stock', 'view', 'view stock'),
+  (22, 'stock.create', 'stock', 'create', 'create stock'),
+  (23, 'stock.edit', 'stock', 'edit', 'edit stock'),
+  (24, 'stock.delete', 'stock', 'delete', 'delete stock'),
+  (25, 'reglements.view', 'reglements', 'view', 'view reglements'),
+  (26, 'reglements.create', 'reglements', 'create', 'create reglements'),
+  (27, 'reglements.edit', 'reglements', 'edit', 'edit reglements'),
+  (28, 'reglements.delete', 'reglements', 'delete', 'delete reglements'),
+  (29, 'utilisateurs.view', 'utilisateurs', 'view', 'view utilisateurs'),
+  (30, 'utilisateurs.create', 'utilisateurs', 'create', 'create utilisateurs'),
+  (31, 'utilisateurs.edit', 'utilisateurs', 'edit', 'edit utilisateurs'),
+  (32, 'utilisateurs.delete', 'utilisateurs', 'delete', 'delete utilisateurs'),
+  (33, 'parametres.view', 'parametres', 'view', 'view parametres'),
+  (34, 'parametres.create', 'parametres', 'create', 'create parametres'),
+  (35, 'parametres.edit', 'parametres', 'edit', 'edit parametres'),
+  (36, 'parametres.delete', 'parametres', 'delete', 'delete parametres'),
+  (37, 'rapports.view', 'rapports', 'view', 'view rapports'),
+  (38, 'rapports.create', 'rapports', 'create', 'create rapports'),
+  (39, 'rapports.edit', 'rapports', 'edit', 'edit rapports'),
+  (40, 'rapports.delete', 'rapports', 'delete', 'delete rapports');
+
+INSERT INTO `p_role_permissions` (`role_id`, `permission_id`) VALUES
+  (1, 1),
+  (1, 2),
+  (1, 3),
+  (1, 4),
+  (1, 5),
+  (1, 6),
+  (1, 7),
+  (1, 8),
+  (1, 9),
+  (1, 10),
+  (1, 11),
+  (1, 12),
+  (1, 13),
+  (1, 14),
+  (1, 15),
+  (1, 16),
+  (1, 17),
+  (1, 18),
+  (1, 19),
+  (1, 20),
+  (1, 21),
+  (1, 22),
+  (1, 23),
+  (1, 24),
+  (1, 25),
+  (1, 26),
+  (1, 27),
+  (1, 28),
+  (1, 29),
+  (1, 30),
+  (1, 31),
+  (1, 32),
+  (1, 33),
+  (1, 34),
+  (1, 35),
+  (1, 36),
+  (1, 37),
+  (1, 38),
+  (1, 39),
+  (1, 40),
+  (2, 1),
+  (2, 2),
+  (2, 3),
+  (2, 5),
+  (2, 6),
+  (2, 7),
+  (2, 9),
+  (2, 10),
+  (2, 11),
+  (2, 13),
+  (2, 14),
+  (2, 15),
+  (2, 17),
+  (2, 18),
+  (2, 19),
+  (2, 21),
+  (2, 22),
+  (2, 23),
+  (2, 25),
+  (2, 26),
+  (2, 27),
+  (2, 33),
+  (2, 37),
+  (3, 1),
+  (3, 2),
+  (3, 3),
+  (3, 9),
+  (3, 13),
+  (3, 14),
+  (3, 15),
+  (3, 21),
+  (3, 25),
+  (3, 26),
+  (3, 37),
+  (4, 9),
+  (4, 17),
+  (4, 18),
+  (4, 19),
+  (4, 20),
+  (4, 21),
+  (4, 22),
+  (4, 23),
+  (4, 24),
+  (4, 37),
+  (5, 1),
+  (5, 5),
+  (5, 13),
+  (5, 17),
+  (5, 25),
+  (5, 26),
+  (5, 27),
+  (5, 28),
+  (5, 37),
+  (5, 38),
+  (5, 39),
+  (5, 40);
+
+INSERT INTO `p_users_roles` (`user_id`, `role_id`) VALUES
+  (1, 1);
+
+INSERT INTO `p_statuts_documents` (`id`, `code_statut`, `nom_statut`, `type_document_id`, `ordre_affichage`, `couleur`, `document_verrouille`, `impacte_stock`, `impacte_reglement`, `actif`, `cree_par`, `date_creation`) VALUES
+  (1, 'BROUILLON', 'Brouillon', 1, 1, '#9CA3AF', 0, 0, 0, 1, 1, '2026-05-31 10:30:00'),
+  (2, 'VALIDE', 'Validé', 1, 2, '#2563EB', 1, 0, 0, 1, 1, '2026-05-31 10:30:00'),
+  (3, 'CLOTURE', 'Clôturé', 1, 3, '#16A34A', 1, 1, 1, 1, 1, '2026-05-31 10:30:00'),
+  (4, 'ANNULE', 'Annulé', 1, 4, '#DC2626', 1, 0, 0, 1, 1, '2026-05-31 10:30:00'),
+  (5, 'BROUILLON', 'Brouillon', 2, 1, '#9CA3AF', 0, 0, 0, 1, 1, '2026-05-31 10:30:00'),
+  (6, 'VALIDE', 'Validé', 2, 2, '#2563EB', 1, 0, 0, 1, 1, '2026-05-31 10:30:00'),
+  (7, 'CLOTURE', 'Clôturé', 2, 3, '#16A34A', 1, 1, 1, 1, 1, '2026-05-31 10:30:00'),
+  (8, 'ANNULE', 'Annulé', 2, 4, '#DC2626', 1, 0, 0, 1, 1, '2026-05-31 10:30:00'),
+  (9, 'BROUILLON', 'Brouillon', 3, 1, '#9CA3AF', 0, 0, 0, 1, 1, '2026-05-31 10:30:00'),
+  (10, 'VALIDE', 'Validé', 3, 2, '#2563EB', 1, 0, 0, 1, 1, '2026-05-31 10:30:00'),
+  (11, 'CLOTURE', 'Clôturé', 3, 3, '#16A34A', 1, 1, 1, 1, 1, '2026-05-31 10:30:00'),
+  (12, 'ANNULE', 'Annulé', 3, 4, '#DC2626', 1, 0, 0, 1, 1, '2026-05-31 10:30:00'),
+  (13, 'BROUILLON', 'Brouillon', 4, 1, '#9CA3AF', 0, 0, 0, 1, 1, '2026-05-31 10:30:00'),
+  (14, 'VALIDE', 'Validé', 4, 2, '#2563EB', 1, 0, 0, 1, 1, '2026-05-31 10:30:00'),
+  (15, 'CLOTURE', 'Clôturé', 4, 3, '#16A34A', 1, 1, 1, 1, 1, '2026-05-31 10:30:00'),
+  (16, 'ANNULE', 'Annulé', 4, 4, '#DC2626', 1, 0, 0, 1, 1, '2026-05-31 10:30:00'),
+  (17, 'BROUILLON', 'Brouillon', 5, 1, '#9CA3AF', 0, 0, 0, 1, 1, '2026-05-31 10:30:00'),
+  (18, 'VALIDE', 'Validé', 5, 2, '#2563EB', 1, 0, 0, 1, 1, '2026-05-31 10:30:00'),
+  (19, 'CLOTURE', 'Clôturé', 5, 3, '#16A34A', 1, 1, 1, 1, 1, '2026-05-31 10:30:00'),
+  (20, 'ANNULE', 'Annulé', 5, 4, '#DC2626', 1, 0, 0, 1, 1, '2026-05-31 10:30:00'),
+  (21, 'BROUILLON', 'Brouillon', 6, 1, '#9CA3AF', 0, 0, 0, 1, 1, '2026-05-31 10:30:00'),
+  (22, 'VALIDE', 'Validé', 6, 2, '#2563EB', 1, 0, 0, 1, 1, '2026-05-31 10:30:00'),
+  (23, 'CLOTURE', 'Clôturé', 6, 3, '#16A34A', 1, 1, 1, 1, 1, '2026-05-31 10:30:00'),
+  (24, 'ANNULE', 'Annulé', 6, 4, '#DC2626', 1, 0, 0, 1, 1, '2026-05-31 10:30:00'),
+  (25, 'BROUILLON', 'Brouillon', 7, 1, '#9CA3AF', 0, 0, 0, 1, 1, '2026-05-31 10:30:00'),
+  (26, 'VALIDE', 'Validé', 7, 2, '#2563EB', 1, 0, 0, 1, 1, '2026-05-31 10:30:00'),
+  (27, 'CLOTURE', 'Clôturé', 7, 3, '#16A34A', 1, 1, 1, 1, 1, '2026-05-31 10:30:00'),
+  (28, 'ANNULE', 'Annulé', 7, 4, '#DC2626', 1, 0, 0, 1, 1, '2026-05-31 10:30:00'),
+  (29, 'BROUILLON', 'Brouillon', 8, 1, '#9CA3AF', 0, 0, 0, 1, 1, '2026-05-31 10:30:00'),
+  (30, 'VALIDE', 'Validé', 8, 2, '#2563EB', 1, 0, 0, 1, 1, '2026-05-31 10:30:00'),
+  (31, 'CLOTURE', 'Clôturé', 8, 3, '#16A34A', 1, 1, 1, 1, 1, '2026-05-31 10:30:00'),
+  (32, 'ANNULE', 'Annulé', 8, 4, '#DC2626', 1, 0, 0, 1, 1, '2026-05-31 10:30:00');
+
+INSERT INTO `p_numerotation_documents` (`id`, `type_document_id`, `prefixe`, `annee`, `dernier_numero`, `longueur_numero`, `actif`) VALUES
+  (1, 1, 'DEV-', 2026, 26, 5, 1),
+  (2, 2, 'BCV-', 2026, 27, 5, 1),
+  (3, 3, 'BLV-', 2026, 28, 5, 1),
+  (4, 4, 'FACV-', 2026, 29, 5, 1),
+  (5, 5, 'BCA-', 2026, 30, 5, 1),
+  (6, 6, 'BRA-', 2026, 31, 5, 1),
+  (7, 7, 'FACA-', 2026, 32, 5, 1),
+  (8, 8, 'INV-', 2026, 33, 5, 1);
+
+INSERT INTO `p_informations_societe` (`id`, `raison_sociale`, `nom_commercial`, `activite`, `identifiant_fiscal`, `ice`, `rc`, `patente`, `cnss`, `adresse`, `code_postal`, `ville`, `region`, `pays`, `telephone`, `email`, `site_web`, `logo_url`, `devise_id`, `tva_id`) VALUES
+  (1, 'Azenz Test Company SARL', 'Azenz Test Company', 'Commerce et services', 'IF10000001', '001234567890123', 'RC-CAS-100001', 'PAT-100001', 'CNSS-100001', 'Boulevard Zerktouni, Casablanca', '20000', 'Casablanca', 'Casablanca-Settat', 'Maroc', '0522000000', 'contact@azenz.local', 'https://azenz.local', NULL, 1, 4);
 
 --
 -- Indexes for dumped tables

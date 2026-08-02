@@ -66,6 +66,7 @@ class NouveauDocumentController:
     def setup(self):
         self.fill_entries()
         self.connect_signals()
+        self.setup_document_lines_widget()
 
     def fill_entries(self):
         # fill type document combobox
@@ -147,5 +148,65 @@ class NouveauDocumentController:
         self.view.ClientcomboBox.setCompleter(completer)
     
     def setup_document_lines_widget(self):
-        lines = self.model.get_document_lines()
-        self.view.DocumentLinesWidget.set_lines(lines)
+        widget = self.view.DocumentLinesWidget
+
+        # General behavior
+        widget.set_editable(True)
+        widget.set_read_only(False)
+        widget.set_tax_enabled(True)
+        widget.set_discount_enabled(True)
+
+        # Defaults used when creating new lines
+        widget.set_default_vat_percent(0.0)
+        widget.set_default_unit("Unit")
+        widget.set_vat_rates([0.0, 5.5, 10.0, 20.0])
+
+        # Display formatting
+        widget.set_number_format(decimals=2, thousands_sep=" ")
+
+        # Toolbar configuration. Available action keys are:
+        # "add_text", "barcode_scan", and "check_stock".
+        widget.set_toolbar_visible(True)
+        for action_key in ("add_text", "barcode_scan", "check_stock"):
+            widget.set_toolbar_action_visible(action_key, True)
+            widget.set_toolbar_action_enabled(action_key, True)
+
+        # Article search / placeholder row
+        widget.set_placeholder_text("Search or type article...")
+        widget.set_search_min_chars(1)
+        widget.set_search_debounce_ms(250)
+
+        # Add per-line validation callbacks here when needed.
+        widget.set_validation_rules([])
+
+        currency = self.model.get_currency_symbol()
+        widget.set_currency_symbol(currency)
+
+        units = self.model.get_units()
+        widget.set_units(units)
+
+        lines = self.model.get_document_lines(1)
+        widget.set_lines(lines)
+
+        # Connect signals to your controller
+        widget.articleSearchRequested.connect(self.on_article_search)
+        widget.articleCodeSubmitted.connect(self.on_article_code_submitted)
+        widget.totalsChanged.connect(self.on_totals_changed)
+
+
+    def on_article_search(self, search_text):
+        articles = self.model.search_articles(search_text)
+        self.view.DocumentLinesWidget.set_article_search_results(articles)
+
+    def on_article_code_submitted(self, article_code):
+        article = self.model.get_article_by_code(article_code)
+        if article:
+            self.view.DocumentLinesWidget.apply_article_to_placeholder(article)
+            self.view.DocumentLinesWidget.clear_article_search_results()
+        else:
+            # Keep suggestions available when the entered code is incomplete.
+            self.on_article_search(article_code)
+
+    def on_totals_changed(self):
+        # Implement your totals changed logic here
+        pass
