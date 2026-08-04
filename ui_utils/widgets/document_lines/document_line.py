@@ -133,16 +133,20 @@ class DocumentLine:
             line_type=line_type,
             line_id=str(data.get("line_id") or data.get("id") or uuid4()),
             article_id=data.get("article_id"),
-            reference=str(data.get("reference") or data.get("reference_article") or ""),
+            reference=str(
+                data.get("reference")
+                or data.get("code_article")
+                or ""
+            ),
             designation=str(data.get("designation") or ""),
             description=str(data.get("description") or data.get("notes") or ""),
             quantity=float(data.get("quantity") or data.get("quantite") or 0),
             unit=str(data.get("unit") or data.get("nom_unite") or "Unit"),
-            unit_id=data.get("unit_id"),
+            unit_id=data.get("unite_id") or data.get("unit_id"),
             price_ht=float(data.get("price_ht") or data.get("prix_unitaire_ht") or 0),
             discount_percent=float(data.get("discount_percent") or data.get("remise_percentage") or 0),
             vat_percent=float(data.get("vat_percent") or data.get("tva_percentage") or 0),
-            vat_id=data.get("vat_id"),
+            vat_id=data.get("tva_id") or data.get("vat_id"),
             amount_ht=float(data.get("amount_ht") or data.get("montant_ht") or 0),
             discount_amount=float(data.get("discount_amount") or data.get("montant_remise") or 0),
             total_ht=float(data.get("total_ht") or data.get("montant_net_ht") or 0),

@@ -104,9 +104,6 @@ def main() -> int:
     widget.lineSelected.connect(
         lambda line, row: print(f"[signal] lineSelected row={row} ref={line.reference!r}")
     )
-    widget.articleSearchRequested.connect(
-        lambda text: print(f"[signal] articleSearchRequested: {text!r}")
-    )
     widget.barcodeScanRequested.connect(
         lambda: print("[signal] barcodeScanRequested")
     )
@@ -114,27 +111,31 @@ def main() -> int:
         lambda: print("[signal] stockCheckRequested")
     )
 
-    # Simulate a database: the controller searches by reference OR name and
-    # pushes matches back into the widget's placeholder search box.
+    # Simulate a provider whose keys match the configured/default columns.
     fake_catalog = [
-        {"article_id": 101, "reference": "LAP-001", "designation": "MacBook Pro 14\"", "price_ht": 1999.0, "unit": "pcs", "vat_percent": 20.0},
-        {"article_id": 102, "reference": "LAP-002", "designation": "Dell XPS 13", "price_ht": 1299.0, "unit": "pcs", "vat_percent": 20.0},
-        {"article_id": 103, "reference": "ACC-052", "designation": "USB-C Hub", "price_ht": 89.0, "unit": "pcs", "vat_percent": 20.0},
-        {"article_id": 104, "reference": "ACC-101", "designation": "Wireless Mouse", "price_ht": 29.9, "unit": "pcs", "vat_percent": 20.0},
-        {"article_id": 105, "reference": "SRV-001", "designation": "On-site support hour", "price_ht": 75.0, "unit": "h", "vat_percent": 20.0},
+        {"article_id": 101, "reference": "LAP-001", "description": "MacBook Pro 14\"", "price_ht": 1999.0, "unit": "pcs", "vat_percent": 20.0},
+        {"article_id": 102, "reference": "LAP-002", "description": "Dell XPS 13", "price_ht": 1299.0, "unit": "pcs", "vat_percent": 20.0},
+        {"article_id": 103, "reference": "ACC-052", "description": "USB-C Hub", "price_ht": 89.0, "unit": "pcs", "vat_percent": 20.0},
+        {"article_id": 104, "reference": "ACC-101", "description": "Wireless Mouse", "price_ht": 29.9, "unit": "pcs", "vat_percent": 20.0},
+        {"article_id": 105, "reference": "SRV-001", "description": "On-site support hour", "price_ht": 75.0, "unit": "h", "vat_percent": 20.0},
     ]
 
-    def fake_article_search(query: str) -> None:
+    def fake_article_search(query: str) -> list[dict]:
         q = query.lower().strip()
         matches = [
             a
             for a in fake_catalog
-            if q in a["reference"].lower() or q in a["designation"].lower()
+            if q in a["reference"].lower() or q in a["description"].lower()
         ]
         print(f"[db] search {query!r} -> {len(matches)} result(s)")
-        widget.set_article_search_results(matches)
+        return matches
 
-    widget.articleSearchRequested.connect(fake_article_search)
+    for column_name in ("reference", "description"):
+        widget.set_list(
+            column_name,
+            fake_article_search,
+            display_fields=("reference", "description"),
+        )
 
     buttons = QHBoxLayout()
     validate_btn = QPushButton("Validate")

@@ -100,7 +100,7 @@ class NouveauDocumentController:
     def connect_signals(self):
         self.view.TypeDocComboBox.currentIndexChanged.connect(self.on_type_selection_change)
         self.view.ClientcomboBox.currentIndexChanged.connect(self.on_client_selection_change)
-        self.view.ClientcomboBox.lineEdit().textChanged.connect(self.on_client_selection_change)
+        self.view.ClientcomboBox.lineEdit().editingFinished.connect(self.on_client_selection_change)
         # update client name when I hit enter or tab in the code client entry
         self.view.CodeClientEntry.editingFinished.connect(self.on_code_client_change)
 
@@ -120,18 +120,17 @@ class NouveauDocumentController:
         client = self.view.ClientcomboBox.currentText()
         code_tier = self.model.get_new_client_code(client)
         self.view.CodeClientEntry.setText(code_tier)
+        self.on_code_client_change()
     
     def on_code_client_change(self):
         code_tier = self.view.CodeClientEntry.text()
         client_name = self.model.get_client_by_code(code_tier)
         self.view.ClientcomboBox.setCurrentText(client_name)
+        client = self.view.ClientcomboBox.currentText()
+        code_tier = self.model.get_new_client_code(client)
+        self.view.CodeClientEntry.setText(code_tier)
 
     def fill_client_searchable_combo(self):
-        self.view.ClientcomboBox.setEditable(True)
-        self.view.ClientcomboBox.setInsertPolicy(self.view.ClientcomboBox.NoInsert)
-        self.view.ClientcomboBox.setCurrentIndex(-1)
-        self.view.ClientcomboBox.lineEdit().setPlaceholderText("Type to search...")
-
         items = self.model.get_clients()
 
         model = QStringListModel(items, self.view.ClientcomboBox)
@@ -188,24 +187,9 @@ class NouveauDocumentController:
         lines = self.model.get_document_lines(1)
         widget.set_lines(lines)
 
-        # Connect signals to your controller
-        widget.articleSearchRequested.connect(self.on_article_search)
-        widget.articleCodeSubmitted.connect(self.on_article_code_submitted)
+        # Connect document-level signals to your controller. Searchable column
+        # providers are configured by the view through widget.set_list().
         widget.totalsChanged.connect(self.on_totals_changed)
-
-
-    def on_article_search(self, search_text):
-        articles = self.model.search_articles(search_text)
-        self.view.DocumentLinesWidget.set_article_search_results(articles)
-
-    def on_article_code_submitted(self, article_code):
-        article = self.model.get_article_by_code(article_code)
-        if article:
-            self.view.DocumentLinesWidget.apply_article_to_placeholder(article)
-            self.view.DocumentLinesWidget.clear_article_search_results()
-        else:
-            # Keep suggestions available when the entered code is incomplete.
-            self.on_article_search(article_code)
 
     def on_totals_changed(self):
         # Implement your totals changed logic here

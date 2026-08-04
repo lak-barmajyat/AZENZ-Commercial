@@ -11,7 +11,7 @@ class VentesModel:
         query = """
             SELECT dd.`id`,
             ptd.nom_type_document,
-            dd.`reference_document`,
+            dd.`code_document`,
             dt.nom_commercial,
             dd.`utilisateur_id`,
             dd.`vendeur_id`,
@@ -98,20 +98,21 @@ class NouveauDocumentModel:
         """Return active articles matching a code or designation."""
         query = """
             SELECT
-                a.id,
-                a.code_article,
+                a.id AS article_id,
+                a.code_article AS code_article,
                 a.designation,
-                a.description,
-                a.type_article,
+                a.description AS notes,
                 a.unite_id,
                 u.nom_unite,
-                a.prix_vente_ht,
-                a.prix_vente_ttc,
-                a.prix_net,
+                a.prix_vente_ht AS prix_unitaire_ht,
+                a.prix_vente_ttc AS prix_unitaire_ttc,
+                a.prix_net AS prix_unitaire_net_ht,
                 a.prix_revient_unitaire,
                 a.tva_id,
                 t.code_tva,
-                t.taux
+                t.taux AS tva_percentage,
+                (a.prix_vente_ht * COALESCE(t.taux, 0) / 100) AS unitaire_tva,
+                (a.prix_vente_ht - COALESCE(a.prix_revient_unitaire, 0)) AS unitaire_marge
             FROM d_articles AS a
             LEFT JOIN p_unites AS u ON u.id = a.unite_id
             LEFT JOIN p_tvas AS t ON t.id = a.tva_id
@@ -132,20 +133,21 @@ class NouveauDocumentModel:
         """Return one active article using an exact, case-insensitive code."""
         query = """
             SELECT
-                a.id,
-                a.code_article,
+                a.id AS article_id,
+                a.code_article AS code_article,
                 a.designation,
-                a.description,
-                a.type_article,
+                a.description AS notes,
                 a.unite_id,
                 u.nom_unite,
-                a.prix_vente_ht,
-                a.prix_vente_ttc,
-                a.prix_net,
+                a.prix_vente_ht AS prix_unitaire_ht,
+                a.prix_vente_ttc AS prix_unitaire_ttc,
+                a.prix_net AS prix_unitaire_net_ht,
                 a.prix_revient_unitaire,
                 a.tva_id,
                 t.code_tva,
-                t.taux
+                t.taux AS tva_percentage,
+                (a.prix_vente_ht * COALESCE(t.taux, 0) / 100) AS unitaire_tva,
+                (a.prix_vente_ht - COALESCE(a.prix_revient_unitaire, 0)) AS unitaire_marge
             FROM d_articles AS a
             LEFT JOIN p_unites AS u ON u.id = a.unite_id
             LEFT JOIN p_tvas AS t ON t.id = a.tva_id
@@ -164,7 +166,7 @@ class NouveauDocumentModel:
                 dl.id,
                 dl.type_ligne,
                 dl.article_id,
-                dl.reference_article,
+                dl.code_article,
                 dl.designation,
                 dl.notes,
                 dl.quantite,
@@ -180,10 +182,13 @@ class NouveauDocumentModel:
                 dl.unitaire_tva,
                 dl.prix_unitaire_ttc,
                 dl.prix_unitaire_net_ht,
+                dl.prix_unitaire_net_ttc,
+                dl.prix_revient_unitaire,
                 dl.montant_tva,
                 dl.montant_ht,
                 dl.montant_ttc,
                 dl.montant_net_ht,
+                dl.montant_net_ttc,
                 dl.montant_remise,
                 dl.montant_marge,
                 p.nom_projet,
@@ -191,14 +196,10 @@ class NouveauDocumentModel:
                 d.nom_depot,
                 dl.depot_id
             FROM d_document_lignes AS dl
-            LEFT JOIN p_unites AS u
-                ON u.id = dl.unite_id
-            LEFT JOIN d_projets AS p
-                ON p.id = dl.projet_id
-            LEFT JOIN p_depots AS d
-                ON d.id = dl.depot_id
-            WHERE dl.document_id = %s
-            AND dl.supprime = 0
+            LEFT JOIN p_unites AS u ON u.id = dl.unite_id
+            LEFT JOIN d_projets AS p ON p.id = dl.projet_id
+            LEFT JOIN p_depots AS d ON d.id = dl.depot_id
+            WHERE dl.document_id = %s AND dl.supprime = 0
             ORDER BY dl.numero_ligne ASC
         """
 
@@ -223,3 +224,40 @@ class NouveauDocumentModel:
         result = cursor.fetchall()
         units = [symbole for symbole in result]
         return units
+
+    @with_cursor(dictionary=True)
+    def search_units(self, search_text: str, cursor=None):
+        query = """
+            SELECT id AS unite_id, nom_unite
+            FROM p_unites
+            WHERE nom_unite LIKE %s OR symbole LIKE %s
+            ORDER BY nom_unite
+            LIMIT 20
+        """
+        pattern = f"%{search_text.strip()}%"
+        cursor.execute(query, (pattern, pattern))
+        return cursor.fetchall()
+
+    @with_cursor(dictionary=True)
+    def search_projects(self, search_text: str, cursor=None):
+        query = """
+            SELECT id AS projet_id, nom_projet
+            FROM d_projets
+            WHERE nom_projet LIKE %s
+            ORDER BY nom_projet
+            LIMIT 20
+        """
+        cursor.execute(query, (f"%{search_text.strip()}%",))
+        return cursor.fetchall()
+
+    @with_cursor(dictionary=True)
+    def search_depots(self, search_text: str, cursor=None):
+        query = """
+            SELECT id AS depot_id, nom_depot
+            FROM p_depots
+            WHERE nom_depot LIKE %s
+            ORDER BY nom_depot
+            LIMIT 20
+        """
+        cursor.execute(query, (f"%{search_text.strip()}%",))
+        return cursor.fetchall()

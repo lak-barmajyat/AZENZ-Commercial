@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from PyQt5.QtCore import QAbstractTableModel, QModelIndex, Qt
+from PyQt5.QtCore import QAbstractTableModel, QModelIndex, Qt, pyqtSignal
 from PyQt5.QtGui import QColor
 
 from .calculations import recalculate_line
@@ -31,12 +31,14 @@ COLOR_PRIMARY = QColor("#0051DF")
 # canonical DocumentLine attributes. This keeps calculations working while
 # allowing application-specific columns to use the real database names.
 DATABASE_FIELD_MAP = {
-    "reference_article": "reference",
+    "code_article": "reference",
     "notes": "description",
     "quantite": "quantity",
+    "unite_id": "unit_id",
     "nom_unite": "unit",
     "prix_unitaire_ht": "price_ht",
     "remise_percentage": "discount_percent",
+    "tva_id": "vat_id",
     "tva_percentage": "vat_percent",
     "montant_ht": "amount_ht",
     "montant_remise": "discount_amount",
@@ -62,6 +64,8 @@ class DocumentLinesModel(QAbstractTableModel):
     exported as business data.
     """
 
+    cellEdited = pyqtSignal(int, str)
+
     def __init__(self, parent=None) -> None:
         super().__init__(parent)
         self._columns: list[DocumentLineColumn] = []
@@ -75,6 +79,8 @@ class DocumentLinesModel(QAbstractTableModel):
         self._units: list[str] = ["Unit"]
         self._placeholder_text = "Search or type article..."
         self._recalculating = False
+        self._searchable_columns: set[str] = set()
+        self._display_fields: dict[str, str] = {}
         self._placeholder_state: dict[str, str] = {
             "reference": "",
             "description": "",
@@ -109,6 +115,14 @@ class DocumentLinesModel(QAbstractTableModel):
 
     def set_tax_enabled(self, enabled: bool) -> None:
         self._tax_enabled = enabled
+        self._refresh_all_rows()
+
+    def set_searchable_columns(self, column_names) -> None:
+        self._searchable_columns = set(column_names)
+
+    def set_display_fields(self, display_fields: dict[str, str]) -> None:
+        """Set optional label fields used for ID-backed column display."""
+        self._display_fields = dict(display_fields)
         self._refresh_all_rows()
 
     def set_discount_enabled(self, enabled: bool) -> None:
@@ -199,7 +213,10 @@ class DocumentLinesModel(QAbstractTableModel):
 
         if self.is_placeholder_row(row):
             canonical_key = DATABASE_FIELD_MAP.get(column.key, column.key)
-            if canonical_key in ("reference", "description", "designation"):
+            if (
+                canonical_key in ("reference", "description", "designation")
+                or column.key in self._searchable_columns
+            ):
                 return flags | Qt.ItemIsEditable
             return flags
 
@@ -311,6 +328,12 @@ class DocumentLinesModel(QAbstractTableModel):
                     return "—" if role == Qt.DisplayRole else ""
                 return "" if role == Qt.DisplayRole else None
 
+            display_field = self._display_fields.get(column.key)
+            if role == Qt.DisplayRole and display_field:
+                display_value = self._raw_value(line, display_field)
+                if display_value not in (None, ""):
+                    return str(display_value)
+
             if column.editor_type == ColumnEditorType.COMPUTED:
                 return self._format_computed(line, column.key)
             if column.editor_type == ColumnEditorType.NUMERIC:
@@ -346,7 +369,8 @@ class DocumentLinesModel(QAbstractTableModel):
         if not self._assign_value(line, column.key, value):
             return False
 
-        self._recalculate_and_emit(row)
+        self.cellEdited.emit(row, column.key)
+        self._emit_row_changed(row)
         return True
 
     # ------------------------------------------------------------------ #
@@ -360,8 +384,15 @@ class DocumentLinesModel(QAbstractTableModel):
                 recalculate_line(line)
         self.endResetModel()
 
-    def add_line(self, line: DocumentLine, *, position: int | None = None) -> int:
-        recalculate_line(line)
+    def add_line(
+        self,
+        line: DocumentLine,
+        *,
+        position: int | None = None,
+        recalculate: bool = True,
+    ) -> int:
+        if recalculate:
+            recalculate_line(line)
         if position is None or position < 0 or position > len(self._lines):
             position = len(self._lines)
         self.beginInsertRows(QModelIndex(), position, position)
@@ -377,10 +408,13 @@ class DocumentLinesModel(QAbstractTableModel):
         self.endRemoveRows()
         return removed
 
-    def update_line(self, row: int, line: DocumentLine) -> None:
+    def update_line(
+        self, row: int, line: DocumentLine, *, recalculate: bool = True
+    ) -> None:
         if self.is_placeholder_row(row) or not (0 <= row < len(self._lines)):
             return
-        recalculate_line(line)
+        if recalculate:
+            recalculate_line(line)
         self._lines[row] = line
         left = self.index(row, 0)
         right = self.index(row, self.columnCount() - 1)
@@ -455,6 +489,10 @@ class DocumentLinesModel(QAbstractTableModel):
         return line.metadata.get(key)
 
     def _format_computed(self, line: DocumentLine, key: str) -> str:
+        if key in line.metadata:
+            return format_number(
+                line.metadata[key], self._number_decimals, self._thousands_sep
+            )
         key = DATABASE_FIELD_MAP.get(key, key)
         mapping = {
             "amount_ht": line.amount_ht,
@@ -488,13 +526,29 @@ class DocumentLinesModel(QAbstractTableModel):
             "total_ht",
             "tax_amount",
             "total_ttc",
+            "unitaire_remise",
+            "unitaire_marge",
+            "unitaire_tva",
+            "prix_unitaire_ttc",
+            "prix_unitaire_net_ht",
+            "prix_unitaire_net_ttc",
+            "prix_revient_unitaire",
+            "derniere_prix_achat",
+            "montant_net_ttc",
+            "montant_marge",
         }
         if key in numeric_keys:
             try:
                 converted: Any = float(value)
             except (TypeError, ValueError):
                 converted = 0.0
-        elif key == "article_id" or key == "unit_id" or key == "vat_id":
+        elif key in (
+            "article_id",
+            "unit_id",
+            "vat_id",
+            "projet_id",
+            "depot_id",
+        ):
             try:
                 converted = int(value) if value not in (None, "") else None
             except (TypeError, ValueError):
@@ -584,6 +638,13 @@ class DocumentLinesModel(QAbstractTableModel):
             self.dataChanged.emit(left, right)
         finally:
             self._recalculating = False
+
+    def _emit_row_changed(self, row: int) -> None:
+        if not (0 <= row < len(self._lines)) or self.columnCount() == 0:
+            return
+        self.dataChanged.emit(
+            self.index(row, 0), self.index(row, self.columnCount() - 1)
+        )
 
     def _refresh_all_rows(self) -> None:
         if self.rowCount() == 0:

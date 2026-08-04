@@ -145,7 +145,7 @@ CREATE TABLE `d_document_lignes` (
   `document_id` bigint(20) UNSIGNED NOT NULL,
   `numero_ligne` int(10) UNSIGNED NOT NULL,
   `article_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `reference_article` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `code_article` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `designation` varchar(500) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `type_ligne` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
   `quantite` decimal(18,4) NOT NULL DEFAULT '0.0000',

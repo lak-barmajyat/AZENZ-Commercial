@@ -121,24 +121,19 @@ class DocumentLinesComboDelegate(QStyledItemDelegate):
 
 
 class DocumentLinesSearchDelegate(QStyledItemDelegate):
-    """Description/reference column editor with article search on the placeholder row.
+    """Description/reference editor with article search on product rows.
 
-    On the placeholder/search row the editor is a :class:`QLineEdit` backed by a
-    :class:`QCompleter`. It works like a live database search box:
+    A configured cell uses a :class:`QLineEdit` backed by a
+    :class:`QCompleter`. It works with either static or provider-backed lists:
 
-    * ``searchTextChanged(str)`` fires as the user types so the controller can
-      query the database (by reference or article name).
-    * The controller pushes results back into the shared completer model.
-    * ``articleChosen(int)`` fires with the index of the selected suggestion
-      (into the controller-provided results list) when the user picks one.
-
-    On normal product/text rows the editor is a plain single-line text editor,
-    so in-place editing keeps working everywhere else.
+    * ``searchTextChanged`` identifies the text, row, and configured column.
+    * The widget resolves the configured provider and updates the completer.
+    * ``itemChosen`` identifies the result, row, and destination column.
     """
 
-    searchTextChanged = pyqtSignal(str)
-    searchSubmitted = pyqtSignal(str)
-    articleChosen = pyqtSignal(int)
+    searchTextChanged = pyqtSignal(str, int, str)
+    itemChosen = pyqtSignal(int, int, str)
+    searchSubmittedForRow = pyqtSignal(str, int, str)
 
     def __init__(self, parent: QWidget | None = None) -> None:
         super().__init__(parent)
@@ -166,7 +161,13 @@ class DocumentLinesSearchDelegate(QStyledItemDelegate):
         editor = QLineEdit(parent)
         editor.setFrame(False)
 
-        if bool(index.data(IsPlaceholderRole)):
+        # This delegate is installed only on columns configured by set_list().
+        row = index.row()
+        column_key = index.model().columns()[index.column()].key
+        if bool(index.data(IsPlaceholderRole)) or index.data(LineTypeRole) not in (
+            LineType.TEXT,
+            LineType.SEPARATOR,
+        ):
             editor.setPlaceholderText(self._placeholder_text)
             editor.setClearButtonEnabled(True)
             if self._completer_model is not None:
@@ -179,11 +180,19 @@ class DocumentLinesSearchDelegate(QStyledItemDelegate):
                 completer.setPopup(popup)
                 editor.setCompleter(completer)
                 completer.activated[QModelIndex].connect(
-                    lambda idx, ed=editor: self._on_completion_activated(ed, idx)
+                    lambda idx, ed=editor, source_row=row, key=column_key: self._on_completion_activated(
+                        ed, idx, source_row, key
+                    )
                 )
-            editor.textEdited.connect(self.searchTextChanged.emit)
+            editor.textEdited.connect(
+                lambda text, source_row=row, key=column_key: self.searchTextChanged.emit(
+                    text, source_row, key
+                )
+            )
             editor.editingFinished.connect(
-                lambda ed=editor: self._on_editing_finished(ed)
+                lambda ed=editor, source_row=row, key=column_key: self._on_editing_finished(
+                    ed, source_row, key
+                )
             )
             self._active_editor = editor
             editor.destroyed.connect(self._on_editor_destroyed)
@@ -199,7 +208,9 @@ class DocumentLinesSearchDelegate(QStyledItemDelegate):
             model.setData(index, editor.text(), Qt.EditRole)
 
     # -- internal ------------------------------------------------------ #
-    def _on_completion_activated(self, editor: QLineEdit, proxy_index) -> None:
+    def _on_completion_activated(
+        self, editor: QLineEdit, proxy_index, edited_row: int, column_key: str
+    ) -> None:
         # ``QCompleter`` exposes the source row via the completion model role.
         completer = editor.completer()
         source_row = proxy_index.row()
@@ -209,16 +220,18 @@ class DocumentLinesSearchDelegate(QStyledItemDelegate):
                 source_row = mapped.row()
         # Cancel the in-cell edit so the raw text is not written to the line,
         # then let the widget turn the chosen article into a product line.
-        editor.setProperty("articleChosen", True)
+        editor.setProperty("listItemChosen", True)
         self.closeEditor.emit(editor, QAbstractItemDelegate.RevertModelCache)
-        self.articleChosen.emit(source_row)
+        self.itemChosen.emit(source_row, edited_row, column_key)
 
-    def _on_editing_finished(self, editor: QLineEdit) -> None:
-        if editor.property("articleChosen"):
+    def _on_editing_finished(
+        self, editor: QLineEdit, edited_row: int, column_key: str
+    ) -> None:
+        if editor.property("listItemChosen"):
             return
         text = editor.text().strip()
         if text:
-            self.searchSubmitted.emit(text)
+            self.searchSubmittedForRow.emit(text, edited_row, column_key)
 
     def _on_editor_destroyed(self, *_args) -> None:
         self._active_editor = None
