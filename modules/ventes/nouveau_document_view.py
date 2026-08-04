@@ -11,8 +11,13 @@ from PyQt5.QtWidgets import (
     QLineEdit, QToolButton, QHeaderView)
 
 from ui_utils.widgets.document_lines import (
+    COL_ACTIONS,
+    COL_INDEX,
+    COL_TYPE,
+    ColumnEditorType,
+    DocumentLineColumn,
     DocumentLinesWidget,
-    default_columns,
+    LineType,
 )
 
 from modules.ventes.controller import NouveauDocumentController
@@ -29,8 +34,8 @@ class NouveauDocumentView(QWidget):
         loadUi("modules/ventes/nouveau_document.ui", self)
 
         self.model = NouveauDocumentModel()
-        self.setup()
         self.controller = NouveauDocumentController(self, self.model)
+        self.setup()
 
     def setup(self):
         self.setup_table()

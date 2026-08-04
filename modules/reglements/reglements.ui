@@ -1,0 +1,661 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1472</width>
+    <height>665</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Liste des Règlements</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#Background{background-color:#f8f9fb;}QFrame[class=&quot;card&quot;]{background-color:#fff;border:1px solid #c3c5d8;border-radius:8px;}QLabel{color:#191c1e;background:transparent;border:none;font-family:&quot;Inter&quot;,&quot;Tajawal&quot;;font-size:13px;font-weight:500;}QLabel[class=&quot;field-label&quot;]{color:#434655;font-size:11px;font-weight:600;text-transform:uppercase;}QLineEdit,QDateEdit,QComboBox{background-color:#fff;border:1px solid #c3c5d8;border-radius:4px;padding:6px 12px;color:#191c1e;font-family:&quot;Inter&quot;,&quot;Tajawal&quot;;font-size:13px;font-weight:400;selection-background-color:#0051df;selection-color:#fff;}QLineEdit:focus,QDateEdit:focus,QComboBox:focus{border:1px solid #0051df;background-color:#f8f9fb;}QComboBox::drop-down,QDateEdit::drop-down{border:none;width:24px;}QComboBox::down-arrow,QDateEdit::down-arrow{image:url(:/icons/icons/down_arrow.svg);}QToolButton[class=&quot;primary&quot;]{background-color:#2f6bff;color:#fff;border:none;border-radius:4px;padding:8px 16px;font-family:&quot;Inter&quot;,&quot;Tajawal&quot;;font-size:12px;font-weight:500;}QToolButton[class=&quot;primary&quot;]:hover{background-color:#0051df;}QToolButton[class=&quot;primary&quot;]:focus{border:2px solid #00174d;}QToolButton[class=&quot;secondary&quot;]{background-color:transparent;color:#434655;border:none;border-radius:4px;padding:8px 12px;font-family:&quot;Inter&quot;,&quot;Tajawal&quot;;font-size:12px;font-weight:500;}QToolButton[class=&quot;secondary&quot;]:hover{background-color:#edeef0;color:#191c1e;}QToolButton[class=&quot;danger&quot;]{background-color:transparent;color:#434655;border:none;border-radius:4px;padding:8px 12px;font-family:&quot;Inter&quot;,&quot;Tajawal&quot;;font-size:12px;font-weight:500;}QToolButton[class=&quot;danger&quot;]:hover{background-color:#ffdad6;color:#ba1a1a;}QFrame[class=&quot;summary&quot;]{background-color:#fff;border:1px solid #c3c5d8;border-radius:4px;}QLabel[class=&quot;summary-title&quot;]{color:#434655;font-size:11px;font-weight:600;}QLabel[class=&quot;summary-value&quot;]{color:#191c1e;font-size:20px;font-weight:600;}QLabel#ValueMontantRegle{color:#0051df;}QLabel#ValueResteRegler{color:#ba1a1a;}</string>
+  </property>
+  <layout class="QVBoxLayout" name="mainLayout">
+   <property name="spacing">
+    <number>16</number>
+   </property>
+   <property name="leftMargin">
+    <number>16</number>
+   </property>
+   <property name="topMargin">
+    <number>16</number>
+   </property>
+   <property name="rightMargin">
+    <number>16</number>
+   </property>
+   <property name="bottomMargin">
+    <number>16</number>
+   </property>
+   <item>
+    <widget class="QWidget" name="Background" native="true">
+     <layout class="QVBoxLayout" name="contentLayout">
+      <property name="spacing">
+       <number>16</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QFrame" name="ToolbarFrame">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>58</height>
+         </size>
+        </property>
+        <property name="class" stdset="0">
+         <string>card</string>
+        </property>
+        <layout class="QHBoxLayout" name="toolbarLayout">
+         <property name="spacing">
+          <number>8</number>
+         </property>
+         <property name="leftMargin">
+          <number>8</number>
+         </property>
+         <property name="topMargin">
+          <number>8</number>
+         </property>
+         <property name="rightMargin">
+          <number>8</number>
+         </property>
+         <property name="bottomMargin">
+          <number>8</number>
+         </property>
+         <item>
+          <widget class="QToolButton" name="NouveauReglementButton">
+           <property name="minimumSize">
+            <size>
+             <width>112</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="text">
+            <string> Nouveau</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../resources/resources.qrc">
+             <normaloff>:/icons/icons/Wnouveau.svg</normaloff>:/icons/icons/Wnouveau.svg</iconset>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
+           </property>
+           <property name="class" stdset="0">
+            <string>primary</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="ModifierReglementButton">
+           <property name="minimumSize">
+            <size>
+             <width>102</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="text">
+            <string> Modifier</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../resources/resources.qrc">
+             <normaloff>:/icons/icons/Gmodifier.svg</normaloff>:/icons/icons/Gmodifier.svg</iconset>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
+           </property>
+           <property name="class" stdset="0">
+            <string>secondary</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="SupprimerReglementButton">
+           <property name="minimumSize">
+            <size>
+             <width>112</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="text">
+            <string> Supprimer</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../resources/resources.qrc">
+             <normaloff>:/icons/icons/Rsupprimer.svg</normaloff>:/icons/icons/Rsupprimer.svg</iconset>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
+           </property>
+           <property name="class" stdset="0">
+            <string>danger</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="ImprimerReglementButton">
+           <property name="minimumSize">
+            <size>
+             <width>102</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="text">
+            <string> Imprimer</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../resources/resources.qrc">
+             <normaloff>:/icons/icons/Gimprimer.svg</normaloff>:/icons/icons/Gimprimer.svg</iconset>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
+           </property>
+           <property name="class" stdset="0">
+            <string>secondary</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="ExcelReglementButton">
+           <property name="minimumSize">
+            <size>
+             <width>86</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="text">
+            <string> Excel</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../resources/resources.qrc">
+             <normaloff>:/icons/icons/Gexcel.svg</normaloff>:/icons/icons/Gexcel.svg</iconset>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextBesideIcon</enum>
+           </property>
+           <property name="class" stdset="0">
+            <string>secondary</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="toolbarSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="FiltersFrame">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>139</height>
+         </size>
+        </property>
+        <property name="class" stdset="0">
+         <string>card</string>
+        </property>
+        <layout class="QVBoxLayout" name="filtersLayout">
+         <property name="spacing">
+          <number>10</number>
+         </property>
+         <property name="leftMargin">
+          <number>16</number>
+         </property>
+         <property name="topMargin">
+          <number>16</number>
+         </property>
+         <property name="rightMargin">
+          <number>16</number>
+         </property>
+         <property name="bottomMargin">
+          <number>12</number>
+         </property>
+         <item>
+          <layout class="QGridLayout" name="filtersGrid">
+           <property name="horizontalSpacing">
+            <number>12</number>
+           </property>
+           <property name="verticalSpacing">
+            <number>6</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QLabel" name="ClientCodeLabel">
+             <property name="text">
+              <string>CODE CLIENT</string>
+             </property>
+             <property name="class" stdset="0">
+              <string>field-label</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLineEdit" name="CodeClientEntry">
+             <property name="minimumSize">
+              <size>
+               <width>120</width>
+               <height>32</height>
+              </size>
+             </property>
+             <property name="placeholderText">
+              <string>ex: CL00122</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="ClientLabel">
+             <property name="text">
+              <string>CLIENT</string>
+             </property>
+             <property name="class" stdset="0">
+              <string>field-label</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="ClientEntry">
+             <property name="minimumSize">
+              <size>
+               <width>220</width>
+               <height>32</height>
+              </size>
+             </property>
+             <property name="placeholderText">
+              <string>Rechercher un client...</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QLabel" name="NumeroReglementLabel">
+             <property name="text">
+              <string>N° RÈGLEMENT</string>
+             </property>
+             <property name="class" stdset="0">
+              <string>field-label</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QLineEdit" name="NumeroReglementEntry">
+             <property name="minimumSize">
+              <size>
+               <width>150</width>
+               <height>32</height>
+              </size>
+             </property>
+             <property name="placeholderText">
+              <string>EX: REG-2023-...</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="3" colspan="2">
+            <widget class="QLabel" name="PeriodeLabel">
+             <property name="text">
+              <string>PÉRIODE</string>
+             </property>
+             <property name="class" stdset="0">
+              <string>field-label</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="3">
+            <widget class="QDateEdit" name="DateDebutEdit">
+             <property name="minimumSize">
+              <size>
+               <width>132</width>
+               <height>32</height>
+              </size>
+             </property>
+             <property name="displayFormat">
+              <string>dd/MM/yyyy</string>
+             </property>
+             <property name="calendarPopup">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="4">
+            <widget class="QDateEdit" name="DateFinEdit">
+             <property name="minimumSize">
+              <size>
+               <width>132</width>
+               <height>32</height>
+              </size>
+             </property>
+             <property name="displayFormat">
+              <string>dd/MM/yyyy</string>
+             </property>
+             <property name="calendarPopup">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="5">
+            <widget class="QLabel" name="ModeLabel">
+             <property name="text">
+              <string>MODE</string>
+             </property>
+             <property name="class" stdset="0">
+              <string>field-label</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="5">
+            <widget class="QComboBox" name="ModeReglementComboBox">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>32</height>
+              </size>
+             </property>
+             <item>
+              <property name="text">
+               <string>Tous les modes</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Espèces</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Chèque</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Virement</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Carte</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="0" column="6">
+            <widget class="QLabel" name="StatutLabel">
+             <property name="text">
+              <string>STATUT</string>
+             </property>
+             <property name="class" stdset="0">
+              <string>field-label</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="6">
+            <widget class="QComboBox" name="StatutComboBox">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>32</height>
+              </size>
+             </property>
+             <item>
+              <property name="text">
+               <string>Tous les statuts</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Validé</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Brouillon</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Annulé</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="filterButtonLayout">
+           <item>
+            <spacer name="filterSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QToolButton" name="FiltrerButton">
+             <property name="minimumSize">
+              <size>
+               <width>112</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="text">
+              <string> Filtrer</string>
+             </property>
+             <property name="icon">
+              <iconset resource="../../resources/resources.qrc">
+               <normaloff>:/icons/icons/Wfiltrer.svg</normaloff>:/icons/icons/Wfiltrer.svg</iconset>
+             </property>
+             <property name="toolButtonStyle">
+              <enum>Qt::ToolButtonTextBesideIcon</enum>
+             </property>
+             <property name="class" stdset="0">
+              <string>primary</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="ERPDataTable" name="ReglementsTable" native="true"/>
+      </item>
+      <item>
+       <widget class="QFrame" name="SummaryFrame">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>88</height>
+         </size>
+        </property>
+        <property name="class" stdset="0">
+         <string>card</string>
+        </property>
+        <layout class="QHBoxLayout" name="summaryLayout">
+         <property name="spacing">
+          <number>12</number>
+         </property>
+         <item>
+          <spacer name="summaryLeftSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QFrame" name="FrameNbReglements">
+           <property name="minimumSize">
+            <size>
+             <width>132</width>
+             <height>62</height>
+            </size>
+           </property>
+           <property name="class" stdset="0">
+            <string>summary</string>
+           </property>
+           <layout class="QVBoxLayout" name="nbSummaryLayout">
+            <item>
+             <widget class="QLabel" name="NbReglementsTitle">
+              <property name="text">
+               <string>NB RÈGLEMENTS</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="class" stdset="0">
+               <string>summary-title</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="ValueNbReglements">
+              <property name="text">
+               <string>0</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="class" stdset="0">
+               <string>summary-value</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="FrameMontantRegle">
+           <property name="minimumSize">
+            <size>
+             <width>156</width>
+             <height>62</height>
+            </size>
+           </property>
+           <property name="class" stdset="0">
+            <string>summary</string>
+           </property>
+           <layout class="QVBoxLayout" name="paidSummaryLayout">
+            <item>
+             <widget class="QLabel" name="MontantRegleTitle">
+              <property name="text">
+               <string>MONTANT RÉGLÉ</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="class" stdset="0">
+               <string>summary-title</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="ValueMontantRegle">
+              <property name="text">
+               <string>0.00</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="class" stdset="0">
+               <string>summary-value</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="FrameResteRegler">
+           <property name="minimumSize">
+            <size>
+             <width>156</width>
+             <height>62</height>
+            </size>
+           </property>
+           <property name="class" stdset="0">
+            <string>summary</string>
+           </property>
+           <layout class="QVBoxLayout" name="balanceSummaryLayout">
+            <item>
+             <widget class="QLabel" name="ResteReglerTitle">
+              <property name="text">
+               <string>RESTE À RÉGLER</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="class" stdset="0">
+               <string>summary-title</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="ValueResteRegler">
+              <property name="text">
+               <string>0.00</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="class" stdset="0">
+               <string>summary-value</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ERPDataTable</class>
+   <extends>QWidget</extends>
+   <header>ui_utils.widgets.erp_data_table.erp_data_table</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../../resources/resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
