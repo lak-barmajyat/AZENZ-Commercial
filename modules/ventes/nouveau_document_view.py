@@ -29,13 +29,14 @@ from ui_utils.widgets.document_lines.document_lines_widget import (
 )
 
 class NouveauDocumentView(QWidget):
-    def __init__(self):
+    def __init__(self, document_id=None):
         super().__init__()
         loadUi("modules/ventes/nouveau_document.ui", self)
 
         self.model = NouveauDocumentModel()
-        self.controller = NouveauDocumentController(self, self.model)
+        self.controller = NouveauDocumentController(self, self.model, document_id=document_id)
         self.setup()
+        self.show()
 
     def setup(self):
         self.setup_table()

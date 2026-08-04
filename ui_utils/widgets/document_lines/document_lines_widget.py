@@ -1466,10 +1466,24 @@ class DocumentLinesWidget(QWidget):
         self._model.clear_placeholder()
 
     def eventFilter(self, obj, event) -> bool:  # noqa: N802
-        if obj is self._view.viewport() and event.type() == QEvent.KeyPress:
-            if event.key() in (Qt.Key_Return, Qt.Key_Enter):
-                index = self._view.currentIndex()
-                if index.isValid() and self._model.is_placeholder_row(index.row()):
-                    self._on_placeholder_add_clicked("add_from_placeholder", index.row())
+        if obj is self._view.viewport():
+            if event.type() == QEvent.Wheel and event.modifiers() & Qt.ShiftModifier:
+                delta = event.angleDelta().y() or event.angleDelta().x()
+                if delta == 0:
+                    delta = event.pixelDelta().y() or event.pixelDelta().x()
+                if delta:
+                    scrollbar = self._view.horizontalScrollBar()
+                    step = max(1, scrollbar.singleStep())
+                    scroll_amount = int(round((delta / 120.0) * step))
+                    if scroll_amount == 0:
+                        scroll_amount = 1 if delta > 0 else -1
+                    scrollbar.setValue(scrollbar.value() - scroll_amount)
+                    event.accept()
                     return True
+            if event.type() == QEvent.KeyPress:
+                if event.key() in (Qt.Key_Return, Qt.Key_Enter):
+                    index = self._view.currentIndex()
+                    if index.isValid() and self._model.is_placeholder_row(index.row()):
+                        self._on_placeholder_add_clicked("add_from_placeholder", index.row())
+                        return True
         return super().eventFilter(obj, event)

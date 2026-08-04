@@ -39,12 +39,16 @@ from PyQt5.QtCore import (
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import (
     QAbstractItemView,
+    QCheckBox,
+    QDialog,
+    QDialogButtonBox,
     QFrame,
     QHBoxLayout,
     QHeaderView,
     QLabel,
     QMenu,
     QPushButton,
+    QScrollArea,
     QTableView,
     QVBoxLayout,
     QWidget,
@@ -60,6 +64,69 @@ from .erp_table_column import ERPTableColumn
 from .erp_table_model import RawValueRole, ERPTableModel
 
 _QSS_PATH = os.path.join(os.path.dirname(__file__), "erp_table_styles.qss")
+
+
+class _ColumnSettingsDialog(QDialog):
+    def __init__(self, columns, parent=None) -> None:
+        super().__init__(parent)
+        self.setObjectName("Background")
+        self.setWindowTitle("Visible columns")
+        self.setModal(True)
+        self.resize(340, 430)
+        self._checks: dict[str, QCheckBox] = {}
+        self._defaults = {column.key: column.visible for column in columns}
+
+        layout = QVBoxLayout(self)
+        scroll = QScrollArea(self)
+        scroll.setWidgetResizable(True)
+        content = QWidget(scroll)
+        content_layout = QVBoxLayout(content)
+        content_layout.setContentsMargins(8, 8, 8, 8)
+        for column in columns:
+            check = QCheckBox(column.title or column.key, content)
+            check.setChecked(column.visible)
+            check.setToolTip(column.key)
+            self._checks[column.key] = check
+            content_layout.addWidget(check)
+        content_layout.addStretch(1)
+        scroll.setWidget(content)
+        layout.addWidget(scroll)
+
+        quick_actions = QHBoxLayout()
+        select_all = QPushButton("Select all", self)
+        select_all.setProperty("class", "outlined")
+        select_all.clicked.connect(lambda: self._set_all_checked(True))
+        quick_actions.addWidget(select_all)
+        quick_actions.addStretch(1)
+        layout.addLayout(quick_actions)
+
+        buttons = QDialogButtonBox(
+            QDialogButtonBox.Reset
+            | QDialogButtonBox.Apply
+            | QDialogButtonBox.Cancel,
+            parent=self,
+        )
+        buttons.rejected.connect(self.reject)
+        reset_button = buttons.button(QDialogButtonBox.Reset)
+        apply_button = buttons.button(QDialogButtonBox.Apply)
+        cancel_button = buttons.button(QDialogButtonBox.Cancel)
+        reset_button.setProperty("class", "outlined")
+        apply_button.setProperty("class", "primary")
+        cancel_button.setProperty("class", "outlined")
+        apply_button.clicked.connect(self.accept)
+        reset_button.clicked.connect(self._reset_defaults)
+        layout.addWidget(buttons)
+
+    def selected_columns(self) -> list[str]:
+        return [key for key, check in self._checks.items() if check.isChecked()]
+
+    def _set_all_checked(self, checked: bool) -> None:
+        for check in self._checks.values():
+            check.setChecked(checked)
+
+    def _reset_defaults(self) -> None:
+        for key, check in self._checks.items():
+            check.setChecked(self._defaults.get(key, True))
 
 
 class ERPDataTable(QWidget):
@@ -91,6 +158,7 @@ class ERPDataTable(QWidget):
     def __init__(self, parent: QWidget | None = None) -> None:
         super().__init__(parent)
 
+        self._all_columns: list[ERPTableColumn] = []
         self._columns: list[ERPTableColumn] = []
         # Checkbox selection column is shown first by default.
         self._checkbox_enabled = True
@@ -188,11 +256,43 @@ class ERPDataTable(QWidget):
     # ====================================================================== #
     def set_columns(self, columns: list[ERPTableColumn]) -> None:
         """Define the columns. Can be called any time after construction."""
-        self._columns = [c for c in columns if c.visible]
+        self._all_columns = list(columns)
+        self._columns = [c for c in self._all_columns if c.visible]
         self._model.set_columns(self._columns)
         self._configure_header()
         self._configure_delegates()
         self._update_empty_state()
+
+    def visible_columns(self) -> list[str]:
+        return [column.key for column in self._all_columns if column.visible]
+
+    def set_visible_columns(self, column_names: list[str] | tuple[str, ...]) -> None:
+        visible = set(column_names)
+        known = {column.key for column in self._all_columns}
+        unknown = visible - known
+        if unknown:
+            raise ValueError(
+                f"Unknown column(s): {', '.join(sorted(unknown))}"
+            )
+        if not visible:
+            raise ValueError("At least one column must remain visible")
+
+        for column in self._all_columns:
+            column.visible = column.key in visible
+        self._columns = [c for c in self._all_columns if c.visible]
+        self._model.set_columns(self._columns)
+        self._configure_header()
+        self._configure_delegates()
+
+    def show_column(self, key: str) -> None:
+        visible = set(self.visible_columns())
+        visible.add(key)
+        self.set_visible_columns(tuple(visible))
+
+    def hide_column(self, key: str) -> None:
+        visible = set(self.visible_columns())
+        visible.discard(key)
+        self.set_visible_columns(tuple(visible))
 
     def set_rows(self, rows: list[dict]) -> None:
         """Replace all rows."""
@@ -306,6 +406,11 @@ class ERPDataTable(QWidget):
     def set_refresh_button_icon(self, icon: QIcon) -> None:
         self._refresh_button.setIcon(icon)
 
+    def open_column_settings(self) -> None:
+        dialog = _ColumnSettingsDialog(self._all_columns, self)
+        if dialog.exec_() == QDialog.Accepted:
+            self.set_visible_columns(dialog.selected_columns())
+
     def row_count(self) -> int:
         """Total number of rows currently in the table."""
         return self._model.rowCount()
@@ -374,10 +479,17 @@ class ERPDataTable(QWidget):
         self._refresh_button.setFocusPolicy(Qt.NoFocus)
         self._refresh_button.clicked.connect(self.refreshRequested.emit)
 
+        self._columns_button = QPushButton("Colonnes…", footer)
+        self._columns_button.setObjectName("ERPTableColumnsButton")
+        self._columns_button.setCursor(Qt.PointingHandCursor)
+        self._columns_button.setFocusPolicy(Qt.NoFocus)
+        self._columns_button.clicked.connect(self.open_column_settings)
+
         footer_layout.addWidget(self._rows_label)
         footer_layout.addWidget(self._selected_label)
         footer_layout.addStretch(1)
         footer_layout.addWidget(self._refresh_button)
+        footer_layout.addWidget(self._columns_button)
         return footer
 
     def _update_footer(self, *args: Any) -> None:
@@ -478,18 +590,31 @@ class ERPDataTable(QWidget):
     # Checkbox / multi-selection helpers                                 #
     # ------------------------------------------------------------------ #
     def eventFilter(self, obj, event):  # noqa: N802 (Qt naming)
-        if (
-            obj is self._view.viewport()
-            and event.type() == QEvent.MouseButtonPress
-            and event.button() == Qt.LeftButton
-            and self._model.column_offset()
-        ):
-            proxy_index = self._view.indexAt(event.pos())
-            if proxy_index.isValid() and proxy_index.column() == 0:
-                # Toggle just this row's selection (like a checkbox), without
-                # clearing the rest of the multi-selection.
-                self._toggle_row_selection(proxy_index.row())
-                return True
+        if obj is self._view.viewport():
+            if event.type() == QEvent.Wheel and event.modifiers() & Qt.ShiftModifier:
+                delta = event.angleDelta().y() or event.angleDelta().x()
+                if delta == 0:
+                    delta = event.pixelDelta().y() or event.pixelDelta().x()
+                if delta:
+                    scrollbar = self._view.horizontalScrollBar()
+                    step = max(1, scrollbar.singleStep())
+                    scroll_amount = int(round((delta / 120.0) * step))
+                    if scroll_amount == 0:
+                        scroll_amount = 1 if delta > 0 else -1
+                    scrollbar.setValue(scrollbar.value() - scroll_amount)
+                    event.accept()
+                    return True
+            if (
+                event.type() == QEvent.MouseButtonPress
+                and event.button() == Qt.LeftButton
+                and self._model.column_offset()
+            ):
+                proxy_index = self._view.indexAt(event.pos())
+                if proxy_index.isValid() and proxy_index.column() == 0:
+                    # Toggle just this row's selection (like a checkbox), without
+                    # clearing the rest of the multi-selection.
+                    self._toggle_row_selection(proxy_index.row())
+                    return True
         return super().eventFilter(obj, event)
 
     def _row_selection(self, proxy_row: int) -> QItemSelection:

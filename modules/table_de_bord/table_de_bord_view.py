@@ -131,6 +131,8 @@ class DashboardMenuView(QMainWindow):
         reglements_widget = ReglementsView()
         nouveau_reglement_widget = NouveauReglementView()
 
+        self.nouveau_document_widget = nouveau_document_widget
+
         # Add pages and connect buttons
         add_page(self.DashboardButton, dashboard_widget)
 
@@ -157,6 +159,12 @@ class DashboardMenuView(QMainWindow):
         add_page(self.SettingsButton)
 
         self.WidgetStock.setCurrentWidget(dashboard_widget)
+
+    def open_document(self, document_id):
+        if not document_id:
+            return
+        self.nouveau_document_widget.controller.load_document(document_id)
+        self.WidgetStock.setCurrentWidget(self.nouveau_document_widget)
 
     def setup_signals(self):
         self.toggleSidebarButton.clicked.connect(self.toggle_sidebar)

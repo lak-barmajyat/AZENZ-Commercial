@@ -2,7 +2,7 @@ from services.sql.db_connection import with_cursor
 from services.ndoc_generator import generate_document_number
 from datetime import datetime
 
-from PyQt5.QtCore import QStringListModel, Qt
+from PyQt5.QtCore import QStringListModel, Qt, QDate
 from PyQt5.QtWidgets import QCompleter
 
 
@@ -13,53 +13,21 @@ class VentesController:
 
         self.setup()
 
-    def load_ventes(self):
-        print("Loading ventes documents...")
-        result = self.model.get_ventes_documents()
-        print(f"Loaded {result} ventes documents.")
-        for row in result:
-            (
-                id,
-                nom_type_document,
-                reference_document,
-                nom_commercial,
-                utilisateur_id,
-                vendeur_id,
-                montant_net_ht,
-                montant_net_ttc,
-                montant_restant,
-                nom_statut,
-                document_valide,
-                statut_icon,
-                document_cloture,
-                date_document,
-                transforme,
-            ) = row
-            self.view.VentesTable.append_row(
-                {
-                    "id": id,
-                    "utilisateur_id": utilisateur_id,
-                    "vendeur_id": vendeur_id,
-                    "type": nom_type_document,
-                    "numero_document": reference_document,
-                    "icon": statut_icon,
-                    "date": date_document,
-                    "client": nom_commercial,
-                    "total_ht": montant_net_ht,
-                    "total_ttc": montant_net_ttc,
-                    "solde": montant_restant,
-                    "statut": nom_statut,
-                }
-            )
-
     def setup(self):
         self.load_ventes()
 
+    def load_ventes(self):
+        result = self.model.get_ventes_documents()
+        for row in result:
+            self.view.VentesTable.append_row(
+                row
+            )
 
 class NouveauDocumentController:
-    def __init__(self, view, model):
+    def __init__(self, view, model, document_id=None):
         self.view = view
         self.model = model
+        self.document_id = document_id
 
         self.setup()
 
@@ -67,6 +35,8 @@ class NouveauDocumentController:
         self.fill_entries()
         self.connect_signals()
         self.setup_document_lines_widget()
+        if self.document_id:
+            self.load_document(self.document_id)
 
     def fill_entries(self):
         # fill type document combobox
@@ -184,12 +154,39 @@ class NouveauDocumentController:
         units = self.model.get_units()
         widget.set_units(units)
 
-        lines = self.model.get_document_lines(1)
+        lines = self.model.get_document_lines(self.document_id)
         widget.set_lines(lines)
 
         # Connect document-level signals to your controller. Searchable column
         # providers are configured by the view through widget.set_list().
         widget.totalsChanged.connect(self.on_totals_changed)
+
+    def load_document(self, document_id):
+        document = self.model.get_document(document_id)
+        if not document:
+            return
+
+        self.view.TypeDocComboBox.setCurrentIndex(
+            self.view.TypeDocComboBox.findData(document.get("type_document_id"))
+        )
+        self.view.NumeroDocEntry.setText(document.get("code_document") or "")
+        if document.get("autre_code_document") is not None:
+            self.view.ReferenceEntry.setText(document.get("autre_code_document") or "")
+        self.view.EtatDocComboBox.setCurrentIndex(
+            self.view.EtatDocComboBox.findData(document.get("statut_document_id"))
+        )
+        self.view.AffairecomboBox.setCurrentIndex(-1)
+        date_value = document.get("date_document")
+        if hasattr(date_value, "date"):
+            date_value = date_value.date()
+        if date_value:
+            self.view.DateDocDateEdit.setDate(QDate(date_value.year, date_value.month, date_value.day))
+        else:
+            self.view.DateDocDateEdit.setDate(QDate.currentDate())
+        self.view.ClientcomboBox.setCurrentText(document.get("tier_name") or "")
+        self.view.CodeClientEntry.setText(document.get("tier_code") or "")
+
+        self.view.DocumentLinesWidget.set_lines(self.model.get_document_lines(document_id))
 
     def on_totals_changed(self):
         # Implement your totals changed logic here

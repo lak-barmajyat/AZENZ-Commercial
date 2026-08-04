@@ -995,6 +995,21 @@
        </sizepolicy>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
        <item>
         <widget class="QFrame" name="TopBarFrame">
          <property name="sizePolicy">
@@ -1006,7 +1021,7 @@
          <property name="minimumSize">
           <size>
            <width>0</width>
-           <height>44</height>
+           <height>0</height>
           </size>
          </property>
          <property name="frameShape">
@@ -1016,6 +1031,21 @@
           <enum>QFrame::Raised</enum>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <property name="spacing">
+           <number>6</number>
+          </property>
+          <property name="leftMargin">
+           <number>6</number>
+          </property>
+          <property name="topMargin">
+           <number>6</number>
+          </property>
+          <property name="rightMargin">
+           <number>6</number>
+          </property>
+          <property name="bottomMargin">
+           <number>6</number>
+          </property>
           <item>
            <widget class="QLineEdit" name="RechercherEntry">
             <property name="minimumSize">
@@ -1052,8 +1082,8 @@
             </property>
             <property name="maximumSize">
              <size>
-              <width>42</width>
-              <height>42</height>
+              <width>35</width>
+              <height>35</height>
              </size>
             </property>
             <property name="text">
@@ -1065,8 +1095,8 @@
             </property>
             <property name="iconSize">
              <size>
-              <width>30</width>
-              <height>30</height>
+              <width>25</width>
+              <height>25</height>
              </size>
             </property>
             <property name="class" stdset="0">

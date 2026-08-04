@@ -3,7 +3,8 @@ import unittest
 
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
-from PyQt5.QtCore import QSettings, Qt
+from PyQt5.QtCore import QPoint, QPointF, QSettings, Qt
+from PyQt5.QtGui import QWheelEvent
 from PyQt5.QtWidgets import QApplication
 
 from ui_utils.widgets.document_lines import (
@@ -115,6 +116,39 @@ class ColumnSettingsTests(unittest.TestCase):
         self.assertNotIn("tva_percentage", widget.visible_columns())
         widget.set_tax_enabled(True)
         self.assertIn("tva_percentage", widget.visible_columns())
+
+    def test_shift_wheel_scrolls_horizontally(self):
+        widget = DocumentLinesWidget()
+        widget.set_columns(
+            [
+                DocumentLineColumn(f"column_{index}", f"Column {index}", width=220)
+                for index in range(6)
+            ]
+        )
+        widget.resize(360, 240)
+        widget.show()
+        self.application.processEvents()
+
+        scrollbar = widget.view().horizontalScrollBar()
+        self.assertGreater(scrollbar.maximum(), 0)
+
+        scrollbar.setValue(scrollbar.maximum() // 2)
+        start_value = scrollbar.value()
+        position = widget.view().viewport().rect().center()
+        wheel_event = QWheelEvent(
+            QPointF(position),
+            QPointF(position),
+            QPoint(),
+            QPoint(0, 120),
+            0,
+            Qt.Vertical,
+            Qt.NoButton,
+            Qt.ShiftModifier,
+        )
+
+        QApplication.sendEvent(widget.view().viewport(), wheel_event)
+
+        self.assertLess(scrollbar.value(), start_value)
 
 
 if __name__ == "__main__":
