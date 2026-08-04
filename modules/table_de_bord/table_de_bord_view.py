@@ -13,6 +13,7 @@ from PyQt5.QtWidgets import (
 from modules.ventes.ventes_view import VentesView
 from modules.ventes.nouveau_document_view import NouveauDocumentView
 from modules.achats.achats_view import AchatsView
+from modules.reglements.reglements_view import ReglementsView, NouveauReglementView
 
 from modules.table_de_bord.model import DashboardModel
 from modules.table_de_bord.controller import DashboardController
@@ -127,6 +128,8 @@ class DashboardMenuView(QMainWindow):
         ventes_widget = VentesView()
         achats_widget = AchatsView()
         nouveau_document_widget = NouveauDocumentView()
+        reglements_widget = ReglementsView()
+        nouveau_reglement_widget = NouveauReglementView()
 
         # Add pages and connect buttons
         add_page(self.DashboardButton, dashboard_widget)
@@ -145,7 +148,12 @@ class DashboardMenuView(QMainWindow):
         # Achats
         add_page(self.AchatsButton, achats_widget)
         add_page(self.StockageButton)
-        add_page(self.PaiementsButton)
+        add_page(self.PaiementsButton, reglements_widget)
+        add_page(dashboard_widget.AjouterPaimentButton, nouveau_reglement_widget)
+        add_page(reglements_widget.NouveauReglementButton, nouveau_reglement_widget)
+        nouveau_reglement_widget.RetourButton.clicked.connect(
+            lambda: self.WidgetStock.setCurrentWidget(reglements_widget)
+        )
         add_page(self.SettingsButton)
 
         self.WidgetStock.setCurrentWidget(dashboard_widget)
