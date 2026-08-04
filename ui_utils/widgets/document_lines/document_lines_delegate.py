@@ -137,6 +137,7 @@ class DocumentLinesSearchDelegate(QStyledItemDelegate):
     """
 
     searchTextChanged = pyqtSignal(str)
+    searchSubmitted = pyqtSignal(str)
     articleChosen = pyqtSignal(int)
 
     def __init__(self, parent: QWidget | None = None) -> None:
@@ -181,6 +182,9 @@ class DocumentLinesSearchDelegate(QStyledItemDelegate):
                     lambda idx, ed=editor: self._on_completion_activated(ed, idx)
                 )
             editor.textEdited.connect(self.searchTextChanged.emit)
+            editor.editingFinished.connect(
+                lambda ed=editor: self._on_editing_finished(ed)
+            )
             self._active_editor = editor
             editor.destroyed.connect(self._on_editor_destroyed)
         return editor
@@ -205,8 +209,16 @@ class DocumentLinesSearchDelegate(QStyledItemDelegate):
                 source_row = mapped.row()
         # Cancel the in-cell edit so the raw text is not written to the line,
         # then let the widget turn the chosen article into a product line.
+        editor.setProperty("articleChosen", True)
         self.closeEditor.emit(editor, QAbstractItemDelegate.RevertModelCache)
         self.articleChosen.emit(source_row)
+
+    def _on_editing_finished(self, editor: QLineEdit) -> None:
+        if editor.property("articleChosen"):
+            return
+        text = editor.text().strip()
+        if text:
+            self.searchSubmitted.emit(text)
 
     def _on_editor_destroyed(self, *_args) -> None:
         self._active_editor = None

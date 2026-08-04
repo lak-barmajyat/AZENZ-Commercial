@@ -27,6 +27,24 @@ COLOR_TEXT = QColor("#191C1E")
 COLOR_MUTED = QColor("#9CA3AF")
 COLOR_PRIMARY = QColor("#0051DF")
 
+# Database field names used by d_document_lignes and their corresponding
+# canonical DocumentLine attributes. This keeps calculations working while
+# allowing application-specific columns to use the real database names.
+DATABASE_FIELD_MAP = {
+    "reference_article": "reference",
+    "notes": "description",
+    "quantite": "quantity",
+    "nom_unite": "unit",
+    "prix_unitaire_ht": "price_ht",
+    "remise_percentage": "discount_percent",
+    "tva_percentage": "vat_percent",
+    "montant_ht": "amount_ht",
+    "montant_remise": "discount_amount",
+    "montant_net_ht": "total_ht",
+    "montant_tva": "tax_amount",
+    "montant_ttc": "total_ttc",
+}
+
 
 def format_number(value: Any, decimals: int = 2, thousands_sep: str = " ") -> str:
     try:
@@ -180,7 +198,8 @@ class DocumentLinesModel(QAbstractTableModel):
             return flags
 
         if self.is_placeholder_row(row):
-            if column.key in ("reference", "description", "designation"):
+            canonical_key = DATABASE_FIELD_MAP.get(column.key, column.key)
+            if canonical_key in ("reference", "description", "designation"):
                 return flags | Qt.ItemIsEditable
             return flags
 
@@ -426,6 +445,7 @@ class DocumentLinesModel(QAbstractTableModel):
     # Internal helpers                                                   #
     # ------------------------------------------------------------------ #
     def _raw_value(self, line: DocumentLine, key: str) -> Any:
+        key = DATABASE_FIELD_MAP.get(key, key)
         if key == "description" and line.description:
             return line.description
         if key == "designation" and line.designation:
@@ -435,6 +455,7 @@ class DocumentLinesModel(QAbstractTableModel):
         return line.metadata.get(key)
 
     def _format_computed(self, line: DocumentLine, key: str) -> str:
+        key = DATABASE_FIELD_MAP.get(key, key)
         mapping = {
             "amount_ht": line.amount_ht,
             "discount_amount": line.discount_amount,
@@ -456,6 +477,7 @@ class DocumentLinesModel(QAbstractTableModel):
         return text
 
     def _assign_value(self, line: DocumentLine, key: str, value: Any) -> bool:
+        key = DATABASE_FIELD_MAP.get(key, key)
         numeric_keys = {
             "quantity",
             "price_ht",
@@ -518,12 +540,13 @@ class DocumentLinesModel(QAbstractTableModel):
         if role in (Qt.DisplayRole, Qt.EditRole):
             if column.key == COL_INDEX:
                 return "*"
-            if column.key in ("reference", "description", "designation"):
-                stored = self._placeholder_state.get(column.key, "")
+            canonical_key = DATABASE_FIELD_MAP.get(column.key, column.key)
+            if canonical_key in ("reference", "description", "designation"):
+                stored = self._placeholder_state.get(canonical_key, "")
                 if role == Qt.EditRole:
                     return stored
                 return stored or (
-                    self._placeholder_text if column.key == "description" else ""
+                    self._placeholder_text if canonical_key == "description" else ""
                 )
             if column.editor_type == ColumnEditorType.NUMERIC:
                 if column.key == "quantity":
@@ -536,11 +559,13 @@ class DocumentLinesModel(QAbstractTableModel):
         return None
 
     def _set_placeholder_data(self, key: str, value: Any) -> bool:
+        original_key = key
+        key = DATABASE_FIELD_MAP.get(key, key)
         if key not in ("reference", "description", "designation"):
             return False
         self._placeholder_state[key] = str(value or "")
         row = self.placeholder_row_index()
-        col = self.column_index_for_key(key)
+        col = self.column_index_for_key(original_key)
         if col is not None:
             idx = self.index(row, col)
             self.dataChanged.emit(idx, idx)

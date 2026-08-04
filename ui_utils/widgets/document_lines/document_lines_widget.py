@@ -78,6 +78,7 @@ class DocumentLinesWidget(QWidget):
     lineSelected = pyqtSignal(object, int)
     totalsChanged = pyqtSignal(dict)
     articleSearchRequested = pyqtSignal(str)
+    articleCodeSubmitted = pyqtSignal(str)
     barcodeScanRequested = pyqtSignal()
     stockCheckRequested = pyqtSignal()
 
@@ -530,6 +531,7 @@ class DocumentLinesWidget(QWidget):
             self._on_placeholder_add_clicked
         )
         self._search_delegate.searchTextChanged.connect(self._on_search_text_changed)
+        self._search_delegate.searchSubmitted.connect(self.articleCodeSubmitted.emit)
         self._search_delegate.articleChosen.connect(self._on_article_chosen)
         self._search_debounce.timeout.connect(self._emit_pending_search)
 
@@ -583,7 +585,7 @@ class DocumentLinesWidget(QWidget):
                 ColumnEditorType.READONLY,
                 ColumnEditorType.COMPUTED,
             ):
-                if col.key in ("reference", "description", "designation"):
+                if col.key in ("reference", "reference_article", "description", "designation"):
                     # Search-capable on the placeholder row, plain text elsewhere.
                     self._view.setItemDelegateForColumn(
                         visual_idx, self._search_delegate
@@ -618,21 +620,32 @@ class DocumentLinesWidget(QWidget):
     def _line_from_article(self, data: dict[str, Any]) -> DocumentLine:
         return DocumentLine.product(
             article_id=data.get("article_id") or data.get("id"),
-            reference=str(data.get("reference") or data.get("reference_article") or ""),
+            reference=str(
+                data.get("reference")
+                or data.get("reference_article")
+                or data.get("code_article")
+                or ""
+            ),
             designation=str(data.get("designation") or ""),
             description=str(
                 data.get("description") or data.get("designation") or ""
             ),
             quantity=float(data.get("quantity") or 1),
-            unit=str(data.get("unit") or self._default_unit),
+            unit=str(data.get("unit") or data.get("nom_unite") or self._default_unit),
             unit_id=data.get("unit_id"),
-            price_ht=float(data.get("price_ht") or data.get("prix_unitaire_ht") or 0),
+            price_ht=float(
+                data.get("price_ht")
+                or data.get("prix_unitaire_ht")
+                or data.get("prix_vente_ht")
+                or 0
+            ),
             discount_percent=float(
                 data.get("discount_percent") or data.get("remise_percentage") or 0
             ),
             vat_percent=float(
                 data.get("vat_percent")
                 or data.get("tva_percentage")
+                or data.get("taux")
                 or self._default_vat_percent
             ),
             vat_id=data.get("vat_id") or data.get("tva_id"),
@@ -645,6 +658,7 @@ class DocumentLinesWidget(QWidget):
                     "id",
                     "reference",
                     "reference_article",
+                    "code_article",
                     "designation",
                     "description",
                     "quantity",
@@ -652,6 +666,7 @@ class DocumentLinesWidget(QWidget):
                     "unit_id",
                     "price_ht",
                     "prix_unitaire_ht",
+                    "prix_vente_ht",
                     "discount_percent",
                     "remise_percentage",
                     "vat_percent",
@@ -702,7 +717,10 @@ class DocumentLinesWidget(QWidget):
 
     def _format_search_result(self, result: dict[str, Any]) -> str:
         reference = str(
-            result.get("reference") or result.get("reference_article") or ""
+            result.get("reference")
+            or result.get("reference_article")
+            or result.get("code_article")
+            or ""
         ).strip()
         name = str(
             result.get("designation")
@@ -772,7 +790,7 @@ class DocumentLinesWidget(QWidget):
             return
         if self._model.is_placeholder_row(index.row()):
             col = self._model.columns()[index.column()]
-            if col.key in ("reference", "description", "designation"):
+            if col.key in ("reference", "reference_article", "description", "designation"):
                 self._view.edit(index)
             return
 

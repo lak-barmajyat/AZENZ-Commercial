@@ -11,4 +11,4 @@ clean:
 	rm -rf __pycache__ */*__pycache__ .pytest_cache
 
 setdatabase:
-	python ./services/sql/db_setup.py
+	uv run python services/sql/azenz_database_setup/setup_azenz_databases.py
