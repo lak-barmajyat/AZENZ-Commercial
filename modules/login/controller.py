@@ -2,8 +2,6 @@ from modules.login.model import LoginModel
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QCursor
-from modules.table_de_bord.table_de_bord_view import DashboardMenuView
-# from modules.login.login_view import LoginUI
 
 class LoginController:
     def __init__(self, model: LoginModel, view):
@@ -36,9 +34,11 @@ class LoginController:
             self.view.LoginErrorLabel.show()
         else:
             self.view.LoginErrorLabel.hide()
-            QApplication.DashboardMenuView = DashboardMenuView()
-            QApplication.DashboardMenuView.show()
-            self.view.hide()
+            app = QApplication.instance()
+            if app is not None:
+                app.window_manager.open("table_de_bord.menu")
+                app.window_manager.open("table_de_bord.widget")
+                app.window_manager.hide("login")
     
     def connect_signals(self):
         self.view.DatabaseCombobox.currentIndexChanged.connect(

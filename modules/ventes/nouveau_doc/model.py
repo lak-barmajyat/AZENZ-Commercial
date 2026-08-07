@@ -1,57 +1,6 @@
 from services.sql.db_connection import with_cursor
 
-
-class VentesModel:
-    def __init__(self):
-        pass
-
-    @with_cursor(dictionary=True)
-    def get_ventes_documents(self, cursor):
-
-        query = """
-            SELECT
-            dd.`id`,
-            ptd.`nom_type_document` AS `type_document_id`,
-            dd.`code_document`,
-            dd.`autre_code_document`,
-            ddo.`code_document` AS `document_origine_id`,
-            dt.`raison_sociale` AS `tier_id`,
-            adl.`nom_adresse` AS `adresse_livraison_id`,
-            pu.`nom_utilisateur` AS `utilisateur_id`,
-            pv.`nom_utilisateur` AS `vendeur_id`,
-            dd.`montant_ht`,
-            dd.`montant_remise`,
-            dd.`montant_net_ht`,
-            dd.`montant_tva`,
-            dd.`montant_ttc`,
-            dd.`montant_net_ttc`,
-            dd.`montant_paye`,
-            dd.`montant_restant`,
-            psd.`nom_statut` AS `statut_document_id`,
-            dd.`document_valide`,
-            dd.`document_cloture`,
-            dd.`date_document`,
-            dd.`date_livraison_prevue`,
-            dd.`date_livraison_effective`,
-            dd.`transforme`,
-            dd.`date_transforme`,
-            dd.`commentaire`
-            FROM `d_documents` AS dd
-            LEFT JOIN `d_documents` AS ddo ON dd.document_origine_id = ddo.id
-            LEFT JOIN `d_tiers` AS dt ON dd.tier_id = dt.id
-            LEFT JOIN `d_adresses_livraison` AS adl ON dd.adresse_livraison_id = adl.id
-            LEFT JOIN `p_utilisateurs` AS pu ON dd.utilisateur_id = pu.id
-            LEFT JOIN `p_utilisateurs` AS pv ON dd.vendeur_id = pv.id
-            LEFT JOIN `p_statuts_documents` AS psd ON dd.statut_document_id = psd.id
-            LEFT JOIN `p_types_documents` AS ptd ON dd.type_document_id = ptd.id
-            WHERE dd.transforme != 2
-        """
-
-        cursor.execute(query)
-        result = cursor.fetchall()
-        return result
-
-
+import string, re
 
 class NouveauDocumentModel:
     def __init__(self):
@@ -239,8 +188,7 @@ class NouveauDocumentModel:
     def get_units(self, cursor=None):
         query = """SELECT symbole FROM p_unites"""
         cursor.execute(query)
-        result = cursor.fetchall()
-        units = [symbole for symbole in result]
+        units = [symbole[0] for symbole in cursor.fetchall()]
         return units
 
     @with_cursor(dictionary=True)
@@ -333,3 +281,34 @@ class NouveauDocumentModel:
 
         cursor.execute(query, (document_id,))
         return cursor.fetchone()
+
+    @with_cursor()
+    def generate_doc_code(self, id_type: int, cursor) -> str:
+        query = """
+            SELECT dernier_numero, longueur_numero
+            FROM p_numerotation_documents
+            WHERE type_document_id = %s
+        """
+        cursor.execute(query, (id_type,))
+        row = cursor.fetchone()
+
+        if row is None:
+            raise ValueError(f"No numbering configuration found for document type {id_type}")
+
+        dernier_numero, longueur_numero = row
+
+        if not dernier_numero:
+            return f"{1:0{longueur_numero}d}"
+
+        # Separate the prefix from the numeric suffix.
+        match = re.match(r"^(.*?)(\d+)$", dernier_numero)
+
+        if match:
+            prefix, numeric_part = match.groups()
+            next_number = int(numeric_part) + 1
+        else:
+            # The previous value contains no ending number.
+            prefix = dernier_numero
+            next_number = 1
+
+        return f"{prefix}{next_number:0{longueur_numero}d}"

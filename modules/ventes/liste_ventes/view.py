@@ -1,23 +1,22 @@
 from ui_utils.effects import set_drop_shadow
 from ui_utils.canvas import create_uniform_icon, get_colored_icon
+from ui_utils.widgets.erp_data_table import ERPTableColumn
+from modules.ventes.liste_ventes.controller import VentesController
+from modules.ventes.liste_ventes.model import VentesModel
 
 from PyQt5.uic import loadUi
+from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtGui import QIcon
 from PyQt5 import QtGui
-from PyQt5.QtCore import QSize
-
 from PyQt5.QtWidgets import (
     QAction, QApplication, QFrame, QMainWindow, QWidget,
     QLineEdit, QToolButton, QHeaderView)
 
-from modules.ventes.controller import VentesController
-from modules.ventes.model import VentesModel
-from PyQt5.QtCore import Qt
-from ui_utils.widgets.erp_data_table import ERPTableColumn
+
 class VentesView(QWidget):
     def __init__(self):
         super().__init__()
-        loadUi("modules/ventes/ventes.ui", self)
+        loadUi("modules/ventes/liste_ventes/ventes.ui", self)
 
         model = VentesModel()
         self.controller = VentesController(self, model)
@@ -26,6 +25,16 @@ class VentesView(QWidget):
         
     def setup(self):
         self.setup_erp_table()
+        self.setup_navigation()
+
+    def setup_navigation(self):
+        self.NouveauDocButton.clicked.connect(self.open_new_document)
+
+    def open_new_document(self):
+        app = QApplication.instance()
+        if app is None or not hasattr(app, "window_manager"):
+            return
+        app.window_manager.open("ventes.nouveau_doc")
 
     def setup_erp_table(self):
         # inside VentesView.setup():
@@ -65,5 +74,6 @@ class VentesView(QWidget):
         document_id = row.get("id") if isinstance(row, dict) else row
         if document_id:
             app = QApplication.instance()
-            if app is not None and hasattr(app, "DashboardMenuView"):
-                app.DashboardMenuView.open_document(document_id)
+            if app is None or not hasattr(app, "window_manager"):
+                return
+            app.window_manager.open("ventes.nouveau_doc", document_id=document_id)

@@ -576,7 +576,7 @@ QDateEdit::down-arrow {
             <string> Nouveau</string>
            </property>
            <property name="icon">
-            <iconset resource="../../resources/resources.qrc">
+            <iconset resource="../../../resources/resources.qrc">
              <normaloff>:/icons/icons/Wnouveau.svg</normaloff>:/icons/icons/Wnouveau.svg</iconset>
            </property>
            <property name="iconSize">
@@ -633,7 +633,7 @@ QDateEdit::down-arrow {
             <font>
              <family>Inter 18pt Medium</family>
              <pointsize>-1</pointsize>
-             <weight>62</weight>
+             <weight>63</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -641,7 +641,7 @@ QDateEdit::down-arrow {
             <string> Modifier</string>
            </property>
            <property name="icon">
-            <iconset resource="../../resources/resources.qrc">
+            <iconset resource="../../../resources/resources.qrc">
              <normaloff>:/icons/icons/Gmodifier.svg</normaloff>:/icons/icons/Gmodifier.svg</iconset>
            </property>
            <property name="iconSize">
@@ -676,7 +676,7 @@ QDateEdit::down-arrow {
             <font>
              <family>Inter 18pt Medium</family>
              <pointsize>-1</pointsize>
-             <weight>62</weight>
+             <weight>63</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -687,7 +687,7 @@ QDateEdit::down-arrow {
             <string> Supprimer</string>
            </property>
            <property name="icon">
-            <iconset resource="../../resources/resources.qrc">
+            <iconset resource="../../../resources/resources.qrc">
              <normaloff>:/icons/icons/Gsupprimer.svg</normaloff>:/icons/icons/Gsupprimer.svg</iconset>
            </property>
            <property name="iconSize">
@@ -744,7 +744,7 @@ QDateEdit::down-arrow {
             <font>
              <family>Inter 18pt Medium</family>
              <pointsize>-1</pointsize>
-             <weight>62</weight>
+             <weight>63</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -752,7 +752,7 @@ QDateEdit::down-arrow {
             <string> Imprimer</string>
            </property>
            <property name="icon">
-            <iconset resource="../../resources/resources.qrc">
+            <iconset resource="../../../resources/resources.qrc">
              <normaloff>:/icons/icons/Gimprimer.svg</normaloff>:/icons/icons/Gimprimer.svg</iconset>
            </property>
            <property name="iconSize">
@@ -787,7 +787,7 @@ QDateEdit::down-arrow {
             <font>
              <family>Inter 18pt Medium</family>
              <pointsize>-1</pointsize>
-             <weight>62</weight>
+             <weight>63</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -795,7 +795,7 @@ QDateEdit::down-arrow {
             <string> Excel</string>
            </property>
            <property name="icon">
-            <iconset resource="../../resources/resources.qrc">
+            <iconset resource="../../../resources/resources.qrc">
              <normaloff>:/icons/icons/Gexcel.svg</normaloff>:/icons/icons/Gexcel.svg</iconset>
            </property>
            <property name="iconSize">
@@ -852,7 +852,7 @@ QDateEdit::down-arrow {
             <font>
              <family>Inter 18pt Medium</family>
              <pointsize>-1</pointsize>
-             <weight>62</weight>
+             <weight>63</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -860,7 +860,7 @@ QDateEdit::down-arrow {
             <string> Dupliquer</string>
            </property>
            <property name="icon">
-            <iconset resource="../../resources/resources.qrc">
+            <iconset resource="../../../resources/resources.qrc">
              <normaloff>:/icons/icons/Gduplicate.svg</normaloff>:/icons/icons/Gduplicate.svg</iconset>
            </property>
            <property name="iconSize">
@@ -895,7 +895,7 @@ QDateEdit::down-arrow {
             <font>
              <family>Inter 18pt Medium</family>
              <pointsize>-1</pointsize>
-             <weight>62</weight>
+             <weight>63</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -903,7 +903,7 @@ QDateEdit::down-arrow {
             <string> Transformer</string>
            </property>
            <property name="icon">
-            <iconset resource="../../resources/resources.qrc">
+            <iconset resource="../../../resources/resources.qrc">
              <normaloff>:/icons/icons/Gtransformer.svg</normaloff>:/icons/icons/Gtransformer.svg</iconset>
            </property>
            <property name="iconSize">
@@ -938,7 +938,7 @@ QDateEdit::down-arrow {
             <font>
              <family>Inter 18pt Medium</family>
              <pointsize>-1</pointsize>
-             <weight>62</weight>
+             <weight>63</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -946,7 +946,7 @@ QDateEdit::down-arrow {
             <string>Replace</string>
            </property>
            <property name="icon">
-            <iconset resource="../../resources/resources.qrc">
+            <iconset resource="../../../resources/resources.qrc">
              <normaloff>:/icons/icons/Gtransformer.svg</normaloff>:/icons/icons/Gtransformer.svg</iconset>
            </property>
            <property name="iconSize">
@@ -981,7 +981,7 @@ QDateEdit::down-arrow {
             <font>
              <family>Inter 18pt Medium</family>
              <pointsize>-1</pointsize>
-             <weight>62</weight>
+             <weight>63</weight>
              <bold>true</bold>
             </font>
            </property>
@@ -989,7 +989,7 @@ QDateEdit::down-arrow {
             <string> Paiements</string>
            </property>
            <property name="icon">
-            <iconset resource="../../resources/resources.qrc">
+            <iconset resource="../../../resources/resources.qrc">
              <normaloff>:/icons/icons/paiements.svg</normaloff>:/icons/icons/paiements.svg</iconset>
            </property>
            <property name="iconSize">
@@ -1045,17 +1045,20 @@ QDateEdit::down-arrow {
          </property>
          <item>
           <layout class="QGridLayout" name="gridLayout">
+           <property name="leftMargin">
+            <number>6</number>
+           </property>
            <property name="topMargin">
-            <number>0</number>
+            <number>6</number>
            </property>
            <property name="rightMargin">
-            <number>0</number>
+            <number>6</number>
            </property>
            <property name="bottomMargin">
-            <number>0</number>
+            <number>6</number>
            </property>
            <property name="horizontalSpacing">
-            <number>10</number>
+            <number>6</number>
            </property>
            <item row="1" column="1">
             <widget class="QLineEdit" name="ClientEntry">
@@ -1200,6 +1203,18 @@ QDateEdit::down-arrow {
            <property name="spacing">
             <number>6</number>
            </property>
+           <property name="leftMargin">
+            <number>6</number>
+           </property>
+           <property name="topMargin">
+            <number>6</number>
+           </property>
+           <property name="rightMargin">
+            <number>6</number>
+           </property>
+           <property name="bottomMargin">
+            <number>6</number>
+           </property>
            <item>
             <widget class="QLabel" name="label_16">
              <property name="sizePolicy">
@@ -1236,7 +1251,7 @@ QDateEdit::down-arrow {
              <property name="maximumSize">
               <size>
                <width>175</width>
-               <height>33</height>
+               <height>16777215</height>
               </size>
              </property>
              <property name="displayFormat">
@@ -1283,7 +1298,7 @@ QDateEdit::down-arrow {
              <property name="maximumSize">
               <size>
                <width>175</width>
-               <height>33</height>
+               <height>16777215</height>
               </size>
              </property>
              <property name="currentSection">
@@ -1341,7 +1356,7 @@ padding: 10px 30px;
               <string> Filtrer</string>
              </property>
              <property name="icon">
-              <iconset resource="../../resources/resources.qrc">
+              <iconset resource="../../../resources/resources.qrc">
                <normaloff>:/icons/icons/Wfiltrer.svg</normaloff>:/icons/icons/Wfiltrer.svg</iconset>
              </property>
              <property name="toolButtonStyle">
@@ -1631,7 +1646,7 @@ QLabel#ValueSolde {
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../resources/resources.qrc"/>
+  <include location="../../../resources/resources.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -10,8 +10,8 @@ from PyQt5.QtWidgets import (
     QAction, QFrame, QMainWindow, QWidget,
     QLineEdit, QToolButton, QHeaderView)
 
-from modules.ventes.controller import VentesController
-from modules.ventes.model import VentesModel
+from modules.ventes.liste_ventes.controller import VentesController
+from modules.ventes.liste_ventes.model import VentesModel
 
 class AchatsView(QWidget):
     def __init__(self):

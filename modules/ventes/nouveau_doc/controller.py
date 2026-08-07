@@ -1,27 +1,7 @@
-from services.sql.db_connection import with_cursor
-from services.ndoc_generator import generate_document_number
-from datetime import datetime
-
 from PyQt5.QtCore import QStringListModel, Qt, QDate
 from PyQt5.QtWidgets import QCompleter
+from datetime import datetime
 
-
-class VentesController:
-    def __init__(self, view, model):
-        self.view = view
-        self.model = model
-
-        self.setup()
-
-    def setup(self):
-        self.load_ventes()
-
-    def load_ventes(self):
-        result = self.model.get_ventes_documents()
-        for row in result:
-            self.view.VentesTable.append_row(
-                row
-            )
 
 class NouveauDocumentController:
     def __init__(self, view, model, document_id=None):
@@ -38,6 +18,21 @@ class NouveauDocumentController:
         if self.document_id:
             self.load_document(self.document_id)
 
+    def update_widgets(self):
+        pass
+
+    def prepare_new_document(self):
+        self.document_id = None
+        self.view.TypeDocComboBox.setCurrentIndex(0)
+        self.on_type_selection_change()
+        self.view.ReferenceEntry.clear()
+        self.view.EtatDocComboBox.setCurrentIndex(0)
+        self.view.AffairecomboBox.setCurrentIndex(-1)
+        self.view.DateDocDateEdit.setDate(datetime.now().date())
+        self.view.ClientcomboBox.setCurrentText("")
+        self.view.CodeClientEntry.clear()
+        self.view.DocumentLinesWidget.set_lines([])
+
     def fill_entries(self):
         # fill type document combobox
         items = self.model.get_types_documents()
@@ -46,7 +41,7 @@ class NouveauDocumentController:
 
         # fill numero document
         selected_id = self.view.TypeDocComboBox.currentData()
-        self.view.NumeroDocEntry.setText(generate_document_number(selected_id))
+        self.view.NumeroDocEntry.setText(self.model.generate_doc_code(selected_id))
 
         # fill Etat document combobox
         items = self.model.get_etats_documents(selected_id)
@@ -78,7 +73,7 @@ class NouveauDocumentController:
     def on_type_selection_change(self):
         # update Numero document based on selected type document
         selected_id = self.view.TypeDocComboBox.currentData()
-        self.view.NumeroDocEntry.setText(generate_document_number(selected_id))
+        self.view.NumeroDocEntry.setText(self.model.generate_doc_code(selected_id))
 
         # update Etat document combobox based on selected type document
         self.view.EtatDocComboBox.clear()

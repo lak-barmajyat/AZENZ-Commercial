@@ -3,17 +3,11 @@ from ui_utils.canvas import create_uniform_icon, get_colored_icon
 
 from PyQt5.uic import loadUi
 from PyQt5.QtGui import QIcon
-from PyQt5 import QtGui
-from PyQt5.QtCore import QSize, QPropertyAnimation, QEasingCurve, Qt
+from PyQt5.QtCore import QSize, QPropertyAnimation, QEasingCurve
 
 from PyQt5.QtWidgets import (
-    QAction, QFrame, QMainWindow, QWidget,
-    QLineEdit, QToolButton, QHeaderView, QVBoxLayout, QLabel)
-
-from modules.ventes.ventes_view import VentesView
-from modules.ventes.nouveau_document_view import NouveauDocumentView
-from modules.achats.achats_view import AchatsView
-from modules.reglements.reglements_view import ReglementsView, NouveauReglementView
+    QAction, QApplication, QMainWindow, QWidget,
+    QLineEdit, QToolButton)
 
 from modules.table_de_bord.model import DashboardModel
 from modules.table_de_bord.controller import DashboardController
@@ -27,6 +21,7 @@ class DashboardWidget(QWidget):
 
     def setup(self):
         self.setup_effects()
+        self.setup_navigation()
 
     def setup_icons(self):
         # Change icon size in toolbuttons
@@ -37,11 +32,27 @@ class DashboardWidget(QWidget):
                 for button in buttons:
                     button.setIconSize(QSize(40, 40))
 
-
     def setup_effects(self):
         card_frames = [self.CardArticles, self.CardClients, self.CardDocuments, self.CardPaiements]
         for frame in card_frames:
             set_drop_shadow(frame, 15, 0, 1, 35)
+
+    def setup_navigation(self):
+        app = QApplication.instance()
+        if app is None or not hasattr(app, "window_manager"):
+            return
+
+        window_manager = app.window_manager
+        self.ListeVentesButton.clicked.connect(
+            lambda: window_manager.open("ventes.list")
+        )
+        self.NouveauDocButton.clicked.connect(
+            lambda: window_manager.open("ventes.nouveau_doc")
+        )
+        self.AjouterPaimentButton.clicked.connect(
+            lambda: window_manager.open("reglements.nouveau_reglement")
+        )
+
 
 class DashboardMenuView(QMainWindow):
     def __init__(self):
@@ -64,7 +75,33 @@ class DashboardMenuView(QMainWindow):
             self.CatalogueGButton: self.CatalogueGFrame,
             self.toggleSidebarButton: True
         }
-        
+
+        self._active_section_buttons = {
+            "table_de_bord": self.DashboardButton,
+            "ventes": self.VentesButton,
+            "clients": self.ClientsButton,
+            "fournisseurs": self.FournisseursButton,
+            "articles": self.ArticlesButton,
+            "familles": self.FamillesButton,
+            "achats": self.AchatsButton,
+            "stockage": self.StockageButton,
+            "reglements": self.PaiementsButton,
+            "parameters": self.SettingsButton,
+        }
+
+        self._sidebar_destinations = {
+            self.DashboardButton: "table_de_bord.widget",
+            self.VentesButton: "ventes.list",
+            self.ClientsButton: "clients.list",
+            self.FournisseursButton: "fournisseurs.list",
+            self.ArticlesButton: "articles.list",
+            self.FamillesButton: "familles.list",
+            self.AchatsButton: "achats.list",
+            self.StockageButton: "stockage.list",
+            self.PaiementsButton: "reglements.list",
+            self.SettingsButton: "parameters.list",
+        }
+
         self.model = DashboardModel()
         self.controller = DashboardController(self, self.model)
 
@@ -73,7 +110,6 @@ class DashboardMenuView(QMainWindow):
     def setup(self):
         self.setup_widgets()
         self.setup_sidebar_buttons()
-        self.setup_widgets_stock()
         self.setup_signals()
         self.setup_window()
 
@@ -95,76 +131,44 @@ class DashboardMenuView(QMainWindow):
         self.RechercherEntry.addAction(rechercher_icon, QLineEdit.LeadingPosition)
 
     def setup_sidebar_buttons(self):
-        sidebar_buttons = self.SidebarFrame.findChildren(QToolButton)
-        for w in sidebar_buttons:
-            w.clicked.connect(lambda _checked=False, w=w: self.mark_button(w))
-
-    def setup_widgets_stock(self):
-        if self.WidgetStock.count() > 0:
-            return
-
-        self.sidebar_widget_map = {}
-
-        def create_placeholder(button):
-            title = button.text().strip() or button.objectName()
-            placeholder = QWidget()
-            layout = QVBoxLayout(placeholder)
-            layout.setContentsMargins(0, 0, 0, 0)
-            label = QLabel(title)
-            label.setAlignment(Qt.AlignCenter)
-            layout.addWidget(label)
-            return placeholder
-
-        def add_page(button, widget=None):
-            if widget is None:
-                widget = create_placeholder(button)
-            self.WidgetStock.addWidget(widget)
-            self.sidebar_widget_map[button] = widget
+        for button, destination in self._sidebar_destinations.items():
             button.clicked.connect(
-                lambda _checked=False, b=button: self.WidgetStock.setCurrentWidget(self.sidebar_widget_map[b])
+                lambda _checked=False, b=button, dest=destination: self._navigate(b, dest)
             )
 
-        dashboard_widget = DashboardWidget()
-        ventes_widget = VentesView()
-        achats_widget = AchatsView()
-        nouveau_document_widget = NouveauDocumentView()
-        reglements_widget = ReglementsView()
-        nouveau_reglement_widget = NouveauReglementView()
+    def _navigate(self, button, destination):
+        self.mark_button(button)
 
-        self.nouveau_document_widget = nouveau_document_widget
-
-        # Add pages and connect buttons
-        add_page(self.DashboardButton, dashboard_widget)
-
-        # Ventes
-        add_page(self.VentesButton, ventes_widget)
-        add_page(dashboard_widget.ListeVentesButton, ventes_widget)
-        add_page(dashboard_widget.NouveauDocButton, nouveau_document_widget)
-        add_page(ventes_widget.NouveauDocButton, nouveau_document_widget)
-
-        add_page(self.ClientsButton)
-        add_page(self.FournisseursButton)
-        add_page(self.ArticlesButton)
-        add_page(self.FamillesButton)
-
-        # Achats
-        add_page(self.AchatsButton, achats_widget)
-        add_page(self.StockageButton)
-        add_page(self.PaiementsButton, reglements_widget)
-        add_page(dashboard_widget.AjouterPaimentButton, nouveau_reglement_widget)
-        add_page(reglements_widget.NouveauReglementButton, nouveau_reglement_widget)
-        nouveau_reglement_widget.RetourButton.clicked.connect(
-            lambda: self.WidgetStock.setCurrentWidget(reglements_widget)
-        )
-        add_page(self.SettingsButton)
-
-        self.WidgetStock.setCurrentWidget(dashboard_widget)
-
-    def open_document(self, document_id):
-        if not document_id:
+        app = QApplication.instance()
+        if app is None or not hasattr(app, "window_manager"):
             return
-        self.nouveau_document_widget.controller.load_document(document_id)
-        self.WidgetStock.setCurrentWidget(self.nouveau_document_widget)
+
+        app.window_manager.open(destination)
+
+    def show_page(self, page_widget):
+        if page_widget is None:
+            return
+
+        if self.WidgetStock.indexOf(page_widget) == -1:
+            self.WidgetStock.addWidget(page_widget)
+        self.WidgetStock.setCurrentWidget(page_widget)
+
+    def set_active_section(self, section):
+        sidebar_buttons = self.SidebarFrame.findChildren(QToolButton)
+        for widget in sidebar_buttons:
+            if self.group_button_frames.get(widget) is not None:
+                continue
+            widget.setChecked(False)
+            gray_icon = get_colored_icon(widget.icon(), "#434655", widget.iconSize())
+            widget.setIcon(gray_icon)
+
+        button = self._active_section_buttons.get(section)
+        if button is None:
+            return
+
+        button.setChecked(True)
+        blue_icon = get_colored_icon(button.icon(), "#0051DF", button.iconSize())
+        button.setIcon(blue_icon)
 
     def setup_signals(self):
         self.toggleSidebarButton.clicked.connect(self.toggle_sidebar)
@@ -204,7 +208,6 @@ class DashboardMenuView(QMainWindow):
 
             button.setChecked(not button_state)
             return
-            
 
         # Mark the clicked button
         button.setChecked(True)

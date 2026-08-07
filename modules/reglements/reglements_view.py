@@ -1,5 +1,5 @@
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import QApplication, QWidget
 from PyQt5.uic import loadUi
 
 from ui_utils.widgets.erp_data_table import ERPTableColumn
@@ -10,6 +10,16 @@ class ReglementsView(QWidget):
         super().__init__()
         loadUi("modules/reglements/reglements.ui", self)
         self.setup_table()
+        self.setup_navigation()
+
+    def setup_navigation(self):
+        self.NouveauReglementButton.clicked.connect(self.open_new_reglement)
+
+    def open_new_reglement(self):
+        app = QApplication.instance()
+        if app is None or not hasattr(app, "window_manager"):
+            return
+        app.window_manager.open("reglements.nouveau_reglement")
 
     def setup_table(self):
         columns = [
@@ -31,6 +41,16 @@ class NouveauReglementView(QWidget):
         super().__init__()
         loadUi("modules/reglements/nouveau_reglement.ui", self)
         self.setup_documents_table()
+        self.setup_navigation()
+
+    def setup_navigation(self):
+        self.RetourButton.clicked.connect(self.go_back)
+
+    def go_back(self):
+        app = QApplication.instance()
+        if app is None or not hasattr(app, "window_manager"):
+            return
+        app.window_manager.open("reglements.list")
 
     def setup_documents_table(self):
         columns = [
