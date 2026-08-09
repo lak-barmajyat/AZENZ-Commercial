@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>LoginWindow</class>
+ <widget class="QMainWindow" name="LoginWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -14,13 +14,13 @@
    <string>Login - LAK ERP</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QMainWindow#MainWindow {
+   <string notr="true">QMainWindow#LoginWindow {
 	background-color: rgb(255, 255, 255);
-	border-image: url(:/images/resources/images/Corporate background.png) 0 0 0 0 stretch stretch;
+	border-image: url(:/images/images/Corporate background.png) 0 0 0 0 stretch stretch;
 	background-repeat: no-repeat;
 }</string>
   </property>
-  <widget class="QWidget" name="centralwidget">
+  <widget class="QWidget" name="CentralWidget">
    <widget class="QFrame" name="LoginFrame">
     <property name="geometry">
      <rect>
@@ -45,7 +45,7 @@
     <property name="maximumSize">
      <size>
       <width>440</width>
-      <height>500</height>
+      <height>540</height>
      </size>
     </property>
     <property name="frameShape">
@@ -76,7 +76,7 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="QComboBox" name="DatabaseCombobox">
+        <widget class="QComboBox" name="DatabaseComboBox">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -276,7 +276,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="UsernameEntry">
+        <widget class="QLineEdit" name="UsernameLineEdit">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -343,7 +343,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="PasswordEntry">
+        <widget class="QLineEdit" name="PasswordLineEdit">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -397,7 +397,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QFrame" name="horizontalFrame">
+      <widget class="QFrame" name="ButtonsFrame">
        <property name="maximumSize">
         <size>
          <width>16777215</width>
@@ -436,7 +436,7 @@
            </size>
           </property>
           <property name="styleSheet">
-           <string notr="true">\</string>
+           <string notr="true"/>
           </property>
           <property name="text">
            <string>Cancel</string>
@@ -458,7 +458,7 @@
            </size>
           </property>
           <property name="styleSheet">
-           <string notr="true">\</string>
+           <string notr="true"/>
           </property>
           <property name="text">
            <string>Log in</string>
@@ -506,7 +506,7 @@
         </spacer>
        </item>
        <item>
-        <widget class="QLabel" name="SeparatorLine">
+        <widget class="QLabel" name="SeparatorLabel">
          <property name="minimumSize">
           <size>
            <width>0</width>
@@ -559,7 +559,7 @@
       </spacer>
      </item>
      <item alignment="Qt::AlignHCenter">
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="FooterLabel">
        <property name="font">
         <font>
          <family>Inter 18pt SemiBold</family>

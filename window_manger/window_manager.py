@@ -4,18 +4,26 @@ from typing import Any, Callable
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QLabel, QVBoxLayout, QWidget
 
-from modules.login.login_view import LoginView
-from modules.table_de_bord.table_de_bord_view import (
-    DashboardMenuView,
-    DashboardWidget,
-)
+from modules.login.view import LoginView
+from modules.table_de_bord.menu.view import DashboardMenuView
+from modules.table_de_bord.widget.view import DashboardWidget
 from modules.ventes.liste_ventes.view import VentesView
 from modules.ventes.nouveau_doc.view import NouveauDocumentView
-from modules.achats.achats_view import AchatsView
-from modules.reglements.reglements_view import (
-    NouveauReglementView,
-    ReglementsView,
-)
+from modules.achats.liste_achats.view import AchatsView
+from modules.achats.nouveau_doc.view import NouveauAchatDocumentView
+from modules.reglements.liste_reglements.view import ReglementsView
+from modules.reglements.nouveau_reglement.view import NouveauReglementView
+from modules.articles.liste_articles.view import ListeArticlesView
+from modules.articles.nouveau_article.view import NouveauArticleView
+from modules.familles.liste_familles.view import ListeFamillesView
+from modules.familles.nouveau_famille.view import NouveauFamilleView
+from modules.stockage.liste_stockage.view import ListeStockageView
+from modules.stockage.nouveau_mouvement.view import NouveauMouvementView
+from modules.clients.liste_clients.view import ListeClientsView
+from modules.clients.nouveau_client.view import NouveauClientView
+from modules.fournisseurs.liste_fournisseurs.view import ListeFournisseursView
+from modules.fournisseurs.nouveau_fournisseur.view import NouveauFournisseurView
+from modules.parameters.liste_parameters.view import ListeParametersView
 
 
 @dataclass
@@ -71,67 +79,67 @@ class WindowManager:
             ),
 
             "achats.nouveau_doc": Destination(
-                None,
+                NouveauAchatDocumentView,
                 "page",
                 section="achats",
             ),
 
             "articles.list": Destination(
-                None,
+                ListeArticlesView,
                 "page",
                 section="articles",
             ),
 
             "articles.nouveau_article": Destination(
-                None,
+                NouveauArticleView,
                 "page",
                 section="articles",
             ),
 
             "familles.list": Destination(
-                None,
+                ListeFamillesView,
                 "page",
                 section="familles",
             ),
 
             "familles.nouveau_famille": Destination(
-                None,
+                NouveauFamilleView,
                 "page",
                 section="familles",
             ),
 
             "stockage.list": Destination(
-                None,
+                ListeStockageView,
                 "page",
                 section="stockage",
             ),
 
             "stockage.nouveau_mouvement": Destination(
-                None,
+                NouveauMouvementView,
                 "page",
                 section="stockage",
             ),
 
             "clients.list": Destination(
-                None,
+                ListeClientsView,
                 "page",
                 section="clients",
             ),
 
             "clients.nouveau_client": Destination(
-                None,
+                NouveauClientView,
                 "page",
                 section="clients",
             ),
 
             "fournisseurs.list": Destination(
-                None,
+                ListeFournisseursView,
                 "page",
                 section="fournisseurs",
             ),
 
             "fournisseurs.nouveau_fournisseur": Destination(
-                None,
+                NouveauFournisseurView,
                 "page",
                 section="fournisseurs",
             ),
@@ -149,7 +157,7 @@ class WindowManager:
             ),
 
             "parameters.list": Destination(
-                None,
+                ListeParametersView,
                 "page",
                 section="parameters",
             ),

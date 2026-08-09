@@ -1,13 +1,17 @@
+import logging
 from PyQt5.QtCore import QStringListModel, Qt, QDate
 from PyQt5.QtWidgets import QCompleter
 from datetime import datetime
 
+from modules.ventes.nouveau_doc.model import NouveauDocumentModel
+
 
 class NouveauDocumentController:
-    def __init__(self, view, model, document_id=None):
+    def __init__(self, view):
         self.view = view
-        self.model = model
-        self.document_id = document_id
+        self.model = NouveauDocumentModel()
+        self.logger = logging.getLogger("app.ventes.nouveau_doc")
+        self.document_id = None
 
         self.setup()
 
@@ -18,20 +22,18 @@ class NouveauDocumentController:
         if self.document_id:
             self.load_document(self.document_id)
 
-    def update_widgets(self):
-        pass
-
     def prepare_new_document(self):
         self.document_id = None
         self.view.TypeDocComboBox.setCurrentIndex(0)
         self.on_type_selection_change()
-        self.view.ReferenceEntry.clear()
+        self.view.ReferenceLineEdit.clear()
         self.view.EtatDocComboBox.setCurrentIndex(0)
-        self.view.AffairecomboBox.setCurrentIndex(-1)
+        self.view.AffaireComboBox.setCurrentIndex(-1)
         self.view.DateDocDateEdit.setDate(datetime.now().date())
-        self.view.ClientcomboBox.setCurrentText("")
-        self.view.CodeClientEntry.clear()
+        self.view.ClientComboBox.setCurrentText("")
+        self.view.CodeClientLineEdit.clear()
         self.view.DocumentLinesWidget.set_lines([])
+        self.logger.info("Preparing new sale document")
 
     def fill_entries(self):
         # fill type document combobox
@@ -41,7 +43,7 @@ class NouveauDocumentController:
 
         # fill numero document
         selected_id = self.view.TypeDocComboBox.currentData()
-        self.view.NumeroDocEntry.setText(self.model.generate_doc_code(selected_id))
+        self.view.NumeroDocLineEdit.setText(self.model.generate_doc_code(selected_id))
 
         # fill Etat document combobox
         items = self.model.get_etats_documents(selected_id)
@@ -51,7 +53,7 @@ class NouveauDocumentController:
         # fill Affaires combobox
         items = self.model.get_affaires()
         for id, nom_affaire in items:
-            self.view.AffairecomboBox.addItem(nom_affaire, id)
+            self.view.AffaireComboBox.addItem(nom_affaire, id)
 
         # fill date entry with current date
         self.view.DateDocDateEdit.setDate(datetime.now().date())
@@ -64,16 +66,16 @@ class NouveauDocumentController:
 
     def connect_signals(self):
         self.view.TypeDocComboBox.currentIndexChanged.connect(self.on_type_selection_change)
-        self.view.ClientcomboBox.currentIndexChanged.connect(self.on_client_selection_change)
-        self.view.ClientcomboBox.lineEdit().editingFinished.connect(self.on_client_selection_change)
+        self.view.ClientComboBox.currentIndexChanged.connect(self.on_client_selection_change)
+        self.view.ClientComboBox.lineEdit().editingFinished.connect(self.on_client_selection_change)
         # update client name when I hit enter or tab in the code client entry
-        self.view.CodeClientEntry.editingFinished.connect(self.on_code_client_change)
+        self.view.CodeClientLineEdit.editingFinished.connect(self.on_code_client_change)
 
 
     def on_type_selection_change(self):
         # update Numero document based on selected type document
         selected_id = self.view.TypeDocComboBox.currentData()
-        self.view.NumeroDocEntry.setText(self.model.generate_doc_code(selected_id))
+        self.view.NumeroDocLineEdit.setText(self.model.generate_doc_code(selected_id))
 
         # update Etat document combobox based on selected type document
         self.view.EtatDocComboBox.clear()
@@ -82,26 +84,26 @@ class NouveauDocumentController:
             self.view.EtatDocComboBox.addItem(nom_statut, id)
 
     def on_client_selection_change(self):
-        client = self.view.ClientcomboBox.currentText()
+        client = self.view.ClientComboBox.currentText()
         code_tier = self.model.get_new_client_code(client)
-        self.view.CodeClientEntry.setText(code_tier)
+        self.view.CodeClientLineEdit.setText(code_tier)
         self.on_code_client_change()
     
     def on_code_client_change(self):
-        code_tier = self.view.CodeClientEntry.text()
+        code_tier = self.view.CodeClientLineEdit.text()
         client_name = self.model.get_client_by_code(code_tier)
-        self.view.ClientcomboBox.setCurrentText(client_name)
-        client = self.view.ClientcomboBox.currentText()
+        self.view.ClientComboBox.setCurrentText(client_name)
+        client = self.view.ClientComboBox.currentText()
         code_tier = self.model.get_new_client_code(client)
-        self.view.CodeClientEntry.setText(code_tier)
+        self.view.CodeClientLineEdit.setText(code_tier)
 
     def fill_client_searchable_combo(self):
         items = self.model.get_clients()
 
-        model = QStringListModel(items, self.view.ClientcomboBox)
-        self.view.ClientcomboBox.setModel(model)
+        model = QStringListModel(items, self.view.ClientComboBox)
+        self.view.ClientComboBox.setModel(model)
 
-        completer = QCompleter(model, self.view.ClientcomboBox)
+        completer = QCompleter(model, self.view.ClientComboBox)
         completer.setCaseSensitivity(Qt.CaseInsensitive)
         completer.setFilterMode(Qt.MatchContains)
         completer.setCompletionMode(QCompleter.PopupCompletion)
@@ -109,7 +111,7 @@ class NouveauDocumentController:
         # Keep keyboard focus inside the input field
         completer.popup().setFocusPolicy(Qt.NoFocus)
 
-        self.view.ClientcomboBox.setCompleter(completer)
+        self.view.ClientComboBox.setCompleter(completer)
     
     def setup_document_lines_widget(self):
         widget = self.view.DocumentLinesWidget
@@ -143,6 +145,33 @@ class NouveauDocumentController:
         # Add per-line validation callbacks here when needed.
         widget.set_validation_rules([])
 
+        # Searchable column providers come from the page model
+        widget.set_list(
+            "code_article",
+            self.model.search_articles,
+            display_fields=("code_article",),
+        )
+        widget.set_list(
+            "designation",
+            self.model.search_articles,
+            display_fields=("designation",),
+        )
+        widget.set_list(
+            "unite_id",
+            self.model.search_units,
+            display_fields=("nom_unite",),
+        )
+        widget.set_list(
+            "projet_id",
+            self.model.search_projects,
+            display_fields=("nom_projet",),
+        )
+        widget.set_list(
+            "depot_id",
+            self.model.search_depots,
+            display_fields=("nom_depot",),
+        )
+
         currency = self.model.get_currency_symbol()
         widget.set_currency_symbol(currency)
 
@@ -159,18 +188,21 @@ class NouveauDocumentController:
     def load_document(self, document_id):
         document = self.model.get_document(document_id)
         if not document:
+            self.logger.warning("Document %s not found", document_id)
             return
+
+        self.logger.info("Loading sale document %s", document_id)
 
         self.view.TypeDocComboBox.setCurrentIndex(
             self.view.TypeDocComboBox.findData(document.get("type_document_id"))
         )
-        self.view.NumeroDocEntry.setText(document.get("code_document") or "")
+        self.view.NumeroDocLineEdit.setText(document.get("code_document") or "")
         if document.get("autre_code_document") is not None:
-            self.view.ReferenceEntry.setText(document.get("autre_code_document") or "")
+            self.view.ReferenceLineEdit.setText(document.get("autre_code_document") or "")
         self.view.EtatDocComboBox.setCurrentIndex(
             self.view.EtatDocComboBox.findData(document.get("statut_document_id"))
         )
-        self.view.AffairecomboBox.setCurrentIndex(-1)
+        self.view.AffaireComboBox.setCurrentIndex(-1)
         date_value = document.get("date_document")
         if hasattr(date_value, "date"):
             date_value = date_value.date()
@@ -178,8 +210,8 @@ class NouveauDocumentController:
             self.view.DateDocDateEdit.setDate(QDate(date_value.year, date_value.month, date_value.day))
         else:
             self.view.DateDocDateEdit.setDate(QDate.currentDate())
-        self.view.ClientcomboBox.setCurrentText(document.get("tier_name") or "")
-        self.view.CodeClientEntry.setText(document.get("tier_code") or "")
+        self.view.ClientComboBox.setCurrentText(document.get("tier_name") or "")
+        self.view.CodeClientLineEdit.setText(document.get("tier_code") or "")
 
         self.view.DocumentLinesWidget.set_lines(self.model.get_document_lines(document_id))
 

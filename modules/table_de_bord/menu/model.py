@@ -1,0 +1,2 @@
+class DashboardMenuModel:
+    pass

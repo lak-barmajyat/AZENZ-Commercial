@@ -1,0 +1,2 @@
+class ListeParametersModel:
+    pass

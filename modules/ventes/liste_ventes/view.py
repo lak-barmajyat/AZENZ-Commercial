@@ -1,15 +1,13 @@
 from ui_utils.effects import set_drop_shadow
-from ui_utils.canvas import create_uniform_icon, get_colored_icon
 from ui_utils.widgets.erp_data_table import ERPTableColumn
 from modules.ventes.liste_ventes.controller import VentesController
-from modules.ventes.liste_ventes.model import VentesModel
 
 from PyQt5.uic import loadUi
 from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtGui import QIcon
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import (
-    QAction, QApplication, QFrame, QMainWindow, QWidget,
+    QAction, QApplication, QFrame, QWidget,
     QLineEdit, QToolButton, QHeaderView)
 
 
@@ -18,11 +16,9 @@ class VentesView(QWidget):
         super().__init__()
         loadUi("modules/ventes/liste_ventes/ventes.ui", self)
 
-        model = VentesModel()
-        self.controller = VentesController(self, model)
-
         self.setup()
-        
+        self.controller = VentesController(self)
+
     def setup(self):
         self.setup_erp_table()
         self.setup_navigation()

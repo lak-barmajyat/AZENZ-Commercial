@@ -1,0 +1,2 @@
+class ListeStockageModel:
+    pass

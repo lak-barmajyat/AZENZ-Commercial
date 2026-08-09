@@ -10,7 +10,6 @@ from ui_utils.widgets.document_lines import (
     LineType,
 )
 from modules.ventes.nouveau_doc.controller import NouveauDocumentController
-from modules.ventes.nouveau_doc.model import NouveauDocumentModel
 from ui_utils.widgets.document_lines.document_lines_widget import (
     DocumentLineColumn,
     ColumnEditorType,
@@ -37,10 +36,9 @@ class NouveauDocumentView(QWidget):
         super().__init__()
         loadUi("modules/ventes/nouveau_doc/nouveau_doc.ui", self)
 
-        self.model = NouveauDocumentModel()
-        self.controller = NouveauDocumentController(self, self.model)
-        self.controller.document_id = document_id
         self.setup()
+        self.controller = NouveauDocumentController(self)
+        self.controller.document_id = document_id
 
     def setup(self):
         self.setup_table()
@@ -281,34 +279,6 @@ class NouveauDocumentView(QWidget):
         )
         self.DocumentLinesWidget.set_columns(columns)
 
-        # Searchable lists are page configuration, not widget-specific logic.
-        # Any other page can attach its own provider and mapping to any column.
-        self.DocumentLinesWidget.set_list(
-            "code_article",
-            self.model.search_articles,
-            display_fields=("code_article",),
-        )
-        self.DocumentLinesWidget.set_list(
-            "designation",
-            self.model.search_articles,
-            display_fields=("designation",),
-        )
-        self.DocumentLinesWidget.set_list(
-            "unite_id",
-            self.model.search_units,
-            display_fields=("nom_unite",),
-        )
-        self.DocumentLinesWidget.set_list(
-            "projet_id",
-            self.model.search_projects,
-            display_fields=("nom_projet",),
-        )
-        self.DocumentLinesWidget.set_list(
-            "depot_id",
-            self.model.search_depots,
-            display_fields=("nom_depot",),
-        )
-
         def number(row, column_name):
             try:
                 return float(row.get(column_name) or 0)
@@ -378,7 +348,7 @@ class NouveauDocumentView(QWidget):
         )
 
     def setup_client_searchable_combo(self):
-        self.ClientcomboBox.setEditable(True)
-        self.ClientcomboBox.setInsertPolicy(self.ClientcomboBox.NoInsert)
-        self.ClientcomboBox.setCurrentIndex(-1)
-        self.ClientcomboBox.lineEdit().setPlaceholderText("Type to search...")
+        self.ClientComboBox.setEditable(True)
+        self.ClientComboBox.setInsertPolicy(self.ClientComboBox.NoInsert)
+        self.ClientComboBox.setCurrentIndex(-1)
+        self.ClientComboBox.lineEdit().setPlaceholderText("Type to search...")

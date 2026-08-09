@@ -1,0 +1,2 @@
+class ListeArticlesModel:
+    pass

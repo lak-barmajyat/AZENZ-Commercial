@@ -1,13 +1,19 @@
-from modules.login.login_view import LoginUI
+import sys
+
+import resources.resources_rc
 from PyQt5.QtWidgets import QApplication
-from modules.login.controller import LoginController
-from modules.login.model import LoginModel
-import os
+
+from modules.login.view import LoginView
+
+
+def main():
+    app = QApplication(sys.argv)
+
+    view = LoginView()
+    view.show()
+
+    sys.exit(app.exec_())
+
 
 if __name__ == "__main__":
-    app = QApplication([])
-    controller = LoginController()
-    view = LoginUI()
-    model = LoginModel()
-    controller = LoginController(model, view)
-    app.exec_()
+    main()

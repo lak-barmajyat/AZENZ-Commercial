@@ -1,0 +1,2 @@
+class NouveauClientModel:
+    pass

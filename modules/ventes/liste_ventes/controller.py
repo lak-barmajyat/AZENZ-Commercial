@@ -1,23 +1,28 @@
-from services.sql.db_connection import with_cursor
-from datetime import datetime
+import logging
 
-from PyQt5.QtCore import QStringListModel, Qt, QDate
-from PyQt5.QtWidgets import QCompleter
+from modules.ventes.liste_ventes.model import VentesModel
 
 
 class VentesController:
-    def __init__(self, view, model):
+    def __init__(self, view):
         self.view = view
-        self.model = model
+        self.model = VentesModel()
+        self.logger = logging.getLogger("app.ventes.list")
 
         self.setup()
 
     def setup(self):
+        self.connect_signals()
         self.load_ventes()
 
+    def connect_signals(self):
+        pass
+
     def load_ventes(self):
-        result = self.model.get_ventes_documents()
-        for row in result:
-            self.view.VentesTable.append_row(
-                row
-            )
+        try:
+            result = self.model.get_ventes_documents()
+            for row in result:
+                self.view.VentesTable.append_row(row)
+            self.logger.info("Loaded %d sale documents", len(result))
+        except Exception:
+            self.logger.exception("Failed to load sale documents")

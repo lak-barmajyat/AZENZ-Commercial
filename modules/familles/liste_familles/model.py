@@ -1,0 +1,2 @@
+class ListeFamillesModel:
+    pass

@@ -1,0 +1,2 @@
+class NouveauFamilleModel:
+    pass

@@ -1108,3 +1108,30 @@ mysql.connector.errors.DatabaseError: 2005 (HY000): Unknown MySQL server host 'l
 2026-08-07 15:31:26 | INFO | app | main:16 | Application started
 2026-08-07 15:47:43 | INFO | app | main:16 | Application started
 2026-08-07 15:50:52 | INFO | app | main:16 | Application started
+2026-08-07 19:00:16 | INFO | app | main:15 | Application started
+2026-08-07 19:00:16 | INFO | app.login | controller:61 | Connected to database for société SOC001
+2026-08-08 01:52:10 | INFO | app | main:15 | Application started
+2026-08-08 01:52:10 | INFO | app.login | controller:61 | Connected to database for société SOC001
+2026-08-08 01:52:34 | INFO | app.login | controller:87 | User admin logged in successfully
+2026-08-08 01:52:50 | INFO | app.ventes.nouveau_doc | controller:36 | Preparing new sale document
+2026-08-08 01:52:58 | INFO | app.table_de_bord.menu | controller:34 | User logged out
+2026-08-08 01:53:25 | INFO | app.login | controller:87 | User admin logged in successfully
+2026-08-08 01:53:30 | INFO | app.ventes.list | controller:26 | Loaded 120 sale documents
+2026-08-08 02:23:37 | INFO | app | main:16 | Application started
+2026-08-08 02:23:37 | INFO | app.login | controller:61 | Connected to database for société SOC001
+2026-08-08 02:23:50 | INFO | app.login | controller:87 | User admin logged in successfully
+2026-08-08 02:24:07 | INFO | app.ventes.list | controller:26 | Loaded 120 sale documents
+2026-08-08 02:25:37 | INFO | app.ventes.nouveau_doc | controller:36 | Preparing new sale document
+2026-08-08 03:23:07 | INFO | app | main:16 | Application started
+2026-08-08 03:23:07 | INFO | app.login | controller:61 | Connected to database for société SOC001
+2026-08-08 03:23:14 | INFO | app.login | controller:87 | User admin logged in successfully
+2026-08-08 03:23:27 | INFO | app.ventes.list | controller:26 | Loaded 120 sale documents
+2026-08-08 15:18:29 | INFO | app | main:16 | Application started
+2026-08-08 15:18:29 | INFO | app.login | controller:61 | Connected to database for société SOC001
+2026-08-08 15:18:40 | INFO | app.login | controller:87 | User admin logged in successfully
+2026-08-08 15:18:46 | INFO | app.ventes.nouveau_doc | controller:36 | Preparing new sale document
+2026-08-08 15:53:52 | INFO | app.ventes.list | controller:26 | Loaded 120 sale documents
+2026-08-08 15:55:58 | INFO | app.ventes.nouveau_doc | controller:36 | Preparing new sale document
+2026-08-08 20:24:15 | INFO | app | main:16 | Application started
+2026-08-08 20:24:15 | INFO | app.login | controller:61 | Connected to database for société SOC001
+2026-08-08 20:24:23 | INFO | app.login | controller:87 | User admin logged in successfully
