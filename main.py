@@ -1,15 +1,12 @@
 import sys
 
-import resources.resources_rc
+import resources
+from ui_utils.qss import load_base_qss
 from window_manger.window_manager import WindowManager
 from services.logger.logger import setup_logger
 
 from PyQt5.QtWidgets import QApplication
 
-
-def get_qss():
-    with open("theme/style/base.qss", "r") as f:
-        return f.read()
 
 def main():
     logger = setup_logger()
@@ -17,8 +14,7 @@ def main():
 
     app = QApplication(sys.argv)
 
-    qss = get_qss()
-    app.setStyleSheet(qss)
+    app.setStyleSheet(load_base_qss())
 
     app.window_manager = WindowManager()
     app.window_manager.open("login")

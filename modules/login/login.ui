@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>LoginWindow</class>
  <widget class="QMainWindow" name="LoginWindow">
@@ -14,11 +13,704 @@
    <string>Login - LAK ERP</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QMainWindow#LoginWindow {
-	background-color: rgb(255, 255, 255);
-	border-image: url(:/images/images/Corporate background.png) 0 0 0 0 stretch stretch;
-	background-repeat: no-repeat;
-}</string>
+   <string notr="true">/* ==== AUTO-SYNCED QSS START (managed by theme/sync_qss.py) ==== */
+/* ===================================================================== *
+ * AZENZ - Global base style sheet                                       *
+ * Single source of truth for all windows.                               *
+ * Class-based for QFrame/QLabel; element-level for shared controls.     *
+ * ===================================================================== */
+
+#Background {
+    background-color: #F8F9FB;
+}
+
+/* ===================================================================== *
+ * Labels - class based (no global QLabel rule)                          *
+ * ===================================================================== */
+QLabel[class="label"] {
+    color: #333333;
+    border: none;
+    background-color: transparent;
+    font-family: "Inter", "Tajawal";
+    font-size: 13px;
+    font-weight: 500;
+}
+
+QLabel[class="field-label"] {
+    color: #434655;
+    background: transparent;
+    border: none;
+    font-family: "Inter", "Tajawal";
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+QLabel[class="title"] {
+    color: #191c1e;
+    background: transparent;
+    border: none;
+    font-family: "Inter", "Tajawal";
+    font-size: 28px;
+    font-weight: 700;
+}
+
+QLabel[class="subtitle"] {
+    color: #6b7280;
+    background: transparent;
+    border: none;
+    font-family: "Inter", "Tajawal";
+    font-size: 14px;
+    font-weight: 400;
+}
+
+QLabel[class="label-muted"] {
+    color: rgb(154, 153, 150);
+    background: transparent;
+    border: none;
+    font-family: "Inter", "Tajawal";
+    font-size: 12px;
+    font-weight: 400;
+}
+
+QLabel[class="section-title"] {
+    color: #191c1e;
+    background: transparent;
+    border: none;
+    font-family: "Inter", "Tajawal";
+    font-size: 18px;
+    font-weight: 600;
+}
+
+QLabel[class="separator"] {
+    background-color: rgba(195, 197, 216, 0.5);
+    border: none;
+    height: 1px;
+}
+
+QLabel[class="separator-dashed"] {
+    background-color: transparent;
+    border-top: 1px dashed #d9dde7;
+    min-height: 1px;
+    max-height: 1px;
+}
+
+/* QLineEdit has Icon */
+QLineEdit[class="icon-lineedit"] {
+    background-color: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 6px;
+    color: #333333;
+    
+    selection-background-color: #0051df; 
+    selection-color: #ffffff;
+}
+
+QLineEdit[class="icon-lineedit"]:hover {
+    border: 2px solid #b3b3b3;
+}
+
+QLineEdit[class="icon-lineedit"]:focus {
+    border: 2px solid #0051df;
+    background-color: #fbfcff;
+}
+
+QLineEdit[class="icon-lineedit"]:disabled {
+    background-color: #f5f5f5;
+    color: #a0a0a0;
+    border: 2px solid #e8e8e8;
+}
+
+QLineEdit[class="icon-lineedit"][readOnly="true"] {
+    background-color: #fafafa;
+    color: #666666;
+    border: 2px dashed #cccccc;
+}
+
+/* QLineEdit */
+QLineEdit {
+    background-color: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: "Inter";
+    color: #333333;
+    
+    selection-background-color: #0051df; 
+    selection-color: #ffffff;
+}
+
+QLineEdit:hover {
+    border: 2px solid #b3b3b3;
+}
+
+QLineEdit:focus {
+    border: 2px solid #0051df;
+    background-color: #fbfcff;
+}
+
+QLineEdit:disabled {
+    background-color: #f5f5f5;
+    color: #a0a0a0;
+    border: 2px solid #e8e8e8;
+}
+
+QLineEdit[readOnly="true"] {
+    background-color: #fafafa;
+    color: #666666;
+    border: 2px dashed #cccccc;
+}
+
+
+/* ===================================================================== *
+ * QPushButton (login)                                                   *
+ * ===================================================================== */
+/* Primary QPushButton Style */
+QPushButton[class="primary"] {
+    background-color: #0051df;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: "Inter", "Tajawal";
+}
+
+QPushButton[class="primary"]:hover {
+    background-color: rgba(0, 81, 223, 230); 
+}
+
+QPushButton[class="primary"]:pressed {
+    background-color: rgba(0, 81, 223, 204);
+}
+
+QPushButton[class="primary"]:focus {
+    border: 2px solid #00174d;
+}
+
+
+/* Outlined QPushButton Style */
+QPushButton[class="outlined"] {
+    background-color: #ffffff;
+    color: #434655;
+    border: 1px solid #c3c5d8;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: "Inter", "Tajawal";
+}    
+
+QPushButton[class="outlined"]:hover {
+    background-color: #f3f4f6;
+}    
+
+QPushButton[class="outlined"]:pressed {
+    background-color: #edeef0;
+}    
+
+QPushButton[class="outlined"]:focus {
+    border: 2px solid rgba(0, 81, 223, 51);
+}    
+
+
+/* CardToolButton */
+QToolButton[class="card-button"] {
+    color: #000;
+    padding: 15px;
+    padding-top: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #eaebf0;
+    border-radius: 12px;
+}
+
+QToolButton[class="card-button"]:hover {
+    background-color: #f3f4f6;
+    border: 1px solid hsl(218, 100%, 55%);
+}
+
+QToolButton[class="card-button"]:pressed {
+    background-color: #e5e7eb;
+}
+
+/* SidebarToolButton */
+QToolButton[class="sidebar-button"] {
+    background-color: transparent;
+    color: #4b5563;
+    border: none;
+    border-left: 4px solid transparent; 
+    padding: 12px 16px;
+    spacing: 18px;
+    
+    text-align: left;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: "Inter";
+}    
+
+QToolButton[class="sidebar-button"]:checked {
+    background-color: #d0e1fb;
+    color: #0051df;
+    border-left: 4px solid #0051df; 
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}    
+
+QToolButton[class="sidebar-button"]:unchecked:hover {
+    background-color: #f3f4f6;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}    
+
+
+QToolButton[class="icon-button"] {
+    background-color: transparent;
+    border: none;
+    border-radius: 21px;
+    padding: 8px;
+}    
+
+QToolButton[class="icon-button"]:hover {
+    background-color: #f3f4f6;
+}    
+
+QToolButton[class="icon-button"]:pressed {
+    background-color: #e5e7eb;
+}    
+
+
+/* LoginErrorLabel */
+QLabel#LoginErrorLabel {
+    background-color: #f8d7da;
+    border: 1px solid #c9302c;
+    border-radius: 10px;
+    padding: 10px;
+    padding-left: 15px;
+	color: #721c24;	
+	image: url(:/icons/icons/warning.svg);
+	image-position: left;
+}    
+
+
+/* ComboBox Box */
+QComboBox {
+    background-color: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-family: "Inter";
+    font-size: 13px;
+    font-weight: 500;
+    color: #333333;
+    min-width: 60px;
+}
+
+QComboBox:hover {
+    border: 2px solid #b3b3b3;
+}
+
+QComboBox:focus {
+    border: 2px solid #0051df;
+    background-color: #fbfcff;
+}
+
+QComboBox::drop-down {
+    border: 6px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #ffffff;
+    border: 1px solid #eaebf0;
+    border-radius: 0px;
+    box-shadow: none;
+    padding: 4px;
+    font-family: "Inter";
+    font-size: 13px;
+    font-weight: 500;
+    color: #333333;
+    
+    selection-background-color: #0051df;
+    selection-color: #ffffff;
+}
+
+QComboBox QAbstractItemView::item {
+    padding: 8px 12px;
+    border-radius: 4px;
+    color: #4b5563;
+    min-height: 24px;
+}
+
+QComboBox QAbstractItemView::item:hover {
+    background-color: #f3f4f6;
+    color: #0051df;
+}
+
+/* 4. The Arrow Icon itself */
+QComboBox::down-arrow {
+    image: url(:/icons/icons/down_arrow.svg);
+}
+
+
+/* LoginFrame */
+QFrame#LoginFrame {
+    background-color: #ffffff;
+    border: 1px solid #babcca; 
+    border-radius: 12px; 
+}    
+
+QMainWindow#LoginWindow {
+    background-color: rgb(255, 255, 255);
+    border-image: url(:/images/images/Corporate background.png) 0 0 0 0 stretch stretch;
+    background-repeat: no-repeat;
+}
+
+
+/* ===================================================================== *
+ * Frames - class based (no global QFrame rule)                          *
+ * ===================================================================== */
+QFrame[class="card"] {
+    background-color: #ffffff;
+    border: 2px solid #e2e3e8; /* Soft gray border */
+    border-radius: 12px;
+}
+
+QFrame[class="header"] {
+    background-color: #f8fafc;       /* Very light slate/blue-gray tint */
+    border-top-left-radius: 8px;     /* Round only the top corners */
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom: 1px solid #e2e8f0; /* Subtle bottom separator line */
+}
+
+QFrame[class="gframe"] {
+    background-color: transparent;   /* Blends seamlessly into sidebar background */
+    border: none;
+    
+    padding-left: 0px;              /* Indents child elements like modern web apps */
+    margin-top: 2px;
+    margin-bottom: 4px;
+}
+
+/* Bar Frames */
+QFrame#SidebarFrame, QFrame#FootSidebarFrame {
+	border-right: 1px solid #d0d0d0;
+    background-color: #f7f7f7;
+}
+
+QFrame#FootSidebarFrame {
+    border-top: 1px solid #d0d0d0;
+}
+
+QFrame#TopBarFrame {
+    border-bottom: 1px solid #d0d0d0;
+}
+
+
+/* ===================================================================== *
+ * Summary / stat cards - unified class based set                        *
+ * ===================================================================== */
+QFrame[class="summary-card"] {
+    background-color: #ffffff;
+    border: 1px solid #eaebf0;
+    border-radius: 12px;
+}
+
+QFrame[class="summary-card-inner"] {
+    background-color: #f8fafc;
+    border: 1px solid #e1e4ea;
+    border-radius: 8px;
+}
+
+QLabel[class="summary-title"] {
+    color: #434655;
+    background: transparent;
+    border: none;
+    font-family: "Inter", "Tajawal";
+    font-size: 12px;
+    font-weight: 600;
+}
+
+QLabel[class="summary-value"] {
+    color: #111827;
+    background: transparent;
+    border: none;
+    font-family: "Inter", "Tajawal";
+    font-size: 24px;
+    font-weight: 700;
+}
+
+QLabel[class="summary-value-primary"] {
+    color: #0051df;
+    background: transparent;
+    border: none;
+    font-family: "Inter", "Tajawal";
+    font-size: 24px;
+    font-weight: 700;
+}
+
+QLabel[class="summary-value-danger"] {
+    color: #dc2626;
+    background: transparent;
+    border: none;
+    font-family: "Inter", "Tajawal";
+    font-size: 24px;
+    font-weight: 700;
+}
+
+QLabel[class="summary-label"] {
+    color: #1f2937;
+    background: transparent;
+    border: none;
+    font-family: "Inter", "Tajawal";
+    font-size: 17px;
+    font-weight: 500;
+}
+
+QLabel[class="summary-total"] {
+    color: #020617;
+    background: transparent;
+    border: none;
+    font-family: "Inter", "Tajawal";
+    font-size: 22px;
+    font-weight: 800;
+}
+
+QLabel[class="summary-total-value"] {
+    color: #0051df;
+    background: transparent;
+    border: none;
+    font-family: "Inter", "Tajawal";
+    font-size: 28px;
+    font-weight: 800;
+}
+
+
+/* ===================================================================== *
+ * Data tables                                                           *
+ * ===================================================================== */
+QTableWidget {
+    background-color: #ffffff;
+    border: 1px solid #eaebf0;
+    border-radius: 8px;
+    color: #333333;
+    font-size: 13px;
+    gridline-color: transparent; /* We will use item borders instead of harsh gridlines */
+    outline: none;               /* Removes the dotted focus ring around selected cells */
+}
+
+QHeaderView::section:horizontal {
+    background-color: #f8f9fa;   /* Light gray header background */
+    color: #4b5563;              /* Muted text color */
+    font-weight: 600;
+    border: none;
+    border-bottom: 1px solid #eaebf0; /* Separates header from data */
+    padding: 8px 12px;
+    alignment: left;
+}
+
+QHeaderView::section:vertical {
+    background-color: #f8f9fa;
+    color: #4b5563;
+    border: none;
+    border-right: 1px solid #eaebf0;
+    padding: 4px;
+}
+
+QTableWidget::item {
+    padding: 4px 12px;
+    border-bottom: 1px solid #f3f4f6; /* Creates soft, horizontal row dividers */
+}
+
+QTableWidget::item:hover {
+    background-color: #f8f9fa;
+}
+
+QTableWidget::item:selected {
+    background-color: #eff4ff;   /* Very pale blue background */
+    color: #0051df;              /* Your primary blue for text */
+}
+
+QTableCornerButton::section {
+    background-color: #f8f9fa;
+    border: none;
+    border-bottom: 1px solid #eaebf0;
+    border-right: 1px solid #eaebf0;
+}
+
+
+/* ===================================================================== *
+ * Tool buttons                                                          *
+ * ===================================================================== */
+QToolButton[class="primary"] {
+    background-color: #2563eb; /* Vibrant primary blue */
+    color: #ffffff;            /* Pure white text */
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;          /* Slightly bolder font to stand out */
+}
+
+QToolButton[class="primary"]:hover {
+    background-color: #1d4ed8; /* Slightly darker blue on hover for feedback */
+}
+
+QToolButton[class="primary"]:pressed {
+    background-color: #1e40af; /* Deep blue when actively clicked */
+}
+
+QToolButton[class="primary"]:disabled {
+    background-color: #93c5fd; /* Faded, washed-out blue */
+    color: #f8fafc;            /* Slightly dimmed white text */
+}
+
+QToolButton[class="secondary"] {
+    background-color: transparent; /* Soft gray background */
+    color: #374151;            /* Dark slate gray text */
+    border: none;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+QToolButton[class="secondary"]:hover {
+    background-color: #e5e7eb; /* Slightly darker gray on hover */
+    color: #111827;            /* Almost black text on hover */
+}
+
+QToolButton[class="secondary"]:pressed {
+    background-color: #d1d5db; /* Noticeable press state */
+}
+
+QToolButton[class="secondary-danger"] {
+    background-color: transparent; /* Ghost button by default */
+    color: #4b5563;                /* Muted gray text */
+    border: none;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+QToolButton[class="secondary-danger"]:hover {
+    background-color: #fef2f2;     /* Faint warning red background */
+    color: #dc2626;                /* Strong red text */
+}
+
+QToolButton[class="secondary-danger"]:pressed {
+    background-color: #fee2e2;     /* Slightly deeper red background */
+    color: #b91c1c;                /* Darker red text */
+}
+
+
+/* ===================================================================== *
+ * Date / time edits                                                     *
+ * ===================================================================== */
+QDateEdit {
+    background-color: #ffffff;
+    border: 2px solid #e0e0e0;       /* Matches your QComboBox */
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #333333;
+    min-width: 110px;
+}
+
+QDateEdit:hover {
+    border: 2px solid #b3b3b3;       /* Slightly darker on hover */
+}
+
+QDateEdit:focus {
+    border: 2px solid #2563eb;       /* Primary blue border when typing */
+    background-color: #fbfcff;       /* Very faint blue tint */
+}
+
+QDateEdit::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 32px;
+    border-left: none;               /* Seamless look */
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+QDateEdit::down-arrow {
+    image: url(":/icons/icons/Gcalendar.svg"); /* Pro-tip: Use a calendar icon instead of an arrow */
+    width: 16px;
+    height: 16px;
+}
+
+
+/* ===================================================================== *
+ * Sidebar group toggles + tabs                                          *
+ * ===================================================================== */
+QToolButton[class="sidebar-gbutton"] {
+    background-color: #f3f4f6;       /* Soft light-gray background */
+    color: #4b5563;                  /* Muted slate text color */
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;                /* Semi-bold for category titles */
+    padding: 8px 14px;
+    text-align: left;                /* Keeps icon and text left-aligned */
+}
+
+QToolButton[class="sidebar-gbutton"]:hover {
+    background-color: #e5e7eb;       /* Darker gray feedback on hover */
+    color: #111827;                  /* High contrast text on hover */
+}
+
+QToolButton[class="sidebar-gbutton"][expanded="true"] {
+    background-color: #eff4ff;       /* Soft tint of your primary blue */
+    color: #0051df;                  /* Text turns primary blue when open */
+}
+
+QTabWidget::pane {
+    border: none;                     /* Removes the harsh default box */
+    border-top: 1px solid #e2e8f0;    /* Creates the continuous horizontal line under the tabs */
+    background: transparent;          /* Lets your main background color show through */
+}
+
+QTabBar::tab {
+    background: transparent;
+    color: #64748b;                   /* Muted slate-gray text */
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 25px;               /* Breathing room around the text */
+    border-bottom: 2px solid transparent; /* Invisible border to reserve space */
+    
+    /* CRUCIAL TRICK: Pulls the tab down 1px so its bottom border 
+       perfectly overlaps the pane's top border line */
+    margin-bottom: -1px;              
+}
+
+QTabBar::tab:hover:!selected {
+    color: #1e293b;                   /* Darkens the text */
+    border-bottom: 2px solid #cbd5e1; /* Shows a subtle gray underline preview */
+}
+
+QTabBar::tab:selected {
+    color: #2563eb;                   /* Your vibrant primary blue */
+    border-bottom: 2px solid #2563eb; /* The thick blue active underline */
+}
+
+QTabBar:focus {
+    outline: none;
+}
+
+Line {
+	color: #e3e3e3;
+}
+/* ==== AUTO-SYNCED QSS END ==== */
+</string>
   </property>
   <widget class="QWidget" name="CentralWidget">
    <widget class="QFrame" name="LoginFrame">
@@ -128,19 +820,19 @@
            <height>91</height>
           </size>
          </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel {
-	padding-top: 15px;
-	image: url(:/images/images/program_logo.png);
-}</string>
-         </property>
          <property name="text">
-          <string/>
+          <string />
          </property>
          <property name="scaledContents">
           <bool>true</bool>
          </property>
-        </widget>
+        <property name="styleSheet">
+<string notr="true">#LogoLabel {
+	padding-top: 15px;
+	image: url(:/images/images/program_logo.png);
+}</string>
+</property>
+</widget>
        </item>
        <item>
         <spacer name="verticalSpacer_7">
@@ -177,7 +869,10 @@
          <property name="text">
           <string>Log in</string>
          </property>
-        </widget>
+        <property name="class" stdset="0">
+<string>title</string>
+</property>
+</widget>
        </item>
        <item alignment="Qt::AlignHCenter">
         <widget class="QLabel" name="SubTitleLabel">
@@ -198,7 +893,10 @@
          <property name="text">
           <string>Access your ERP space</string>
          </property>
-        </widget>
+        <property name="class" stdset="0">
+<string>subtitle</string>
+</property>
+</widget>
        </item>
       </layout>
      </item>
@@ -221,7 +919,7 @@
      <item>
       <widget class="QLabel" name="LoginErrorLabel">
        <property name="styleSheet">
-        <string notr="true"/>
+        <string notr="true" />
        </property>
        <property name="text">
         <string>     Incorrect username or password.</string>
@@ -267,13 +965,13 @@
            <bold>true</bold>
           </font>
          </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel {padding-left: 10px}</string>
-         </property>
          <property name="text">
           <string>Username</string>
          </property>
-        </widget>
+        <property name="class" stdset="0">
+<string>field-label</string>
+</property>
+</widget>
        </item>
        <item>
         <widget class="QLineEdit" name="UsernameLineEdit">
@@ -296,7 +994,7 @@
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true"/>
+          <string notr="true" />
          </property>
          <property name="placeholderText">
           <string>Enter your username</string>
@@ -334,13 +1032,13 @@
            <bold>true</bold>
           </font>
          </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel {padding-left: 10px}</string>
-         </property>
          <property name="text">
           <string>Password</string>
          </property>
-        </widget>
+        <property name="class" stdset="0">
+<string>field-label</string>
+</property>
+</widget>
        </item>
        <item>
         <widget class="QLineEdit" name="PasswordLineEdit">
@@ -365,7 +1063,7 @@
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true"/>
+          <string notr="true" />
          </property>
          <property name="echoMode">
           <enum>QLineEdit::Password</enum>
@@ -436,7 +1134,7 @@
            </size>
           </property>
           <property name="styleSheet">
-           <string notr="true"/>
+           <string notr="true" />
           </property>
           <property name="text">
            <string>Cancel</string>
@@ -458,7 +1156,7 @@
            </size>
           </property>
           <property name="styleSheet">
-           <string notr="true"/>
+           <string notr="true" />
           </property>
           <property name="text">
            <string>Log in</string>
@@ -507,7 +1205,7 @@
        </item>
        <item>
         <widget class="QLabel" name="SeparatorLabel">
-         <property name="minimumSize">
+   <property name="minimumSize">
           <size>
            <width>0</width>
            <height>0</height>
@@ -520,12 +1218,15 @@
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true"/>
+          <string notr="true" />
          </property>
          <property name="text">
-          <string/>
+          <string />
          </property>
-        </widget>
+        <property name="class" stdset="0">
+<string>separator</string>
+</property>
+</widget>
        </item>
        <item>
         <spacer name="horizontalSpacer_5">
@@ -566,13 +1267,13 @@
          <pointsize>9</pointsize>
         </font>
        </property>
-       <property name="styleSheet">
-        <string notr="true">color: rgb(154, 153, 150);</string>
-       </property>
        <property name="text">
         <string>AZENZ • LAK Software commercial system</string>
        </property>
-      </widget>
+      <property name="class" stdset="0">
+<string>label-muted</string>
+</property>
+</widget>
      </item>
     </layout>
    </widget>
@@ -583,7 +1284,7 @@
   <tabstop>CancelButton</tabstop>
  </tabstops>
  <resources>
-  <include location="../../resources/resources.qrc"/>
+  <include location="../../resources/resources.qrc" />
  </resources>
- <connections/>
+ <connections />
 </ui>

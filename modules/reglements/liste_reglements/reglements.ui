@@ -1,42 +1,1087 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>Background</class>
+ <widget class="QWidget" name="Background">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1472</width>
-    <height>665</height>
+    <width>1090</width>
+    <height>542</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Liste des Règlements</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">#Background{background-color:#f8f9fb;}QFrame[class=&quot;card&quot;]{background-color:#fff;border:1px solid #c3c5d8;border-radius:8px;}QLabel{color:#191c1e;background:transparent;border:none;font-family:&quot;Inter&quot;,&quot;Tajawal&quot;;font-size:13px;font-weight:500;}QLabel[class=&quot;field-label&quot;]{color:#434655;font-size:11px;font-weight:600;text-transform:uppercase;}QLineEdit,QDateEdit,QComboBox{background-color:#fff;border:1px solid #c3c5d8;border-radius:4px;padding:6px 12px;color:#191c1e;font-family:&quot;Inter&quot;,&quot;Tajawal&quot;;font-size:13px;font-weight:400;selection-background-color:#0051df;selection-color:#fff;}QLineEdit:focus,QDateEdit:focus,QComboBox:focus{border:1px solid #0051df;background-color:#f8f9fb;}QComboBox::drop-down,QDateEdit::drop-down{border:none;width:24px;}QComboBox::down-arrow,QDateEdit::down-arrow{image:url(:/icons/icons/down_arrow.svg);}QToolButton[class=&quot;primary&quot;]{background-color:#2f6bff;color:#fff;border:none;border-radius:4px;padding:8px 16px;font-family:&quot;Inter&quot;,&quot;Tajawal&quot;;font-size:12px;font-weight:500;}QToolButton[class=&quot;primary&quot;]:hover{background-color:#0051df;}QToolButton[class=&quot;primary&quot;]:focus{border:2px solid #00174d;}QToolButton[class=&quot;secondary&quot;]{background-color:transparent;color:#434655;border:none;border-radius:4px;padding:8px 12px;font-family:&quot;Inter&quot;,&quot;Tajawal&quot;;font-size:12px;font-weight:500;}QToolButton[class=&quot;secondary&quot;]:hover{background-color:#edeef0;color:#191c1e;}QToolButton[class=&quot;danger&quot;]{background-color:transparent;color:#434655;border:none;border-radius:4px;padding:8px 12px;font-family:&quot;Inter&quot;,&quot;Tajawal&quot;;font-size:12px;font-weight:500;}QToolButton[class=&quot;danger&quot;]:hover{background-color:#ffdad6;color:#ba1a1a;}QFrame[class=&quot;summary&quot;]{background-color:#fff;border:1px solid #c3c5d8;border-radius:4px;}QLabel[class=&quot;summary-title&quot;]{color:#434655;font-size:11px;font-weight:600;}QLabel[class=&quot;summary-value&quot;]{color:#191c1e;font-size:20px;font-weight:600;}QLabel#ValueMontantRegle{color:#0051df;}QLabel#ValueResteRegler{color:#ba1a1a;}</string>
+   <string notr="true">/* ===================================================================== *
+ * AZENZ - Global base style sheet                                       *
+ * Single source of truth for all windows.                               *
+ * Class-based for QFrame/QLabel; element-level for shared controls.     *
+ * ===================================================================== */
+
+#Background {
+    background-color: #F8F9FB;
+}
+
+/* ===================================================================== *
+ * Labels - class based (no global QLabel rule)                          *
+ * ===================================================================== */
+QLabel[class=&quot;label&quot;] {
+    color: #333333;
+    border: none;
+    background-color: transparent;
+    font-family: &quot;Inter&quot;, &quot;Tajawal&quot;;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+QLabel[class=&quot;field-label&quot;] {
+    color: #434655;
+    background: transparent;
+    border: none;
+    font-family: &quot;Inter&quot;, &quot;Tajawal&quot;;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+QLabel[class=&quot;title&quot;] {
+    color: #191c1e;
+    background: transparent;
+    border: none;
+    font-family: &quot;Inter&quot;, &quot;Tajawal&quot;;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+QLabel[class=&quot;subtitle&quot;] {
+    color: #6b7280;
+    background: transparent;
+    border: none;
+    font-family: &quot;Inter&quot;, &quot;Tajawal&quot;;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+QLabel[class=&quot;label-muted&quot;] {
+    color: rgb(154, 153, 150);
+    background: transparent;
+    border: none;
+    font-family: &quot;Inter&quot;, &quot;Tajawal&quot;;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+QLabel[class=&quot;section-title&quot;] {
+    color: #191c1e;
+    background: transparent;
+    border: none;
+    font-family: &quot;Inter&quot;, &quot;Tajawal&quot;;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+QLabel[class=&quot;separator&quot;] {
+    background-color: rgba(195, 197, 216, 0.5);
+    border: none;
+    height: 1px;
+}
+
+QLabel[class=&quot;separator-dashed&quot;] {
+    background-color: transparent;
+    border-top: 1px dashed #d9dde7;
+    min-height: 1px;
+    max-height: 1px;
+}
+
+/* QLineEdit has Icon */
+QLineEdit[class=&quot;icon-lineedit&quot;] {
+    background-color: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 6px;
+    color: #333333;
+    
+    selection-background-color: #0051df; 
+    selection-color: #ffffff;
+}
+
+QLineEdit[class=&quot;icon-lineedit&quot;]:hover {
+    border: 2px solid #b3b3b3;
+}
+
+QLineEdit[class=&quot;icon-lineedit&quot;]:focus {
+    border: 2px solid #0051df;
+    background-color: #fbfcff;
+}
+
+QLineEdit[class=&quot;icon-lineedit&quot;]:disabled {
+    background-color: #f5f5f5;
+    color: #a0a0a0;
+    border: 2px solid #e8e8e8;
+}
+
+QLineEdit[class=&quot;icon-lineedit&quot;][readOnly=&quot;true&quot;] {
+    background-color: #fafafa;
+    color: #666666;
+    border: 2px dashed #cccccc;
+}
+
+/* QLineEdit */
+QLineEdit {
+    background-color: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: &quot;Inter&quot;;
+    color: #333333;
+    
+    selection-background-color: #0051df; 
+    selection-color: #ffffff;
+}
+
+QLineEdit:hover {
+    border: 2px solid #b3b3b3;
+}
+
+QLineEdit:focus {
+    border: 2px solid #0051df;
+    background-color: #fbfcff;
+}
+
+QLineEdit:disabled {
+    background-color: #f5f5f5;
+    color: #a0a0a0;
+    border: 2px solid #e8e8e8;
+}
+
+QLineEdit[readOnly=&quot;true&quot;] {
+    background-color: #fafafa;
+    color: #666666;
+    border: 2px dashed #cccccc;
+}
+
+
+/* ===================================================================== *
+ * QPushButton (login)                                                   *
+ * ===================================================================== */
+/* Primary QPushButton Style */
+QPushButton[class=&quot;primary&quot;] {
+    background-color: #0051df;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: &quot;Inter&quot;, &quot;Tajawal&quot;;
+}
+
+QPushButton[class=&quot;primary&quot;]:hover {
+    background-color: rgba(0, 81, 223, 230); 
+}
+
+QPushButton[class=&quot;primary&quot;]:pressed {
+    background-color: rgba(0, 81, 223, 204);
+}
+
+QPushButton[class=&quot;primary&quot;]:focus {
+    border: 2px solid #00174d;
+}
+
+
+/* Outlined QPushButton Style */
+QPushButton[class=&quot;outlined&quot;] {
+    background-color: #ffffff;
+    color: #434655;
+    border: 1px solid #c3c5d8;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: &quot;Inter&quot;, &quot;Tajawal&quot;;
+}    
+
+QPushButton[class=&quot;outlined&quot;]:hover {
+    background-color: #f3f4f6;
+}    
+
+QPushButton[class=&quot;outlined&quot;]:pressed {
+    background-color: #edeef0;
+}    
+
+QPushButton[class=&quot;outlined&quot;]:focus {
+    border: 2px solid rgba(0, 81, 223, 51);
+}    
+
+
+/* CardToolButton */
+QToolButton[class=&quot;card-button&quot;] {
+    color: #000;
+    padding: 15px;
+    padding-top: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #eaebf0;
+    border-radius: 12px;
+}
+
+QToolButton[class=&quot;card-button&quot;]:hover {
+    background-color: #f3f4f6;
+    border: 1px solid hsl(218, 100%, 55%);
+}
+
+QToolButton[class=&quot;card-button&quot;]:pressed {
+    background-color: #e5e7eb;
+}
+
+/* SidebarToolButton */
+QToolButton[class=&quot;sidebar-button&quot;] {
+    background-color: transparent;
+    color: #4b5563;
+    border: none;
+    border-left: 4px solid transparent; 
+    padding: 12px 16px;
+    spacing: 18px;
+    
+    text-align: left;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: &quot;Inter&quot;;
+}    
+
+QToolButton[class=&quot;sidebar-button&quot;]:checked {
+    background-color: #d0e1fb;
+    color: #0051df;
+    border-left: 4px solid #0051df; 
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}    
+
+QToolButton[class=&quot;sidebar-button&quot;]:unchecked:hover {
+    background-color: #f3f4f6;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}    
+
+
+QToolButton[class=&quot;icon-button&quot;] {
+    background-color: transparent;
+    border: none;
+    border-radius: 21px;
+    padding: 8px;
+}    
+
+QToolButton[class=&quot;icon-button&quot;]:hover {
+    background-color: #f3f4f6;
+}    
+
+QToolButton[class=&quot;icon-button&quot;]:pressed {
+    background-color: #e5e7eb;
+}    
+
+
+/* LoginErrorLabel */
+QLabel#LoginErrorLabel {
+    background-color: #f8d7da;
+    border: 1px solid #c9302c;
+    border-radius: 10px;
+    padding: 10px;
+    padding-left: 15px;
+	color: #721c24;	
+	image: url(:/icons/icons/warning.svg);
+	image-position: left;
+}    
+
+
+/* ComboBox Box */
+QComboBox {
+    background-color: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-family: &quot;Inter&quot;;
+    font-size: 13px;
+    font-weight: 500;
+    color: #333333;
+    min-width: 60px;
+}
+
+QComboBox:hover {
+    border: 2px solid #b3b3b3;
+}
+
+QComboBox:focus {
+    border: 2px solid #0051df;
+    background-color: #fbfcff;
+}
+
+QComboBox::drop-down {
+    border: 6px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #ffffff;
+    border: 1px solid #eaebf0;
+    border-radius: 0px;
+    box-shadow: none;
+    padding: 4px;
+    font-family: &quot;Inter&quot;;
+    font-size: 13px;
+    font-weight: 500;
+    color: #333333;
+    
+    selection-background-color: #0051df;
+    selection-color: #ffffff;
+}
+
+QComboBox QAbstractItemView::item {
+    padding: 8px 12px;
+    border-radius: 4px;
+    color: #4b5563;
+    min-height: 24px;
+}
+
+QComboBox QAbstractItemView::item:hover {
+    background-color: #f3f4f6;
+    color: #0051df;
+}
+
+/* 4. The Arrow Icon itself */
+QComboBox::down-arrow {
+    image: url(:/icons/icons/down_arrow.svg);
+}
+
+
+/* LoginFrame */
+QFrame#LoginFrame {
+    background-color: #ffffff;
+    border: 1px solid #babcca; 
+    border-radius: 12px; 
+}    
+
+
+/* ===================================================================== *
+ * Frames - class based (no global QFrame rule)                          *
+ * ===================================================================== */
+QFrame[class=&quot;card&quot;] {
+    background-color: #ffffff;
+    border: 2px solid #e2e3e8; /* Soft gray border */
+    border-radius: 12px;
+}
+
+QFrame[class=&quot;header&quot;] {
+    background-color: #f8fafc;       /* Very light slate/blue-gray tint */
+    border-top-left-radius: 8px;     /* Round only the top corners */
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom: 1px solid #e2e8f0; /* Subtle bottom separator line */
+}
+
+QFrame[class=&quot;gframe&quot;] {
+    background-color: transparent;   /* Blends seamlessly into sidebar background */
+    border: none;
+    
+    padding-left: 0px;              /* Indents child elements like modern web apps */
+    margin-top: 2px;
+    margin-bottom: 4px;
+}
+
+/* Bar Frames */
+QFrame#SidebarFrame, QFrame#FootSidebarFrame {
+	border-right: 1px solid #d0d0d0;
+    background-color: #f7f7f7;
+}
+
+QFrame#FootSidebarFrame {
+    border-top: 1px solid #d0d0d0;
+}
+
+QFrame#TopBarFrame {
+    border-bottom: 1px solid #d0d0d0;
+}
+
+
+/* ===================================================================== *
+ * Summary / stat cards - unified class based set                        *
+ * ===================================================================== */
+QFrame[class=&quot;summary-card&quot;] {
+    background-color: #ffffff;
+    border: 1px solid #eaebf0;
+    border-radius: 12px;
+}
+
+QFrame[class=&quot;summary-card-inner&quot;] {
+    background-color: #f8fafc;
+    border: 1px solid #e1e4ea;
+    border-radius: 8px;
+}
+
+QLabel[class=&quot;summary-title&quot;] {
+    color: #434655;
+    background: transparent;
+    border: none;
+    font-family: &quot;Inter&quot;, &quot;Tajawal&quot;;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+QLabel[class=&quot;summary-value&quot;] {
+    color: #111827;
+    background: transparent;
+    border: none;
+    font-family: &quot;Inter&quot;, &quot;Tajawal&quot;;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+QLabel[class=&quot;summary-value-primary&quot;] {
+    color: #0051df;
+    background: transparent;
+    border: none;
+    font-family: &quot;Inter&quot;, &quot;Tajawal&quot;;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+QLabel[class=&quot;summary-value-danger&quot;] {
+    color: #dc2626;
+    background: transparent;
+    border: none;
+    font-family: &quot;Inter&quot;, &quot;Tajawal&quot;;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+QLabel[class=&quot;summary-label&quot;] {
+    color: #1f2937;
+    background: transparent;
+    border: none;
+    font-family: &quot;Inter&quot;, &quot;Tajawal&quot;;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+QLabel[class=&quot;summary-total&quot;] {
+    color: #020617;
+    background: transparent;
+    border: none;
+    font-family: &quot;Inter&quot;, &quot;Tajawal&quot;;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+QLabel[class=&quot;summary-total-value&quot;] {
+    color: #0051df;
+    background: transparent;
+    border: none;
+    font-family: &quot;Inter&quot;, &quot;Tajawal&quot;;
+    font-size: 28px;
+    font-weight: 800;
+}
+
+
+/* ===================================================================== *
+ * Data tables                                                           *
+ * ===================================================================== */
+QTableWidget {
+    background-color: #ffffff;
+    border: 1px solid #eaebf0;
+    border-radius: 8px;
+    color: #333333;
+    font-size: 13px;
+    gridline-color: transparent; /* We will use item borders instead of harsh gridlines */
+    outline: none;               /* Removes the dotted focus ring around selected cells */
+}
+
+QHeaderView::section:horizontal {
+    background-color: #f8f9fa;   /* Light gray header background */
+    color: #4b5563;              /* Muted text color */
+    font-weight: 600;
+    border: none;
+    border-bottom: 1px solid #eaebf0; /* Separates header from data */
+    padding: 8px 12px;
+    alignment: left;
+}
+
+QHeaderView::section:vertical {
+    background-color: #f8f9fa;
+    color: #4b5563;
+    border: none;
+    border-right: 1px solid #eaebf0;
+    padding: 4px;
+}
+
+QTableWidget::item {
+    padding: 4px 12px;
+    border-bottom: 1px solid #f3f4f6; /* Creates soft, horizontal row dividers */
+}
+
+QTableWidget::item:hover {
+    background-color: #f8f9fa;
+}
+
+QTableWidget::item:selected {
+    background-color: #eff4ff;   /* Very pale blue background */
+    color: #0051df;              /* Your primary blue for text */
+}
+
+QTableCornerButton::section {
+    background-color: #f8f9fa;
+    border: none;
+    border-bottom: 1px solid #eaebf0;
+    border-right: 1px solid #eaebf0;
+}
+
+
+/* ===================================================================== *
+ * Tool buttons                                                          *
+ * ===================================================================== */
+QToolButton[class=&quot;primary&quot;] {
+    background-color: #2563eb; /* Vibrant primary blue */
+    color: #ffffff;            /* Pure white text */
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;          /* Slightly bolder font to stand out */
+}
+
+QToolButton[class=&quot;primary&quot;]:hover {
+    background-color: #1d4ed8; /* Slightly darker blue on hover for feedback */
+}
+
+QToolButton[class=&quot;primary&quot;]:pressed {
+    background-color: #1e40af; /* Deep blue when actively clicked */
+}
+
+QToolButton[class=&quot;primary&quot;]:disabled {
+    background-color: #93c5fd; /* Faded, washed-out blue */
+    color: #f8fafc;            /* Slightly dimmed white text */
+}
+
+QToolButton[class=&quot;secondary&quot;] {
+    background-color: transparent; /* Soft gray background */
+    color: #374151;            /* Dark slate gray text */
+    border: none;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+QToolButton[class=&quot;secondary&quot;]:hover {
+    background-color: #e5e7eb; /* Slightly darker gray on hover */
+    color: #111827;            /* Almost black text on hover */
+}
+
+QToolButton[class=&quot;secondary&quot;]:pressed {
+    background-color: #d1d5db; /* Noticeable press state */
+}
+
+QToolButton[class=&quot;secondary-danger&quot;] {
+    background-color: transparent; /* Ghost button by default */
+    color: #4b5563;                /* Muted gray text */
+    border: none;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+QToolButton[class=&quot;secondary-danger&quot;]:hover {
+    background-color: #fef2f2;     /* Faint warning red background */
+    color: #dc2626;                /* Strong red text */
+}
+
+QToolButton[class=&quot;secondary-danger&quot;]:pressed {
+    background-color: #fee2e2;     /* Slightly deeper red background */
+    color: #b91c1c;                /* Darker red text */
+}
+
+
+/* ===================================================================== *
+ * Date / time edits                                                     *
+ * ===================================================================== */
+QDateEdit {
+    background-color: #ffffff;
+    border: 2px solid #e0e0e0;       /* Matches your QComboBox */
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #333333;
+    min-width: 110px;
+}
+
+QDateEdit:hover {
+    border: 2px solid #b3b3b3;       /* Slightly darker on hover */
+}
+
+QDateEdit:focus {
+    border: 2px solid #2563eb;       /* Primary blue border when typing */
+    background-color: #fbfcff;       /* Very faint blue tint */
+}
+
+QDateEdit::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 32px;
+    border-left: none;               /* Seamless look */
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+QDateEdit::down-arrow {
+    image: url(&quot;:/icons/icons/Gcalendar.svg&quot;); /* Pro-tip: Use a calendar icon instead of an arrow */
+    width: 16px;
+    height: 16px;
+}
+
+
+/* ===================================================================== *
+ * Sidebar group toggles + tabs                                          *
+ * ===================================================================== */
+QToolButton[class=&quot;sidebar-gbutton&quot;] {
+    background-color: #f3f4f6;       /* Soft light-gray background */
+    color: #4b5563;                  /* Muted slate text color */
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;                /* Semi-bold for category titles */
+    padding: 8px 14px;
+    text-align: left;                /* Keeps icon and text left-aligned */
+}
+
+QToolButton[class=&quot;sidebar-gbutton&quot;]:hover {
+    background-color: #e5e7eb;       /* Darker gray feedback on hover */
+    color: #111827;                  /* High contrast text on hover */
+}
+
+QToolButton[class=&quot;sidebar-gbutton&quot;][expanded=&quot;true&quot;] {
+    background-color: #eff4ff;       /* Soft tint of your primary blue */
+    color: #0051df;                  /* Text turns primary blue when open */
+}
+
+QTabWidget::pane {
+    border: none;                     /* Removes the harsh default box */
+    border-top: 1px solid #e2e8f0;    /* Creates the continuous horizontal line under the tabs */
+    background: transparent;          /* Lets your main background color show through */
+}
+
+QTabBar::tab {
+    background: transparent;
+    color: #64748b;                   /* Muted slate-gray text */
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 25px;               /* Breathing room around the text */
+    border-bottom: 2px solid transparent; /* Invisible border to reserve space */
+    
+    /* CRUCIAL TRICK: Pulls the tab down 1px so its bottom border 
+       perfectly overlaps the pane's top border line */
+    margin-bottom: -1px;              
+}
+
+QTabBar::tab:hover:!selected {
+    color: #1e293b;                   /* Darkens the text */
+    border-bottom: 2px solid #cbd5e1; /* Shows a subtle gray underline preview */
+}
+
+QTabBar::tab:selected {
+    color: #2563eb;                   /* Your vibrant primary blue */
+    border-bottom: 2px solid #2563eb; /* The thick blue active underline */
+}
+
+QTabBar:focus {
+    outline: none;
+}
+</string>
   </property>
   <layout class="QVBoxLayout" name="mainLayout">
    <property name="spacing">
-    <number>16</number>
+    <number>5</number>
    </property>
    <property name="leftMargin">
-    <number>16</number>
+    <number>5</number>
    </property>
    <property name="topMargin">
-    <number>16</number>
+    <number>5</number>
    </property>
    <property name="rightMargin">
-    <number>16</number>
+    <number>5</number>
    </property>
    <property name="bottomMargin">
-    <number>16</number>
+    <number>5</number>
    </property>
    <item>
-    <widget class="QWidget" name="Background" native="true">
-     <layout class="QVBoxLayout" name="contentLayout">
+    <widget class="QFrame" name="TopToolsFrame">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <property name="class" stdset="0">
+      <string>card</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
       <property name="spacing">
-       <number>16</number>
+       <number>5</number>
+      </property>
+      <property name="leftMargin">
+       <number>5</number>
+      </property>
+      <property name="topMargin">
+       <number>5</number>
+      </property>
+      <property name="rightMargin">
+       <number>5</number>
+      </property>
+      <property name="bottomMargin">
+       <number>6</number>
+      </property>
+      <item>
+       <widget class="QToolButton" name="NouveauDocButton">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>150</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Inter 18pt Medium</family>
+          <pointsize>-1</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>ArrowCursor</cursorShape>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="text">
+         <string> Nouveau</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../../../resources/resources.qrc">
+          <normaloff>:/icons/icons/Wnouveau.svg</normaloff>:/icons/icons/Wnouveau.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>16</width>
+          <height>16</height>
+         </size>
+        </property>
+        <property name="toolButtonStyle">
+         <enum>Qt::ToolButtonTextBesideIcon</enum>
+        </property>
+        <property name="class" stdset="0">
+         <string>primary</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="Line" name="line_2">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Plain</enum>
+        </property>
+        <property name="midLineWidth">
+         <number>0</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="ModifierReglementButton">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>150</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="text">
+         <string> Modifier</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../../../resources/resources.qrc">
+          <normaloff>:/icons/icons/Gmodifier.svg</normaloff>:/icons/icons/Gmodifier.svg</iconset>
+        </property>
+        <property name="toolButtonStyle">
+         <enum>Qt::ToolButtonTextBesideIcon</enum>
+        </property>
+        <property name="class" stdset="0">
+         <string>secondary</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="SupprimerButton">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>150</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Inter 18pt Medium</family>
+          <pointsize>-1</pointsize>
+          <weight>63</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>ArrowCursor</cursorShape>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string> Supprimer</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../../../resources/resources.qrc">
+          <normaloff>:/icons/icons/Gsupprimer.svg</normaloff>:/icons/icons/Gsupprimer.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>16</width>
+          <height>16</height>
+         </size>
+        </property>
+        <property name="toolButtonStyle">
+         <enum>Qt::ToolButtonTextBesideIcon</enum>
+        </property>
+        <property name="class" stdset="0">
+         <string>secondary-danger</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="Line" name="line_3">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Plain</enum>
+        </property>
+        <property name="midLineWidth">
+         <number>0</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="ImprimrtButton">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>150</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Inter 18pt Medium</family>
+          <pointsize>-1</pointsize>
+          <weight>63</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>ArrowCursor</cursorShape>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="text">
+         <string> Imprimer</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../../../resources/resources.qrc">
+          <normaloff>:/icons/icons/Gimprimer.svg</normaloff>:/icons/icons/Gimprimer.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>16</width>
+          <height>16</height>
+         </size>
+        </property>
+        <property name="toolButtonStyle">
+         <enum>Qt::ToolButtonTextBesideIcon</enum>
+        </property>
+        <property name="class" stdset="0">
+         <string>secondary</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="ExcelButton">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>150</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Inter 18pt Medium</family>
+          <pointsize>-1</pointsize>
+          <weight>63</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>ArrowCursor</cursorShape>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LeftToRight</enum>
+        </property>
+        <property name="text">
+         <string> Excel</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../../../resources/resources.qrc">
+          <normaloff>:/icons/icons/Gexcel.svg</normaloff>:/icons/icons/Gexcel.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>16</width>
+          <height>16</height>
+         </size>
+        </property>
+        <property name="toolButtonStyle">
+         <enum>Qt::ToolButtonTextBesideIcon</enum>
+        </property>
+        <property name="class" stdset="0">
+         <string>secondary</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QFrame" name="FiltersFrame">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="class" stdset="0">
+      <string>card</string>
+     </property>
+     <layout class="QVBoxLayout" name="filtersLayout">
+      <property name="spacing">
+       <number>0</number>
       </property>
       <property name="leftMargin">
        <number>0</number>
@@ -51,595 +1096,609 @@
        <number>0</number>
       </property>
       <item>
-       <widget class="QFrame" name="ToolbarFrame">
+       <widget class="QFrame" name="frame_3">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>58</height>
+          <height>16777215</height>
          </size>
         </property>
-        <property name="class" stdset="0">
-         <string>card</string>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
         </property>
-        <layout class="QHBoxLayout" name="toolbarLayout">
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <property name="class" stdset="0">
+         <string>header</string>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
          <property name="spacing">
-          <number>8</number>
+          <number>0</number>
          </property>
          <property name="leftMargin">
-          <number>8</number>
+          <number>15</number>
          </property>
          <property name="topMargin">
-          <number>8</number>
+          <number>5</number>
          </property>
          <property name="rightMargin">
-          <number>8</number>
+          <number>15</number>
          </property>
          <property name="bottomMargin">
-          <number>8</number>
+          <number>6</number>
          </property>
          <item>
-          <widget class="QToolButton" name="NouveauReglementButton">
-           <property name="minimumSize">
-            <size>
-             <width>112</width>
-             <height>40</height>
-            </size>
-           </property>
+          <widget class="QLabel" name="label_2">
            <property name="text">
-            <string> Nouveau</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../../resources/resources.qrc">
-             <normaloff>:/icons/icons/Wnouveau.svg</normaloff>:/icons/icons/Wnouveau.svg</iconset>
-           </property>
-           <property name="toolButtonStyle">
-            <enum>Qt::ToolButtonTextBesideIcon</enum>
+            <string>Filter</string>
            </property>
            <property name="class" stdset="0">
-            <string>primary</string>
+            <string>label</string>
            </property>
           </widget>
-         </item>
-         <item>
-          <widget class="QToolButton" name="ModifierReglementButton">
-           <property name="minimumSize">
-            <size>
-             <width>102</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="text">
-            <string> Modifier</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../../resources/resources.qrc">
-             <normaloff>:/icons/icons/Gmodifier.svg</normaloff>:/icons/icons/Gmodifier.svg</iconset>
-           </property>
-           <property name="toolButtonStyle">
-            <enum>Qt::ToolButtonTextBesideIcon</enum>
-           </property>
-           <property name="class" stdset="0">
-            <string>secondary</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QToolButton" name="SupprimerReglementButton">
-           <property name="minimumSize">
-            <size>
-             <width>112</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="text">
-            <string> Supprimer</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../../resources/resources.qrc">
-             <normaloff>:/icons/icons/Rsupprimer.svg</normaloff>:/icons/icons/Rsupprimer.svg</iconset>
-           </property>
-           <property name="toolButtonStyle">
-            <enum>Qt::ToolButtonTextBesideIcon</enum>
-           </property>
-           <property name="class" stdset="0">
-            <string>danger</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QToolButton" name="ImprimerReglementButton">
-           <property name="minimumSize">
-            <size>
-             <width>102</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="text">
-            <string> Imprimer</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../../resources/resources.qrc">
-             <normaloff>:/icons/icons/Gimprimer.svg</normaloff>:/icons/icons/Gimprimer.svg</iconset>
-           </property>
-           <property name="toolButtonStyle">
-            <enum>Qt::ToolButtonTextBesideIcon</enum>
-           </property>
-           <property name="class" stdset="0">
-            <string>secondary</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QToolButton" name="ExcelReglementButton">
-           <property name="minimumSize">
-            <size>
-             <width>86</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="text">
-            <string> Excel</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../../resources/resources.qrc">
-             <normaloff>:/icons/icons/Gexcel.svg</normaloff>:/icons/icons/Gexcel.svg</iconset>
-           </property>
-           <property name="toolButtonStyle">
-            <enum>Qt::ToolButtonTextBesideIcon</enum>
-           </property>
-           <property name="class" stdset="0">
-            <string>secondary</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="toolbarSpacer">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
          </item>
         </layout>
        </widget>
       </item>
       <item>
-       <widget class="QFrame" name="FiltersFrame">
+       <layout class="QGridLayout" name="filtersGrid">
+        <property name="leftMargin">
+         <number>5</number>
+        </property>
+        <property name="topMargin">
+         <number>5</number>
+        </property>
+        <property name="rightMargin">
+         <number>5</number>
+        </property>
+        <property name="bottomMargin">
+         <number>5</number>
+        </property>
+        <property name="spacing">
+         <number>5</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QLabel" name="ClientCodeLabel">
+          <property name="text">
+           <string>CODE CLIENT</string>
+          </property>
+          <property name="class" stdset="0">
+           <string>field-label</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLineEdit" name="CodeClientEntry">
+          <property name="minimumSize">
+           <size>
+            <width>120</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="placeholderText">
+           <string>ex: CL00122</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLabel" name="ClientLabel">
+          <property name="text">
+           <string>CLIENT</string>
+          </property>
+          <property name="class" stdset="0">
+           <string>field-label</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="ClientEntry">
+          <property name="minimumSize">
+           <size>
+            <width>220</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="placeholderText">
+           <string>Rechercher un client...</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QLabel" name="NumeroReglementLabel">
+          <property name="text">
+           <string>N° RÈGLEMENT</string>
+          </property>
+          <property name="class" stdset="0">
+           <string>field-label</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QLineEdit" name="NumeroReglementEntry">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="placeholderText">
+           <string>EX: REG-2023-...</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="3" colspan="2">
+         <widget class="QLabel" name="PeriodeLabel">
+          <property name="text">
+           <string>PÉRIODE</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+          <property name="margin">
+           <number>0</number>
+          </property>
+          <property name="class" stdset="0">
+           <string>field-label</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="3">
+         <widget class="QDateEdit" name="DateDebutEdit">
+          <property name="minimumSize">
+           <size>
+            <width>138</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="displayFormat">
+           <string>dd/MM/yyyy</string>
+          </property>
+          <property name="calendarPopup">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="4">
+         <widget class="QDateEdit" name="DateFinEdit">
+          <property name="minimumSize">
+           <size>
+            <width>138</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="displayFormat">
+           <string>dd/MM/yyyy</string>
+          </property>
+          <property name="calendarPopup">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="5">
+         <widget class="QLabel" name="ModeLabel">
+          <property name="text">
+           <string>MODE</string>
+          </property>
+          <property name="class" stdset="0">
+           <string>field-label</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="5">
+         <widget class="QComboBox" name="ModeReglementComboBox">
+          <property name="minimumSize">
+           <size>
+            <width>88</width>
+            <height>32</height>
+           </size>
+          </property>
+          <item>
+           <property name="text">
+            <string>Tous les modes</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Espèces</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Chèque</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Virement</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Carte</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="0" column="6">
+         <widget class="QLabel" name="StatutLabel">
+          <property name="text">
+           <string>STATUT</string>
+          </property>
+          <property name="class" stdset="0">
+           <string>field-label</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="6">
+         <widget class="QComboBox" name="StatutComboBox">
+          <property name="minimumSize">
+           <size>
+            <width>88</width>
+            <height>32</height>
+           </size>
+          </property>
+          <item>
+           <property name="text">
+            <string>Tous les statuts</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Validé</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Brouillon</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Annulé</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="filterButtonLayout">
+        <property name="spacing">
+         <number>5</number>
+        </property>
+        <property name="leftMargin">
+         <number>5</number>
+        </property>
+        <property name="topMargin">
+         <number>5</number>
+        </property>
+        <property name="rightMargin">
+         <number>5</number>
+        </property>
+        <property name="bottomMargin">
+         <number>5</number>
+        </property>
+        <item>
+         <spacer name="filterSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QToolButton" name="FiltrerButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>100</width>
+            <height>35</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>150</width>
+            <height>35</height>
+           </size>
+          </property>
+          <property name="text">
+           <string> Filtrer</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../../../resources/resources.qrc">
+            <normaloff>:/icons/icons/Wfiltrer.svg</normaloff>:/icons/icons/Wfiltrer.svg</iconset>
+          </property>
+          <property name="toolButtonStyle">
+           <enum>Qt::ToolButtonTextBesideIcon</enum>
+          </property>
+          <property name="class" stdset="0">
+           <string>primary</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="ERPDataTable" name="ReglementsTable" native="true"/>
+   </item>
+   <item>
+    <widget class="QFrame" name="frame_2">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>90</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>90</height>
+      </size>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <property name="class" stdset="0">
+      <string>card</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <property name="spacing">
+       <number>5</number>
+      </property>
+      <property name="leftMargin">
+       <number>5</number>
+      </property>
+      <property name="topMargin">
+       <number>5</number>
+      </property>
+      <property name="rightMargin">
+       <number>5</number>
+      </property>
+      <property name="bottomMargin">
+       <number>5</number>
+      </property>
+      <item>
+       <widget class="QFrame" name="FrameHT_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>75</height>
+         </size>
+        </property>
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>139</height>
+          <height>75</height>
          </size>
         </property>
         <property name="class" stdset="0">
-         <string>card</string>
+         <string>summary-card</string>
         </property>
-        <layout class="QVBoxLayout" name="filtersLayout">
-         <property name="spacing">
+        <layout class="QVBoxLayout" name="totalBalanceLayout_3">
+         <property name="sizeConstraint">
+          <enum>QLayout::SetDefaultConstraint</enum>
+         </property>
+         <property name="leftMargin">
           <number>10</number>
          </property>
-         <property name="leftMargin">
-          <number>16</number>
-         </property>
          <property name="topMargin">
-          <number>16</number>
+          <number>6</number>
          </property>
          <property name="rightMargin">
-          <number>16</number>
+          <number>10</number>
          </property>
          <property name="bottomMargin">
-          <number>12</number>
+          <number>6</number>
          </property>
-         <item>
-          <layout class="QGridLayout" name="filtersGrid">
-           <property name="horizontalSpacing">
-            <number>12</number>
+         <item alignment="Qt::AlignHCenter">
+          <widget class="QLabel" name="labelTotalBalanceTitle_3">
+           <property name="text">
+            <string>NB RÈGLEMENTS</string>
            </property>
-           <property name="verticalSpacing">
-            <number>6</number>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
-           <item row="0" column="0">
-            <widget class="QLabel" name="ClientCodeLabel">
-             <property name="text">
-              <string>CODE CLIENT</string>
-             </property>
-             <property name="class" stdset="0">
-              <string>field-label</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLineEdit" name="CodeClientEntry">
-             <property name="minimumSize">
-              <size>
-               <width>120</width>
-               <height>32</height>
-              </size>
-             </property>
-             <property name="placeholderText">
-              <string>ex: CL00122</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QLabel" name="ClientLabel">
-             <property name="text">
-              <string>CLIENT</string>
-             </property>
-             <property name="class" stdset="0">
-              <string>field-label</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QLineEdit" name="ClientEntry">
-             <property name="minimumSize">
-              <size>
-               <width>220</width>
-               <height>32</height>
-              </size>
-             </property>
-             <property name="placeholderText">
-              <string>Rechercher un client...</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="2">
-            <widget class="QLabel" name="NumeroReglementLabel">
-             <property name="text">
-              <string>N° RÈGLEMENT</string>
-             </property>
-             <property name="class" stdset="0">
-              <string>field-label</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="2">
-            <widget class="QLineEdit" name="NumeroReglementEntry">
-             <property name="minimumSize">
-              <size>
-               <width>150</width>
-               <height>32</height>
-              </size>
-             </property>
-             <property name="placeholderText">
-              <string>EX: REG-2023-...</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="3" colspan="2">
-            <widget class="QLabel" name="PeriodeLabel">
-             <property name="text">
-              <string>PÉRIODE</string>
-             </property>
-             <property name="class" stdset="0">
-              <string>field-label</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="3">
-            <widget class="QDateEdit" name="DateDebutEdit">
-             <property name="minimumSize">
-              <size>
-               <width>132</width>
-               <height>32</height>
-              </size>
-             </property>
-             <property name="displayFormat">
-              <string>dd/MM/yyyy</string>
-             </property>
-             <property name="calendarPopup">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="4">
-            <widget class="QDateEdit" name="DateFinEdit">
-             <property name="minimumSize">
-              <size>
-               <width>132</width>
-               <height>32</height>
-              </size>
-             </property>
-             <property name="displayFormat">
-              <string>dd/MM/yyyy</string>
-             </property>
-             <property name="calendarPopup">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="5">
-            <widget class="QLabel" name="ModeLabel">
-             <property name="text">
-              <string>MODE</string>
-             </property>
-             <property name="class" stdset="0">
-              <string>field-label</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="5">
-            <widget class="QComboBox" name="ModeReglementComboBox">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>32</height>
-              </size>
-             </property>
-             <item>
-              <property name="text">
-               <string>Tous les modes</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Espèces</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Chèque</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Virement</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Carte</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-           <item row="0" column="6">
-            <widget class="QLabel" name="StatutLabel">
-             <property name="text">
-              <string>STATUT</string>
-             </property>
-             <property name="class" stdset="0">
-              <string>field-label</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="6">
-            <widget class="QComboBox" name="StatutComboBox">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>32</height>
-              </size>
-             </property>
-             <item>
-              <property name="text">
-               <string>Tous les statuts</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Validé</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Brouillon</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Annulé</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-          </layout>
+           <property name="class" stdset="0">
+            <string>summary-title</string>
+           </property>
+          </widget>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="filterButtonLayout">
-           <item>
-            <spacer name="filterSpacer">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
-            <widget class="QToolButton" name="FiltrerButton">
-             <property name="minimumSize">
-              <size>
-               <width>112</width>
-               <height>40</height>
-              </size>
-             </property>
-             <property name="text">
-              <string> Filtrer</string>
-             </property>
-             <property name="icon">
-              <iconset resource="../../resources/resources.qrc">
-               <normaloff>:/icons/icons/Wfiltrer.svg</normaloff>:/icons/icons/Wfiltrer.svg</iconset>
-             </property>
-             <property name="toolButtonStyle">
-              <enum>Qt::ToolButtonTextBesideIcon</enum>
-             </property>
-             <property name="class" stdset="0">
-              <string>primary</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
+          <widget class="QLabel" name="ValueHT_3">
+           <property name="text">
+            <string>0.00</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="class" stdset="0">
+            <string>summary-value</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
       </item>
       <item>
-       <widget class="ERPDataTable" name="ReglementsTable" native="true"/>
-      </item>
-      <item>
-       <widget class="QFrame" name="SummaryFrame">
+       <widget class="QFrame" name="FrameTTC_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>75</height>
+         </size>
+        </property>
         <property name="maximumSize">
          <size>
           <width>16777215</width>
-          <height>88</height>
+          <height>75</height>
          </size>
         </property>
         <property name="class" stdset="0">
-         <string>card</string>
+         <string>summary-card</string>
         </property>
-        <layout class="QHBoxLayout" name="summaryLayout">
+        <layout class="QVBoxLayout" name="totalHtLayout_2">
          <property name="spacing">
-          <number>12</number>
+          <number>2</number>
          </property>
-         <item>
-          <spacer name="summaryLeftSpacer">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+         <property name="sizeConstraint">
+          <enum>QLayout::SetDefaultConstraint</enum>
+         </property>
+         <property name="leftMargin">
+          <number>10</number>
+         </property>
+         <property name="rightMargin">
+          <number>10</number>
+         </property>
+         <item alignment="Qt::AlignHCenter">
+          <widget class="QLabel" name="labelTotalHtTitle_2">
+           <property name="text">
+            <string>MONTANT RÉGLÉ</string>
            </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QFrame" name="FrameNbReglements">
-           <property name="minimumSize">
-            <size>
-             <width>132</width>
-             <height>62</height>
-            </size>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
            <property name="class" stdset="0">
-            <string>summary</string>
+            <string>summary-title</string>
            </property>
-           <layout class="QVBoxLayout" name="nbSummaryLayout">
-            <item>
-             <widget class="QLabel" name="NbReglementsTitle">
-              <property name="text">
-               <string>NB RÈGLEMENTS</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="class" stdset="0">
-               <string>summary-title</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="ValueNbReglements">
-              <property name="text">
-               <string>0</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="class" stdset="0">
-               <string>summary-value</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
           </widget>
          </item>
          <item>
-          <widget class="QFrame" name="FrameMontantRegle">
-           <property name="minimumSize">
-            <size>
-             <width>156</width>
-             <height>62</height>
-            </size>
+          <widget class="QLabel" name="ValueTTC_2">
+           <property name="text">
+            <string>0.00</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
            </property>
            <property name="class" stdset="0">
-            <string>summary</string>
+            <string>summary-value-primary</string>
            </property>
-           <layout class="QVBoxLayout" name="paidSummaryLayout">
-            <item>
-             <widget class="QLabel" name="MontantRegleTitle">
-              <property name="text">
-               <string>MONTANT RÉGLÉ</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="class" stdset="0">
-               <string>summary-title</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="ValueMontantRegle">
-              <property name="text">
-               <string>0.00</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="class" stdset="0">
-               <string>summary-value</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item>
-          <widget class="QFrame" name="FrameResteRegler">
-           <property name="minimumSize">
-            <size>
-             <width>156</width>
-             <height>62</height>
-            </size>
-           </property>
-           <property name="class" stdset="0">
-            <string>summary</string>
-           </property>
-           <layout class="QVBoxLayout" name="balanceSummaryLayout">
-            <item>
-             <widget class="QLabel" name="ResteReglerTitle">
-              <property name="text">
-               <string>RESTE À RÉGLER</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="class" stdset="0">
-               <string>summary-title</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="ValueResteRegler">
-              <property name="text">
-               <string>0.00</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="class" stdset="0">
-               <string>summary-value</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
           </widget>
          </item>
         </layout>
        </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="FrameSolde_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>75</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>75</height>
+         </size>
+        </property>
+        <property name="class" stdset="0">
+         <string>summary-card</string>
+        </property>
+        <layout class="QVBoxLayout" name="fffff_2">
+         <property name="spacing">
+          <number>2</number>
+         </property>
+         <property name="sizeConstraint">
+          <enum>QLayout::SetDefaultConstraint</enum>
+         </property>
+         <property name="leftMargin">
+          <number>10</number>
+         </property>
+         <property name="rightMargin">
+          <number>10</number>
+         </property>
+         <item alignment="Qt::AlignHCenter">
+          <widget class="QLabel" name="labelTotalTtcTitle_2">
+           <property name="text">
+            <string>RESTE À RÉGLER</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+           <property name="class" stdset="0">
+            <string>summary-title</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="ValueSolde_2">
+           <property name="text">
+            <string>0.00</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="class" stdset="0">
+            <string>summary-value-danger</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <spacer name="summarySpacerLeft">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Expanding</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
       </item>
      </layout>
     </widget>
@@ -655,7 +1714,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../resources/resources.qrc"/>
+  <include location="../../../resources/resources.qrc"/>
  </resources>
  <connections/>
 </ui>

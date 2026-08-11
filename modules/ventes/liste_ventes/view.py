@@ -1,8 +1,9 @@
+from ui_utils.buttons import install_danger_icon_hover
 from ui_utils.effects import set_drop_shadow
 from ui_utils.widgets.erp_data_table import ERPTableColumn
 from modules.ventes.liste_ventes.controller import VentesController
 
-from PyQt5.uic import loadUi
+from ui_utils.loader import load_ui as loadUi
 from PyQt5.QtCore import Qt, QSize
 from PyQt5.QtGui import QIcon
 from PyQt5 import QtGui
@@ -22,6 +23,10 @@ class VentesView(QWidget):
     def setup(self):
         self.setup_erp_table()
         self.setup_navigation()
+        self.setup_danger_buttons()
+
+    def setup_danger_buttons(self):
+        install_danger_icon_hover(self.findChild(QToolButton, "SupprimerButton"))
 
     def setup_navigation(self):
         self.NouveauDocButton.clicked.connect(self.open_new_document)

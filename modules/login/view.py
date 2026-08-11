@@ -1,7 +1,7 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QAction, QLineEdit, QMainWindow
-from PyQt5.uic import loadUi
+from ui_utils.loader import load_ui as loadUi
 
 from modules.login.controller import LoginController
 from ui_utils.canvas import create_uniform_icon

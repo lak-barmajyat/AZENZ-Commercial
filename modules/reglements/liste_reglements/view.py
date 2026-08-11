@@ -1,7 +1,8 @@
-from PyQt5.uic import loadUi
+from ui_utils.loader import load_ui as loadUi
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QWidget
+from PyQt5.QtWidgets import QApplication, QToolButton, QWidget
 
+from ui_utils.buttons import install_danger_icon_hover
 from ui_utils.widgets.erp_data_table import ERPTableColumn
 
 from modules.reglements.liste_reglements.controller import ReglementsController
@@ -18,6 +19,10 @@ class ReglementsView(QWidget):
     def setup(self):
         self.setup_table()
         self.setup_navigation()
+        self.setup_danger_buttons()
+
+    def setup_danger_buttons(self):
+        install_danger_icon_hover(self.findChild(QToolButton, "SupprimerReglementButton"))
 
     def setup_navigation(self):
         self.NouveauReglementButton.clicked.connect(self.open_new_reglement)

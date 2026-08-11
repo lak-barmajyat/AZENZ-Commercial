@@ -2,24 +2,91 @@
 <ui version="4.0">
  <class>Form</class>
  <widget class="QWidget" name="Form">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>1118</width>
-    <height>665</height>
-   </rect>
-  </property>
-  <property name="windowTitle">
-   <string>Form</string>
-  </property>
   <property name="styleSheet">
-   <string notr="true">#Background {
+   <string notr="true">/* ==== AUTO-SYNCED QSS START (managed by theme/sync_qss.py) ==== */
+/* ===================================================================== *
+ * AZENZ - Global base style sheet                                       *
+ * Single source of truth for all windows.                               *
+ * Class-based for QFrame/QLabel; element-level for shared controls.     *
+ * ===================================================================== */
+
+#Background {
     background-color: #F8F9FB;
 }
 
+/* ===================================================================== *
+ * Labels - class based (no global QLabel rule)                          *
+ * ===================================================================== */
+QLabel[class="label"] {
+    color: #333333;
+    border: none;
+    background-color: transparent;
+    font-family: "Inter", "Tajawal";
+    font-size: 13px;
+    font-weight: 500;
+}
+
+QLabel[class="field-label"] {
+    color: #434655;
+    background: transparent;
+    border: none;
+    font-family: "Inter", "Tajawal";
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+QLabel[class="title"] {
+    color: #191c1e;
+    background: transparent;
+    border: none;
+    font-family: "Inter", "Tajawal";
+    font-size: 28px;
+    font-weight: 700;
+}
+
+QLabel[class="subtitle"] {
+    color: #6b7280;
+    background: transparent;
+    border: none;
+    font-family: "Inter", "Tajawal";
+    font-size: 14px;
+    font-weight: 400;
+}
+
+QLabel[class="label-muted"] {
+    color: rgb(154, 153, 150);
+    background: transparent;
+    border: none;
+    font-family: "Inter", "Tajawal";
+    font-size: 12px;
+    font-weight: 400;
+}
+
+QLabel[class="section-title"] {
+    color: #191c1e;
+    background: transparent;
+    border: none;
+    font-family: "Inter", "Tajawal";
+    font-size: 18px;
+    font-weight: 600;
+}
+
+QLabel[class="separator"] {
+    background-color: rgba(195, 197, 216, 0.5);
+    border: none;
+    height: 1px;
+}
+
+QLabel[class="separator-dashed"] {
+    background-color: transparent;
+    border-top: 1px dashed #d9dde7;
+    min-height: 1px;
+    max-height: 1px;
+}
+
 /* QLineEdit has Icon */
-QLineEdit[class=&quot;icon-lineedit&quot;] {
+QLineEdit[class="icon-lineedit"] {
     background-color: #ffffff;
     border: 2px solid #e0e0e0;
     border-radius: 6px;
@@ -30,22 +97,22 @@ QLineEdit[class=&quot;icon-lineedit&quot;] {
     selection-color: #ffffff;
 }
 
-QLineEdit[class=&quot;icon-lineedit&quot;]:hover {
+QLineEdit[class="icon-lineedit"]:hover {
     border: 2px solid #b3b3b3;
 }
 
-QLineEdit[class=&quot;icon-lineedit&quot;]:focus {
+QLineEdit[class="icon-lineedit"]:focus {
     border: 2px solid #0051df;
     background-color: #fbfcff;
 }
 
-QLineEdit[class=&quot;icon-lineedit&quot;]:disabled {
+QLineEdit[class="icon-lineedit"]:disabled {
     background-color: #f5f5f5;
     color: #a0a0a0;
     border: 2px solid #e8e8e8;
 }
 
-QLineEdit[class=&quot;icon-lineedit&quot;][readOnly=&quot;true&quot;] {
+QLineEdit[class="icon-lineedit"][readOnly="true"] {
     background-color: #fafafa;
     color: #666666;
     border: 2px dashed #cccccc;
@@ -59,7 +126,7 @@ QLineEdit {
     padding: 6px 12px;
     font-size: 13px;
     font-weight: 500;
-    font-family: &quot;Inter&quot;;
+    font-family: "Inter";
     color: #333333;
     
     selection-background-color: #0051df; 
@@ -81,16 +148,18 @@ QLineEdit:disabled {
     border: 2px solid #e8e8e8;
 }
 
-QLineEdit[readOnly=&quot;true&quot;] {
+QLineEdit[readOnly="true"] {
     background-color: #fafafa;
     color: #666666;
     border: 2px dashed #cccccc;
 }
 
 
-
+/* ===================================================================== *
+ * QPushButton (login)                                                   *
+ * ===================================================================== */
 /* Primary QPushButton Style */
-QPushButton[class=&quot;primary&quot;] {
+QPushButton[class="primary"] {
     background-color: #0051df;
     color: #ffffff;
     border: none;
@@ -98,24 +167,24 @@ QPushButton[class=&quot;primary&quot;] {
     padding: 10px 16px;
     font-size: 12px;
     font-weight: 500;
-    font-family: &quot;Inter&quot;, &quot;Tajawal&quot;;
+    font-family: "Inter", "Tajawal";
 }
 
-QPushButton[class=&quot;primary&quot;]:hover {
+QPushButton[class="primary"]:hover {
     background-color: rgba(0, 81, 223, 230); 
 }
 
-QPushButton[class=&quot;primary&quot;]:pressed {
+QPushButton[class="primary"]:pressed {
     background-color: rgba(0, 81, 223, 204);
 }
 
-QPushButton[class=&quot;primary&quot;]:focus {
+QPushButton[class="primary"]:focus {
     border: 2px solid #00174d;
 }
 
 
 /* Outlined QPushButton Style */
-QPushButton[class=&quot;outlined&quot;] {
+QPushButton[class="outlined"] {
     background-color: #ffffff;
     color: #434655;
     border: 1px solid #c3c5d8;
@@ -123,24 +192,24 @@ QPushButton[class=&quot;outlined&quot;] {
     padding: 10px 16px;
     font-size: 12px;
     font-weight: 500;
-    font-family: &quot;Inter&quot;, &quot;Tajawal&quot;;
+    font-family: "Inter", "Tajawal";
 }    
 
-QPushButton[class=&quot;outlined&quot;]:hover {
+QPushButton[class="outlined"]:hover {
     background-color: #f3f4f6;
 }    
 
-QPushButton[class=&quot;outlined&quot;]:pressed {
+QPushButton[class="outlined"]:pressed {
     background-color: #edeef0;
 }    
 
-QPushButton[class=&quot;outlined&quot;]:focus {
+QPushButton[class="outlined"]:focus {
     border: 2px solid rgba(0, 81, 223, 51);
 }    
 
 
 /* CardToolButton */
-QToolButton[class=&quot;card-button&quot;] {
+QToolButton[class="card-button"] {
     color: #000;
     padding: 15px;
     padding-top: 20px;
@@ -149,18 +218,17 @@ QToolButton[class=&quot;card-button&quot;] {
     border-radius: 12px;
 }
 
-QToolButton[class=&quot;card-button&quot;]:hover {
+QToolButton[class="card-button"]:hover {
     background-color: #f3f4f6;
-    border: 1px solid #d1d5db;
     border: 1px solid hsl(218, 100%, 55%);
 }
 
-QToolButton[class=&quot;card-button&quot;]:pressed {
+QToolButton[class="card-button"]:pressed {
     background-color: #e5e7eb;
 }
 
 /* SidebarToolButton */
-QToolButton[class=&quot;sidebar-button&quot;] {
+QToolButton[class="sidebar-button"] {
     background-color: transparent;
     color: #4b5563;
     border: none;
@@ -171,10 +239,10 @@ QToolButton[class=&quot;sidebar-button&quot;] {
     text-align: left;
     font-size: 15px;
     font-weight: 500;
-    font-family: &quot;Inter&quot;;
+    font-family: "Inter";
 }    
 
-QToolButton[class=&quot;sidebar-button&quot;]:checked {
+QToolButton[class="sidebar-button"]:checked {
     background-color: #d0e1fb;
     color: #0051df;
     border-left: 4px solid #0051df; 
@@ -184,25 +252,25 @@ QToolButton[class=&quot;sidebar-button&quot;]:checked {
     border-bottom-left-radius: 0px;
 }    
 
-QToolButton[class=&quot;sidebar-button&quot;]:unchecked:hover {
+QToolButton[class="sidebar-button"]:unchecked:hover {
     background-color: #f3f4f6;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
 }    
 
 
-QToolButton[class=&quot;icon-button&quot;] {
+QToolButton[class="icon-button"] {
     background-color: transparent;
     border: none;
     border-radius: 21px;
     padding: 8px;
 }    
 
-QToolButton[class=&quot;icon-button&quot;]:hover {
+QToolButton[class="icon-button"]:hover {
     background-color: #f3f4f6;
 }    
 
-QToolButton[class=&quot;icon-button&quot;]:pressed {
+QToolButton[class="icon-button"]:pressed {
     background-color: #e5e7eb;
 }    
 
@@ -226,7 +294,7 @@ QComboBox {
     border: 2px solid #e0e0e0;
     border-radius: 6px;
     padding: 6px 12px;
-    font-family: &quot;Inter&quot;;
+    font-family: "Inter";
     font-size: 13px;
     font-weight: 500;
     color: #333333;
@@ -243,8 +311,6 @@ QComboBox:focus {
 }
 
 QComboBox::drop-down {
-    /* subcontrol-origin: padding; */
-    /* subcontrol-position: top right; */
     border: 6px;
 }
 
@@ -254,7 +320,7 @@ QComboBox QAbstractItemView {
     border-radius: 0px;
     box-shadow: none;
     padding: 4px;
-    font-family: &quot;Inter&quot;;
+    font-family: "Inter";
     font-size: 13px;
     font-weight: 500;
     color: #333333;
@@ -288,17 +354,38 @@ QFrame#LoginFrame {
     border-radius: 12px; 
 }    
 
+QMainWindow#LoginWindow {
+    background-color: rgb(255, 255, 255);
+    border-image: url(:/images/images/Corporate background.png) 0 0 0 0 stretch stretch;
+    background-repeat: no-repeat;
+}
 
-/* Frame */
-QFrame {
-    background-color: #ffffff;
-    border: none;
-}    
 
-QFrame[class=&quot;card&quot;] {
+/* ===================================================================== *
+ * Frames - class based (no global QFrame rule)                          *
+ * ===================================================================== */
+QFrame[class="card"] {
     background-color: #ffffff;
-    border: 1px solid #eaebf0; /* Soft gray border */
+    border: 2px solid #e2e3e8; /* Soft gray border */
     border-radius: 12px;
+}
+
+QFrame[class="header"] {
+    background-color: #f8fafc;       /* Very light slate/blue-gray tint */
+    border-top-left-radius: 8px;     /* Round only the top corners */
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom: 1px solid #e2e8f0; /* Subtle bottom separator line */
+}
+
+QFrame[class="gframe"] {
+    background-color: transparent;   /* Blends seamlessly into sidebar background */
+    border: none;
+    
+    padding-left: 0px;              /* Indents child elements like modern web apps */
+    margin-top: 2px;
+    margin-bottom: 4px;
 }
 
 /* Bar Frames */
@@ -316,26 +403,88 @@ QFrame#TopBarFrame {
 }
 
 
-/* QLabel */
-QLabel {
-    color: #333333;
+/* ===================================================================== *
+ * Summary / stat cards - unified class based set                        *
+ * ===================================================================== */
+QFrame[class="summary-card"] {
+    background-color: #ffffff;
+    border: 1px solid #eaebf0;
+    border-radius: 12px;
+}
+
+QFrame[class="summary-card-inner"] {
+    background-color: #f8fafc;
+    border: 1px solid #e1e4ea;
+    border-radius: 8px;
+}
+
+QLabel[class="summary-title"] {
+    color: #434655;
+    background: transparent;
     border: none;
-    background-color: transparent;
-    font-family: &quot;Inter&quot;, &quot;Tajawal&quot;;
-    font-size: 13px;
+    font-family: "Inter", "Tajawal";
+    font-size: 12px;
+    font-weight: 600;
+}
+
+QLabel[class="summary-value"] {
+    color: #111827;
+    background: transparent;
+    border: none;
+    font-family: "Inter", "Tajawal";
+    font-size: 24px;
+    font-weight: 700;
+}
+
+QLabel[class="summary-value-primary"] {
+    color: #0051df;
+    background: transparent;
+    border: none;
+    font-family: "Inter", "Tajawal";
+    font-size: 24px;
+    font-weight: 700;
+}
+
+QLabel[class="summary-value-danger"] {
+    color: #dc2626;
+    background: transparent;
+    border: none;
+    font-family: "Inter", "Tajawal";
+    font-size: 24px;
+    font-weight: 700;
+}
+
+QLabel[class="summary-label"] {
+    color: #1f2937;
+    background: transparent;
+    border: none;
+    font-family: "Inter", "Tajawal";
+    font-size: 17px;
     font-weight: 500;
-
 }
 
-/* SeparatorLine */
-QLabel[class=&quot;separator&quot;] {
-    background-color: rgba(195, 197, 216, 0.5);
+QLabel[class="summary-total"] {
+    color: #020617;
+    background: transparent;
     border: none;
-    height: 1px;
+    font-family: "Inter", "Tajawal";
+    font-size: 22px;
+    font-weight: 800;
+}
+
+QLabel[class="summary-total-value"] {
+    color: #0051df;
+    background: transparent;
+    border: none;
+    font-family: "Inter", "Tajawal";
+    font-size: 28px;
+    font-weight: 800;
 }
 
 
-/* 1. The Main Table Container */
+/* ===================================================================== *
+ * Data tables                                                           *
+ * ===================================================================== */
 QTableWidget {
     background-color: #ffffff;
     border: 1px solid #eaebf0;
@@ -346,7 +495,6 @@ QTableWidget {
     outline: none;               /* Removes the dotted focus ring around selected cells */
 }
 
-/* 2. The Horizontal Header (Column Names) */
 QHeaderView::section:horizontal {
     background-color: #f8f9fa;   /* Light gray header background */
     color: #4b5563;              /* Muted text color */
@@ -357,7 +505,6 @@ QHeaderView::section:horizontal {
     alignment: left;
 }
 
-/* 3. The Vertical Header (Row Numbers) - Usually hidden, but styled just in case */
 QHeaderView::section:vertical {
     background-color: #f8f9fa;
     color: #4b5563;
@@ -366,24 +513,20 @@ QHeaderView::section:vertical {
     padding: 4px;
 }
 
-/* 4. Table Items (The actual data cells) */
 QTableWidget::item {
     padding: 4px 12px;
     border-bottom: 1px solid #f3f4f6; /* Creates soft, horizontal row dividers */
 }
 
-/* 5. Hover State for Rows */
 QTableWidget::item:hover {
     background-color: #f8f9fa;
 }
 
-/* 6. Selected State */
 QTableWidget::item:selected {
     background-color: #eff4ff;   /* Very pale blue background */
     color: #0051df;              /* Your primary blue for text */
 }
 
-/* 7. The Top-Left Corner Button */
 QTableCornerButton::section {
     background-color: #f8f9fa;
     border: none;
@@ -392,13 +535,10 @@ QTableCornerButton::section {
 }
 
 
-
-
-/* ====================================================
-   PRIMARY BUTTON (Like &quot;Nouveau&quot;) 
-   Solid blue background, white text.
-==================================================== */
-QToolButton[class=&quot;primary&quot;] {
+/* ===================================================================== *
+ * Tool buttons                                                          *
+ * ===================================================================== */
+QToolButton[class="primary"] {
     background-color: #2563eb; /* Vibrant primary blue */
     color: #ffffff;            /* Pure white text */
     border: none;
@@ -408,24 +548,20 @@ QToolButton[class=&quot;primary&quot;] {
     font-weight: 600;          /* Slightly bolder font to stand out */
 }
 
-QToolButton[class=&quot;primary&quot;]:hover {
+QToolButton[class="primary"]:hover {
     background-color: #1d4ed8; /* Slightly darker blue on hover for feedback */
 }
 
-QToolButton[class=&quot;primary&quot;]:pressed {
+QToolButton[class="primary"]:pressed {
     background-color: #1e40af; /* Deep blue when actively clicked */
 }
 
-/* Optional but recommended: A disabled state */
-QToolButton[class=&quot;primary&quot;]:disabled {
+QToolButton[class="primary"]:disabled {
     background-color: #93c5fd; /* Faded, washed-out blue */
     color: #f8fafc;            /* Slightly dimmed white text */
 }
-/* ====================================================
-   1. SECONDARY BUTTON (Like &quot;Modifier&quot;) 
-   Subtle gray background, dark text.
-==================================================== */
-QToolButton[class=&quot;secondary&quot;] {
+
+QToolButton[class="secondary"] {
     background-color: transparent; /* Soft gray background */
     color: #374151;            /* Dark slate gray text */
     border: none;
@@ -435,20 +571,16 @@ QToolButton[class=&quot;secondary&quot;] {
     font-weight: 500;
 }
 
-QToolButton[class=&quot;secondary&quot;]:hover {
+QToolButton[class="secondary"]:hover {
     background-color: #e5e7eb; /* Slightly darker gray on hover */
     color: #111827;            /* Almost black text on hover */
 }
 
-QToolButton[class=&quot;secondary&quot;]:pressed {
+QToolButton[class="secondary"]:pressed {
     background-color: #d1d5db; /* Noticeable press state */
 }
 
-/* ====================================================
-   2. SECONDARY DANGER BUTTON (Like &quot;Supprimer&quot;)
-   Transparent by default, turns red on hover.
-==================================================== */
-QToolButton[class=&quot;secondary-danger&quot;] {
+QToolButton[class="secondary-danger"] {
     background-color: transparent; /* Ghost button by default */
     color: #4b5563;                /* Muted gray text */
     border: none;
@@ -458,19 +590,20 @@ QToolButton[class=&quot;secondary-danger&quot;] {
     font-weight: 500;
 }
 
-QToolButton[class=&quot;secondary-danger&quot;]:hover {
+QToolButton[class="secondary-danger"]:hover {
     background-color: #fef2f2;     /* Faint warning red background */
     color: #dc2626;                /* Strong red text */
 }
 
-QToolButton[class=&quot;secondary-danger&quot;]:pressed {
+QToolButton[class="secondary-danger"]:pressed {
     background-color: #fee2e2;     /* Slightly deeper red background */
     color: #b91c1c;                /* Darker red text */
 }
 
-/* ====================================================
-   1. The Main DateEdit Input Box
-==================================================== */
+
+/* ===================================================================== *
+ * Date / time edits                                                     *
+ * ===================================================================== */
 QDateEdit {
     background-color: #ffffff;
     border: 2px solid #e0e0e0;       /* Matches your QComboBox */
@@ -490,9 +623,6 @@ QDateEdit:focus {
     background-color: #fbfcff;       /* Very faint blue tint */
 }
 
-/* ====================================================
-   2. The Drop-down Button (Right Side)
-==================================================== */
 QDateEdit::drop-down {
     subcontrol-origin: padding;
     subcontrol-position: top right;
@@ -502,14 +632,88 @@ QDateEdit::drop-down {
     border-bottom-right-radius: 6px;
 }
 
-/* 3. The Icon Inside the Drop-down */
 QDateEdit::down-arrow {
-    image: url(&quot;:/icons/icons/Gcalendar.svg&quot;); /* Pro-tip: Use a calendar icon instead of an arrow */
+    image: url(":/icons/icons/Gcalendar.svg"); /* Pro-tip: Use a calendar icon instead of an arrow */
     width: 16px;
     height: 16px;
 }
+
+
+/* ===================================================================== *
+ * Sidebar group toggles + tabs                                          *
+ * ===================================================================== */
+QToolButton[class="sidebar-gbutton"] {
+    background-color: #f3f4f6;       /* Soft light-gray background */
+    color: #4b5563;                  /* Muted slate text color */
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;                /* Semi-bold for category titles */
+    padding: 8px 14px;
+    text-align: left;                /* Keeps icon and text left-aligned */
+}
+
+QToolButton[class="sidebar-gbutton"]:hover {
+    background-color: #e5e7eb;       /* Darker gray feedback on hover */
+    color: #111827;                  /* High contrast text on hover */
+}
+
+QToolButton[class="sidebar-gbutton"][expanded="true"] {
+    background-color: #eff4ff;       /* Soft tint of your primary blue */
+    color: #0051df;                  /* Text turns primary blue when open */
+}
+
+QTabWidget::pane {
+    border: none;                     /* Removes the harsh default box */
+    border-top: 1px solid #e2e8f0;    /* Creates the continuous horizontal line under the tabs */
+    background: transparent;          /* Lets your main background color show through */
+}
+
+QTabBar::tab {
+    background: transparent;
+    color: #64748b;                   /* Muted slate-gray text */
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 25px;               /* Breathing room around the text */
+    border-bottom: 2px solid transparent; /* Invisible border to reserve space */
+    
+    /* CRUCIAL TRICK: Pulls the tab down 1px so its bottom border 
+       perfectly overlaps the pane's top border line */
+    margin-bottom: -1px;              
+}
+
+QTabBar::tab:hover:!selected {
+    color: #1e293b;                   /* Darkens the text */
+    border-bottom: 2px solid #cbd5e1; /* Shows a subtle gray underline preview */
+}
+
+QTabBar::tab:selected {
+    color: #2563eb;                   /* Your vibrant primary blue */
+    border-bottom: 2px solid #2563eb; /* The thick blue active underline */
+}
+
+QTabBar:focus {
+    outline: none;
+}
+
+Line {
+	color: #e3e3e3;
+}
+/* ==== AUTO-SYNCED QSS END ==== */
 </string>
   </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1118</width>
+    <height>665</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="leftMargin">
     <number>0</number>
@@ -680,9 +884,9 @@ QDateEdit::down-arrow {
              <bold>true</bold>
             </font>
            </property>
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
+             <property name="styleSheet">
+   <string notr="true"/>
+  </property>
            <property name="text">
             <string> Supprimer</string>
            </property>
@@ -1045,6 +1249,9 @@ QDateEdit::down-arrow {
            </item>
            <item row="0" column="6">
             <widget class="QLabel" name="label_5">
+   <property name="class" stdset="0">
+    <string>label</string>
+   </property>
              <property name="text">
               <string>STATUT</string>
              </property>
@@ -1052,6 +1259,9 @@ QDateEdit::down-arrow {
            </item>
            <item row="0" column="1">
             <widget class="QLabel" name="label_9">
+   <property name="class" stdset="0">
+    <string>label</string>
+   </property>
              <property name="text">
               <string>FOURNISSEUR</string>
              </property>
@@ -1059,6 +1269,9 @@ QDateEdit::down-arrow {
            </item>
            <item row="0" column="0">
             <widget class="QLabel" name="label_8">
+   <property name="class" stdset="0">
+    <string>label</string>
+   </property>
              <property name="text">
               <string>CODE FOURNISSEUR</string>
              </property>
@@ -1066,6 +1279,9 @@ QDateEdit::down-arrow {
            </item>
            <item row="0" column="2">
             <widget class="QLabel" name="label_15">
+   <property name="class" stdset="0">
+    <string>label</string>
+   </property>
              <property name="text">
               <string>N° DOCUMENT</string>
              </property>
@@ -1102,6 +1318,9 @@ QDateEdit::down-arrow {
            </item>
            <item row="0" column="5">
             <widget class="QLabel" name="label_6">
+   <property name="class" stdset="0">
+    <string>label</string>
+   </property>
              <property name="text">
               <string>TYPE DOCUMENT</string>
              </property>
@@ -1129,6 +1348,9 @@ QDateEdit::down-arrow {
            </property>
            <item>
             <widget class="QLabel" name="label_16">
+   <property name="class" stdset="0">
+    <string>label</string>
+   </property>
              <property name="sizePolicy">
               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                <horstretch>0</horstretch>
@@ -1176,6 +1398,9 @@ QDateEdit::down-arrow {
            </item>
            <item>
             <widget class="QLabel" name="label_17">
+   <property name="class" stdset="0">
+    <string>label</string>
+   </property>
              <property name="sizePolicy">
               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                <horstretch>0</horstretch>
@@ -1307,6 +1532,9 @@ padding: 10px 30px;
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
           <widget class="QFrame" name="FrameHT">
+   <property name="class" stdset="0">
+    <string>summary-card</string>
+   </property>
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
              <horstretch>0</horstretch>
@@ -1319,30 +1547,7 @@ padding: 10px 30px;
              <height>62</height>
             </size>
            </property>
-           <property name="styleSheet">
-            <string notr="true">/* ====================================================
-   CARD 1: TOTAL HT GLOBAL (Neutral Style)
-==================================================== */
-QFrame#FrameHT {
-    background-color: #ffffff;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-}
-
-QLabel {
-    color: #4b5563;             /* Muted gray-slate */
-    font-size: 13px;
-    font-weight: 500;
-    background: transparent;
-}
-
-QLabel#ValueHT {
-    color: #111827;             /* Dark charcoal/black */
-    font-size: 24px;
-    font-weight: 700;
-    background: transparent;
-}</string>
-           </property>
+           
            <layout class="QVBoxLayout" name="totalBalanceLayout">
             <property name="leftMargin">
              <number>12</number>
@@ -1358,6 +1563,9 @@ QLabel#ValueHT {
             </property>
             <item alignment="Qt::AlignHCenter">
              <widget class="QLabel" name="labelTotalBalanceTitle">
+   <property name="class" stdset="0">
+    <string>summary-title</string>
+   </property>
               <property name="text">
                <string>Total HT Global</string>
               </property>
@@ -1368,6 +1576,9 @@ QLabel#ValueHT {
             </item>
             <item>
              <widget class="QLabel" name="ValueHT">
+   <property name="class" stdset="0">
+    <string>summary-value</string>
+   </property>
               <property name="text">
                <string>0.00</string>
               </property>
@@ -1381,6 +1592,9 @@ QLabel#ValueHT {
          </item>
          <item>
           <widget class="QFrame" name="FrameTTC">
+   <property name="class" stdset="0">
+    <string>summary-card</string>
+   </property>
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
              <horstretch>0</horstretch>
@@ -1393,36 +1607,16 @@ QLabel#ValueHT {
              <height>65</height>
             </size>
            </property>
-           <property name="styleSheet">
-            <string notr="true">/* ====================================================
-   CARD 2: TOTAL TTC GLOBAL (Blue Accent Style)
-==================================================== */
-QFrame#FrameTTC {
-    background-color: #ffffff;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-}
-
-QLabel {
-    color: #4b5563;             /* Muted gray-slate */
-    font-size: 13px;
-    font-weight: 500;
-    background: transparent;
-}
-
-QLabel#ValueTTC {
-    color: #0051df;             /* Vibrant primary blue */
-    font-size: 24px;
-    font-weight: 700;
-    background: transparent;
-}</string>
-           </property>
+           
            <layout class="QVBoxLayout" name="totalHtLayout">
             <property name="spacing">
              <number>2</number>
             </property>
             <item alignment="Qt::AlignHCenter">
              <widget class="QLabel" name="labelTotalHtTitle">
+   <property name="class" stdset="0">
+    <string>summary-title</string>
+   </property>
               <property name="text">
                <string>Total TTC Global</string>
               </property>
@@ -1433,6 +1627,9 @@ QLabel#ValueTTC {
             </item>
             <item>
              <widget class="QLabel" name="ValueTTC">
+   <property name="class" stdset="0">
+    <string>summary-value-primary</string>
+   </property>
               <property name="text">
                <string>0.00</string>
               </property>
@@ -1446,6 +1643,9 @@ QLabel#ValueTTC {
          </item>
          <item>
           <widget class="QFrame" name="FrameSolde">
+   <property name="class" stdset="0">
+    <string>summary-card</string>
+   </property>
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
              <horstretch>0</horstretch>
@@ -1458,36 +1658,16 @@ QLabel#ValueTTC {
              <height>65</height>
             </size>
            </property>
-           <property name="styleSheet">
-            <string notr="true">/* ====================================================
-   CARD 3: SOLDE GLOBAL (Danger/Alert Red Style)
-==================================================== */
-QFrame#FrameSolde {
-    background-color: #ffffff;
-    border: 1px solid #fee2e2;   /* Light pastel red border */
-    border-radius: 8px;
-}
-
-QLabel {
-    color: #b91c1c;             /* Clear dark red for warning header */
-    font-size: 14px;
-    font-weight: 500;
-    background: transparent;
-}
-
-QLabel#ValueSolde {
-    color: #7f1d1d;             /* Very deep burgundy red for visibility */
-    font-size: 24px;
-    font-weight: 700;
-    background: transparent;
-}</string>
-           </property>
+           
            <layout class="QVBoxLayout" name="fffff">
             <property name="spacing">
              <number>2</number>
             </property>
             <item alignment="Qt::AlignHCenter">
              <widget class="QLabel" name="labelTotalTtcTitle">
+   <property name="class" stdset="0">
+    <string>summary-title</string>
+   </property>
               <property name="text">
                <string>Solde Global</string>
               </property>
@@ -1498,6 +1678,9 @@ QLabel#ValueSolde {
             </item>
             <item>
              <widget class="QLabel" name="ValueSolde">
+   <property name="class" stdset="0">
+    <string>summary-value-danger</string>
+   </property>
               <property name="text">
                <string>0.00</string>
               </property>

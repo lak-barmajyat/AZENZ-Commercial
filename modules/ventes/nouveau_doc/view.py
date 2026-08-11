@@ -1,4 +1,5 @@
 from ui_utils.effects import set_drop_shadow
+from ui_utils.buttons import install_danger_icon_hover
 from ui_utils.canvas import create_uniform_icon, get_colored_icon
 from ui_utils.widgets.document_lines import (
     COL_ACTIONS,
@@ -16,7 +17,7 @@ from ui_utils.widgets.document_lines.document_lines_widget import (
     LineType,
 )
 
-from PyQt5.uic import loadUi
+from ui_utils.loader import load_ui as loadUi
 from PyQt5 import QtGui
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import QSize, Qt
@@ -43,6 +44,11 @@ class NouveauDocumentView(QWidget):
     def setup(self):
         self.setup_table()
         self.setup_client_searchable_combo()
+        self.setup_danger_buttons()
+
+    def setup_danger_buttons(self):
+        install_danger_icon_hover(self.findChild(QToolButton, "SupprimerButton"))
+        install_danger_icon_hover(self.findChild(QToolButton, "RetourButton"))
 
     def setup_table(self):
         columns = [

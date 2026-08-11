@@ -25,21 +25,12 @@ Qt Designer "Promote to..." instructions
 
 from __future__ import annotations
 
-import os
-
 from PyQt5.QtCore import QTimer, Qt, pyqtSignal
 from PyQt5.QtWidgets import QLineEdit, QWidget
 
 from ui_utils.canvas import get_colored_icon
 
-# Resource path (preferred) with a filesystem fallback so the widget still
-# works in standalone demos where resources_rc has not been imported.
 _ICON_RESOURCE = ":/icons/icons/rechercher.svg"
-_ICON_FILE = os.path.abspath(
-    os.path.join(
-        os.path.dirname(__file__), "..", "..", "resources", "icons", "rechercher.svg"
-    )
-)
 
 _ICON_COLOR = "#9CA3AF"
 
@@ -100,11 +91,7 @@ class SearchLineEdit(QLineEdit):
     # Internal                                                           #
     # ------------------------------------------------------------------ #
     def _load_icon(self):
-        source = _ICON_RESOURCE
-        icon = get_colored_icon(source, _ICON_COLOR)
-        if icon.isNull() and os.path.exists(_ICON_FILE):
-            icon = get_colored_icon(_ICON_FILE, _ICON_COLOR)
-        return icon
+        return get_colored_icon(_ICON_RESOURCE, _ICON_COLOR)
 
     def _on_text_changed(self, _text: str) -> None:
         self._debounce.start()

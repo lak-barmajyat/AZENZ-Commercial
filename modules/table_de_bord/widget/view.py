@@ -1,6 +1,6 @@
 from ui_utils.effects import set_drop_shadow
 
-from PyQt5.uic import loadUi
+from ui_utils.loader import load_ui as loadUi
 from PyQt5.QtWidgets import QApplication, QWidget
 
 from modules.table_de_bord.widget.controller import DashboardWidgetController

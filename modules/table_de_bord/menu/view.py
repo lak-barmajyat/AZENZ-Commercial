@@ -1,6 +1,6 @@
 from ui_utils.canvas import create_uniform_icon, get_colored_icon
 
-from PyQt5.uic import loadUi
+from ui_utils.loader import load_ui as loadUi
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import QPropertyAnimation, QEasingCurve
 

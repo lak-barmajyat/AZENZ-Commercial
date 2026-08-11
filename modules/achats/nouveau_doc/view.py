@@ -1,4 +1,4 @@
-from PyQt5.uic import loadUi
+from ui_utils.loader import load_ui as loadUi
 from PyQt5.QtWidgets import QWidget
 
 from modules.achats.nouveau_doc.controller import NouveauAchatDocumentController
